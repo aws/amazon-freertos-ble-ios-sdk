@@ -1,0 +1,789 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0618C8E1C01DC7E95E066F32EA242217 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C4FF2E880DB3DAC91459C5F8136F /* Topic.swift */; };
+		0C9A066B63B652550BC5360194A8CCA4 /* AWSAfrConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44D4712FAB31A90C04B52D0321825CF /* AWSAfrConstants.swift */; };
+		10FA1F0C6C8472294966C16009616D47 /* AmazonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80C2C7809872CB4D5D0A1A2CE4ECC9 /* AmazonConstants.swift */; };
+		16087562114C3511EE27765AC3E6C79C /* UITextView+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DBF38885371B97A12CD6B4787A40C1 /* UITextView+Amazon.swift */; };
+		1C4FAE40D8616B2026107D1EC91BC97F /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133DA190B200A6A5709D99F4282D9EA5 /* DebugViewController.swift */; };
+		1D25C5A1A2617020FE8DCF0ECFA28641 /* Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43839D40A1B7B32E38BFAA887DD07169 /* Connect.swift */; };
+		1D6B6D44AFA7AF2E3DB0FA0A047267BC /* AmazonEmber_Md.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE44C0FD8945D98C4D57825AF9276407 /* AmazonEmber_Md.ttf */; };
+		1DC40D90AEBD8137411F78F9FD554593 /* UITableView+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9C37363045FF4ABBD6412F1541635A /* UITableView+Amazon.swift */; };
+		214E646021780477BAA912606ADA67C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D08B3E693E7A42097EC1BF6FA8716A /* Main.storyboard */; };
+		251A1E3770ECCF2EBB5E3B5B3695AD6E /* BrokerEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C41A1E8AF5AAD0949595C9E572165C /* BrokerEndpoint.swift */; };
+		2B89A66C70CAF61CED11141FC3AA8BC6 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0243F131FF4EFA0B1CD13B5A2FDB6FC /* NetworkViewController.swift */; };
+		32827C57B67966C1F8A9B410359AD2DC /* DeleteNetworkResp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25255FA6233A8386303F258A2B1A774C /* DeleteNetworkResp.swift */; };
+		34708A4770767DA66D04AB2072D56F44 /* Publish.swift in Sources */ = {isa = PBXBuildFile; fileRef = C726E7DD328636F408BE4920AB8ED72C /* Publish.swift */; };
+		44597CA45FF4ABD0FA31F2C3AAD7A0A7 /* Pods_FreeRTOSDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA57B338360B72CEF0EBD3975ABAEB9D /* Pods_FreeRTOSDemo.framework */; };
+		451CD642E1B0D5505D7B3B10AEA96948 /* Suback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7EBF6A3377B12BFB9BA9D5B45DE400 /* Suback.swift */; };
+		4C31EB55B33EB0E2B0E7D7C21CA9BD4D /* Unsuback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A9EE9A18CF601D90900D944047EF4 /* Unsuback.swift */; };
+		4E60DDEA40D64D9A69B55864961C2111 /* CharacteristicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB8D71D21C78388AA8B40C95B87A5EE /* CharacteristicCell.swift */; };
+		502ABA40B753F485ACDD14BC5606FA4B /* CBCharacteristicProperties+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B60D887273E7135605D1B07DEC800D /* CBCharacteristicProperties+Amazon.swift */; };
+		5045AE56F178409140D4EEF6B55244CA /* CBPeripheral+FreeRTOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E1760B5F888CC42F3E1E785304A684 /* CBPeripheral+FreeRTOS.swift */; };
+		5097A574F80C765ED18200A799393348 /* NSNotification.Name+FreeRTOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05F07628878EA8F2D3B0C74C731A9A /* NSNotification.Name+FreeRTOS.swift */; };
+		55350A530840203AAFF772A80D7C7BDE /* EditNetworkReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4194079F9AA8F8D864970417721050C /* EditNetworkReq.swift */; };
+		59AFC511C57AA4911D536BB5A49FCF09 /* Disconnack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189CE5AFF56043422AE237B24CBF4A3 /* Disconnack.swift */; };
+		5C4B3C3C78847AEDF872F1470A90573E /* NetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7048AEC4E799E6AA4D378C4A175E383E /* NetworkCell.swift */; };
+		5D87F79908DFD65D830F425D160D22B3 /* AmazonEmber_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA10183734CF117A0A18236A1E170C1A /* AmazonEmber_Bd.ttf */; };
+		63911EBC405B97DECE1B49665152843B /* UIButton+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D55B513FBB950CD1D2E05F807F2B2 /* UIButton+Amazon.swift */; };
+		6775E7044A8D0059BDF40BF752BAA93E /* ListNetworkResp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E426EB3261E4505DB58F03BD2F1030E5 /* ListNetworkResp.swift */; };
+		6DA5FCB986601C0E96C5CE507FFC65C8 /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0786A05DF5D53043D262D62B19E760 /* DevicesViewController.swift */; };
+		6F2D0297A6D16ACCF8A9CE55FCADB8A5 /* ListNetworkReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D9F4591581D5EFC9BEE1D3147C2154 /* ListNetworkReq.swift */; };
+		77E2CB1B429EEECE2A589AE479763125 /* MqttMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4C76D6587F0C9067CD2D588A315035 /* MqttMessage.swift */; };
+		7867C525730F24CFF133B31B87C68FDD /* DeleteNetworkReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65637FA266C668DCD63161B2C1803656 /* DeleteNetworkReq.swift */; };
+		898F1E9772F5B6E68B0C0A95992FD860 /* Mtu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AA43808C17580108D82CFCE218678F /* Mtu.swift */; };
+		89E4FDB44588270878F47FA3AB20385C /* AWSAfrEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E767D8890332B7667EA04963926E73CF /* AWSAfrEnums.swift */; };
+		8A7C3D7821BCD429E02F8FDAD3DDBCFB /* MqttViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F5A96ABD4484A7275CD66A03EC17F5 /* MqttViewController.swift */; };
+		8E6823E806089F2223B2E413C12E582F /* SectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C46A508976C83B7340E82774A533A /* SectionHeaderCell.swift */; };
+		91B62C1389E8DB6D1D28039711852A86 /* Disconnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C41AB6504F483D7C53518198D93FF6 /* Disconnect.swift */; };
+		939AD9436695102FB840B6DAC552E511 /* SaveNetworkResp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62267213E1E50A4BD3C0CB3DDBA92E07 /* SaveNetworkResp.swift */; };
+		95AABE45CE595F6671A8BC3ED5543E84 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E6332F45A02390D176BB0FD0318AC7F /* Settings.bundle */; };
+		98B8C537104E089F11E19BA90A58C673 /* Subscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB9B6CDD7E1FA5222900CCC89111DBC /* Subscribe.swift */; };
+		9A95BE3B811E9270DBFCD5DE2CEFE07D /* Array+FreeRTOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F00186D462BCEA325C528492556DD1 /* Array+FreeRTOS.swift */; };
+		AB139991F0684848FA3E2E9C23123492 /* Unsubscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1E790F2E9050C6BA26463EFD5567D4 /* Unsubscribe.swift */; };
+		B1D8C43B5343EC95A8290D064948E36E /* MetadataMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427CA45E68BCE52FCBE87E9B91615EA0 /* MetadataMessage.swift */; };
+		B2BF4BB5AC5462E4ED21E9B6016F7B0C /* AWSAfrManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0653AA2F8416EB3322A3564299AAC0B2 /* AWSAfrManager.swift */; };
+		B5B8CF5BADDC12DBEC68FB1B23432668 /* Connack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EB6C21BF46FFB51164553DA60C6CC1 /* Connack.swift */; };
+		B5E7DCA52125FDE64CA7146608E0F774 /* CBService+FreeRTOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D82DE61659D148E0D9FF308E484EF35 /* CBService+FreeRTOS.swift */; };
+		B626A8A63986EC3B81946011B5C37C58 /* Puback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B58D3EE8F1FFB4D35A1781999D185 /* Puback.swift */; };
+		B632A3A6E7FD7FC9BE66DFC5FDD64EAA /* CustomGattMqttViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05CB9EE52CA9B471EF84AA109166568 /* CustomGattMqttViewController.swift */; };
+		C06D0DB11F1A0F0FC2FE7DBCAD8D4273 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3FF38FC0944368242A0BB5C13424D /* AppDelegate.swift */; };
+		C2B85FA25877F8309996D9D34ADB706D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA4D439731E2210306AA0AF3B2F3FA16 /* Assets.xcassets */; };
+		C99DC55D63CE78FA9650EED3BBF53B7C /* UIViewController+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF0210C4065C4FDA455A156A962DC8A /* UIViewController+Amazon.swift */; };
+		CADC11B81949F3DFC7E1D9D4F0005F83 /* UIFont+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197D20CB6E1C7B5C4D03FA92196BD9DC /* UIFont+Amazon.swift */; };
+		CBF5A354D9C7B93F78B571BF00EEFF02 /* AmazonEmber_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 311E38F361B340FB28F8554752A71BB0 /* AmazonEmber_Rg.ttf */; };
+		DB9E46B836D0BFCA055F831C28240CBF /* Timeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8DFAF153AF54DCD925B00515CC3516 /* Timeout.swift */; };
+		E046220D6D412EE801178379B34DF075 /* DevicesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E2E09924294ECDC54B239871EA72F /* DevicesCell.swift */; };
+		E6ADDCCD80600477946E503F89C4978C /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 35D8B9F080CCE671BCECEB2176F15583 /* awsconfiguration.json */; };
+		EAE8EE450942F0842742516F335AA2F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E33CC968574D3BC63AEE0CF17176FD2D /* LaunchScreen.storyboard */; };
+		EB606D500CB262E45D012FA7D8403937 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 584B64D9B0C22B53F95A69ECD8F24A12 /* Colors.xcassets */; };
+		EBAC8EC519DC211BEEDDBAFF636ACBFC /* SaveNetworkReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A6FD33564C0F9081F68A7F828E337D /* SaveNetworkReq.swift */; };
+		F7753FEAC7FD0672265B231B6F950F16 /* UIApplication+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED28C89F3DF486995C0A512CC5D654FF /* UIApplication+Amazon.swift */; };
+		FC45B322545945D7AF47649FE0DD3660 /* EditNetworkResp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7882F0BA9DEFC9C1726FF3041A9B0B9E /* EditNetworkResp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0653AA2F8416EB3322A3564299AAC0B2 /* AWSAfrManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSAfrManager.swift; sourceTree = "<group>"; };
+		0A4C76D6587F0C9067CD2D588A315035 /* MqttMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttMessage.swift; sourceTree = "<group>"; };
+		11B60D887273E7135605D1B07DEC800D /* CBCharacteristicProperties+Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBCharacteristicProperties+Amazon.swift"; sourceTree = "<group>"; };
+		133DA190B200A6A5709D99F4282D9EA5 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
+		197D20CB6E1C7B5C4D03FA92196BD9DC /* UIFont+Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Amazon.swift"; sourceTree = "<group>"; };
+		1A1E790F2E9050C6BA26463EFD5567D4 /* Unsubscribe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unsubscribe.swift; sourceTree = "<group>"; };
+		1A6B58D3EE8F1FFB4D35A1781999D185 /* Puback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puback.swift; sourceTree = "<group>"; };
+		1B7EBF6A3377B12BFB9BA9D5B45DE400 /* Suback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suback.swift; sourceTree = "<group>"; };
+		25255FA6233A8386303F258A2B1A774C /* DeleteNetworkResp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteNetworkResp.swift; sourceTree = "<group>"; };
+		252DDE84759D027E766B3CD268CD0C06 /* Pods-FreeRTOSDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeRTOSDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FreeRTOSDemo/Pods-FreeRTOSDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		2F9C37363045FF4ABBD6412F1541635A /* UITableView+Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Amazon.swift"; sourceTree = "<group>"; };
+		311E38F361B340FB28F8554752A71BB0 /* AmazonEmber_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AmazonEmber_Rg.ttf; sourceTree = "<group>"; };
+		35D8B9F080CCE671BCECEB2176F15583 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		427CA45E68BCE52FCBE87E9B91615EA0 /* MetadataMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataMessage.swift; sourceTree = "<group>"; };
+		43839D40A1B7B32E38BFAA887DD07169 /* Connect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connect.swift; sourceTree = "<group>"; };
+		47C41AB6504F483D7C53518198D93FF6 /* Disconnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disconnect.swift; sourceTree = "<group>"; };
+		49DBF38885371B97A12CD6B4787A40C1 /* UITextView+Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Amazon.swift"; sourceTree = "<group>"; };
+		584B64D9B0C22B53F95A69ECD8F24A12 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		5D82DE61659D148E0D9FF308E484EF35 /* CBService+FreeRTOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBService+FreeRTOS.swift"; sourceTree = "<group>"; };
+		5E6332F45A02390D176BB0FD0318AC7F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		61D9F4591581D5EFC9BEE1D3147C2154 /* ListNetworkReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNetworkReq.swift; sourceTree = "<group>"; };
+		62267213E1E50A4BD3C0CB3DDBA92E07 /* SaveNetworkResp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNetworkResp.swift; sourceTree = "<group>"; };
+		65637FA266C668DCD63161B2C1803656 /* DeleteNetworkReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteNetworkReq.swift; sourceTree = "<group>"; };
+		69C41A1E8AF5AAD0949595C9E572165C /* BrokerEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokerEndpoint.swift; sourceTree = "<group>"; };
+		6A0786A05DF5D53043D262D62B19E760 /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
+		6F05F07628878EA8F2D3B0C74C731A9A /* NSNotification.Name+FreeRTOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification.Name+FreeRTOS.swift"; sourceTree = "<group>"; };
+		6FA3FF38FC0944368242A0BB5C13424D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7048AEC4E799E6AA4D378C4A175E383E /* NetworkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCell.swift; sourceTree = "<group>"; };
+		7882F0BA9DEFC9C1726FF3041A9B0B9E /* EditNetworkResp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNetworkResp.swift; sourceTree = "<group>"; };
+		7E82C693FF20BBCC700D73543C9C57C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		813D55B513FBB950CD1D2E05F807F2B2 /* UIButton+Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Amazon.swift"; sourceTree = "<group>"; };
+		85F5A96ABD4484A7275CD66A03EC17F5 /* MqttViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttViewController.swift; sourceTree = "<group>"; };
+		86EB6C21BF46FFB51164553DA60C6CC1 /* Connack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connack.swift; sourceTree = "<group>"; };
+		8CB9B6CDD7E1FA5222900CCC89111DBC /* Subscribe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscribe.swift; sourceTree = "<group>"; };
+		8FF0210C4065C4FDA455A156A962DC8A /* UIViewController+Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Amazon.swift"; sourceTree = "<group>"; };
+		9704E58A7E5788430932B16BBABA4993 /* Pods-FreeRTOSDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeRTOSDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-FreeRTOSDemo/Pods-FreeRTOSDemo.release.xcconfig"; sourceTree = "<group>"; };
+		9D0C46A508976C83B7340E82774A533A /* SectionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderCell.swift; sourceTree = "<group>"; };
+		A05CB9EE52CA9B471EF84AA109166568 /* CustomGattMqttViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGattMqttViewController.swift; sourceTree = "<group>"; };
+		A1A6FD33564C0F9081F68A7F828E337D /* SaveNetworkReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNetworkReq.swift; sourceTree = "<group>"; };
+		A44D4712FAB31A90C04B52D0321825CF /* AWSAfrConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSAfrConstants.swift; sourceTree = "<group>"; };
+		AA57B338360B72CEF0EBD3975ABAEB9D /* Pods_FreeRTOSDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreeRTOSDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE44C0FD8945D98C4D57825AF9276407 /* AmazonEmber_Md.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AmazonEmber_Md.ttf; sourceTree = "<group>"; };
+		B189CE5AFF56043422AE237B24CBF4A3 /* Disconnack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disconnack.swift; sourceTree = "<group>"; };
+		B5AA43808C17580108D82CFCE218678F /* Mtu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mtu.swift; sourceTree = "<group>"; };
+		BA10183734CF117A0A18236A1E170C1A /* AmazonEmber_Bd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AmazonEmber_Bd.ttf; sourceTree = "<group>"; };
+		BBB8D71D21C78388AA8B40C95B87A5EE /* CharacteristicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicCell.swift; sourceTree = "<group>"; };
+		BE333B9E808FFF51EE04689DB547F6BD /* FreeRTOSDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeRTOSDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE8DFAF153AF54DCD925B00515CC3516 /* Timeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeout.swift; sourceTree = "<group>"; };
+		C4194079F9AA8F8D864970417721050C /* EditNetworkReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNetworkReq.swift; sourceTree = "<group>"; };
+		C726E7DD328636F408BE4920AB8ED72C /* Publish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publish.swift; sourceTree = "<group>"; };
+		D0243F131FF4EFA0B1CD13B5A2FDB6FC /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
+		D24E2E09924294ECDC54B239871EA72F /* DevicesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesCell.swift; sourceTree = "<group>"; };
+		D6E1760B5F888CC42F3E1E785304A684 /* CBPeripheral+FreeRTOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBPeripheral+FreeRTOS.swift"; sourceTree = "<group>"; };
+		DB5A9EE9A18CF601D90900D944047EF4 /* Unsuback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unsuback.swift; sourceTree = "<group>"; };
+		E426EB3261E4505DB58F03BD2F1030E5 /* ListNetworkResp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNetworkResp.swift; sourceTree = "<group>"; };
+		E4F4C4FF2E880DB3DAC91459C5F8136F /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		E767D8890332B7667EA04963926E73CF /* AWSAfrEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSAfrEnums.swift; sourceTree = "<group>"; };
+		ED28C89F3DF486995C0A512CC5D654FF /* UIApplication+Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Amazon.swift"; sourceTree = "<group>"; };
+		F3C3D30606E1AC390C90FF46D434DD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F4F00186D462BCEA325C528492556DD1 /* Array+FreeRTOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+FreeRTOS.swift"; sourceTree = "<group>"; };
+		F8BFE72A7CD0207895B7498886AD0B7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA4D439731E2210306AA0AF3B2F3FA16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA80C2C7809872CB4D5D0A1A2CE4ECC9 /* AmazonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonConstants.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67819881C61269212CDEB2E02AF9B827 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44597CA45FF4ABD0FA31F2C3AAD7A0A7 /* Pods_FreeRTOSDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1161E8FC70D38A67D26A82806979F7A5 = {
+			isa = PBXGroup;
+			children = (
+				1F48BAA3F25F7414772896F21446F53D /* Frameworks */,
+				1612E319DD1C4019075FDD7B40618052 /* FreeRTOS */,
+				B0157445ACD584A9A287DB25DCA97F7D /* FreeRTOSDemo */,
+				62EA0340AEE31956CB74B8373C408627 /* Pods */,
+				66C80D97F2501DF82893E392F8A07D61 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1612E319DD1C4019075FDD7B40618052 /* FreeRTOS */ = {
+			isa = PBXGroup;
+			children = (
+				9F9FF7E2B5AC0F788A73E8074613D5A2 /* Extension */,
+				D98BCBB9DCF118E76FF12ED61D512A8F /* Metadata */,
+				1ED18B451416B770E6303B6AEDD2689F /* Mqtt */,
+				402E5F289D86D2E80BC5B0686EA3350B /* Network */,
+				A44D4712FAB31A90C04B52D0321825CF /* AWSAfrConstants.swift */,
+				E767D8890332B7667EA04963926E73CF /* AWSAfrEnums.swift */,
+				0653AA2F8416EB3322A3564299AAC0B2 /* AWSAfrManager.swift */,
+			);
+			path = FreeRTOS;
+			sourceTree = "<group>";
+		};
+		1ED18B451416B770E6303B6AEDD2689F /* Mqtt */ = {
+			isa = PBXGroup;
+			children = (
+				86EB6C21BF46FFB51164553DA60C6CC1 /* Connack.swift */,
+				43839D40A1B7B32E38BFAA887DD07169 /* Connect.swift */,
+				B189CE5AFF56043422AE237B24CBF4A3 /* Disconnack.swift */,
+				47C41AB6504F483D7C53518198D93FF6 /* Disconnect.swift */,
+				0A4C76D6587F0C9067CD2D588A315035 /* MqttMessage.swift */,
+				1A6B58D3EE8F1FFB4D35A1781999D185 /* Puback.swift */,
+				C726E7DD328636F408BE4920AB8ED72C /* Publish.swift */,
+				1B7EBF6A3377B12BFB9BA9D5B45DE400 /* Suback.swift */,
+				8CB9B6CDD7E1FA5222900CCC89111DBC /* Subscribe.swift */,
+				DB5A9EE9A18CF601D90900D944047EF4 /* Unsuback.swift */,
+				1A1E790F2E9050C6BA26463EFD5567D4 /* Unsubscribe.swift */,
+			);
+			path = Mqtt;
+			sourceTree = "<group>";
+		};
+		1F48BAA3F25F7414772896F21446F53D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA57B338360B72CEF0EBD3975ABAEB9D /* Pods_FreeRTOSDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		253620ED0918E4995DD3818EBA67E435 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E33CC968574D3BC63AEE0CF17176FD2D /* LaunchScreen.storyboard */,
+				05D08B3E693E7A42097EC1BF6FA8716A /* Main.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		3D1D6F726B9F115EF1ABBD7B0ED28DB9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BBB8D71D21C78388AA8B40C95B87A5EE /* CharacteristicCell.swift */,
+				D24E2E09924294ECDC54B239871EA72F /* DevicesCell.swift */,
+				7048AEC4E799E6AA4D378C4A175E383E /* NetworkCell.swift */,
+				9D0C46A508976C83B7340E82774A533A /* SectionHeaderCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		402E5F289D86D2E80BC5B0686EA3350B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				65637FA266C668DCD63161B2C1803656 /* DeleteNetworkReq.swift */,
+				25255FA6233A8386303F258A2B1A774C /* DeleteNetworkResp.swift */,
+				C4194079F9AA8F8D864970417721050C /* EditNetworkReq.swift */,
+				7882F0BA9DEFC9C1726FF3041A9B0B9E /* EditNetworkResp.swift */,
+				61D9F4591581D5EFC9BEE1D3147C2154 /* ListNetworkReq.swift */,
+				E426EB3261E4505DB58F03BD2F1030E5 /* ListNetworkResp.swift */,
+				A1A6FD33564C0F9081F68A7F828E337D /* SaveNetworkReq.swift */,
+				62267213E1E50A4BD3C0CB3DDBA92E07 /* SaveNetworkResp.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		608D2CF06111D557B58B65C6715E661B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				11B60D887273E7135605D1B07DEC800D /* CBCharacteristicProperties+Amazon.swift */,
+				ED28C89F3DF486995C0A512CC5D654FF /* UIApplication+Amazon.swift */,
+				813D55B513FBB950CD1D2E05F807F2B2 /* UIButton+Amazon.swift */,
+				197D20CB6E1C7B5C4D03FA92196BD9DC /* UIFont+Amazon.swift */,
+				2F9C37363045FF4ABBD6412F1541635A /* UITableView+Amazon.swift */,
+				49DBF38885371B97A12CD6B4787A40C1 /* UITextView+Amazon.swift */,
+				8FF0210C4065C4FDA455A156A962DC8A /* UIViewController+Amazon.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		62EA0340AEE31956CB74B8373C408627 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				252DDE84759D027E766B3CD268CD0C06 /* Pods-FreeRTOSDemo.debug.xcconfig */,
+				9704E58A7E5788430932B16BBABA4993 /* Pods-FreeRTOSDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		66C80D97F2501DF82893E392F8A07D61 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE333B9E808FFF51EE04689DB547F6BD /* FreeRTOSDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7DDA01AF3DFAD8EB5ADE86D72F098DB2 /* Amazon */ = {
+			isa = PBXGroup;
+			children = (
+				FA80C2C7809872CB4D5D0A1A2CE4ECC9 /* AmazonConstants.swift */,
+			);
+			path = Amazon;
+			sourceTree = "<group>";
+		};
+		9F9FF7E2B5AC0F788A73E8074613D5A2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F4F00186D462BCEA325C528492556DD1 /* Array+FreeRTOS.swift */,
+				D6E1760B5F888CC42F3E1E785304A684 /* CBPeripheral+FreeRTOS.swift */,
+				5D82DE61659D148E0D9FF308E484EF35 /* CBService+FreeRTOS.swift */,
+				6F05F07628878EA8F2D3B0C74C731A9A /* NSNotification.Name+FreeRTOS.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B0157445ACD584A9A287DB25DCA97F7D /* FreeRTOSDemo */ = {
+			isa = PBXGroup;
+			children = (
+				7DDA01AF3DFAD8EB5ADE86D72F098DB2 /* Amazon */,
+				3D1D6F726B9F115EF1ABBD7B0ED28DB9 /* Cell */,
+				608D2CF06111D557B58B65C6715E661B /* Extension */,
+				B0D77ECA62F9ABBB7AEE0819C6AF26FA /* Support */,
+				253620ED0918E4995DD3818EBA67E435 /* UI */,
+				6FA3FF38FC0944368242A0BB5C13424D /* AppDelegate.swift */,
+				A05CB9EE52CA9B471EF84AA109166568 /* CustomGattMqttViewController.swift */,
+				133DA190B200A6A5709D99F4282D9EA5 /* DebugViewController.swift */,
+				6A0786A05DF5D53043D262D62B19E760 /* DevicesViewController.swift */,
+				85F5A96ABD4484A7275CD66A03EC17F5 /* MqttViewController.swift */,
+				D0243F131FF4EFA0B1CD13B5A2FDB6FC /* NetworkViewController.swift */,
+			);
+			path = FreeRTOSDemo;
+			sourceTree = "<group>";
+		};
+		B0D77ECA62F9ABBB7AEE0819C6AF26FA /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				DFE59A42DD2B47C4DCD96E4398E45783 /* Fonts */,
+				FA4D439731E2210306AA0AF3B2F3FA16 /* Assets.xcassets */,
+				584B64D9B0C22B53F95A69ECD8F24A12 /* Colors.xcassets */,
+				F8BFE72A7CD0207895B7498886AD0B7B /* Info.plist */,
+				5E6332F45A02390D176BB0FD0318AC7F /* Settings.bundle */,
+				35D8B9F080CCE671BCECEB2176F15583 /* awsconfiguration.json */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		D98BCBB9DCF118E76FF12ED61D512A8F /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				69C41A1E8AF5AAD0949595C9E572165C /* BrokerEndpoint.swift */,
+				427CA45E68BCE52FCBE87E9B91615EA0 /* MetadataMessage.swift */,
+				B5AA43808C17580108D82CFCE218678F /* Mtu.swift */,
+				BE8DFAF153AF54DCD925B00515CC3516 /* Timeout.swift */,
+				E4F4C4FF2E880DB3DAC91459C5F8136F /* Topic.swift */,
+			);
+			path = Metadata;
+			sourceTree = "<group>";
+		};
+		DFE59A42DD2B47C4DCD96E4398E45783 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BA10183734CF117A0A18236A1E170C1A /* AmazonEmber_Bd.ttf */,
+				AE44C0FD8945D98C4D57825AF9276407 /* AmazonEmber_Md.ttf */,
+				311E38F361B340FB28F8554752A71BB0 /* AmazonEmber_Rg.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D85E63696D18747EA49B79B890C75FF2 /* FreeRTOSDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 252E0365C05DA30353656C1AA5ED8F00 /* Build configuration list for PBXNativeTarget "FreeRTOSDemo" */;
+			buildPhases = (
+				18B32BE867C1B33E7412E38FE9DC9BE2 /* [CP] Check Pods Manifest.lock */,
+				B00F1601D9CD097AA86E2D489303016D /* [AMAZON] License Plist */,
+				1D2E46268C56B2082C8C68649802E3B4 /* [AMAZON] Swift Format */,
+				429C77E2F333A713665029A647B33F29 /* [AMAZON] Swift Lint */,
+				A3FC522B8567DCAA6D13D8EFD9D551ED /* Sources */,
+				67819881C61269212CDEB2E02AF9B827 /* Frameworks */,
+				E6BF4E3A243105EDFE7FF5BD0B0D9D86 /* Resources */,
+				5FD2F1DB65AB74D6BA13DAC6ADE3DFDB /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FreeRTOSDemo;
+			productName = FreeROTSDemo;
+			productReference = BE333B9E808FFF51EE04689DB547F6BD /* FreeRTOSDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		33651CDD45FEA8CB1634035998F5106E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Amazon Web Services, Inc.";
+				TargetAttributes = {
+					D85E63696D18747EA49B79B890C75FF2 = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 653957CCAE2E8FAC6A7D50606CC75C1B /* Build configuration list for PBXProject "FreeRTOSDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1161E8FC70D38A67D26A82806979F7A5;
+			productRefGroup = 66C80D97F2501DF82893E392F8A07D61 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D85E63696D18747EA49B79B890C75FF2 /* FreeRTOSDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E6BF4E3A243105EDFE7FF5BD0B0D9D86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D87F79908DFD65D830F425D160D22B3 /* AmazonEmber_Bd.ttf in Resources */,
+				1D6B6D44AFA7AF2E3DB0FA0A047267BC /* AmazonEmber_Md.ttf in Resources */,
+				CBF5A354D9C7B93F78B571BF00EEFF02 /* AmazonEmber_Rg.ttf in Resources */,
+				C2B85FA25877F8309996D9D34ADB706D /* Assets.xcassets in Resources */,
+				EB606D500CB262E45D012FA7D8403937 /* Colors.xcassets in Resources */,
+				EAE8EE450942F0842742516F335AA2F9 /* LaunchScreen.storyboard in Resources */,
+				214E646021780477BAA912606ADA67C7 /* Main.storyboard in Resources */,
+				95AABE45CE595F6671A8BC3ED5543E84 /* Settings.bundle in Resources */,
+				E6ADDCCD80600477946E503F89C4978C /* awsconfiguration.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18B32BE867C1B33E7412E38FE9DC9BE2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FreeRTOSDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1D2E46268C56B2082C8C68649802E3B4 /* [AMAZON] Swift Format */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[AMAZON] Swift Format";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Scripts/swift-format.sh\"\n";
+		};
+		429C77E2F333A713665029A647B33F29 /* [AMAZON] Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[AMAZON] Swift Lint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Scripts/swift-lint.sh\"\n";
+		};
+		5FD2F1DB65AB74D6BA13DAC6ADE3DFDB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FreeRTOSDemo/Pods-FreeRTOSDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSAuthCore/AWSAuthCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSAuthUI/AWSAuthUI.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSIoT/AWSIoT.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSMobileClient/AWSMobileClient.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSUserPoolsSignIn/AWSUserPoolsSignIn.framework",
+				"${BUILT_PRODUCTS_DIR}/Alertift/Alertift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSAuthCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSAuthUI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProvider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProviderASF.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSIoT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSMobileClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSUserPoolsSignIn.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alertift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FreeRTOSDemo/Pods-FreeRTOSDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B00F1601D9CD097AA86E2D489303016D /* [AMAZON] License Plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[AMAZON] License Plist";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Scripts/license-plist.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A3FC522B8567DCAA6D13D8EFD9D551ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C9A066B63B652550BC5360194A8CCA4 /* AWSAfrConstants.swift in Sources */,
+				89E4FDB44588270878F47FA3AB20385C /* AWSAfrEnums.swift in Sources */,
+				B2BF4BB5AC5462E4ED21E9B6016F7B0C /* AWSAfrManager.swift in Sources */,
+				10FA1F0C6C8472294966C16009616D47 /* AmazonConstants.swift in Sources */,
+				C06D0DB11F1A0F0FC2FE7DBCAD8D4273 /* AppDelegate.swift in Sources */,
+				9A95BE3B811E9270DBFCD5DE2CEFE07D /* Array+FreeRTOS.swift in Sources */,
+				251A1E3770ECCF2EBB5E3B5B3695AD6E /* BrokerEndpoint.swift in Sources */,
+				502ABA40B753F485ACDD14BC5606FA4B /* CBCharacteristicProperties+Amazon.swift in Sources */,
+				5045AE56F178409140D4EEF6B55244CA /* CBPeripheral+FreeRTOS.swift in Sources */,
+				B5E7DCA52125FDE64CA7146608E0F774 /* CBService+FreeRTOS.swift in Sources */,
+				4E60DDEA40D64D9A69B55864961C2111 /* CharacteristicCell.swift in Sources */,
+				B5B8CF5BADDC12DBEC68FB1B23432668 /* Connack.swift in Sources */,
+				1D25C5A1A2617020FE8DCF0ECFA28641 /* Connect.swift in Sources */,
+				B632A3A6E7FD7FC9BE66DFC5FDD64EAA /* CustomGattMqttViewController.swift in Sources */,
+				1C4FAE40D8616B2026107D1EC91BC97F /* DebugViewController.swift in Sources */,
+				7867C525730F24CFF133B31B87C68FDD /* DeleteNetworkReq.swift in Sources */,
+				32827C57B67966C1F8A9B410359AD2DC /* DeleteNetworkResp.swift in Sources */,
+				E046220D6D412EE801178379B34DF075 /* DevicesCell.swift in Sources */,
+				6DA5FCB986601C0E96C5CE507FFC65C8 /* DevicesViewController.swift in Sources */,
+				59AFC511C57AA4911D536BB5A49FCF09 /* Disconnack.swift in Sources */,
+				91B62C1389E8DB6D1D28039711852A86 /* Disconnect.swift in Sources */,
+				55350A530840203AAFF772A80D7C7BDE /* EditNetworkReq.swift in Sources */,
+				FC45B322545945D7AF47649FE0DD3660 /* EditNetworkResp.swift in Sources */,
+				6F2D0297A6D16ACCF8A9CE55FCADB8A5 /* ListNetworkReq.swift in Sources */,
+				6775E7044A8D0059BDF40BF752BAA93E /* ListNetworkResp.swift in Sources */,
+				B1D8C43B5343EC95A8290D064948E36E /* MetadataMessage.swift in Sources */,
+				77E2CB1B429EEECE2A589AE479763125 /* MqttMessage.swift in Sources */,
+				8A7C3D7821BCD429E02F8FDAD3DDBCFB /* MqttViewController.swift in Sources */,
+				898F1E9772F5B6E68B0C0A95992FD860 /* Mtu.swift in Sources */,
+				5097A574F80C765ED18200A799393348 /* NSNotification.Name+FreeRTOS.swift in Sources */,
+				5C4B3C3C78847AEDF872F1470A90573E /* NetworkCell.swift in Sources */,
+				2B89A66C70CAF61CED11141FC3AA8BC6 /* NetworkViewController.swift in Sources */,
+				B626A8A63986EC3B81946011B5C37C58 /* Puback.swift in Sources */,
+				34708A4770767DA66D04AB2072D56F44 /* Publish.swift in Sources */,
+				EBAC8EC519DC211BEEDDBAFF636ACBFC /* SaveNetworkReq.swift in Sources */,
+				939AD9436695102FB840B6DAC552E511 /* SaveNetworkResp.swift in Sources */,
+				8E6823E806089F2223B2E413C12E582F /* SectionHeaderCell.swift in Sources */,
+				451CD642E1B0D5505D7B3B10AEA96948 /* Suback.swift in Sources */,
+				98B8C537104E089F11E19BA90A58C673 /* Subscribe.swift in Sources */,
+				DB9E46B836D0BFCA055F831C28240CBF /* Timeout.swift in Sources */,
+				0618C8E1C01DC7E95E066F32EA242217 /* Topic.swift in Sources */,
+				F7753FEAC7FD0672265B231B6F950F16 /* UIApplication+Amazon.swift in Sources */,
+				63911EBC405B97DECE1B49665152843B /* UIButton+Amazon.swift in Sources */,
+				CADC11B81949F3DFC7E1D9D4F0005F83 /* UIFont+Amazon.swift in Sources */,
+				1DC40D90AEBD8137411F78F9FD554593 /* UITableView+Amazon.swift in Sources */,
+				16087562114C3511EE27765AC3E6C79C /* UITextView+Amazon.swift in Sources */,
+				C99DC55D63CE78FA9650EED3BBF53B7C /* UIViewController+Amazon.swift in Sources */,
+				4C31EB55B33EB0E2B0E7D7C21CA9BD4D /* Unsuback.swift in Sources */,
+				AB139991F0684848FA3E2E9C23123492 /* Unsubscribe.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		05D08B3E693E7A42097EC1BF6FA8716A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F3C3D30606E1AC390C90FF46D434DD37 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E33CC968574D3BC63AEE0CF17176FD2D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E82C693FF20BBCC700D73543C9C57C1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0CBDD97531BCA4E57729940884DE2991 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9704E58A7E5788430932B16BBABA4993 /* Pods-FreeRTOSDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94KV3E626L;
+				INFOPLIST_FILE = "$(SRCROOT)/FreeRTOSDemo/Support/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.freertos.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		23ADC7FF54D0345395A57E33EC47BC07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LLVM_LTO = YES_THIN;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B99402403CF34FFD91A0C40505530122 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LLVM_LTO = YES_THIN;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D3FBB49AC783910A20D0F1CBC5AC2AB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 252DDE84759D027E766B3CD268CD0C06 /* Pods-FreeRTOSDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94KV3E626L;
+				INFOPLIST_FILE = "$(SRCROOT)/FreeRTOSDemo/Support/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.freertos.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		252E0365C05DA30353656C1AA5ED8F00 /* Build configuration list for PBXNativeTarget "FreeRTOSDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3FBB49AC783910A20D0F1CBC5AC2AB9 /* Debug */,
+				0CBDD97531BCA4E57729940884DE2991 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		653957CCAE2E8FAC6A7D50606CC75C1B /* Build configuration list for PBXProject "FreeRTOSDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B99402403CF34FFD91A0C40505530122 /* Debug */,
+				23ADC7FF54D0345395A57E33EC47BC07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 33651CDD45FEA8CB1634035998F5106E /* Project object */;
+}
