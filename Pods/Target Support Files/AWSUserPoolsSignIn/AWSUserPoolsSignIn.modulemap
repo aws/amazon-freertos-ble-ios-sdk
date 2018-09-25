@@ -1,6 +1,0 @@
-framework module AWSUserPoolsSignIn {
-  umbrella header "AWSUserPoolsSignIn-umbrella.h"
-
-  export *
-  module * { export * }
-}
