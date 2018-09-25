@@ -36,10 +36,10 @@ extension MqttViewController {
 
     @objc
     func didDiscoverCharacteristics(_ notification: NSNotification) {
-        guard let peripheral = peripheral, notification.userInfo?["service"] as? CBUUID == AWSAfrGattService.Mqtt else {
+        guard let peripheral = peripheral, notification.userInfo?["service"] as? CBUUID == AWSAfrGattService.MqttProxy else {
             return
         }
-        AWSAfrManager.shared.startMqttOfPeripheral(peripheral)
+        AWSAfrManager.shared.controlMqttOfPeripheral(peripheral, controlMessage: ControlMessage(proxyState: .on))
         tableView.reloadData()
     }
 }

@@ -1,0 +1,6 @@
+framework module AWSAuthUI {
+  umbrella header "AWSAuthUI-umbrella.h"
+
+  export *
+  module * { export * }
+}

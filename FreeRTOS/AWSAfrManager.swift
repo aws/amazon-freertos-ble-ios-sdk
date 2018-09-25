@@ -10,29 +10,25 @@ class AWSAfrManager: NSObject {
     /// Shared instence of Amazon FreeRTOS Manager.
     static let shared = AWSAfrManager()
 
-    #warning("delete")
+    #warning("dev delete")
 
     var isDebug: Bool = false
     var debugMessages = String()
     var counter = 0
 
-    #warning("delete")
+    #warning("dev delete")
 
     // BLE Central Manager for the SDK
     private var central: CBCentralManager?
 
     /// The peripherals using peripheral identifier as key.
     var peripherals: [String: CBPeripheral] = [:]
-    /// The topics mapping for peripherals using peripheral identifier as key.
-    var topics: [String: [Int: Topic]] = [:]
-    /// The networks peripherals scaned using peripheral identifier as key.
-    var networks: [String: [[ListNetworkResp]]] = [:]
     /// The mtus for peripherals using peripheral identifier as key.
     var mtus: [String: Mtu] = [:]
     /// The broker endpoints for peripherals using peripheral identifier as key.
     var brokerEndpoints: [String: BrokerEndpoint] = [:]
-    /// The timeouts for peripherals using peripheral identifier as key.
-    var timeouts: [String: Timeout] = [:]
+    /// The networks peripherals scaned using peripheral identifier as key.
+    var networks: [String: [[ListNetworkResp]]] = [:]
 
     // used for large object transfer with peripheral identifier and characteristic uuid as keys.
     private var lotDatas: [String: Data] = [:]
@@ -56,7 +52,7 @@ extension AWSAfrManager {
     /// Start scan for FreeRTOS peripherals.
     func startScanForPeripherals() {
         if let central = central, !central.isScanning {
-            central.scanForPeripherals(withServices: [AWSAfrGattService.FreeRTOS], options: nil)
+            central.scanForPeripherals(withServices: [AWSAfrGattService.DeviceInfo], options: nil)
         }
     }
 
@@ -72,14 +68,12 @@ extension AWSAfrManager {
         stopScanForPeripherals()
 
         peripherals.removeAll()
-        topics.removeAll()
-        networks.removeAll()
-
         mtus.removeAll()
         brokerEndpoints.removeAll()
-        timeouts.removeAll()
+        networks.removeAll()
 
         lotDatas.removeAll()
+
         startScanForPeripherals()
     }
 
@@ -103,11 +97,6 @@ extension AWSAfrManager {
      */
     func disconnectPeripheral(_ peripheral: CBPeripheral) {
         if let central = central, peripheral.state != .disconnected {
-            for service in peripheral.services ?? [] {
-                for characteristic in service.characteristics ?? [] {
-                    peripheral.setNotifyValue(false, for: characteristic)
-                }
-            }
             central.cancelPeripheralConnection(peripheral)
         }
     }
@@ -115,48 +104,35 @@ extension AWSAfrManager {
     // Mqtt Proxy Service
 
     /**
-     Disconnect from FreeRTOS `peripheral`
+     Control the mqtt proxying of `peripheral` such as start and stop the proxy.
 
-     - Parameter peripheral: the FreeRTOS peripheral.
-     - Precondition: the Mqtt Service has been discovered.
+     - Parameters:
+     - peripheral: the FreeRTOS peripheral.
+     - controlMessage: The control message.
      */
-    func startMqttOfPeripheral(_ peripheral: CBPeripheral) {
-        guard let service = peripheral.serviceOf(uuid: AWSAfrGattService.Mqtt) else {
-            debugPrint("Error (startMqttOfPeripheral): Mqtt service doesn't exist")
+    func controlMqttOfPeripheral(_ peripheral: CBPeripheral, controlMessage: ControlMessage) {
+
+        debugPrint("↓ \(controlMessage)")
+
+        guard let data = try? JSONEncoder().encode(controlMessage) else {
+            debugPrint("Error (writeValueForCharacteristic): Invalid ControlMessage")
             return
         }
-        for characteristic in service.characteristics ?? [] {
-            peripheral.setNotifyValue(true, for: characteristic)
+        guard let characteristic = peripheral.serviceOf(uuid: AWSAfrGattService.MqttProxy)?.characteristicOf(uuid: AWSAfrGattCharacteristic.Control) else {
+            debugPrint("Error (writeValueForCharacteristic): Invalid ControlMessage - Mqtt service or Control characteristic doesn't exist ")
+            return
         }
-        for characteristic in service.characteristics ?? [] {
-            peripheral.setNotifyValue(true, for: characteristic)
-        }
+        peripheral.writeValue(data, for: characteristic, type: .withResponse)
     }
 
     // Network Config Service
-
-    /**
-     Disconnect from FreeRTOS `peripheral`
-
-     - Parameter peripheral: the FreeRTOS peripheral.
-     - Precondition: the Network Service has been discovered.
-     */
-    func startNetworkOfPeripheral(_ peripheral: CBPeripheral) {
-        guard let service = peripheral.serviceOf(uuid: AWSAfrGattService.Network) else {
-            debugPrint("Error (startNetworkOfPeripheral): Network service doesn't exist")
-            return
-        }
-        for characteristic in service.characteristics ?? [] {
-            peripheral.setNotifyValue(true, for: characteristic)
-        }
-    }
 
     /**
      List saved and scanned wifi networks of `peripheral`. Wifi networks are returned one by one, saved wifi ordered by priority and scanned wifi ordered by signal strength (rssi)
 
      - Parameters:
      - peripheral: the FreeRTOS peripheral.
-     - listNetworkReq: The List Network Request
+     - listNetworkReq: The list network request.
      */
     func listNetworkOfPeripheral(_ peripheral: CBPeripheral, listNetworkReq: ListNetworkReq) {
 
@@ -168,7 +144,7 @@ extension AWSAfrManager {
             debugPrint("Error (writeValueForCharacteristic): Invalid ListNetworkReq")
             return
         }
-        guard let characteristic = peripheral.serviceOf(uuid: AWSAfrGattService.Network)?.characteristicOf(uuid: AWSAfrGattCharacteristic.ListNetwork) else {
+        guard let characteristic = peripheral.serviceOf(uuid: AWSAfrGattService.NetworkConfig)?.characteristicOf(uuid: AWSAfrGattCharacteristic.ListNetwork) else {
             debugPrint("Error (writeValueForCharacteristic): Invalid ListNetworkReq - Network service or ListNetwork characteristic doesn't exist ")
             return
         }
@@ -180,7 +156,7 @@ extension AWSAfrManager {
 
      - Parameters:
      - peripheral: the FreeRTOS peripheral.
-     - saveNetworkReq: The Save Network Request
+     - saveNetworkReq: The save network request
      */
     func saveNetworkToPeripheral(_ peripheral: CBPeripheral, saveNetworkReq: SaveNetworkReq) {
 
@@ -190,7 +166,7 @@ extension AWSAfrManager {
             debugPrint("Error (writeValueForCharacteristic): Invalid SaveNetworkReq")
             return
         }
-        guard let characteristic = peripheral.serviceOf(uuid: AWSAfrGattService.Network)?.characteristicOf(uuid: AWSAfrGattCharacteristic.SaveNetwork) else {
+        guard let characteristic = peripheral.serviceOf(uuid: AWSAfrGattService.NetworkConfig)?.characteristicOf(uuid: AWSAfrGattCharacteristic.SaveNetwork) else {
             debugPrint("Error (writeValueForCharacteristic): Invalid SaveNetworkReq - service or characteristic doesn't exist ")
             return
         }
@@ -202,7 +178,7 @@ extension AWSAfrManager {
 
      - Parameters:
      - peripheral: the FreeRTOS peripheral.
-     - editNetworkReq: The Edit Network Request
+     - editNetworkReq: The edit network request
      */
     func editNetworkOfPeripheral(_ peripheral: CBPeripheral, editNetworkReq: EditNetworkReq) {
 
@@ -212,7 +188,7 @@ extension AWSAfrManager {
             debugPrint("Error (writeValueForCharacteristic): Invalid EditNetworkReq")
             return
         }
-        guard let characteristic = peripheral.serviceOf(uuid: AWSAfrGattService.Network)?.characteristicOf(uuid: AWSAfrGattCharacteristic.EditNetwork) else {
+        guard let characteristic = peripheral.serviceOf(uuid: AWSAfrGattService.NetworkConfig)?.characteristicOf(uuid: AWSAfrGattCharacteristic.EditNetwork) else {
             debugPrint("Error (writeValueForCharacteristic): Invalid EditNetworkReq - service or characteristic doesn't exist ")
             return
         }
@@ -224,7 +200,7 @@ extension AWSAfrManager {
 
      - Parameters:
      - peripheral: the FreeRTOS peripheral.
-     - deleteNetworkReq: The Delete Network Request
+     - deleteNetworkReq: The delete network request
      */
     func deleteNetworkFromPeripheral(_ peripheral: CBPeripheral, deleteNetworkReq: DeleteNetworkReq) {
 
@@ -234,7 +210,7 @@ extension AWSAfrManager {
             debugPrint("Error (writeValueForCharacteristic): Invalid DeleteNetworkReq")
             return
         }
-        guard let characteristic = peripheral.serviceOf(uuid: AWSAfrGattService.Network)?.characteristicOf(uuid: AWSAfrGattCharacteristic.DeleteNetwork) else {
+        guard let characteristic = peripheral.serviceOf(uuid: AWSAfrGattService.NetworkConfig)?.characteristicOf(uuid: AWSAfrGattCharacteristic.DeleteNetwork) else {
             debugPrint("Error (writeValueForCharacteristic): Invalid DeleteNetworkReq - service or characteristic doesn't exist ")
             return
         }
@@ -246,6 +222,7 @@ extension AWSAfrManager {
 extension AWSAfrManager: CBCentralManagerDelegate {
 
     // BLE state change
+
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
             startScanForPeripherals()
@@ -255,6 +232,7 @@ extension AWSAfrManager: CBCentralManagerDelegate {
     }
 
     // Scan
+
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi _: NSNumber) {
         debugPrint("→ \(advertisementData)")
         if peripherals.keys.contains(peripheral.identifier.uuidString) {
@@ -265,25 +243,17 @@ extension AWSAfrManager: CBCentralManagerDelegate {
     }
 
     // Connection
+
     func centralManager(_: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        topics[peripheral.identifier.uuidString] = [:]
         networks[peripheral.identifier.uuidString] = [[], []]
-
-        #warning("delete")
-
-        topics[peripheral.identifier.uuidString] = [1: Topic(type: .topic, topicID: 1, topicValue: "freertos/demos/echo")]
-
-        #warning("delete")
-
         peripheral.delegate = self
-        peripheral.discoverServices([AWSAfrGattService.Mqtt, AWSAfrGattService.Network])
+        peripheral.discoverServices([AWSAfrGattService.DeviceInfo, AWSAfrGattService.MqttProxy, AWSAfrGattService.NetworkConfig])
     }
 
     func centralManager(_: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         if let error = error {
             debugPrint("Error (didDisconnectPeripheral): \(error.localizedDescription)")
         }
-        topics.removeValue(forKey: peripheral.identifier.uuidString)
         networks.removeValue(forKey: peripheral.identifier.uuidString)
         AWSIoTDataManager(forKey: peripheral.identifier.uuidString).disconnect()
     }
@@ -296,6 +266,8 @@ extension AWSAfrManager: CBCentralManagerDelegate {
 }
 
 extension AWSAfrManager: CBPeripheralDelegate {
+
+    // discover
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let error = error {
@@ -313,6 +285,9 @@ extension AWSAfrManager: CBPeripheralDelegate {
             debugPrint("Error (didDiscoverCharacteristicsFor): \(error.localizedDescription)")
             return
         }
+        for characteristic in service.characteristics ?? [] {
+            peripheral.setNotifyValue(true, for: characteristic)
+        }
         NotificationCenter.default.post(name: .didDiscoverCharacteristics, object: nil, userInfo: ["peripheral": peripheral.identifier, "service": service.uuid])
     }
 
@@ -326,14 +301,20 @@ extension AWSAfrManager: CBPeripheralDelegate {
 
         switch characteristic.uuid {
 
-        case AWSAfrGattCharacteristic.Metadata:
-            didUpdateValueForMetadata(peripheral: peripheral, characteristic: characteristic)
+            // Device Info Service
+
+        case AWSAfrGattCharacteristic.DeviceInfo:
+            didUpdateValueForDeviceInfo(peripheral: peripheral, characteristic: characteristic)
+
+            // Mqtt Proxy Service
 
         case AWSAfrGattCharacteristic.TXMessage:
             didUpdateValueForTXMessage(peripheral: peripheral, characteristic: characteristic)
 
         case AWSAfrGattCharacteristic.TXLargeMessage:
             didUpdateValueForTXLargeMessage(peripheral: peripheral, characteristic: characteristic)
+
+            // Network Config Service
 
         case AWSAfrGattCharacteristic.ListNetwork:
             didUpdateValueForListNetwork(peripheral: peripheral, characteristic: characteristic)
@@ -366,21 +347,13 @@ extension AWSAfrManager: CBPeripheralDelegate {
 
 extension AWSAfrManager {
 
-    func didUpdateValueForMetadata(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
-        guard let value = characteristic.value, let metadataMessage = try? JSONDecoder().decode(MetadataMessage.self, from: value) else {
-            debugPrint("Error (didUpdateValueForTXMessage): Invalid Metadata Message")
+    func didUpdateValueForDeviceInfo(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+        guard let value = characteristic.value, let deviceInfoMessage = try? JSONDecoder().decode(DeviceInfoMessage.self, from: value) else {
+            debugPrint("Error (didUpdateValueForTXMessage): Invalid DeviceInfo Message")
             return
         }
 
-        switch metadataMessage.type {
-
-        case .topic:
-            guard let topic = try? JSONDecoder().decode(Topic.self, from: value) else {
-                debugPrint("Error (didUpdateValueForMetadata): Invalid Topic")
-                return
-            }
-            debugPrint("→ \(topic)")
-            topics[peripheral.identifier.uuidString] = [topic.topicID: topic]
+        switch deviceInfoMessage.type {
 
         case .mtu:
             guard let mtu = try? JSONDecoder().decode(Mtu.self, from: value) else {
@@ -397,20 +370,12 @@ extension AWSAfrManager {
             }
             debugPrint("→ \(brokerEndpoint)")
             brokerEndpoints[peripheral.identifier.uuidString] = brokerEndpoint
-
-        case .timeout:
-            guard let timeout = try? JSONDecoder().decode(Timeout.self, from: value) else {
-                debugPrint("Error (didUpdateValueForMetadata): Invalid Timeout")
-                return
-            }
-            debugPrint("→ \(timeout)")
-            timeouts[peripheral.identifier.uuidString] = timeout
         }
     }
 
     func didUpdateValueForTXMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
 
-        guard let value = characteristic.value, let mqttMessage = try? JSONDecoder().decode(MqttMessage.self, from: value) else {
+        guard let value = characteristic.value, let mqttMessage = try? JSONDecoder().decode(MqttProxyMessage.self, from: value) else {
             debugPrint("Error (didUpdateValueForTXMessage): Invalid Mqtt Message")
             return
         }
@@ -481,57 +446,39 @@ extension AWSAfrManager {
 
             debugPrint("↑ \(publish)")
 
-            guard let topic = topics[peripheral.identifier.uuidString]?[publish.topicID] else {
-                debugPrint("Error (didUpdateValueForTXMessage): Invalid Publish - topic")
-                return
-            }
-
             guard let qoS = AWSIoTMQTTQoS(rawValue: publish.qoS) else {
                 debugPrint("Error (didUpdateValueForTXMessage): Invalid Publish - qos")
                 return
             }
 
-            switch publish.payloadType {
+            guard let data = Data(base64Encoded: publish.payloadVal) else {
+                debugPrint("Error (didUpdateValueForTXMessage): Invalid Publish - base64")
+                return
+            }
 
-            case .string:
+            guard AWSIoTDataManager(forKey: peripheral.identifier.uuidString).getConnectionStatus() == .connected else {
+                debugPrint("Error (didUpdateValueForTXMessage): Invalid Publish - not connected ")
+                return
+            }
 
-                guard let data = Data(base64Encoded: publish.payloadVal) else {
-                    debugPrint("Error (didUpdateValueForTXMessage): Invalid Publish - base64")
+            debugPrint("Base64 (didUpdateValueForTXMessage): \(String(data: data, encoding: .utf8) ?? String())")
+
+            AWSIoTDataManager(forKey: peripheral.identifier.uuidString).publishData(data, onTopic: publish.topic, qoS: qoS) {
+
+                let puback = Puback(type: .puback, msgID: publish.msgID)
+                self.debugPrint("↓ \(puback)")
+
+                guard let data = try? JSONEncoder().encode(puback) else {
+                    self.debugPrint("Error (writeValueForCharacteristic): Invalid Puback")
                     return
                 }
-
-                guard AWSIoTDataManager(forKey: peripheral.identifier.uuidString).getConnectionStatus() == .connected else {
-                    debugPrint("Error (didUpdateValueForTXMessage): Invalid Publish - not connected ")
-                    return
-                }
-
-                debugPrint("Base64 (didUpdateValueForTXMessage): \(String(data: data, encoding: .utf8) ?? String())")
-
-                AWSIoTDataManager(forKey: peripheral.identifier.uuidString).publishData(data, onTopic: topic.topicValue, qoS: qoS) {
-
-                    let puback = Puback(type: .puback, msgID: publish.msgID)
-                    self.debugPrint("↓ \(puback)")
-
-                    guard let data = try? JSONEncoder().encode(puback) else {
-                        self.debugPrint("Error (writeValueForCharacteristic): Invalid Puback")
+                DispatchQueue.main.async {
+                    guard let characteristic = characteristic.service.characteristicOf(uuid: AWSAfrGattCharacteristic.RXMessage) else {
+                        self.debugPrint("Error (writeValueForCharacteristic): Invalid Puback - characteristic doesn't exist ")
                         return
                     }
-                    DispatchQueue.main.async {
-                        guard let characteristic = characteristic.service.characteristicOf(uuid: AWSAfrGattCharacteristic.RXMessage) else {
-                            self.debugPrint("Error (writeValueForCharacteristic): Invalid Puback - characteristic doesn't exist ")
-                            return
-                        }
-                        peripheral.writeValue(data, for: characteristic, type: .withResponse)
-                    }
+                    peripheral.writeValue(data, for: characteristic, type: .withResponse)
                 }
-
-            case .characteristic:
-                // read
-                return
-
-            case .object:
-                // read
-                return
             }
 
         case .puback:
@@ -547,11 +494,6 @@ extension AWSAfrManager {
 
             debugPrint("↑ \(subscribe)")
 
-            guard let topic = topics[peripheral.identifier.uuidString]?[subscribe.topicID] else {
-                debugPrint("Error (didUpdateValueForTXMessage): Invalid Subscribe - topic")
-                return
-            }
-
             guard let qoS = AWSIoTMQTTQoS(rawValue: subscribe.qoS) else {
                 debugPrint("Error (didUpdateValueForTXMessage): Invalid Subscribe - qos")
                 return
@@ -562,34 +504,21 @@ extension AWSAfrManager {
                 return
             }
 
-            AWSIoTDataManager(forKey: peripheral.identifier.uuidString).subscribe(toTopic: topic.topicValue, qoS: qoS, messageCallback: { data in
+            AWSIoTDataManager(forKey: peripheral.identifier.uuidString).subscribe(toTopic: subscribe.topic, qoS: qoS, messageCallback: { data in
 
-                switch subscribe.payloadType {
+                let publish = Publish(type: .publish, topic: subscribe.topic, msgID: subscribe.msgID, qoS: subscribe.qoS, payloadVal: data.base64EncodedString())
+                self.debugPrint("↓ \(publish)")
 
-                case .string:
-
-                    let publish = Publish(type: .publish, topicID: subscribe.topicID, msgID: subscribe.msgID, qoS: subscribe.qoS, payloadType: subscribe.payloadType, payloadVal: data.base64EncodedString())
-                    self.debugPrint("↓ \(publish)")
-
-                    guard let data = try? JSONEncoder().encode(publish) else {
-                        self.debugPrint("Error (writeValueForCharacteristic): Invalid Publish")
+                guard let data = try? JSONEncoder().encode(publish) else {
+                    self.debugPrint("Error (writeValueForCharacteristic): Invalid Publish")
+                    return
+                }
+                DispatchQueue.main.async {
+                    guard let characteristic = characteristic.service.characteristicOf(uuid: AWSAfrGattCharacteristic.RXMessage) else {
+                        self.debugPrint("Error (writeValueForCharacteristic): Invalid Publish - characteristic doesn't exist ")
                         return
                     }
-                    DispatchQueue.main.async {
-                        guard let characteristic = characteristic.service.characteristicOf(uuid: AWSAfrGattCharacteristic.RXMessage) else {
-                            self.debugPrint("Error (writeValueForCharacteristic): Invalid Publish - characteristic doesn't exist ")
-                            return
-                        }
-                        peripheral.writeValue(data, for: characteristic, type: .withResponse)
-                    }
-
-                case .characteristic:
-                    // read
-                    return
-
-                case .object:
-                    // read
-                    return
+                    peripheral.writeValue(data, for: characteristic, type: .withResponse)
                 }
 
             }, ackCallback: {
@@ -617,17 +546,12 @@ extension AWSAfrManager {
 
             debugPrint("↑ \(unsubscribe)")
 
-            guard let topic = topics[peripheral.identifier.uuidString]?[unsubscribe.topicID] else {
-                debugPrint("Error (didUpdateValueForTXMessage): Invalid Unsubscribe - topic")
-                return
-            }
-
             guard AWSIoTDataManager(forKey: peripheral.identifier.uuidString).getConnectionStatus() == .connected else {
                 debugPrint("Error (didUpdateValueForTXMessage): Invalid Unsubscribe - not connected ")
                 return
             }
 
-            AWSIoTDataManager(forKey: peripheral.identifier.uuidString).unsubscribeTopic(topic.topicValue)
+            AWSIoTDataManager(forKey: peripheral.identifier.uuidString).unsubscribeTopic(unsubscribe.topic)
 
             let unsuback = Unsuback(type: .unsuback, msgID: unsubscribe.msgID)
             debugPrint("↓ \(unsuback)")
@@ -685,7 +609,7 @@ extension AWSAfrManager {
 
         if value?.count ?? 0 < mtu - 3 {
             let data = lotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString]
-            debugPrint("→ Large Object Transfer Finish \(data)")
+            debugPrint("→ Large Object Transfer Finish \(data ?? Data())")
             lotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString] = nil
         }
     }
@@ -751,6 +675,8 @@ extension AWSAfrManager {
 }
 
 extension AWSAfrManager {
+
+    #warning("dev delete")
 
     func debugPrint(_ debugMessage: String) {
         guard isDebug else {

@@ -1,0 +1,6 @@
+framework module Alertift {
+  umbrella header "Alertift-umbrella.h"
+
+  export *
+  module * { export * }
+}

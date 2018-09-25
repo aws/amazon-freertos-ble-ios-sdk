@@ -45,10 +45,9 @@ extension NetworkViewController {
 
     @objc
     func didDiscoverCharacteristics(_ notification: NSNotification) {
-        guard let peripheral = peripheral, notification.userInfo?["service"] as? CBUUID == AWSAfrGattService.Network else {
+        guard let peripheral = peripheral, notification.userInfo?["service"] as? CBUUID == AWSAfrGattService.NetworkConfig else {
             return
         }
-        AWSAfrManager.shared.startNetworkOfPeripheral(peripheral)
         AWSAfrManager.shared.listNetworkOfPeripheral(peripheral, listNetworkReq: ListNetworkReq(maxNetworks: 50, timeout: 3))
         tableView.reloadData()
     }
@@ -156,7 +155,7 @@ extension NetworkViewController {
 
         if indexPath.section == 0 || network.security == .open {
             tableView.disableTableView()
-            AWSAfrManager.shared.saveNetworkToPeripheral(peripheral, saveNetworkReq: SaveNetworkReq(ssid: network.ssid, bssid: network.bssid, psk: String(), security: network.security, index: network.index))
+            AWSAfrManager.shared.saveNetworkToPeripheral(peripheral, saveNetworkReq: SaveNetworkReq(index: network.index, ssid: network.ssid, bssid: network.bssid, psk: String(), security: network.security))
         } else if network.security == .notSupported {
             Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: NSLocalizedString("Network security type not supported.", comment: String()))
                 .action(.default(NSLocalizedString("OK", comment: String())))
@@ -170,7 +169,7 @@ extension NetworkViewController {
                 .action(.cancel(NSLocalizedString("Cancel", comment: String())))
                 .action(.default(NSLocalizedString("Save", comment: String()))) { _, _, textFields in
                     tableView.disableTableView()
-                    AWSAfrManager.shared.saveNetworkToPeripheral(peripheral, saveNetworkReq: SaveNetworkReq(ssid: network.ssid, bssid: network.bssid, psk: textFields?.first?.text ?? String(), security: network.security, index: network.index))
+                    AWSAfrManager.shared.saveNetworkToPeripheral(peripheral, saveNetworkReq: SaveNetworkReq(index: network.index, ssid: network.ssid, bssid: network.bssid, psk: textFields?.first?.text ?? String(), security: network.security))
                 }
                 .show()
         }

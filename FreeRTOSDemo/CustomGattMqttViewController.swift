@@ -73,10 +73,10 @@ extension CustomGattMqttViewController {
 
     @objc
     func didDiscoverCharacteristics(_ notification: NSNotification) {
-        guard let peripheral = peripheral, notification.userInfo?["service"] as? CBUUID == AWSAfrGattService.Mqtt else {
+        guard let peripheral = peripheral, notification.userInfo?["service"] as? CBUUID == AWSAfrGattService.MqttProxy else {
             return
         }
-        AWSAfrManager.shared.startMqttOfPeripheral(peripheral)
+        AWSAfrManager.shared.controlMqttOfPeripheral(peripheral, controlMessage: ControlMessage(proxyState: .on))
     }
 }
 
@@ -84,7 +84,7 @@ extension CustomGattMqttViewController {
 
     func startScanForPeripherals() {
         if let customCentral = customCentral, !customCentral.isScanning {
-            customCentral.scanForPeripherals(withServices: [AWSAfrGattService.FreeRTOS], options: [CBCentralManagerOptionShowPowerAlertKey: true])
+            customCentral.scanForPeripherals(withServices: [AWSAfrGattService.DeviceInfo], options: [CBCentralManagerOptionShowPowerAlertKey: true])
         }
     }
 

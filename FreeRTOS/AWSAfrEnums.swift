@@ -1,14 +1,18 @@
 import Foundation
 
-/// Metadata Message Types.
-enum MetadataMessageType: Int, Codable {
-    case topic = 0
-    case mtu = 1
-    case brokerEndpoint = 2
-    case timeout = 3
+/// Device info message type.
+enum DeviceInfoMessageType: Int, Codable {
+    case mtu = 0
+    case brokerEndpoint = 1
 }
 
-/// Mqtt Message Types. Reference: http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718021
+/// Mqtt proxy state.
+enum MqttProxyState: Int, Codable {
+    case off = 0
+    case on = 1
+}
+
+/// Mqtt message types. Reference: http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718021
 enum MqttMessageType: Int, Codable {
     case connect = 1
     case connack = 2
@@ -31,21 +35,7 @@ enum MqttMessageType: Int, Codable {
     case disconnnect = 14
 }
 
-/// Topic Types
-enum TopicType: Int, Codable {
-    case string = 0
-    case characteristic = 1
-    case object = 2
-}
-
-/// Payload Types
-enum PayloadType: Int, Codable {
-    case string = 0
-    case characteristic = 1
-    case object = 2
-}
-
-/// Network Security Types
+/// Network security types.
 enum NetworkSecurityType: Int, Codable {
     case open = 0
     case wep = 1
@@ -54,8 +44,8 @@ enum NetworkSecurityType: Int, Codable {
     case notSupported = 4
 }
 
-/// Network Statuses
-enum NetworkStatus: Int, Codable {
+/// Network statuses.
+enum NetworkOpStatus: Int, Codable {
     case success = 0
     case failure = 1
     case timeout = 2

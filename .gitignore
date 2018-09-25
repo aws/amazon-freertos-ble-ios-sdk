@@ -1,3 +1,5 @@
-.DS_Store
+Config
 xcuserdata
-Pods
+.DS_Store
+build
+*.ipa

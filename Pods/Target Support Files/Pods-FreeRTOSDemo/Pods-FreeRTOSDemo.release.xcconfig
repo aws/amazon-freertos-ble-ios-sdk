@@ -1,0 +1,11 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/AWSAuthCore" "${PODS_CONFIGURATION_BUILD_DIR}/AWSAuthUI" "${PODS_CONFIGURATION_BUILD_DIR}/AWSCognitoIdentityProvider" "${PODS_CONFIGURATION_BUILD_DIR}/AWSCognitoIdentityProviderASF" "${PODS_CONFIGURATION_BUILD_DIR}/AWSCore" "${PODS_CONFIGURATION_BUILD_DIR}/AWSIoT" "${PODS_CONFIGURATION_BUILD_DIR}/AWSMobileClient" "${PODS_CONFIGURATION_BUILD_DIR}/AWSUserPoolsSignIn" "${PODS_CONFIGURATION_BUILD_DIR}/Alertift"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/AWSAuthCore/AWSAuthCore.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/AWSAuthUI/AWSAuthUI.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/AWSCore/AWSCore.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/AWSIoT/AWSIoT.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/AWSMobileClient/AWSMobileClient.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/AWSUserPoolsSignIn/AWSUserPoolsSignIn.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Alertift/Alertift.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -ObjC -framework "AWSAuthCore" -framework "AWSAuthUI" -framework "AWSCognitoIdentityProvider" -framework "AWSCognitoIdentityProviderASF" -framework "AWSCore" -framework "AWSIoT" -framework "AWSMobileClient" -framework "AWSUserPoolsSignIn" -framework "Alertift"
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods

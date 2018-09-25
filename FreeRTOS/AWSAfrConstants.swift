@@ -3,19 +3,21 @@ import Foundation
 
 /// BLE services used by the SDK.
 struct AWSAfrGattService {
-    /// FreeRTOS UUID is only for scanForPeripherals filter, it's not a real service on the device. Please use your custom uuid if you have changed the device's advertisement data.
-    static let FreeRTOS = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932db5a")
-
+    /// Device Info Service. This is a required service for AWS Afr.
+    static let DeviceInfo = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff00")
     /// Mqtt Proxy Service.
-    static let Mqtt = CBUUID(string: "a9d7166a-d72e-40a9-a002-48044cc3ff00")
+    static let MqttProxy = CBUUID(string: "a9d7166a-d72e-40a9-a002-48044cc3ff00")
     /// Network Config Service.
-    static let Network = CBUUID(string: "3113a187-4b9f-4f9a-aa83-c614e11bff00")
+    static let NetworkConfig = CBUUID(string: "3113a187-4b9f-4f9a-aa83-c614e11bff00")
 }
 
 /// BLE characteristics used by the SDK.
 struct AWSAfrGattCharacteristic {
-    /// Provide’s basic metadata such as MTU.
-    static let Metadata = CBUUID(string: "a9d7166a-d72e-40a9-a002-48044cc3ff01")
+    /// Provide’s device info such as MTU.
+    static let DeviceInfo = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff01")
+
+    /// Used to control mqtt proxying.
+    static let Control = CBUUID(string: "a9d7166a-d72e-40a9-a002-48044cc3ff01")
     /// Used for transfer mqtt messages.
     static let TXMessage = CBUUID(string: "a9d7166a-d72e-40a9-a002-48044cc3ff02")
     /// Used for transfer mqtt messages.
