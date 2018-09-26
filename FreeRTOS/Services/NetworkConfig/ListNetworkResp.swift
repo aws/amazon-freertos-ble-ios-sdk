@@ -2,7 +2,7 @@ import Foundation
 
 /// List network response.
 struct ListNetworkResp: Codable {
-    /// Index of the network. -1 for scaned networks.
+    /// Index of the network. < 0 for scaned networks.
     var index: Int
     /// List operation status.
     var status: NetworkOpStatus

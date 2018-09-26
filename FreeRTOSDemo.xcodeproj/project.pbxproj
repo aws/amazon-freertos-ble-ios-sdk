@@ -17,6 +17,7 @@
 		1DC40D90AEBD8137411F78F9FD554593 /* UITableView+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9C37363045FF4ABBD6412F1541635A /* UITableView+Amazon.swift */; };
 		1DDC83343260ECD7970ED7EEC9EC52FE /* Subscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC660B745669D216FBA734FCC341F5A5 /* Subscribe.swift */; };
 		214E646021780477BAA912606ADA67C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D08B3E693E7A42097EC1BF6FA8716A /* Main.storyboard */; };
+		2A2B073755AD496F5FB89F410993E0DB /* String+FreeRTOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A1526C409088EE0B45A8C4A56EC9F5 /* String+FreeRTOS.swift */; };
 		2B89A66C70CAF61CED11141FC3AA8BC6 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0243F131FF4EFA0B1CD13B5A2FDB6FC /* NetworkViewController.swift */; };
 		3ED9F395F30657E24B68A721CDDECD81 /* ListNetworkResp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC21DAB3AC0D4B5B7B91839F463BA8F /* ListNetworkResp.swift */; };
 		44597CA45FF4ABD0FA31F2C3AAD7A0A7 /* Pods_FreeRTOSDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA57B338360B72CEF0EBD3975ABAEB9D /* Pods_FreeRTOSDemo.framework */; };
@@ -73,6 +74,7 @@
 		12B59D914CCF7DA37C8E2F15747D6A0E /* SaveNetworkResp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNetworkResp.swift; sourceTree = "<group>"; };
 		133DA190B200A6A5709D99F4282D9EA5 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		197D20CB6E1C7B5C4D03FA92196BD9DC /* UIFont+Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Amazon.swift"; sourceTree = "<group>"; };
+		19A1526C409088EE0B45A8C4A56EC9F5 /* String+FreeRTOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+FreeRTOS.swift"; sourceTree = "<group>"; };
 		1D3BCD213B237F2F28B1B0E2ED4D3E36 /* Publish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publish.swift; sourceTree = "<group>"; };
 		1DBDAC4F38BDD1798D5242DE254D18CD /* Suback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suback.swift; sourceTree = "<group>"; };
 		252DDE84759D027E766B3CD268CD0C06 /* Pods-FreeRTOSDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeRTOSDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FreeRTOSDemo/Pods-FreeRTOSDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				D6E1760B5F888CC42F3E1E785304A684 /* CBPeripheral+FreeRTOS.swift */,
 				5D82DE61659D148E0D9FF308E484EF35 /* CBService+FreeRTOS.swift */,
 				6F05F07628878EA8F2D3B0C74C731A9A /* NSNotification.Name+FreeRTOS.swift */,
+				19A1526C409088EE0B45A8C4A56EC9F5 /* String+FreeRTOS.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				7853D7F4D060F2DD9AF4FDB303EDB79F /* SaveNetworkReq.swift in Sources */,
 				FC35B3ED9D35AD9E0567BE8168116448 /* SaveNetworkResp.swift in Sources */,
 				8E6823E806089F2223B2E413C12E582F /* SectionHeaderCell.swift in Sources */,
+				2A2B073755AD496F5FB89F410993E0DB /* String+FreeRTOS.swift in Sources */,
 				7176DEA3DF649CF92D6FB8A477427422 /* Suback.swift in Sources */,
 				1DDC83343260ECD7970ED7EEC9EC52FE /* Subscribe.swift in Sources */,
 				F7753FEAC7FD0672265B231B6F950F16 /* UIApplication+Amazon.swift in Sources */,
