@@ -236,6 +236,7 @@ extension CustomGattMqttViewController {
         guard let peripheral = peripheral else {
             return
         }
+        AWSAfrManager.shared.getMtuOfPeripheral(peripheral)
         if sender.isOn {
             AWSAfrManager.shared.updateMqttProxyControlOfPeripheral(peripheral, control: Control(proxyState: .on))
             return

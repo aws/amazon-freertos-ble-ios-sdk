@@ -21,7 +21,9 @@ class AWSAfrManager: NSObject {
     // BLE Central Manager for the SDK
     private var central: CBCentralManager?
     // used for large object transfer with peripheral identifier and characteristic uuid as keys.
-    private var lotDatas: [String: Data] = [:]
+    private var txLotDatas: [String: Data] = [:]
+    // used for large object transfer with peripheral identifier and characteristic uuid as keys.
+    private var rxLotDatas: [String: Data] = [:]
 
     /// The peripherals using peripheral identifier as key.
     var peripherals: [String: CBPeripheral] = [:]
@@ -76,7 +78,8 @@ extension AWSAfrManager {
         mtus.removeAll()
         networks.removeAll()
 
-        lotDatas.removeAll()
+        txLotDatas.removeAll()
+        rxLotDatas.removeAll()
 
         startScanForPeripherals()
     }
@@ -397,7 +400,7 @@ extension AWSAfrManager: CBPeripheralDelegate {
             didUpdateValueForControl(peripheral: peripheral, characteristic: characteristic)
 
         case AWSAfrGattCharacteristic.TXMessage:
-            didUpdateValueForTXMessage(peripheral: peripheral, characteristic: characteristic)
+            didUpdateValueForTXMessage(peripheral: peripheral, characteristic: characteristic, data: nil)
 
         case AWSAfrGattCharacteristic.TXLargeMessage:
             didUpdateValueForTXLargeMessage(peripheral: peripheral, characteristic: characteristic)
@@ -422,9 +425,18 @@ extension AWSAfrManager: CBPeripheralDelegate {
         }
     }
 
-    func peripheral(_: CBPeripheral, didWriteValueFor _: CBCharacteristic, error: Error?) {
+    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         if let error = error {
             debugPrint("Error (peripheral_didWriteValueForCharacteristic): \(error.localizedDescription)")
+            return
+        }
+
+        switch characteristic.uuid {
+
+        case AWSAfrGattCharacteristic.RXLargeMessage:
+            writeValueToRXLargeMessage(peripheral: peripheral, characteristic: characteristic)
+
+        default:
             return
         }
     }
@@ -513,9 +525,9 @@ extension AWSAfrManager {
      - peripheral: the FreeRTOS peripheral.
      - characteristic: The TXMessage characteristic.
      */
-    func didUpdateValueForTXMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+    func didUpdateValueForTXMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic, data: Data?) {
 
-        guard let value = characteristic.value, let mqttProxyMessage = try? JSONDecoder().decode(MqttProxyMessage.self, from: value) else {
+        guard let value = data ?? characteristic.value, let mqttProxyMessage = try? JSONDecoder().decode(MqttProxyMessage.self, from: value) else {
             debugPrint("Error (didUpdateValueForTXMessage): Invalid MqttProxy Message")
             return
         }
@@ -671,6 +683,20 @@ extension AWSAfrManager {
                         self.debugPrint("Error (writeValueForCharacteristic): Invalid Publish - RXMessage characteristic doesn't exist")
                         return
                     }
+
+                    guard let mtu = self.mtus[peripheral.identifier.uuidString]?.mtu else {
+                        self.debugPrint("Error (writeValueForCharacteristic): Invalid Connack - Mtu Unknown")
+                        return
+                    }
+                    if data.count > mtu - 3 {
+                        guard let characteristic = characteristic.service.characteristicOf(uuid: AWSAfrGattCharacteristic.RXLargeMessage) else {
+                            self.debugPrint("Error (writeValueForCharacteristic): RXLargeMessage characteristic doesn't exist")
+                            return
+                        }
+                        self.rxLotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString] = data
+                        self.writeValueToRXLargeMessage(peripheral: peripheral, characteristic: characteristic)
+                        return
+                    }
                     peripheral.writeValue(data, for: characteristic, type: .withResponse)
                 }
 
@@ -766,22 +792,58 @@ extension AWSAfrManager {
             return
         }
 
-        let value = characteristic.value
-
-        if let data = lotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString], let value = value {
-            debugPrint("→ Large Object Transfer - \(value) - \(counter)")
-            lotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString] = Data([UInt8](data) + [UInt8](value))
-        } else if let value = value {
-            debugPrint("→ Large Object Transfer - \(value) - \(counter)")
-            lotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString] = value
+        if let txLotData = txLotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString], let value = characteristic.value {
+            let data = Data([UInt8](txLotData) + [UInt8](value))
+            txLotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString] = data
+            debugPrint("↑ Large Object Transfer - \(data)")
+        } else if let value = characteristic.value {
+            txLotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString] = value
+            debugPrint("↑ Large Object Transfer - \(value)")
         }
-        counter += 1
-
-        if value?.count ?? 0 < mtu - 3 {
-            let data = lotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString]
-            debugPrint("→ Large Object Transfer Finish \(data ?? Data())")
-            lotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString] = nil
+        if characteristic.value?.count ?? 0 < mtu - 3 {
+            if let txLotData = txLotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString] {
+                guard let characteristic = characteristic.service.characteristicOf(uuid: AWSAfrGattCharacteristic.TXMessage) else {
+                    debugPrint("Error (didUpdateValueForTXLargeMessage): TXMessage characteristic doesn't exist")
+                    return
+                }
+                didUpdateValueForTXMessage(peripheral: peripheral, characteristic: characteristic, data: txLotData)
+                debugPrint("↑ Large Object Transfer - \(txLotData)")
+            }
+            txLotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString] = nil
+        } else {
+            guard let characteristic = characteristic.service.characteristicOf(uuid: AWSAfrGattCharacteristic.TXLargeMessage) else {
+                debugPrint("Error (didUpdateValueForTXLargeMessage): TXLargeMessage characteristic doesn't exist")
+                return
+            }
+            peripheral.readValue(for: characteristic)
         }
+    }
+
+    /**
+     Write data to RXLargeMessage characteristic of `peripheral`. Used by large object transfer.
+
+     - Parameters:
+     - peripheral: the FreeRTOS peripheral.
+     - characteristic: The RXLargeMessage characteristic.
+     */
+    func writeValueToRXLargeMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+        guard let mtu = mtus[peripheral.identifier.uuidString]?.mtu else {
+            debugPrint("Error (writeValueForRXLargeMessage): Mtu Unknown")
+            return
+        }
+
+        guard let rxLotData = rxLotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString] else {
+            return
+        }
+        let data = Data([UInt8](rxLotData).prefix(mtu - 3))
+        if data.count < mtu - 3 {
+            rxLotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString] = nil
+            debugPrint("↓ Large Object Transfer - \(data)")
+        } else {
+            rxLotDatas[peripheral.identifier.uuidString + characteristic.uuid.uuidString] = Data([UInt8](rxLotData).dropFirst(mtu - 3))
+            debugPrint("↓ Large Object Transfer - \(rxLotData)")
+        }
+        peripheral.writeValue(data, for: characteristic, type: .withResponse)
     }
 
     // Network Config Service

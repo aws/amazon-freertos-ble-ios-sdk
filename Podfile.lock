@@ -1,22 +1,22 @@
 PODS:
   - Alertift (4.0)
-  - AWSAuthCore (2.6.30):
-    - AWSCore (= 2.6.30)
-  - AWSAuthUI (2.6.30):
-    - AWSAuthCore (= 2.6.30)
-    - AWSCore (= 2.6.30)
-  - AWSCognitoIdentityProvider (2.6.30):
+  - AWSAuthCore (2.6.31):
+    - AWSCore (= 2.6.31)
+  - AWSAuthUI (2.6.31):
+    - AWSAuthCore (= 2.6.31)
+    - AWSCore (= 2.6.31)
+  - AWSCognitoIdentityProvider (2.6.31):
     - AWSCognitoIdentityProviderASF (= 1.0.1)
-    - AWSCore (= 2.6.30)
+    - AWSCore (= 2.6.31)
   - AWSCognitoIdentityProviderASF (1.0.1)
-  - AWSCore (2.6.30)
-  - AWSIoT (2.6.30):
-    - AWSCore (= 2.6.30)
-  - AWSMobileClient (2.6.30):
-    - AWSAuthCore (= 2.6.30)
-  - AWSUserPoolsSignIn (2.6.30):
-    - AWSAuthCore (= 2.6.30)
-    - AWSCognitoIdentityProvider (= 2.6.30)
+  - AWSCore (2.6.31)
+  - AWSIoT (2.6.31):
+    - AWSCore (= 2.6.31)
+  - AWSMobileClient (2.6.31):
+    - AWSAuthCore (= 2.6.31)
+  - AWSUserPoolsSignIn (2.6.31):
+    - AWSAuthCore (= 2.6.31)
+    - AWSCognitoIdentityProvider (= 2.6.31)
   - LicensePlist (1.8.8)
   - SwiftFormat/CLI (0.35.5)
   - SwiftLint (0.27.0)
@@ -48,18 +48,18 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alertift: 393ace2617e96e95b4e85c88e80a85bf2d85c698
-  AWSAuthCore: c97737e15369008c64a9fc33387ce22f112664ca
-  AWSAuthUI: 06ec6c8eb1756cb93275d326d5c3bb88e65c2913
-  AWSCognitoIdentityProvider: c887b1cfec7235c85cc90070defbb78354ec7065
+  AWSAuthCore: 48c38a368b75de8d86341727e6e4226245ff2fe9
+  AWSAuthUI: 5d5b10cdb957ba531e977fa107ed746f946a8c6a
+  AWSCognitoIdentityProvider: c74a83c8226a9f43607f2772742000bccb5cc58a
   AWSCognitoIdentityProviderASF: f94f1a502e72ef3d0a1de93e10bf7a79c8698118
-  AWSCore: 11e8bb89d8d2e3bb6e31caa8b944ca7dae4c87cd
-  AWSIoT: c598186832c1253054c457094eb3f61197213975
-  AWSMobileClient: 8d934414d8311b889a55a07235514e088d965fee
-  AWSUserPoolsSignIn: 5416283fd17b590c99bc14db36ac8b874a847402
+  AWSCore: c7abfb87ef802d1c4b5dd56db64ac8b4a7823ef0
+  AWSIoT: 1b8f39f5cdb99dd7b88d52edc540a7d34294ce50
+  AWSMobileClient: 16b123da959f2c4f735eec9386b9b19f25231126
+  AWSUserPoolsSignIn: ac921e877e2b3b2327e77b1e2af9eaf147f8c2d8
   LicensePlist: c30d20e39985de8600cccda21096cfa98865483b
   SwiftFormat: 4b7b2a64127283611b14d858321758fd75673c7c
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: fe8a815f7e10d3ad45c525094a9c7abb52fd40cb
+PODFILE CHECKSUM: 38c9ec68fa90a3bc00403a28efff481ee36ae37d
 
 COCOAPODS: 1.5.3
