@@ -8,7 +8,7 @@ struct SaveNetworkReq: Codable {
     var ssid: String
     /// Wifi bssid (Mac address).
     var bssid: String
-    /// Wifi password.
+    /// Wifi password. Saved network ignore this value.
     var psk: String
     /// Wifi security type.
     var security: NetworkSecurityType

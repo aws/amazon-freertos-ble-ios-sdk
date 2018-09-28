@@ -2,7 +2,7 @@ name: Alertift, nameSpecified:
 body: MIT License
 
 Copyrig…
-version: 3.2
+version: 4.0
 
 name: AWSAuthCore, nameSpecified: 
 body: The AWS Mobile SDK f…

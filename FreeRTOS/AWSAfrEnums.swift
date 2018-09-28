@@ -1,11 +1,5 @@
 import Foundation
 
-/// Device info message type.
-enum DeviceInfoMessageType: Int, Codable {
-    case mtu = 0
-    case brokerEndpoint = 1
-}
-
 /// Mqtt proxy state.
 enum MqttProxyState: Int, Codable {
     case off = 0

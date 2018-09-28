@@ -1,7 +1,7 @@
 import Foundation
 
-/// Control message for mqtt proxy.
-struct ControlMessage: Codable {
+/// Control for mqtt proxy.
+struct Control: Codable {
     /// Mqtt proxy state.
     var proxyState: MqttProxyState
 }

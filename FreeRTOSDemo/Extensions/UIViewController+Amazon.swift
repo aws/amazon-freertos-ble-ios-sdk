@@ -10,6 +10,7 @@ extension UIViewController {
         dismiss(animated: true)
     }
 
+    // Dismiss keyboard on done
     @objc
     func textFieldShouldReturn(_: UITextField) -> Bool {
         view.endEditing(true)

@@ -88,3 +88,4 @@ identifier_name:
     - Ok
     - off
     - on
+    - afrCentralManagerDidFailToConnectPeripheral

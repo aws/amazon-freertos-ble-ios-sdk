@@ -13,8 +13,12 @@ struct AWSAfrGattService {
 
 /// BLE characteristics used by the SDK.
 struct AWSAfrGattCharacteristic {
-    /// Provide’s device info such as MTU.
-    static let DeviceInfo = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff01")
+    /// The version of the FreeRTOS.
+    static let AfrVersion = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff01")
+    /// The broker endpoint of the mqtt.
+    static let BrokerEndpoint = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff02")
+    /// The mtu of the device.
+    static let Mtu = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff03")
 
     /// Used to control mqtt proxying.
     static let Control = CBUUID(string: "a9d7166a-d72e-40a9-a002-48044cc3ff01")

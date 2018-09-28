@@ -2,26 +2,36 @@ import Alertift
 import CoreBluetooth
 import UIKit
 
-class NetworkViewController: UITableViewController {
+/**
+ Example 2: Network Config
+
+ This example showcases how to use the network config service to configure the wifi network on the Amazon FreeRTOS device.
+ */
+class NetworkConfigViewController: UITableViewController {
 
     var peripheral: CBPeripheral?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let peripheral = peripheral else {
-            return
-        }
 
         addObservers()
 
-        title = peripheral.name
+        // Connect on load
+
+        guard let peripheral = peripheral else {
+            return
+        }
         AWSAfrManager.shared.connectPeripheral(peripheral)
 
-        refreshControl?.addTarget(self, action: #selector(listNetworkOfPeripheral), for: .valueChanged)
+        title = peripheral.name
+        refreshControl?.addTarget(self, action: #selector(didOpNetwork), for: .valueChanged)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+
+        // Disconnect on disappear
+
         guard let peripheral = peripheral else {
             return
         }
@@ -31,25 +41,31 @@ class NetworkViewController: UITableViewController {
 
 // Observer
 
-extension NetworkViewController {
+extension NetworkConfigViewController {
 
     func addObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(didDiscoverCharacteristics(_:)), name: .didDiscoverCharacteristics, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didDiscoverCharacteristics(_:)), name: .afrPeripheralDidDiscoverCharacteristics, object: nil)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(didListNetwork), name: .didListNetwork, object: nil)
+        // ListNetwork returned one network
 
-        NotificationCenter.default.addObserver(self, selector: #selector(listNetworkOfPeripheral), name: .didSaveNetwork, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(listNetworkOfPeripheral), name: .didEditNetwork, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(listNetworkOfPeripheral), name: .didDeleteNetwork, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didListNetwork), name: .afrDidListNetwork, object: nil)
+
+        // Refresh list on network operations
+
+        NotificationCenter.default.addObserver(self, selector: #selector(didOpNetwork), name: .afrDidSaveNetwork, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didOpNetwork), name: .afrDidEditNetwork, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didOpNetwork), name: .afrDidDeleteNetwork, object: nil)
     }
 
     @objc
     func didDiscoverCharacteristics(_ notification: NSNotification) {
-        guard let peripheral = peripheral, notification.userInfo?["service"] as? CBUUID == AWSAfrGattService.NetworkConfig else {
+        guard notification.userInfo?["service"] as? CBUUID == AWSAfrGattService.NetworkConfig else {
             return
         }
-        AWSAfrManager.shared.listNetworkOfPeripheral(peripheral, listNetworkReq: ListNetworkReq(maxNetworks: 50, timeout: 3))
-        tableView.reloadData()
+
+        // NetworkConfig service has been discovered.
+
+        listNetworkOfPeripheral()
     }
 
     @objc
@@ -58,10 +74,16 @@ extension NetworkViewController {
     }
 
     @objc
-    func listNetworkOfPeripheral() {
+    func didOpNetwork() {
         refreshControl?.endRefreshing()
         tableView.enableTableView()
 
+        listNetworkOfPeripheral()
+    }
+
+    // listNetworkOfPeripheral: scan max of 50 networks an scan for 3s
+
+    func listNetworkOfPeripheral() {
         guard let peripheral = peripheral else {
             return
         }
@@ -72,7 +94,7 @@ extension NetworkViewController {
 
 // UITableView
 
-extension NetworkViewController {
+extension NetworkConfigViewController {
 
     override func numberOfSections(in _: UITableView) -> Int {
         return 2
@@ -97,6 +119,14 @@ extension NetworkViewController {
         default:
             return nil
         }
+    }
+
+    override func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+
+    override func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -154,13 +184,23 @@ extension NetworkViewController {
         tableView.deselectRow(at: indexPath, animated: true)
 
         if indexPath.section == 0 || network.security == .open {
+
+            // Its saved network or network security is open
+
             tableView.disableTableView()
             AWSAfrManager.shared.saveNetworkToPeripheral(peripheral, saveNetworkReq: SaveNetworkReq(index: network.index, ssid: network.ssid, bssid: network.bssid, psk: String(), security: network.security))
+
         } else if network.security == .notSupported {
+
+            // Network not supported
+
             Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: NSLocalizedString("Network security type not supported.", comment: String()))
                 .action(.default(NSLocalizedString("OK", comment: String())))
                 .show()
         } else {
+
+            // Network has security
+
             Alertift.alert(title: NSLocalizedString("Wi-Fi Password", comment: String()), message: NSLocalizedString("Please enter the password for this network.", comment: String()))
                 .textField { textField in
                     textField.placeholder = NSLocalizedString("Password", comment: String())
@@ -168,6 +208,7 @@ extension NetworkViewController {
                 }
                 .action(.cancel(NSLocalizedString("Cancel", comment: String())))
                 .action(.default(NSLocalizedString("Save", comment: String()))) { _, _, textFields in
+
                     tableView.disableTableView()
                     AWSAfrManager.shared.saveNetworkToPeripheral(peripheral, saveNetworkReq: SaveNetworkReq(index: network.index, ssid: network.ssid, bssid: network.bssid, psk: textFields?.first?.text ?? String(), security: network.security))
                 }
@@ -190,6 +231,9 @@ extension NetworkViewController {
         guard let peripheral = peripheral, let network = AWSAfrManager.shared.networks[peripheral.identifier.uuidString]?[indexPath.section][indexPath.row] else {
             return
         }
+
+        // Edit network
+
         tableView.disableTableView()
         AWSAfrManager.shared.deleteNetworkFromPeripheral(peripheral, deleteNetworkReq: DeleteNetworkReq(index: network.index))
     }
@@ -198,19 +242,22 @@ extension NetworkViewController {
         guard let peripheral = peripheral, let sourceNetwork = AWSAfrManager.shared.networks[peripheral.identifier.uuidString]?[sourceIndexPath.section][sourceIndexPath.row], let destinationNetwork = AWSAfrManager.shared.networks[peripheral.identifier.uuidString]?[destinationIndexPath.section][destinationIndexPath.row] else {
             return
         }
+
+        // Delete network
+
         tableView.disableTableView()
         AWSAfrManager.shared.editNetworkOfPeripheral(peripheral, editNetworkReq: EditNetworkReq(index: sourceNetwork.index, newIndex: destinationNetwork.index))
     }
 
-    override func tableView(_: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        if sourceIndexPath.section != proposedDestinationIndexPath.section {
-            return sourceIndexPath
-        }
-        return proposedDestinationIndexPath
-    }
+//    override func tableView(_: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+//        if sourceIndexPath.section != proposedDestinationIndexPath.section {
+//            return sourceIndexPath
+//        }
+//        return proposedDestinationIndexPath
+//    }
 }
 
-extension NetworkViewController {
+extension NetworkConfigViewController {
 
     @IBAction private func btnDebugPush(_: UIBarButtonItem) {
         performSegue(withIdentifier: "toDebugViewController", sender: self)

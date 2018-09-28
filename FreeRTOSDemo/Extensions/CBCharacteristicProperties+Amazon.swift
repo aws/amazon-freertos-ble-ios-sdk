@@ -3,6 +3,7 @@ import Foundation
 
 extension CBCharacteristicProperties {
 
+    /// Helper - provide properties string for the characteristic.
     func propertiesString() -> String {
 
         var propertiesStr = String()

@@ -10,6 +10,4 @@ struct Subscribe: Codable {
     var msgID: Int
     /// Mqtt QoS.
     var qoS: Int
-    /// Mqtt payload.
-    var payloadVal: String
 }

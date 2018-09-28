@@ -7,31 +7,28 @@ import os.log
 
 class AWSAfrManager: NSObject {
 
-    /// Shared instence of Amazon FreeRTOS Manager.
-    static let shared = AWSAfrManager()
-
-    #warning("dev delete")
+    #warning("will be removed on public release")
 
     var isDebug: Bool = false
     var debugMessages = String()
     var counter = 0
 
-    #warning("dev delete")
+    #warning("will be removed on public release")
+
+    /// Shared instence of Amazon FreeRTOS Manager.
+    static let shared = AWSAfrManager()
 
     // BLE Central Manager for the SDK
     private var central: CBCentralManager?
+    // used for large object transfer with peripheral identifier and characteristic uuid as keys.
+    private var lotDatas: [String: Data] = [:]
 
     /// The peripherals using peripheral identifier as key.
     var peripherals: [String: CBPeripheral] = [:]
     /// The mtus for peripherals using peripheral identifier as key.
     var mtus: [String: Mtu] = [:]
-    /// The broker endpoints for peripherals using peripheral identifier as key.
-    var brokerEndpoints: [String: BrokerEndpoint] = [:]
-    /// The networks peripherals scaned using peripheral identifier as key.
+    /// The networks peripherals scaned using peripheral identifier as key. [0] are saved networks and [1] are scaned networks.
     var networks: [String: [[ListNetworkResp]]] = [:]
-
-    // used for large object transfer with peripheral identifier and characteristic uuid as keys.
-    private var lotDatas: [String: Data] = [:]
 
     /**
      Initializes a new Amazon FreeRTOS Manager.
@@ -77,7 +74,6 @@ extension AWSAfrManager {
 
         peripherals.removeAll()
         mtus.removeAll()
-        brokerEndpoints.removeAll()
         networks.removeAll()
 
         lotDatas.removeAll()
@@ -109,25 +105,94 @@ extension AWSAfrManager {
         }
     }
 
+    // Device Info Service
+
+    /**
+     Get afrVersion of the Amazon FreeRTOS `peripheral`
+
+     - Parameter peripheral: the FreeRTOS peripheral.
+     - Precondition: `central` is ready and `peripheral` must be connected.
+     */
+    func gatAfrVersionOfPeripheral(_ peripheral: CBPeripheral) {
+
+        debugPrint("↓ get afrVersion")
+
+        guard let characteristic = peripheral.serviceOf(uuid: AWSAfrGattService.DeviceInfo)?.characteristicOf(uuid: AWSAfrGattCharacteristic.AfrVersion) else {
+            debugPrint("Error (gatAfrVersionOfPeripheral): DeviceInfo service or AfrVersion characteristic doesn't exist")
+            return
+        }
+        peripheral.readValue(for: characteristic)
+    }
+
+    /**
+     Get mqtt broker endpoint of the Amazon FreeRTOS `peripheral`
+
+     - Parameter peripheral: the FreeRTOS peripheral.
+     - Precondition: `central` is ready and `peripheral` must be connected.
+     */
+    func getBrokerEndpointOfPeripheral(_ peripheral: CBPeripheral) {
+
+        debugPrint("↓ get brokerEndpoint")
+
+        guard let characteristic = peripheral.serviceOf(uuid: AWSAfrGattService.DeviceInfo)?.characteristicOf(uuid: AWSAfrGattCharacteristic.BrokerEndpoint) else {
+            debugPrint("Error (getBrokerEndpointOfPeripheral): DeviceInfo service or BrokerEndpoint characteristic doesn't exist")
+            return
+        }
+        peripheral.readValue(for: characteristic)
+    }
+
+    /**
+     Get BLE mtu of the Amazon FreeRTOS `peripheral`
+
+     - Parameter peripheral: the FreeRTOS peripheral.
+     - Precondition: `central` is ready and `peripheral` must be connected.
+     */
+    func getMtuOfPeripheral(_ peripheral: CBPeripheral) {
+
+        debugPrint("↓ get mtuVersion")
+
+        guard let characteristic = peripheral.serviceOf(uuid: AWSAfrGattService.DeviceInfo)?.characteristicOf(uuid: AWSAfrGattCharacteristic.Mtu) else {
+            debugPrint("Error (getMtuOfPeripheral): DeviceInfo service or Mtu characteristic doesn't exist")
+            return
+        }
+        peripheral.readValue(for: characteristic)
+    }
+
     // Mqtt Proxy Service
 
     /**
-     Control the mqtt proxying of `peripheral` such as start and stop the proxy.
+     Get the mqtt proxy control state of the `peripheral`.
+
+     - Parameter peripheral: the FreeRTOS peripheral.
+     */
+    func getMqttProxyControlOfPeripheral(_ peripheral: CBPeripheral) {
+
+        debugPrint("↓ get control")
+
+        guard let characteristic = peripheral.serviceOf(uuid: AWSAfrGattService.MqttProxy)?.characteristicOf(uuid: AWSAfrGattCharacteristic.Control) else {
+            debugPrint("Error (getMqttProxyControlOfPeripheral): MqttProxy service or Control characteristic doesn't exist")
+            return
+        }
+        peripheral.readValue(for: characteristic)
+    }
+
+    /**
+     Update the mqtt proxy control of the `peripheral` to start and stop the proxy.
 
      - Parameters:
      - peripheral: the FreeRTOS peripheral.
-     - controlMessage: The control message.
+     - control: The control message.
      */
-    func controlMqttOfPeripheral(_ peripheral: CBPeripheral, controlMessage: ControlMessage) {
+    func updateMqttProxyControlOfPeripheral(_ peripheral: CBPeripheral, control: Control) {
 
-        debugPrint("↓ \(controlMessage)")
+        debugPrint("↓ \(control)")
 
-        guard let data = try? JSONEncoder().encode(controlMessage) else {
-            debugPrint("Error (controlMqttOfPeripheral): Invalid ControlMessage")
+        guard let data = try? JSONEncoder().encode(control) else {
+            debugPrint("Error (updateMqttProxyControlOfPeripheral): Invalid Control")
             return
         }
         guard let characteristic = peripheral.serviceOf(uuid: AWSAfrGattService.MqttProxy)?.characteristicOf(uuid: AWSAfrGattCharacteristic.Control) else {
-            debugPrint("Error (controlMqttOfPeripheral): MqttProxy service or Control characteristic doesn't exist")
+            debugPrint("Error (updateMqttProxyControlOfPeripheral): MqttProxy service or Control characteristic doesn't exist")
             return
         }
         peripheral.writeValue(data, for: characteristic, type: .withResponse)
@@ -238,6 +303,7 @@ extension AWSAfrManager: CBCentralManagerDelegate {
             return
         }
         stopScanForPeripherals()
+        NotificationCenter.default.post(name: .afrCentralManagerDidUpdateState, object: nil, userInfo: ["state": central.state])
     }
 
     // Discover
@@ -248,7 +314,7 @@ extension AWSAfrManager: CBCentralManagerDelegate {
             return
         }
         peripherals[peripheral.identifier.uuidString] = peripheral
-        NotificationCenter.default.post(name: .didDiscoverPeripheral, object: nil, userInfo: ["peripheral": peripheral.identifier])
+        NotificationCenter.default.post(name: .afrCentralManagerDidDiscoverPeripheral, object: nil, userInfo: ["peripheral": peripheral.identifier])
     }
 
     // Connection
@@ -257,6 +323,7 @@ extension AWSAfrManager: CBCentralManagerDelegate {
         networks[peripheral.identifier.uuidString] = [[], []]
         peripheral.delegate = self
         peripheral.discoverServices([AWSAfrGattService.DeviceInfo, AWSAfrGattService.MqttProxy, AWSAfrGattService.NetworkConfig])
+        NotificationCenter.default.post(name: .afrCentralManagerDidConnectPeripheral, object: nil, userInfo: ["peripheral": peripheral.identifier])
     }
 
     func centralManager(_: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
@@ -265,12 +332,14 @@ extension AWSAfrManager: CBCentralManagerDelegate {
         }
         networks.removeValue(forKey: peripheral.identifier.uuidString)
         AWSIoTDataManager(forKey: peripheral.identifier.uuidString).disconnect()
+        NotificationCenter.default.post(name: .afrCentralManagerDidDisconnectPeripheral, object: nil, userInfo: ["peripheral": peripheral.identifier])
     }
 
-    func centralManager(_: CBCentralManager, didFailToConnect _: CBPeripheral, error: Error?) {
+    func centralManager(_: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         if let error = error {
             debugPrint("Error (central_didFailToConnect): \(error.localizedDescription)")
         }
+        NotificationCenter.default.post(name: .afrCentralManagerDidFailToConnectPeripheral, object: nil, userInfo: ["peripheral": peripheral.identifier])
     }
 }
 
@@ -287,7 +356,7 @@ extension AWSAfrManager: CBPeripheralDelegate {
         for service in peripheral.services ?? [] {
             peripheral.discoverCharacteristics(nil, for: service)
         }
-        NotificationCenter.default.post(name: .didDiscoverServices, object: nil, userInfo: ["peripheral": peripheral.identifier])
+        NotificationCenter.default.post(name: .afrPeripheralDidDiscoverServices, object: nil, userInfo: ["peripheral": peripheral.identifier])
     }
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
@@ -298,7 +367,7 @@ extension AWSAfrManager: CBPeripheralDelegate {
         for characteristic in service.characteristics ?? [] {
             peripheral.setNotifyValue(true, for: characteristic)
         }
-        NotificationCenter.default.post(name: .didDiscoverCharacteristics, object: nil, userInfo: ["peripheral": peripheral.identifier, "service": service.uuid])
+        NotificationCenter.default.post(name: .afrPeripheralDidDiscoverCharacteristics, object: nil, userInfo: ["peripheral": peripheral.identifier, "service": service.uuid])
     }
 
     // Read, Write
@@ -313,10 +382,19 @@ extension AWSAfrManager: CBPeripheralDelegate {
 
             // Device Info Service
 
-        case AWSAfrGattCharacteristic.DeviceInfo:
-            didUpdateValueForDeviceInfo(peripheral: peripheral, characteristic: characteristic)
+        case AWSAfrGattCharacteristic.AfrVersion:
+            didUpdateValueForAfrVersion(peripheral: peripheral, characteristic: characteristic)
+
+        case AWSAfrGattCharacteristic.BrokerEndpoint:
+            didUpdateValueForBrokerEndpoint(peripheral: peripheral, characteristic: characteristic)
+
+        case AWSAfrGattCharacteristic.Mtu:
+            didUpdateValueForMtu(peripheral: peripheral, characteristic: characteristic)
 
             // Mqtt Proxy Service
+
+        case AWSAfrGattCharacteristic.Control:
+            didUpdateValueForControl(peripheral: peripheral, characteristic: characteristic)
 
         case AWSAfrGattCharacteristic.TXMessage:
             didUpdateValueForTXMessage(peripheral: peripheral, characteristic: characteristic)
@@ -358,40 +436,75 @@ extension AWSAfrManager {
     // Device Info Service
 
     /**
-     Process data of DeviceInfo characteristic from `peripheral`.
+     Process data of AfrVersion characteristic from `peripheral`.
 
      - Parameters:
      - peripheral: the FreeRTOS peripheral.
-     - characteristic: The DeviceInfo characteristic.
+     - characteristic: The AfrVersion characteristic.
      */
-    func didUpdateValueForDeviceInfo(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+    func didUpdateValueForAfrVersion(peripheral _: CBPeripheral, characteristic: CBCharacteristic) {
 
-        guard let value = characteristic.value, let deviceInfoMessage = try? JSONDecoder().decode(DeviceInfoMessage.self, from: value) else {
-            debugPrint("Error (didUpdateValueForDeviceInfo): Invalid DeviceInfo Message")
+        guard let value = characteristic.value, let afrVersion = try? JSONDecoder().decode(AfrVersion.self, from: value) else {
+            debugPrint("Error (didUpdateValueForDeviceInfo): Invalid AfrVersion")
             return
         }
+        debugPrint("→ \(afrVersion)")
+        NotificationCenter.default.post(name: .afrDeviceInfoAfrVersion, object: nil, userInfo: ["afrVersion": afrVersion])
+    }
 
-        switch deviceInfoMessage.type {
+    /**
+     Process data of BrokerEndpoint characteristic from `peripheral`.
 
-        case .mtu:
-            guard let mtu = try? JSONDecoder().decode(Mtu.self, from: value) else {
-                debugPrint("Error (didUpdateValueForDeviceInfo): Invalid Mtu")
-                return
-            }
-            debugPrint("→ \(mtu)")
-            mtus[peripheral.identifier.uuidString] = mtu
+     - Parameters:
+     - peripheral: the FreeRTOS peripheral.
+     - characteristic: The BrokerEndpoint characteristic.
+     */
+    func didUpdateValueForBrokerEndpoint(peripheral _: CBPeripheral, characteristic: CBCharacteristic) {
 
-        case .brokerEndpoint:
-            guard let brokerEndpoint = try? JSONDecoder().decode(BrokerEndpoint.self, from: value) else {
-                debugPrint("Error (didUpdateValueForDeviceInfo): Invalid BrokerEndpoint")
-                return
-            }
-            debugPrint("→ \(brokerEndpoint)")
-            brokerEndpoints[peripheral.identifier.uuidString] = brokerEndpoint
+        guard let value = characteristic.value, let brokerEndpoint = try? JSONDecoder().decode(BrokerEndpoint.self, from: value) else {
+            debugPrint("Error (didUpdateValueForDeviceInfo): Invalid BrokerEndpoint")
+            return
         }
+        debugPrint("→ \(brokerEndpoint)")
+        NotificationCenter.default.post(name: .afrDeviceInfoBrokerEndpoint, object: nil, userInfo: ["brokerEndpoint": brokerEndpoint])
+    }
+
+    /**
+     Process data of Mtu characteristic from `peripheral`. It will also triger on mtu value change.
+
+     - Parameters:
+     - peripheral: the FreeRTOS peripheral.
+     - characteristic: The Mtu characteristic.
+     */
+    func didUpdateValueForMtu(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+
+        guard let value = characteristic.value, let mtu = try? JSONDecoder().decode(Mtu.self, from: value) else {
+            debugPrint("Error (didUpdateValueForDeviceInfo): Invalid Mtu")
+            return
+        }
+        mtus[peripheral.identifier.uuidString] = mtu
+        debugPrint("→ \(mtu)")
+        NotificationCenter.default.post(name: .afrDeviceInfoMtu, object: nil, userInfo: ["mtu": mtu])
     }
 
     // Mqtt Proxy Service
+
+    /**
+     Process data of Control characteristic from `peripheral`.
+
+     - Parameters:
+     - peripheral: the FreeRTOS peripheral.
+     - characteristic: The Control characteristic.
+     */
+    func didUpdateValueForControl(peripheral _: CBPeripheral, characteristic: CBCharacteristic) {
+
+        guard let value = characteristic.value, let control = try? JSONDecoder().decode(Control.self, from: value) else {
+            debugPrint("Error (didUpdateValueForControl): Invalid Control")
+            return
+        }
+        debugPrint("→ \(control)")
+        NotificationCenter.default.post(name: .afrMqttProxyControl, object: nil, userInfo: ["control": control])
+    }
 
     /**
      Process data of TXMessage characteristic from `peripheral`.
@@ -428,12 +541,8 @@ extension AWSAfrManager {
                 return
             }
 
-            guard AWSIoTDataManager(forKey: peripheral.identifier.uuidString).getConnectionStatus() != .connected else {
-                debugPrint("Error (didUpdateValueForTXMessage): Invalid Connect - AWSIoTDataManager already connected")
-                return
-            }
-
             AWSIoTDataManager.register(with: serviceConfiguration, forKey: peripheral.identifier.uuidString)
+            AWSIoTDataManager(forKey: peripheral.identifier.uuidString).disconnect()
             AWSIoTDataManager(forKey: peripheral.identifier.uuidString).connectUsingWebSocket(withClientId: connect.clientID, cleanSession: connect.cleanSession) { status in
 
                 switch status {
@@ -545,7 +654,7 @@ extension AWSAfrManager {
 
             AWSIoTDataManager(forKey: peripheral.identifier.uuidString).subscribe(toTopic: topic, qoS: qoS, messageCallback: { data in
 
-                let publish = Publish(type: .publish, topic: topic, msgID: subscribe.msgID, qoS: subscribe.qoS, payloadVal: data.base64EncodedString())
+                let publish = Publish(type: .publish, topic: subscribe.topic, msgID: subscribe.msgID, qoS: subscribe.qoS, payloadVal: data.base64EncodedString())
 
                 self.debugPrint("↓ \(publish)")
 
@@ -637,11 +746,6 @@ extension AWSAfrManager {
 
             debugPrint("↑ \(disconnect)")
 
-            guard AWSIoTDataManager(forKey: peripheral.identifier.uuidString).getConnectionStatus() == .connected else {
-                debugPrint("Error (didUpdateValueForTXMessage): Invalid Disconnect - AWSIoTDataManager not connected")
-                return
-            }
-
             AWSIoTDataManager(forKey: peripheral.identifier.uuidString).disconnect()
 
         default:
@@ -709,22 +813,22 @@ extension AWSAfrManager {
             }
 
             // Scaned networks sorted by rssi
-            
+
             networks[peripheral.identifier.uuidString]?[1].append(listNetworkResp)
             networks[peripheral.identifier.uuidString]?[1].sort(by: { networkA, networkB -> Bool in
                 networkA.rssi > networkB.rssi
             })
 
         } else {
-            
+
             // Saved networks sorted by index
-            
+
             networks[peripheral.identifier.uuidString]?[0].append(listNetworkResp)
             networks[peripheral.identifier.uuidString]?[0].sort(by: { networkA, networkB -> Bool in
                 networkA.index < networkB.index
             })
         }
-        NotificationCenter.default.post(name: .didListNetwork, object: nil, userInfo: ["peripheral": peripheral.identifier, "listNetworkResp": listNetworkResp])
+        NotificationCenter.default.post(name: .afrDidListNetwork, object: nil, userInfo: ["peripheral": peripheral.identifier, "listNetworkResp": listNetworkResp])
     }
 
     /**
@@ -740,7 +844,7 @@ extension AWSAfrManager {
             return
         }
         debugPrint("→ \(saveNetworkResp)")
-        NotificationCenter.default.post(name: .didSaveNetwork, object: nil, userInfo: ["peripheral": peripheral.identifier, "saveNetworkResp": saveNetworkResp])
+        NotificationCenter.default.post(name: .afrDidSaveNetwork, object: nil, userInfo: ["peripheral": peripheral.identifier, "saveNetworkResp": saveNetworkResp])
     }
 
     /**
@@ -756,7 +860,7 @@ extension AWSAfrManager {
             return
         }
         debugPrint("→ \(editNetworkResp)")
-        NotificationCenter.default.post(name: .didEditNetwork, object: nil, userInfo: ["peripheral": peripheral.identifier, "editNetworkResp": editNetworkResp])
+        NotificationCenter.default.post(name: .afrDidEditNetwork, object: nil, userInfo: ["peripheral": peripheral.identifier, "editNetworkResp": editNetworkResp])
     }
 
     /**
@@ -772,13 +876,13 @@ extension AWSAfrManager {
             return
         }
         debugPrint("→ \(deleteNetworkResp)")
-        NotificationCenter.default.post(name: .didDeleteNetwork, object: nil, userInfo: ["peripheral": peripheral.identifier, "deleteNetworkResp": deleteNetworkResp])
+        NotificationCenter.default.post(name: .afrDidDeleteNetwork, object: nil, userInfo: ["peripheral": peripheral.identifier, "deleteNetworkResp": deleteNetworkResp])
     }
 }
 
 extension AWSAfrManager {
 
-    #warning("dev delete")
+    #warning("will be removed on public release")
 
     func debugPrint(_ debugMessage: String) {
         guard isDebug else {

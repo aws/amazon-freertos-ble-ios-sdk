@@ -9,6 +9,6 @@ extension UITableView {
 
     func disableTableView() {
         isUserInteractionEnabled = false
-        alpha = 0.5
+        alpha = 0.2
     }
 }

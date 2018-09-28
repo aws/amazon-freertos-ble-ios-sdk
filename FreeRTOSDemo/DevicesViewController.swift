@@ -5,6 +5,9 @@ import AWSIoT
 import CoreBluetooth
 import UIKit
 
+/**
+ This is the main controller used to list the nearby Amazon FreeRTOS devices that has the BLE capability.
+ */
 class DevicesViewController: UITableViewController {
 
     var peripheral: CBPeripheral?
@@ -13,21 +16,26 @@ class DevicesViewController: UITableViewController {
         super.viewDidLoad()
         navigationController?.delegate = self
 
-        // Observe peripherals
+        // Add observe for AWSAfrManager NSNotifications
 
-        NotificationCenter.default.addObserver(self, selector: #selector(didDiscoverPeripheral), name: .didDiscoverPeripheral, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didDiscoverPeripheral), name: .afrCentralManagerDidDiscoverPeripheral, object: nil)
 
-        // Rescan peripherals
+        // Rescan peripherals using refreshControl
 
         refreshControl?.addTarget(self, action: #selector(rescanPeripherals), for: .valueChanged)
         refreshControl?.beginRefreshing()
 
-        // Check user login
+        // Check if user is login
 
         guard let navigationController = navigationController, !AWSSignInManager.sharedInstance().isLoggedIn else {
+
+            // -> User loged in, attach principal policy
+
             attachPrincipalPolicy()
             return
         }
+
+        // -> User not loged in, present login ui.
 
         AWSAuthUIViewController.presentViewController(with: navigationController, configuration: nil) { _, error in
             if let error = error {
@@ -36,6 +44,9 @@ class DevicesViewController: UITableViewController {
                     .show()
                 return
             }
+
+            // -> User loged in, attach principal policy
+
             self.attachPrincipalPolicy()
         }
     }
@@ -50,9 +61,9 @@ class DevicesViewController: UITableViewController {
     // Segue
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-        if segue.identifier == "toMqttViewController", let viewController: MqttViewController = segue.destination as? MqttViewController {
+        if segue.identifier == "toMqttProxyViewController", let viewController: MqttProxyViewController = segue.destination as? MqttProxyViewController {
             viewController.peripheral = peripheral
-        } else if segue.identifier == "toNetworkViewController", let viewController: NetworkViewController = segue.destination as? NetworkViewController {
+        } else if segue.identifier == "toNetworkConfigViewController", let viewController: NetworkConfigViewController = segue.destination as? NetworkConfigViewController {
             viewController.peripheral = peripheral
         } else if segue.identifier == "toCustomGattMqttViewController", let viewController: CustomGattMqttViewController = segue.destination as? CustomGattMqttViewController {
             viewController.peripheral = peripheral
@@ -74,12 +85,21 @@ extension DevicesViewController {
         tableView.reloadData()
     }
 
+    #warning("attachPrincipalPolicy should NOT be done in the app, this is just for demo purposes. See getting started guide.")
+    /**
+     Attach the coginto identity to the AWS IoT policy.
+
+     - Precondition: The AWS IoT policy must already have been created. Follow the get started guide if not.
+     */
     func attachPrincipalPolicy() {
         guard let attachPrincipalPolicyRequest = AWSIoTAttachPrincipalPolicyRequest() else {
             return
         }
-        attachPrincipalPolicyRequest.policyName = "freerots"
+        // The AWS IoT Policy
+        attachPrincipalPolicyRequest.policyName = AmazonConstants.AWS.iotPolicyName
+        // The AWS Cognito Identity
         attachPrincipalPolicyRequest.principal = AWSIdentityManager.default().identityId
+
         AWSIoT.default().attachPrincipalPolicy(attachPrincipalPolicyRequest, completionHandler: { error in
             if let error = error {
                 Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: error.localizedDescription)
@@ -95,8 +115,6 @@ extension DevicesViewController {
 
 extension DevicesViewController {
 
-    // using Manager.shared.bleItems directly is not safe, will change later.
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
         tableView.backgroundColor = .white
         if AWSAfrManager.shared.peripherals.isEmpty {
@@ -106,12 +124,13 @@ extension DevicesViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DevicesCell", for: indexPath)
-        guard let devicesCell = cell as? DevicesCell else {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceCell", for: indexPath)
+        guard let devicesCell = cell as? DeviceCell else {
             return cell
         }
         let device = Array(AWSAfrManager.shared.peripherals.values)[indexPath.row]
         devicesCell.labPeripheralName.text = device.name
+        // iOS use generated identifier, it will be different on other devices.
         devicesCell.labPeripheralUUID.text = device.identifier.uuidString
         return devicesCell
     }
@@ -124,14 +143,23 @@ extension DevicesViewController {
         peripheral = Array(AWSAfrManager.shared.peripherals.values)[indexPath.row]
         Alertift.actionSheet()
             .popover(anchorView: cell)
+
+            // Example 1: MQTT Proxy
+
             .action(.default(NSLocalizedString("MQTT Proxy", comment: String()))) { _, _ in
-                self.performSegue(withIdentifier: "toMqttViewController", sender: self)
+                self.performSegue(withIdentifier: "toMqttProxyViewController", sender: self)
                 return
             }
-            .action(.default(NSLocalizedString("Network Setup", comment: String()))) { _, _ in
-                self.performSegue(withIdentifier: "toNetworkViewController", sender: self)
+
+            // Example 2: Network Config
+
+            .action(.default(NSLocalizedString("Network Config", comment: String()))) { _, _ in
+                self.performSegue(withIdentifier: "toNetworkConfigViewController", sender: self)
                 return
             }
+
+            // Example 3: Custom GATT MQTT
+
             .action(.default(NSLocalizedString("Custom GATT MQTT", comment: String()))) { _, _ in
                 self.performSegue(withIdentifier: "toCustomGattMqttViewController", sender: self)
                 return
