@@ -133,8 +133,11 @@ deleteNetworkFromPeripheral(_ peripheral: CBPeripheral, deleteNetworkReq: Delete
 To run the demo app,
 
 **Step 1** Install cocoapod if not yet installed https://cocoapods.org
+
 **Step 2** In project root run ```sudo pod install```
+
 **Step 3** use Xcode to open the project and change the signing developer account to your own account
+
 **Step 4** run with the device selected (you may have to add the device to the  developer account)
 
 The demo app uses the sdk and provides 3 examples:
