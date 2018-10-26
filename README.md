@@ -10,6 +10,9 @@ This SDK is used to communicate with the Amazon FreeRTOS Bluetooth Devices, It h
 
 **Network Config**:  Allows us to provision the wifi networks for the device.
 
+## Setting up
+CocoaPods is required. Please follow instructions to set up CocoaPods on the AWS Mobile SDK for iOS at https://github.com/aws/aws-sdk-ios#cocoapods.
+
 ## Authentication
 
 To connect to the AWS IoT via mqtt, cognito setup is required. Amazon Cognito provides authentication, authorization, and user management for your web and mobile apps, It allows the end user of the app to access the your AWS services such AWS IoT. (https://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#mqtt-ws).
