@@ -25,30 +25,7 @@ class DevicesViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(rescanPeripherals), for: .valueChanged)
         refreshControl?.beginRefreshing()
 
-        // Check if user is login
-
-        guard let navigationController = navigationController, !AWSSignInManager.sharedInstance().isLoggedIn else {
-
-            // -> User loged in, attach principal policy
-
-            attachPrincipalPolicy()
-            return
-        }
-
-        // -> User not loged in, present login ui.
-
-        AWSAuthUIViewController.presentViewController(with: navigationController, configuration: nil) { _, error in
-            if let error = error {
-                Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: error.localizedDescription)
-                    .action(.default(NSLocalizedString("OK", comment: String())))
-                    .show()
-                return
-            }
-
-            // -> User loged in, attach principal policy
-
-            self.attachPrincipalPolicy()
-        }
+        showLogin()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -83,6 +60,34 @@ extension DevicesViewController {
     func rescanPeripherals() {
         AWSAfrManager.shared.rescanForPeripherals()
         tableView.reloadData()
+    }
+
+    func showLogin() {
+
+        // Check if user is login
+
+        guard let navigationController = navigationController, !AWSSignInManager.sharedInstance().isLoggedIn else {
+
+            // -> User loged in, attach principal policy
+
+            attachPrincipalPolicy()
+            return
+        }
+
+        // -> User not loged in, present login ui.
+
+        AWSAuthUIViewController.presentViewController(with: navigationController, configuration: nil) { _, error in
+            if let error = error {
+                Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: error.localizedDescription)
+                    .action(.default(NSLocalizedString("OK", comment: String())))
+                    .show()
+                return
+            }
+
+            // -> User loged in, attach principal policy
+
+            self.attachPrincipalPolicy()
+        }
     }
 
     #warning("attachPrincipalPolicy should NOT be done in the app, this is just for demo purposes. See getting started guide.")
@@ -166,5 +171,14 @@ extension DevicesViewController {
             }
             .action(.cancel(NSLocalizedString("Cancel", comment: String())))
             .show()
+    }
+}
+
+extension DevicesViewController {
+
+    @IBAction private func btnLogoutPush(_: UIBarButtonItem) {
+        AWSSignInManager.sharedInstance().logout(completionHandler: { _, _ in
+            self.showLogin()
+        })
     }
 }

@@ -109,7 +109,13 @@
                             <outlet property="delegate" destination="LGX-Vw-h8s" id="24x-IZ-xgq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Devices" id="egv-5Q-fq3"/>
+                    <navigationItem key="navigationItem" title="Devices" id="egv-5Q-fq3">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="icK-qt-K0J">
+                            <connections>
+                                <action selector="btnLogoutPush:" destination="LGX-Vw-h8s" id="hEr-wb-AVl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="mSl-qd-Frg">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -247,12 +253,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="5aE-Jx-jx8">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="5aE-Jx-jx8">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AuT-wE-L9W">
-                                    <rect key="frame" x="16" y="-16" width="382" height="32"/>
+                                    <rect key="frame" x="16" y="16" width="382" height="32"/>
                                     <color key="backgroundColor" name="alabaster_color"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="32" id="Wdp-7P-KAP"/>
@@ -594,7 +600,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="erf-Oo-v6v"/>
+        <segue reference="wdr-LT-FaI"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="teal_color"/>
 </document>

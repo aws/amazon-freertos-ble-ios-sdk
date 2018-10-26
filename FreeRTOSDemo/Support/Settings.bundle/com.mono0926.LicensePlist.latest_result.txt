@@ -6,15 +6,15 @@ version: 4.0
 
 name: AWSAuthCore, nameSpecified: 
 body: The AWS Mobile SDK f…
-version: 2.6.31
+version: 2.6.33
 
 name: AWSAuthUI, nameSpecified: 
 body: The AWS Mobile SDK f…
-version: 2.6.31
+version: 2.6.33
 
 name: AWSCognitoIdentityProvider, nameSpecified: 
 body: The AWS Mobile SDK f…
-version: 2.6.31
+version: 2.6.33
 
 name: AWSCognitoIdentityProviderASF, nameSpecified: 
 body: The AWS Mobile SDK f…
@@ -22,31 +22,31 @@ version: 1.0.1
 
 name: AWSCore, nameSpecified: 
 body: The AWS Mobile SDK f…
-version: 2.6.31
+version: 2.6.33
 
 name: AWSIoT, nameSpecified: 
 body: The AWS Mobile SDK f…
-version: 2.6.31
+version: 2.6.33
 
 name: AWSMobileClient, nameSpecified: 
 body: The AWS Mobile SDK f…
-version: 2.6.31
+version: 2.6.33
 
 name: AWSUserPoolsSignIn, nameSpecified: 
 body: The AWS Mobile SDK f…
-version: 2.6.31
+version: 2.6.33
 
 name: LicensePlist, nameSpecified: 
 body: MIT License
 
 Copyrig…
-version: 1.8.8
+version: 1.9.1
 
 name: SwiftFormat, nameSpecified: 
 body: MIT License
 
 Copyrig…
-version: 0.35.5
+version: 0.35.7
 
 name: SwiftLint, nameSpecified: 
 body: The MIT License (MIT…
