@@ -1,25 +1,26 @@
 ## iOS SDK for Amazon FreeRTOS Bluetooth Devices
 
-iOS SDK for Amazon FreeRTOS Bluetooth Devices
+iOS SDK for Amazon FreeRTOS Bluetooth Devices.
 
 ## Introduction
 
 This SDK is used to communicate with the Amazon FreeRTOS Bluetooth Devices, It has 2 main features:
 
 **MQTT Proxy**:  Allows a MQTT client (for example device running AFR), to communicate with AWS MQTT broker through a gateway device (for example Mobile Phone).
+
 **Network Config**:  Allows us to provision the wifi networks for the device.
 
 ## Authentication
 
-To connect to the AWS IoT via mqtt, cognito setup is required. Amazon Cognito provides authentication, authorization, and user management for your web and mobile apps, It allows the end user of the app to access the your AWS services such AWS IoT. (https://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#mqtt-ws)
+To connect to the AWS IoT via mqtt, cognito setup is required. Amazon Cognito provides authentication, authorization, and user management for your web and mobile apps, It allows the end user of the app to access the your AWS services such AWS IoT. (https://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#mqtt-ws).
 
 **Step 1 - Create AWS IoT Policy**
 
 AWS IoT policies are used to authorize your device to perform AWS IoT operations, such as subscribing or publishing to MQTT topics.
-If your are using the AWS Console, a step by step guide can be found here (https://docs.aws.amazon.com/iot/latest/developerguide/create-iot-policy.html)
+If your are using the AWS Console, a step by step guide can be found here (https://docs.aws.amazon.com/iot/latest/developerguide/create-iot-policy.html).
 
 > When adding the statements, switch to advanced mode, and put in the sample policy JSON.
-> Because we are using cognito and not device cert, we don't need to attach the policy to device cert, instead, we attach it to a cognito identity using the AttachPrincipalPolicy API
+> Because we are using cognito and not device cert, we don't need to attach the policy to device cert, instead, we attach it to a cognito identity using the AttachPrincipalPolicy API.
 
 If your using the AWS API or SDK, please use the CreatePolicy API (https://docs.aws.amazon.com/iot/latest/apireference/API_CreatePolicy.html).
 
@@ -49,7 +50,7 @@ If your using the AWS API or SDK, please use the CreatePolicy API (https://docs.
 ```
 **Step 2 - Create Federated Identity Pool**
 
-Customer needs to create an identity pool that can be attached to the IoT Policy, Customer needs to create an authenticated role (or unauthenticated role if needed, step 3 of the guide) and add the policies below, a step by step guide can be found here (https://docs.aws.amazon.com/cognito/latest/developerguide/getting-started-with-identity-pools.html)
+Customer needs to create an identity pool that can be attached to the IoT Policy, Customer needs to create an authenticated role (or unauthenticated role if needed, step 3 of the guide) and add the policies below, a step by step guide can be found here (https://docs.aws.amazon.com/cognito/latest/developerguide/getting-started-with-identity-pools.html).
 
 **Step 3 - Create Cognito IAM Role Permissions Policies**
 
