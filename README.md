@@ -4,26 +4,26 @@ iOS SDK for Amazon FreeRTOS Bluetooth Devices.
 
 ## Introduction
 
-This SDK is used to communicate with the Amazon FreeRTOS Bluetooth Devices, It has 2 main features:
+This SDK is used to communicate with the Amazon FreeRTOS Bluetooth Devices, it has 2 main features:
 
 **MQTT Proxy**:  Allows a MQTT client (for example device running AFR), to communicate with AWS MQTT broker through a gateway device (for example Mobile Phone).
 
-**Network Config**:  Allows us to provision the wifi networks for the device.
+**Network Config**:  Allows us to provision the Wi-Fi networks for the device.
 
 ## Setting up
 CocoaPods is required. Please follow instructions to set up CocoaPods on the AWS Mobile SDK for iOS at https://github.com/aws/aws-sdk-ios#cocoapods.
 
 ## Authentication
 
-To connect to the AWS IoT via mqtt, cognito setup is required. Amazon Cognito provides authentication, authorization, and user management for your web and mobile apps, It allows the end user of the app to access the your AWS services such AWS IoT. (https://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#mqtt-ws).
+To connect to AWS IoT via MQTT, Cognito setup is required. Amazon Cognito provides authentication, authorization, and user management for your web and mobile apps. It allows the end user of the app to access the your AWS services such AWS IoT. (https://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#mqtt-ws).
 
 **Step 1 - Create AWS IoT Policy**
 
 AWS IoT policies are used to authorize your device to perform AWS IoT operations, such as subscribing or publishing to MQTT topics.
 If your are using the AWS Console, a step by step guide can be found here (https://docs.aws.amazon.com/iot/latest/developerguide/create-iot-policy.html).
 
-> When adding the statements, switch to advanced mode, and put in the sample policy JSON.
-> Because we are using cognito and not device cert, we don't need to attach the policy to device cert, instead, we attach it to a cognito identity using the AttachPrincipalPolicy API.
+> When adding the statements, switch to advanced mode, and paste in the sample policy JSON.
+> Because we are using Cognito and not a device certificate, we don't need to attach the policy to device certificate, instead, we attach it to a Cognito identity using the AttachPrincipalPolicy API.
 
 If your using the AWS API or SDK, please use the CreatePolicy API (https://docs.aws.amazon.com/iot/latest/apireference/API_CreatePolicy.html).
 
@@ -53,11 +53,11 @@ If your using the AWS API or SDK, please use the CreatePolicy API (https://docs.
 ```
 **Step 2 - Create Federated Identity Pool**
 
-Customer needs to create an identity pool that can be attached to the IoT Policy, Customer needs to create an authenticated role (or unauthenticated role if needed, step 3 of the guide) and add the policies below, a step by step guide can be found here (https://docs.aws.amazon.com/cognito/latest/developerguide/getting-started-with-identity-pools.html).
+Create an identity pool that can be attached to the IoT Policy. Create an authenticated role (or unauthenticated role if needed, step 3 of the guide) and add the policies below. A step by step guide can be found here (https://docs.aws.amazon.com/cognito/latest/developerguide/getting-started-with-identity-pools.html).
 
 **Step 3 - Create Cognito IAM Role Permissions Policies**
 
-IAM > Roles > cognito auth (or unauth if supported) role > Permissions > Permissions policies. We need to additionally allow AttachPrincipalPolicy so that we can attach the Cognito Identity to the AWS IoT Policy.
+IAM > Roles > cognito auth (or unauthenticated if supported) role > Permissions > Permissions policies. We need to additionally allow AttachPrincipalPolicy so that we can attach the Cognito Identity to the AWS IoT Policy.
 
 
 ```
@@ -108,8 +108,8 @@ getBrokerEndpointOfPeripheral(_ peripheral: CBPeripheral)
 getMtuOfPeripheral(_ peripheral: CBPeripheral)
 ```
 
-**Mqtt Proxy Service**
-This service provides control to the Mqtt Proxy.
+**MQTT Proxy Service**
+This service provides control to the MQTT Proxy.
 
 ```
 // Get the current proxying state. (on/off)
@@ -119,7 +119,7 @@ updateMqttProxyControlOfPeripheral(_ peripheral: CBPeripheral, control: Control)
 ```
 
 **Network Config Service**
-This service allows the user to config the wifi network of the Amazon FreeRTOS Device.
+This service allows the user to config the Wi-Fi network of the Amazon FreeRTOS Device.
 
 ```
 listNetworkOfPeripheral(_ peripheral: CBPeripheral, listNetworkReq: ListNetworkReq)
@@ -136,17 +136,17 @@ To run the demo app,
 
 **Step 2** In project root run ```sudo pod install```
 
-**Step 3** use Xcode to open the project and change the signing developer account to your own account
+**Step 3** Use Xcode to open the project and change the signing developer account to your own account
 
-**Step 4** run with the device selected (you may have to add the device to the  developer account)
+**Step 4** Run with the device selected (you may have to add the device to the developer account)
 
-The demo app uses the sdk and provides 3 examples:
+The demo app uses the SDK and provides 3 examples:
 
 **1. MqttProxyViewController.swift**
-This example showcases how to start and stop the mqtt proxy service that allows mqtt messages from Amazon FreeRTOS device to be passed to AWS IoT.
+This example showcases how to start and stop the MQTT proxy service that allows MQTT messages from Amazon FreeRTOS device to be passed to AWS IoT.
 
 **2. NetworkConfigViewController.swift**
-This example showcases how to use the network config service to configure the wifi network on the Amazon FreeRTOS device.
+This example showcases how to use the network config service to configure the Wi-Fi network on the Amazon FreeRTOS device.
 
 **3. NetworkConfigViewController.swift**
 This example showcases how to use another GATT(BLE) and MQTT stack along side with the one that's in the AWSAfr SDK
