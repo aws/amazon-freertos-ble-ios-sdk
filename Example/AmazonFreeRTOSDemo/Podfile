@@ -1,0 +1,12 @@
+platform :ios, '11.0'
+use_frameworks!
+
+target 'AmazonFreeRTOSDemo' do
+  pod 'Alertift'
+  pod 'AmazonFreeRTOS', :git => 'https://github.com/aws/amazon-freertos-ble-ios-sdk.git'
+  pod 'AWSAuthUI', '2.6.35'
+  pod 'AWSUserPoolsSignIn', '2.6.35'
+  pod 'LicensePlist'
+  pod 'SwiftFormat/CLI'
+  pod 'SwiftLint'
+end

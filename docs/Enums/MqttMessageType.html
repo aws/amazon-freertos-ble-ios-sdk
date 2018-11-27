@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MqttMessageType Enumeration Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/MqttMessageType" class="dashAnchor"></a>
+    <a title="MqttMessageType Enumeration Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">AmazonFreeRTOS Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">AmazonFreeRTOS Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        MqttMessageType Enumeration Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AmazonFreeRTOSManager.html">AmazonFreeRTOSManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/MqttMessageType.html">MqttMessageType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MqttProxyState.html">MqttProxyState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkOpStatus.html">NetworkOpStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkSecurityType.html">NetworkSecurityType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CBPeripheral.html">CBPeripheral</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CBService.html">CBService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSNotification.html">NSNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSNotification/Name.html">– Name</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AfrVersion.html">AfrVersion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14AmazonFreeRTOS0aB22RTOSGattCharacteristicV">AmazonFreeRTOSGattCharacteristic</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14AmazonFreeRTOS0aB15RTOSGattServiceV">AmazonFreeRTOSGattService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BrokerEndpoint.html">BrokerEndpoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Connack.html">Connack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Connect.html">Connect</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DeleteNetworkReq.html">DeleteNetworkReq</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DeleteNetworkResp.html">DeleteNetworkResp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Disconnect.html">Disconnect</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EditNetworkReq.html">EditNetworkReq</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EditNetworkResp.html">EditNetworkResp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ListNetworkReq.html">ListNetworkReq</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ListNetworkResp.html">ListNetworkResp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MqttProxyControl.html">MqttProxyControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MqttProxyMessage.html">MqttProxyMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Mtu.html">Mtu</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Puback.html">Puback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Publish.html">Publish</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SaveNetworkReq.html">SaveNetworkReq</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SaveNetworkResp.html">SaveNetworkResp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Suback.html">Suback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Subscribe.html">Subscribe</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Unsuback.html">Unsuback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Unsubscribe.html">Unsubscribe</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MqttMessageType</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">MqttMessageType</span> <span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
+
+                </div>
+              </div>
+            <p>Mqtt message types. Reference: <a href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718021">http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718021</a></p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS15MqttMessageTypeO7connectyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/connect" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS15MqttMessageTypeO7connectyA2CmF">connect</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Connect.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">connect</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS15MqttMessageTypeO7connackyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/connack" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS15MqttMessageTypeO7connackyA2CmF">connack</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Connack.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">connack</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS15MqttMessageTypeO7publishyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/publish" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS15MqttMessageTypeO7publishyA2CmF">publish</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Publish.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">publish</span> <span class="o">=</span> <span class="mi">3</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS15MqttMessageTypeO6pubackyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/puback" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS15MqttMessageTypeO6pubackyA2CmF">puback</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Puback.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">puback</span> <span class="o">=</span> <span class="mi">4</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS15MqttMessageTypeO6pubrecyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/pubrec" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS15MqttMessageTypeO6pubrecyA2CmF">pubrec</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Not supported by AWS IoT.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">pubrec</span> <span class="o">=</span> <span class="mi">5</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS15MqttMessageTypeO6pubrelyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/pubrel" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS15MqttMessageTypeO6pubrelyA2CmF">pubrel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Not supported by AWS IoT.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">pubrel</span> <span class="o">=</span> <span class="mi">6</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS15MqttMessageTypeO7pubcompyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/pubcomp" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS15MqttMessageTypeO7pubcompyA2CmF">pubcomp</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Not supported by AWS IoT.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">pubcomp</span> <span class="o">=</span> <span class="mi">7</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS15MqttMessageTypeO9subscribeyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/subscribe" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS15MqttMessageTypeO9subscribeyA2CmF">subscribe</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subscribe.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">subscribe</span> <span class="o">=</span> <span class="mi">8</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS15MqttMessageTypeO6subackyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/suback" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS15MqttMessageTypeO6subackyA2CmF">suback</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Suback.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">suback</span> <span class="o">=</span> <span class="mi">9</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS15MqttMessageTypeO11unsubscribeyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/unsubscribe" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS15MqttMessageTypeO11unsubscribeyA2CmF">unsubscribe</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unsubscribe.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">unsubscribe</span> <span class="o">=</span> <span class="mi">10</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS15MqttMessageTypeO8unsubackyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/unsuback" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS15MqttMessageTypeO8unsubackyA2CmF">unsuback</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unsuback.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">unsuback</span> <span class="o">=</span> <span class="mi">11</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS15MqttMessageTypeO7pingreqyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/pingreq" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS15MqttMessageTypeO7pingreqyA2CmF">pingreq</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Not supported by AWS IoT.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">pingreq</span> <span class="o">=</span> <span class="mi">12</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS15MqttMessageTypeO8pingrespyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/pingresp" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS15MqttMessageTypeO8pingrespyA2CmF">pingresp</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Not supported by AWS IoT.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">pingresp</span> <span class="o">=</span> <span class="mi">13</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS15MqttMessageTypeO11disconnnectyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/disconnnect" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS15MqttMessageTypeO11disconnnectyA2CmF">disconnnect</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Disconnnect.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">disconnnect</span> <span class="o">=</span> <span class="mi">14</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://aws.amazon.com/freertos/" target="_blank" rel="external">Amazon Web Services</a>. All rights reserved. (Last updated: 2018-11-26)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

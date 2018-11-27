@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m0e-Nf-rG3">
+    <device id="retina6_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AmazonEmber_Md.ttf">
+            <string>AmazonEmber-Medium</string>
+        </array>
+        <array key="AmazonEmber_Rg.ttf">
+            <string>AmazonEmber-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="wqg-HS-wDq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m0e-Nf-rG3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="RyE-bt-hde">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="teal_color"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="17"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LGX-Vw-h8s" kind="relationship" relationship="rootViewController" id="bIU-yh-XlC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CCc-8x-GWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2382" y="173"/>
+        </scene>
+        <!--Devices-->
+        <scene sceneID="dwh-ih-4cX">
+            <objects>
+                <tableViewController storyboardIdentifier="DevicesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LGX-Vw-h8s" customClass="DevicesViewController" customModule="FreeRTOSDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8eG-KU-HpG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PeripheralCell" rowHeight="92" id="PMe-Er-1Vd" customClass="PeripheralCell" customModule="FreeRTOSDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="92"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PMe-Er-1Vd" id="rVg-2A-k8Q">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Lh-qT-069">
+                                            <rect key="frame" x="16" y="8" width="382" height="76"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKh-5I-TZl">
+                                                    <rect key="frame" x="8" y="12" width="366" height="23"/>
+                                                    <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="19"/>
+                                                    <color key="textColor" name="teal_color"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CE-Nu-RLc">
+                                                    <rect key="frame" x="8" y="47" width="366" height="17"/>
+                                                    <fontDescription key="fontDescription" name="AmazonEmber-Regular" family="Amazon Ember" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7l-wC-1LL">
+                                                    <rect key="frame" x="378" y="0.0" width="4" height="76"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="4" id="6gt-GY-ohe"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" name="alabaster_color"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="F7l-wC-1LL" secondAttribute="trailing" id="Brw-33-3Pf"/>
+                                                <constraint firstItem="0CE-Nu-RLc" firstAttribute="top" secondItem="fKh-5I-TZl" secondAttribute="bottom" constant="12" id="Okt-dK-KRm"/>
+                                                <constraint firstAttribute="bottom" secondItem="F7l-wC-1LL" secondAttribute="bottom" id="ZW1-Ft-ggR"/>
+                                                <constraint firstItem="fKh-5I-TZl" firstAttribute="top" secondItem="6Lh-qT-069" secondAttribute="top" constant="12" id="bO5-DH-fNu"/>
+                                                <constraint firstItem="F7l-wC-1LL" firstAttribute="top" secondItem="6Lh-qT-069" secondAttribute="top" id="gbp-0s-nzk"/>
+                                                <constraint firstAttribute="trailing" secondItem="0CE-Nu-RLc" secondAttribute="trailing" constant="8" id="ile-hv-iu6"/>
+                                                <constraint firstItem="0CE-Nu-RLc" firstAttribute="leading" secondItem="6Lh-qT-069" secondAttribute="leading" constant="8" id="nD8-Zj-UFJ"/>
+                                                <constraint firstItem="fKh-5I-TZl" firstAttribute="leading" secondItem="6Lh-qT-069" secondAttribute="leading" constant="8" id="tVa-E8-AL1"/>
+                                                <constraint firstAttribute="bottom" secondItem="0CE-Nu-RLc" secondAttribute="bottom" constant="12" id="z3v-MB-rPi"/>
+                                                <constraint firstAttribute="trailing" secondItem="fKh-5I-TZl" secondAttribute="trailing" constant="8" id="zSd-B0-2Ov"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="6Lh-qT-069" secondAttribute="trailing" constant="16" id="CfK-cS-uRR"/>
+                                        <constraint firstAttribute="bottom" secondItem="6Lh-qT-069" secondAttribute="bottom" constant="8" id="Yby-lg-Occ"/>
+                                        <constraint firstItem="6Lh-qT-069" firstAttribute="top" secondItem="rVg-2A-k8Q" secondAttribute="top" constant="8" id="asp-zd-LHQ"/>
+                                        <constraint firstItem="6Lh-qT-069" firstAttribute="leading" secondItem="rVg-2A-k8Q" secondAttribute="leading" constant="16" id="kq4-L5-UqM"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="labPeripheralName" destination="fKh-5I-TZl" id="SEy-WY-RYi"/>
+                                    <outlet property="labPeripheralUUID" destination="0CE-Nu-RLc" id="HFA-KM-2qr"/>
+                                    <outlet property="viewPeripheralStateIndicator" destination="F7l-wC-1LL" id="3vA-JZ-PHx"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="LGX-Vw-h8s" id="uiG-sA-mdB"/>
+                            <outlet property="delegate" destination="LGX-Vw-h8s" id="24x-IZ-xgq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Devices" id="egv-5Q-fq3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="LQ3-b0-XkN">
+                            <connections>
+                                <action selector="btnRescanPush:" destination="LGX-Vw-h8s" id="yox-5M-XMF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="icK-qt-K0J">
+                            <connections>
+                                <action selector="btnLogoutPush:" destination="LGX-Vw-h8s" id="hEr-wb-AVl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="uRx-gg-NTV" kind="show" identifier="toNetworkConfigViewController" id="Xir-wo-l5n"/>
+                        <segue destination="brS-Me-h6W" kind="show" identifier="toCustomGattMqttViewController" id="9yI-dN-57F"/>
+                        <segue destination="iEC-5Y-Uuk" kind="show" identifier="toMqttProxyViewController" id="9xq-9U-7T2"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ffb-9g-9Zw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1159.4202898550725" y="172.76785714285714"/>
+        </scene>
+        <!--Mqtt Proxy View Controller-->
+        <scene sceneID="m5l-JD-wBJ">
+            <objects>
+                <viewController storyboardIdentifier="MqttProxyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iEC-5Y-Uuk" customClass="MqttProxyViewController" customModule="FreeRTOSDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jl1-On-wzt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CdQ-y1-9L1">
+                                <rect key="frame" x="349" y="32" width="51" height="31"/>
+                                <connections>
+                                    <action selector="swMqttProxyValueChanged:" destination="iEC-5Y-Uuk" eventType="valueChanged" id="alT-mu-UZ1"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable MQTT Proxy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArM-HF-2Op">
+                                <rect key="frame" x="16" y="38" width="317" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
+                                <color key="textColor" name="teal_color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ArM-HF-2Op" firstAttribute="centerY" secondItem="CdQ-y1-9L1" secondAttribute="centerY" id="0L7-po-3Ki"/>
+                            <constraint firstItem="CdQ-y1-9L1" firstAttribute="leading" secondItem="ArM-HF-2Op" secondAttribute="trailing" constant="16" id="KEo-BA-Qfm"/>
+                            <constraint firstItem="KOs-7w-tsn" firstAttribute="trailing" secondItem="CdQ-y1-9L1" secondAttribute="trailing" constant="16" id="bgh-LE-MNT"/>
+                            <constraint firstItem="CdQ-y1-9L1" firstAttribute="top" secondItem="KOs-7w-tsn" secondAttribute="top" constant="32" id="nWJ-b2-xaM"/>
+                            <constraint firstItem="ArM-HF-2Op" firstAttribute="leading" secondItem="KOs-7w-tsn" secondAttribute="leading" constant="16" id="sIz-XI-TbX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KOs-7w-tsn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ORb-8k-7Ke">
+                        <barButtonItem key="leftBarButtonItem" image="nav_back" id="T2A-La-H0P">
+                            <connections>
+                                <action selector="btnBackPush:" destination="iEC-5Y-Uuk" id="OPH-07-Xsr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="swMqttProxy" destination="CdQ-y1-9L1" id="rEZ-if-YEC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DL3-Ix-DWf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="22" y="-697"/>
+        </scene>
+        <!--Network Config View Controller-->
+        <scene sceneID="9Sc-oq-qTy">
+            <objects>
+                <tableViewController storyboardIdentifier="NetworkConfigViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uRx-gg-NTV" customClass="NetworkConfigViewController" customModule="FreeRTOSDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sRT-1S-X3L">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="5aE-Jx-jx8">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AuT-wE-L9W">
+                                    <rect key="frame" x="16" y="16" width="382" height="32"/>
+                                    <color key="backgroundColor" name="alabaster_color"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="32" id="Wdp-7P-KAP"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
+                                    <state key="normal" title="Editing Mode"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="btnEditPush:" destination="uRx-gg-NTV" eventType="touchUpInside" id="DNi-MS-K6Z"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="AuT-wE-L9W" firstAttribute="leading" secondItem="5aE-Jx-jx8" secondAttribute="leading" constant="16" id="4QJ-sX-IKs"/>
+                                <constraint firstItem="AuT-wE-L9W" firstAttribute="centerY" secondItem="5aE-Jx-jx8" secondAttribute="centerY" id="CpF-II-67h"/>
+                                <constraint firstAttribute="trailing" secondItem="AuT-wE-L9W" secondAttribute="trailing" constant="16" id="bra-q3-qgt"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NetworkCell" rowHeight="139" id="9mm-Yo-8S2" customClass="NetworkCell" customModule="FreeRTOSDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="414" height="139"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9mm-Yo-8S2" id="yzz-Hw-BXB">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="139"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ts-m1-ESM">
+                                            <rect key="frame" x="16" y="8" width="382" height="123"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yd1-GF-zap">
+                                                    <rect key="frame" x="8" y="11.999999999999998" width="366" height="19.333333333333329"/>
+                                                    <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
+                                                    <color key="textColor" name="teal_color"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZs-qO-Q0o">
+                                                    <rect key="frame" x="8" y="94" width="179" height="17"/>
+                                                    <fontDescription key="fontDescription" name="AmazonEmber-Regular" family="Amazon Ember" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab0-7h-l2d">
+                                                    <rect key="frame" x="8" y="69" width="179" height="17"/>
+                                                    <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="14"/>
+                                                    <color key="textColor" name="dark_teal_color"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJH-7W-UIS">
+                                                    <rect key="frame" x="195" y="94" width="179" height="17"/>
+                                                    <fontDescription key="fontDescription" name="AmazonEmber-Regular" family="Amazon Ember" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSSI:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRb-jp-FOl">
+                                                    <rect key="frame" x="195" y="69" width="179" height="17"/>
+                                                    <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="14"/>
+                                                    <color key="textColor" name="dark_teal_color"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="st5-w8-DCb">
+                                                    <rect key="frame" x="8" y="43.333333333333336" width="366" height="17.666666666666664"/>
+                                                    <fontDescription key="fontDescription" name="AmazonEmber-Regular" family="Amazon Ember" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" name="alabaster_color"/>
+                                            <constraints>
+                                                <constraint firstItem="yd1-GF-zap" firstAttribute="top" secondItem="5Ts-m1-ESM" secondAttribute="top" constant="12" id="1Xd-ec-6Jc"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZJH-7W-UIS" secondAttribute="trailing" constant="8" id="4tx-qP-sgw"/>
+                                                <constraint firstItem="yd1-GF-zap" firstAttribute="leading" secondItem="5Ts-m1-ESM" secondAttribute="leading" constant="8" id="5Jd-qK-7cL"/>
+                                                <constraint firstAttribute="trailing" secondItem="zRb-jp-FOl" secondAttribute="trailing" constant="8" id="8F1-dT-jR2"/>
+                                                <constraint firstItem="zRb-jp-FOl" firstAttribute="leading" secondItem="ab0-7h-l2d" secondAttribute="trailing" constant="8" id="9zS-8L-0z3"/>
+                                                <constraint firstItem="xZs-qO-Q0o" firstAttribute="top" secondItem="ab0-7h-l2d" secondAttribute="bottom" constant="8" id="Eu9-3Q-8ia"/>
+                                                <constraint firstAttribute="bottom" secondItem="xZs-qO-Q0o" secondAttribute="bottom" constant="12" id="FcE-nF-gCi"/>
+                                                <constraint firstItem="st5-w8-DCb" firstAttribute="leading" secondItem="5Ts-m1-ESM" secondAttribute="leading" constant="8" id="GfQ-D9-jhK"/>
+                                                <constraint firstAttribute="trailing" secondItem="yd1-GF-zap" secondAttribute="trailing" constant="8" id="HDL-eE-bHn"/>
+                                                <constraint firstItem="zRb-jp-FOl" firstAttribute="top" secondItem="st5-w8-DCb" secondAttribute="bottom" constant="8" id="KeC-lN-gmU"/>
+                                                <constraint firstItem="ZJH-7W-UIS" firstAttribute="top" secondItem="zRb-jp-FOl" secondAttribute="bottom" constant="8" id="UTB-81-Nhf"/>
+                                                <constraint firstAttribute="trailing" secondItem="st5-w8-DCb" secondAttribute="trailing" constant="8" id="Wfu-ra-gQ9"/>
+                                                <constraint firstItem="ZJH-7W-UIS" firstAttribute="width" secondItem="xZs-qO-Q0o" secondAttribute="width" id="WpK-iw-q2v"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZJH-7W-UIS" secondAttribute="bottom" constant="12" id="bSs-G8-Mju"/>
+                                                <constraint firstItem="st5-w8-DCb" firstAttribute="top" secondItem="yd1-GF-zap" secondAttribute="bottom" constant="12" id="kLP-P4-mQ2"/>
+                                                <constraint firstItem="ab0-7h-l2d" firstAttribute="leading" secondItem="5Ts-m1-ESM" secondAttribute="leading" constant="8" id="qV9-YJ-Zpf"/>
+                                                <constraint firstItem="xZs-qO-Q0o" firstAttribute="leading" secondItem="5Ts-m1-ESM" secondAttribute="leading" constant="8" id="wfy-BN-zr6"/>
+                                                <constraint firstItem="ZJH-7W-UIS" firstAttribute="leading" secondItem="xZs-qO-Q0o" secondAttribute="trailing" constant="8" id="yBJ-oR-jaQ"/>
+                                                <constraint firstItem="zRb-jp-FOl" firstAttribute="width" secondItem="ab0-7h-l2d" secondAttribute="width" id="zFE-WY-y2M"/>
+                                                <constraint firstItem="ab0-7h-l2d" firstAttribute="top" secondItem="st5-w8-DCb" secondAttribute="bottom" constant="8" id="zuU-RR-rPv"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5Ts-m1-ESM" firstAttribute="top" secondItem="yzz-Hw-BXB" secondAttribute="top" constant="8" id="cUI-f6-eQx"/>
+                                        <constraint firstAttribute="bottom" secondItem="5Ts-m1-ESM" secondAttribute="bottom" constant="8" id="enh-XU-js1"/>
+                                        <constraint firstItem="5Ts-m1-ESM" firstAttribute="leading" secondItem="yzz-Hw-BXB" secondAttribute="leading" constant="16" id="uya-QF-Wsa"/>
+                                        <constraint firstAttribute="trailing" secondItem="5Ts-m1-ESM" secondAttribute="trailing" constant="16" id="voq-xn-ydd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="labWifiBSSID" destination="st5-w8-DCb" id="2eh-TL-i08"/>
+                                    <outlet property="labWifiRSSI" destination="ZJH-7W-UIS" id="Vt5-LR-Y5g"/>
+                                    <outlet property="labWifiSSID" destination="yd1-GF-zap" id="8jG-O8-N3S"/>
+                                    <outlet property="labWifiSecurity" destination="xZs-qO-Q0o" id="pkn-1J-hS1"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionHeaderCell" rowHeight="112" id="5GZ-IO-qvf" customClass="SectionHeaderCell" customModule="FreeRTOSDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="231" width="414" height="112"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5GZ-IO-qvf" id="zMS-lB-JME">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="akD-Ey-dhx">
+                                            <rect key="frame" x="16" y="12" width="4" height="28"/>
+                                            <color key="backgroundColor" name="teal_color"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="4" id="2qq-iZ-g3u"/>
+                                                <constraint firstAttribute="height" constant="28" id="aGq-ai-i3R"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="PLACEHOLDER" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqX-Wb-qqW">
+                                            <rect key="frame" x="28" y="17.666666666666668" width="370" height="17.000000000000004"/>
+                                            <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="PLACEHOLDER" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvv-fP-sAt">
+                                            <rect key="frame" x="16" y="64.666666666666671" width="382" height="17"/>
+                                            <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="TqX-Wb-qqW" firstAttribute="centerY" secondItem="akD-Ey-dhx" secondAttribute="centerY" id="8hK-9d-Qkw"/>
+                                        <constraint firstAttribute="trailing" secondItem="Wvv-fP-sAt" secondAttribute="trailing" constant="16" id="C5w-D4-dIe"/>
+                                        <constraint firstAttribute="trailing" secondItem="TqX-Wb-qqW" secondAttribute="trailing" constant="16" id="H4F-If-OqM"/>
+                                        <constraint firstItem="Wvv-fP-sAt" firstAttribute="leading" secondItem="zMS-lB-JME" secondAttribute="leading" constant="16" id="Yac-IP-eX5"/>
+                                        <constraint firstItem="akD-Ey-dhx" firstAttribute="leading" secondItem="zMS-lB-JME" secondAttribute="leading" constant="16" id="hAt-6N-jLF"/>
+                                        <constraint firstItem="TqX-Wb-qqW" firstAttribute="leading" secondItem="akD-Ey-dhx" secondAttribute="trailing" constant="8" id="kgq-KR-HWF"/>
+                                        <constraint firstItem="Wvv-fP-sAt" firstAttribute="top" secondItem="TqX-Wb-qqW" secondAttribute="bottom" constant="30" id="nLo-kY-VDl"/>
+                                        <constraint firstItem="akD-Ey-dhx" firstAttribute="top" secondItem="zMS-lB-JME" secondAttribute="top" constant="12" id="wXd-ax-uE8"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="labSectionEmpty" destination="Wvv-fP-sAt" id="AOM-bg-sNv"/>
+                                    <outlet property="labSectionTitle" destination="TqX-Wb-qqW" id="qoJ-1W-XZS"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="uRx-gg-NTV" id="r4E-ce-IMN"/>
+                            <outlet property="delegate" destination="uRx-gg-NTV" id="YTU-XP-Mgo"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="fWe-8y-o3Z">
+                        <barButtonItem key="leftBarButtonItem" image="nav_back" id="0DF-3e-u3G">
+                            <connections>
+                                <action selector="btnBackPush:" destination="uRx-gg-NTV" id="mN9-uH-QbY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="nMo-Rc-B07">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ulf-Nq-eND" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="22" y="173"/>
+        </scene>
+        <!--Custom Gatt Mqtt View Controller-->
+        <scene sceneID="mzW-71-SVh">
+            <objects>
+                <viewController storyboardIdentifier="CustomGattMqttViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="brS-Me-h6W" customClass="CustomGattMqttViewController" customModule="FreeRTOSDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yv5-ov-vko">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8U-hg-BzJ">
+                                <rect key="frame" x="16" y="155.33333333333331" width="382" height="40"/>
+                                <color key="backgroundColor" name="alabaster_color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="0h3-vf-an8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
+                                <state key="normal" title="Stop Counter"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnEditPush:" destination="uRx-gg-NTV" eventType="touchUpInside" id="YI9-QQ-RaF"/>
+                                    <action selector="btnStopCounterPush:" destination="brS-Me-h6W" eventType="touchUpInside" id="aNd-Ha-z9V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2X-fs-jBS">
+                                <rect key="frame" x="16" y="227.33333333333331" width="382" height="40"/>
+                                <color key="backgroundColor" name="alabaster_color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="sPv-Uc-D5F"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
+                                <state key="normal" title="Reset Counter"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnEditPush:" destination="uRx-gg-NTV" eventType="touchUpInside" id="BnH-YA-uWG"/>
+                                    <action selector="btnResetCounterPush:" destination="brS-Me-h6W" eventType="touchUpInside" id="iCs-zj-hRd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3c-UF-xCw">
+                                <rect key="frame" x="16" y="83.333333333333343" width="382" height="40"/>
+                                <color key="backgroundColor" name="alabaster_color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="eol-hw-Gry"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
+                                <state key="normal" title="Start Counter"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnEditPush:" destination="uRx-gg-NTV" eventType="touchUpInside" id="1lL-Rl-Ct1"/>
+                                    <action selector="btnStartCounterPush:" destination="brS-Me-h6W" eventType="touchUpInside" id="vyU-z1-9tR"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom GATT Service" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oC-gj-ui3">
+                                <rect key="frame" x="16" y="32" width="382" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
+                                <color key="textColor" name="teal_color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mhn-aN-ZU9" firstAttribute="trailing" secondItem="W2X-fs-jBS" secondAttribute="trailing" constant="16" id="4vW-yB-z6k"/>
+                            <constraint firstItem="mhn-aN-ZU9" firstAttribute="trailing" secondItem="q8U-hg-BzJ" secondAttribute="trailing" constant="16" id="5RW-cl-pcH"/>
+                            <constraint firstItem="W2X-fs-jBS" firstAttribute="top" secondItem="q8U-hg-BzJ" secondAttribute="bottom" constant="32" id="H2b-gL-doI"/>
+                            <constraint firstItem="q8U-hg-BzJ" firstAttribute="leading" secondItem="mhn-aN-ZU9" secondAttribute="leading" constant="16" id="Mjq-FT-7Qt"/>
+                            <constraint firstItem="u3c-UF-xCw" firstAttribute="leading" secondItem="mhn-aN-ZU9" secondAttribute="leading" constant="16" id="Mpg-bY-bmO"/>
+                            <constraint firstItem="8oC-gj-ui3" firstAttribute="leading" secondItem="mhn-aN-ZU9" secondAttribute="leading" constant="16" id="N6j-gm-Ff6"/>
+                            <constraint firstItem="u3c-UF-xCw" firstAttribute="top" secondItem="8oC-gj-ui3" secondAttribute="bottom" constant="32" id="OcT-5Q-hbg"/>
+                            <constraint firstItem="mhn-aN-ZU9" firstAttribute="trailing" secondItem="u3c-UF-xCw" secondAttribute="trailing" constant="16" id="blT-wZ-fXe"/>
+                            <constraint firstItem="8oC-gj-ui3" firstAttribute="top" secondItem="mhn-aN-ZU9" secondAttribute="top" constant="32" id="cgB-NG-FQM"/>
+                            <constraint firstItem="mhn-aN-ZU9" firstAttribute="trailing" secondItem="8oC-gj-ui3" secondAttribute="trailing" constant="16" id="eze-fK-TB1"/>
+                            <constraint firstItem="W2X-fs-jBS" firstAttribute="leading" secondItem="mhn-aN-ZU9" secondAttribute="leading" constant="16" id="ido-tl-WrR"/>
+                            <constraint firstItem="q8U-hg-BzJ" firstAttribute="top" secondItem="u3c-UF-xCw" secondAttribute="bottom" constant="32" id="t1m-H9-R6A"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mhn-aN-ZU9"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rMd-fe-eIX">
+                        <barButtonItem key="leftBarButtonItem" image="nav_back" id="wom-mY-9VT">
+                            <connections>
+                                <action selector="btnBackPush:" destination="brS-Me-h6W" id="dHV-R9-eQ0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnResetCounter" destination="W2X-fs-jBS" id="ckq-AX-qpy"/>
+                        <outlet property="btnStartCounter" destination="u3c-UF-xCw" id="CaY-SI-TUX"/>
+                        <outlet property="btnStopCounter" destination="q8U-hg-BzJ" id="ebS-1J-yGU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XV8-h4-qok" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21.739130434782609" y="1061.3839285714284"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="nav_back" width="19" height="18"/>
+        <namedColor name="alabaster_color">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="dark_teal_color">
+            <color red="0.0" green="0.1803921568627451" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="teal_color">
+            <color red="0.0" green="0.63137254901960782" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+    <color key="tintColor" name="teal_color"/>
+</document>

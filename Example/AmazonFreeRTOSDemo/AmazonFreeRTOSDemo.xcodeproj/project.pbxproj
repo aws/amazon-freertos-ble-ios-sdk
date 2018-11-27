@@ -1,0 +1,607 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		044E27473A8A28E6638A64467FC9DED5 /* NetworkConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8A2D7355B9B9B02A7CC61697114432 /* NetworkConfigViewController.swift */; };
+		08AD597ECB3906C7DACA6664CF96BAC8 /* CustomGattMqttViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A84E3345437F3698E5C8080F72B29E0 /* CustomGattMqttViewController.swift */; };
+		0FD30A8D8A6E3230288AAEC7B1D12332 /* NetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C204B5F1E4D79CA85AD9F1846EC8A /* NetworkCell.swift */; };
+		4C53E551A6CA77BE597EE6A6293D96BC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 98FE53C6F659FBE52AD3A99FDCE48AA6 /* Settings.bundle */; };
+		514A7CF2E02A4867756301D78F5C35FD /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2075A45238BA0934245D4E9BA7E0DDDA /* DevicesViewController.swift */; };
+		52D0082E01EA0AE7EFECF1134309AB75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B16B64BA7B0963E9141BCF5D643D8D84 /* LaunchScreen.storyboard */; };
+		5A07FE1E548F4FF60CAD01186FFD39FA /* UITableView+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49558FC3CE1728EDD7A627EC904498 /* UITableView+Amazon.swift */; };
+		5D7ED678C21C9CEEA426EA7750D428C3 /* AmazonEmber_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32AE05D3EC02B0F6F76402C7C51D568C /* AmazonEmber_Rg.ttf */; };
+		63721D23C1E1B41E8C0BD7509DEAA1A0 /* UIViewController+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16402AC7CF431816CBB9FDF8ED03639E /* UIViewController+Amazon.swift */; };
+		6978F15895FD1108F37E88017102C965 /* SectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7049DD2CD68ACDAFB4F3991A1E922D1 /* SectionHeaderCell.swift */; };
+		6A537528276AD68635BFD6EC0BDE4758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F7A63249FA526071688A928A61A258A /* Main.storyboard */; };
+		6F4E09A7F9C399C7FDCB3BE3E2C12B9A /* MqttProxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655FF862A27AC2FC28E2E8F2CCB17613 /* MqttProxyViewController.swift */; };
+		80BFD5972AFC778CCCCF85AED055F9E6 /* Pods_AmazonFreeRTOSDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B26FD445F1AB1343C222E23DAE649D1 /* Pods_AmazonFreeRTOSDemo.framework */; };
+		9A1F6B170DA1990C8F76A204038D74FB /* PeripheralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D512B68B6665868C7B5251A332A63 /* PeripheralCell.swift */; };
+		A4D3FC9DEAD3BEE4D59DCB63269A807D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E5F83A1105853B3CC07BEFC4C450C3 /* AppDelegate.swift */; };
+		C41B2BAC63346EC6ADCF0F1020604CF2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1153B8E39C5FACD77845D89841D7A54A /* Colors.xcassets */; };
+		C4354DB53C7207D8D3E95DA7B0E64985 /* AmazonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB0DC2E5B235A2F20A025E75F5E16E /* AmazonConstants.swift */; };
+		D15B38FC1D259203E8BB8B0CA1D8AF3B /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 11A005061BF8D0A75B570470E96D89AA /* awsconfiguration.json */; };
+		EB3FFA23062C5A72F748BAB356284A7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81F950CC86CEB778FAFE75CA417D3B1A /* Assets.xcassets */; };
+		EF847AB78F26017A4C74F555C7EDF10F /* AmazonEmber_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 88FC46E66816F00AFA05E715CEAD8C9F /* AmazonEmber_Bd.ttf */; };
+		F3F2DAEBF6BCAA7F0F4539D2F4F0908F /* AmazonEmber_Md.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB5CD3714B0E37FFC2C995DE065B7CA8 /* AmazonEmber_Md.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1153B8E39C5FACD77845D89841D7A54A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		11A005061BF8D0A75B570470E96D89AA /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		16402AC7CF431816CBB9FDF8ED03639E /* UIViewController+Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Amazon.swift"; sourceTree = "<group>"; };
+		1ECEFBA9B880D2BDAC4B02920300581C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2075A45238BA0934245D4E9BA7E0DDDA /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
+		2F3C204B5F1E4D79CA85AD9F1846EC8A /* NetworkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCell.swift; sourceTree = "<group>"; };
+		32AE05D3EC02B0F6F76402C7C51D568C /* AmazonEmber_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AmazonEmber_Rg.ttf; sourceTree = "<group>"; };
+		3B26FD445F1AB1343C222E23DAE649D1 /* Pods_AmazonFreeRTOSDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmazonFreeRTOSDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44DD59836EA6E0D324D36F086F0C8A8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5329FFBB03FEC176C9EF64986D0B5B9B /* Pods-AmazonFreeRTOSDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazonFreeRTOSDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AmazonFreeRTOSDemo/Pods-AmazonFreeRTOSDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		5A77ED16DABA7E97CC8CC860E8832CDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A84E3345437F3698E5C8080F72B29E0 /* CustomGattMqttViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGattMqttViewController.swift; sourceTree = "<group>"; };
+		5D4A83BDF13A8E46CC5B39254AF975C9 /* AmazonFreeRTOSDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmazonFreeRTOSDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		655FF862A27AC2FC28E2E8F2CCB17613 /* MqttProxyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttProxyViewController.swift; sourceTree = "<group>"; };
+		6BEB0DC2E5B235A2F20A025E75F5E16E /* AmazonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonConstants.swift; sourceTree = "<group>"; };
+		79E5F83A1105853B3CC07BEFC4C450C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		81F950CC86CEB778FAFE75CA417D3B1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		88FC46E66816F00AFA05E715CEAD8C9F /* AmazonEmber_Bd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AmazonEmber_Bd.ttf; sourceTree = "<group>"; };
+		98FE53C6F659FBE52AD3A99FDCE48AA6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		AE8A2D7355B9B9B02A7CC61697114432 /* NetworkConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigViewController.swift; sourceTree = "<group>"; };
+		BB49558FC3CE1728EDD7A627EC904498 /* UITableView+Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Amazon.swift"; sourceTree = "<group>"; };
+		C23F7DD2F9C4E040B67BE0D3360C6C56 /* Pods-AmazonFreeRTOSDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazonFreeRTOSDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AmazonFreeRTOSDemo/Pods-AmazonFreeRTOSDemo.release.xcconfig"; sourceTree = "<group>"; };
+		C7049DD2CD68ACDAFB4F3991A1E922D1 /* SectionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderCell.swift; sourceTree = "<group>"; };
+		CA4D512B68B6665868C7B5251A332A63 /* PeripheralCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralCell.swift; sourceTree = "<group>"; };
+		FB5CD3714B0E37FFC2C995DE065B7CA8 /* AmazonEmber_Md.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AmazonEmber_Md.ttf; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4EDFC3E1CB8F589110D07E51188B6805 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80BFD5972AFC778CCCCF85AED055F9E6 /* Pods_AmazonFreeRTOSDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D7A780F5588FB5F90F1CC628EBED8DB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B16B64BA7B0963E9141BCF5D643D8D84 /* LaunchScreen.storyboard */,
+				8F7A63249FA526071688A928A61A258A /* Main.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		4738F80C4B0BADBEF3933F41B8FD7C81 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				88FC46E66816F00AFA05E715CEAD8C9F /* AmazonEmber_Bd.ttf */,
+				FB5CD3714B0E37FFC2C995DE065B7CA8 /* AmazonEmber_Md.ttf */,
+				32AE05D3EC02B0F6F76402C7C51D568C /* AmazonEmber_Rg.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		5106C5173004628D3830009E74A71CED /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				5A84E3345437F3698E5C8080F72B29E0 /* CustomGattMqttViewController.swift */,
+				655FF862A27AC2FC28E2E8F2CCB17613 /* MqttProxyViewController.swift */,
+				AE8A2D7355B9B9B02A7CC61697114432 /* NetworkConfigViewController.swift */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		64684246F869BFB0F65103F6836F5DF0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BB49558FC3CE1728EDD7A627EC904498 /* UITableView+Amazon.swift */,
+				16402AC7CF431816CBB9FDF8ED03639E /* UIViewController+Amazon.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7EF89D6BCE2A2832F53598077F0EAA71 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D4A83BDF13A8E46CC5B39254AF975C9 /* AmazonFreeRTOSDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		91092E94009E37A6D5DB4C89FADA0050 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B26FD445F1AB1343C222E23DAE649D1 /* Pods_AmazonFreeRTOSDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB798B6D4C2D432639D9CBD1056D2736 /* AmazonFreeRTOSDemo */ = {
+			isa = PBXGroup;
+			children = (
+				CC0DFE9C52B8C57BA8F0F963AD012F5E /* Amazon */,
+				D5F3A44AAB7984218F2AB18FBA126059 /* Cells */,
+				5106C5173004628D3830009E74A71CED /* Examples */,
+				64684246F869BFB0F65103F6836F5DF0 /* Extensions */,
+				C9F515BE36B19C99C31BCF3D68827ED5 /* Support */,
+				3D7A780F5588FB5F90F1CC628EBED8DB /* UI */,
+				79E5F83A1105853B3CC07BEFC4C450C3 /* AppDelegate.swift */,
+				2075A45238BA0934245D4E9BA7E0DDDA /* DevicesViewController.swift */,
+			);
+			path = AmazonFreeRTOSDemo;
+			sourceTree = "<group>";
+		};
+		C4606354EC9DF304D4F192037AC5BED8 = {
+			isa = PBXGroup;
+			children = (
+				BB798B6D4C2D432639D9CBD1056D2736 /* AmazonFreeRTOSDemo */,
+				91092E94009E37A6D5DB4C89FADA0050 /* Frameworks */,
+				EF0C8B2DE7FD2AE322C95D4583A15DCE /* Pods */,
+				7EF89D6BCE2A2832F53598077F0EAA71 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C9F515BE36B19C99C31BCF3D68827ED5 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				4738F80C4B0BADBEF3933F41B8FD7C81 /* Fonts */,
+				81F950CC86CEB778FAFE75CA417D3B1A /* Assets.xcassets */,
+				1153B8E39C5FACD77845D89841D7A54A /* Colors.xcassets */,
+				5A77ED16DABA7E97CC8CC860E8832CDE /* Info.plist */,
+				98FE53C6F659FBE52AD3A99FDCE48AA6 /* Settings.bundle */,
+				11A005061BF8D0A75B570470E96D89AA /* awsconfiguration.json */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		CC0DFE9C52B8C57BA8F0F963AD012F5E /* Amazon */ = {
+			isa = PBXGroup;
+			children = (
+				6BEB0DC2E5B235A2F20A025E75F5E16E /* AmazonConstants.swift */,
+			);
+			path = Amazon;
+			sourceTree = "<group>";
+		};
+		D5F3A44AAB7984218F2AB18FBA126059 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2F3C204B5F1E4D79CA85AD9F1846EC8A /* NetworkCell.swift */,
+				CA4D512B68B6665868C7B5251A332A63 /* PeripheralCell.swift */,
+				C7049DD2CD68ACDAFB4F3991A1E922D1 /* SectionHeaderCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EF0C8B2DE7FD2AE322C95D4583A15DCE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5329FFBB03FEC176C9EF64986D0B5B9B /* Pods-AmazonFreeRTOSDemo.debug.xcconfig */,
+				C23F7DD2F9C4E040B67BE0D3360C6C56 /* Pods-AmazonFreeRTOSDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5E36D6A570E3CFC166C94490FD51273 /* AmazonFreeRTOSDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC25152A1300A68875043089E20C0C5D /* Build configuration list for PBXNativeTarget "AmazonFreeRTOSDemo" */;
+			buildPhases = (
+				4760D41607C0392C76C152F1E5597185 /* [CP] Check Pods Manifest.lock */,
+				5008374BB752F972576E3E262A4CEB7E /* [AMAZON] License Plist */,
+				E4F4BA345ED82C8B9AF2A787230A8FA0 /* [AMAZON] Swift Format */,
+				AEB6C8F30DA7EE9C7712713F330CFADC /* [AMAZON] Swift Lint */,
+				44FE3162D60B4B0EC288ED861AF55086 /* Sources */,
+				4EDFC3E1CB8F589110D07E51188B6805 /* Frameworks */,
+				520416C06234CFC5DA4612A94524D118 /* Resources */,
+				C4E4F190F5C6450CEB7C0077EE5E69DC /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AmazonFreeRTOSDemo;
+			productName = FreeROTSDemo;
+			productReference = 5D4A83BDF13A8E46CC5B39254AF975C9 /* AmazonFreeRTOSDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A7E6DEB667053E49288356B5F65C7ED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Amazon Web Services, Inc.";
+				TargetAttributes = {
+					A5E36D6A570E3CFC166C94490FD51273 = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = C0364AFEABFE93CE5793AC4A9F031BDD /* Build configuration list for PBXProject "AmazonFreeRTOSDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C4606354EC9DF304D4F192037AC5BED8;
+			productRefGroup = 7EF89D6BCE2A2832F53598077F0EAA71 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5E36D6A570E3CFC166C94490FD51273 /* AmazonFreeRTOSDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		520416C06234CFC5DA4612A94524D118 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF847AB78F26017A4C74F555C7EDF10F /* AmazonEmber_Bd.ttf in Resources */,
+				F3F2DAEBF6BCAA7F0F4539D2F4F0908F /* AmazonEmber_Md.ttf in Resources */,
+				5D7ED678C21C9CEEA426EA7750D428C3 /* AmazonEmber_Rg.ttf in Resources */,
+				EB3FFA23062C5A72F748BAB356284A7B /* Assets.xcassets in Resources */,
+				C41B2BAC63346EC6ADCF0F1020604CF2 /* Colors.xcassets in Resources */,
+				52D0082E01EA0AE7EFECF1134309AB75 /* LaunchScreen.storyboard in Resources */,
+				6A537528276AD68635BFD6EC0BDE4758 /* Main.storyboard in Resources */,
+				4C53E551A6CA77BE597EE6A6293D96BC /* Settings.bundle in Resources */,
+				D15B38FC1D259203E8BB8B0CA1D8AF3B /* awsconfiguration.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4760D41607C0392C76C152F1E5597185 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AmazonFreeRTOSDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5008374BB752F972576E3E262A4CEB7E /* [AMAZON] License Plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[AMAZON] License Plist";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Scripts/license-plist.sh\"\n";
+		};
+		AEB6C8F30DA7EE9C7712713F330CFADC /* [AMAZON] Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[AMAZON] Swift Lint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Scripts/swift-lint.sh\"\n";
+		};
+		C4E4F190F5C6450CEB7C0077EE5E69DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AmazonFreeRTOSDemo/Pods-AmazonFreeRTOSDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSAuthCore/AWSAuthCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSAuthUI/AWSAuthUI.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSIoT/AWSIoT.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSMobileClient/AWSMobileClient.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSUserPoolsSignIn/AWSUserPoolsSignIn.framework",
+				"${BUILT_PRODUCTS_DIR}/Alertift/Alertift.framework",
+				"${BUILT_PRODUCTS_DIR}/AmazonFreeRTOS/AmazonFreeRTOS.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSAuthCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSAuthUI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProvider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProviderASF.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSIoT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSMobileClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSUserPoolsSignIn.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alertift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AmazonFreeRTOS.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AmazonFreeRTOSDemo/Pods-AmazonFreeRTOSDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4F4BA345ED82C8B9AF2A787230A8FA0 /* [AMAZON] Swift Format */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[AMAZON] Swift Format";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Scripts/swift-format.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		44FE3162D60B4B0EC288ED861AF55086 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4354DB53C7207D8D3E95DA7B0E64985 /* AmazonConstants.swift in Sources */,
+				A4D3FC9DEAD3BEE4D59DCB63269A807D /* AppDelegate.swift in Sources */,
+				08AD597ECB3906C7DACA6664CF96BAC8 /* CustomGattMqttViewController.swift in Sources */,
+				514A7CF2E02A4867756301D78F5C35FD /* DevicesViewController.swift in Sources */,
+				6F4E09A7F9C399C7FDCB3BE3E2C12B9A /* MqttProxyViewController.swift in Sources */,
+				0FD30A8D8A6E3230288AAEC7B1D12332 /* NetworkCell.swift in Sources */,
+				044E27473A8A28E6638A64467FC9DED5 /* NetworkConfigViewController.swift in Sources */,
+				9A1F6B170DA1990C8F76A204038D74FB /* PeripheralCell.swift in Sources */,
+				6978F15895FD1108F37E88017102C965 /* SectionHeaderCell.swift in Sources */,
+				5A07FE1E548F4FF60CAD01186FFD39FA /* UITableView+Amazon.swift in Sources */,
+				63721D23C1E1B41E8C0BD7509DEAA1A0 /* UIViewController+Amazon.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8F7A63249FA526071688A928A61A258A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1ECEFBA9B880D2BDAC4B02920300581C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B16B64BA7B0963E9141BCF5D643D8D84 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				44DD59836EA6E0D324D36F086F0C8A8B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0DA1F1DD8316DA493779F9987ADF4C9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5329FFBB03FEC176C9EF64986D0B5B9B /* Pods-AmazonFreeRTOSDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94KV3E626L;
+				INFOPLIST_FILE = "$(SRCROOT)/AmazonFreeRTOSDemo/Support/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.AmazonFreeRTOSDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1ACB15A365D7E6CC6FCB7D2E6D26F727 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LLVM_LTO = YES_THIN;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F4184BEDBD23F839678084CF0195AF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C23F7DD2F9C4E040B67BE0D3360C6C56 /* Pods-AmazonFreeRTOSDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94KV3E626L;
+				INFOPLIST_FILE = "$(SRCROOT)/AmazonFreeRTOSDemo/Support/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.AmazonFreeRTOSDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3A4050D0C286DD56CDDD31EF3647E74C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LLVM_LTO = YES_THIN;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C0364AFEABFE93CE5793AC4A9F031BDD /* Build configuration list for PBXProject "AmazonFreeRTOSDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A4050D0C286DD56CDDD31EF3647E74C /* Debug */,
+				1ACB15A365D7E6CC6FCB7D2E6D26F727 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC25152A1300A68875043089E20C0C5D /* Build configuration list for PBXNativeTarget "AmazonFreeRTOSDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0DA1F1DD8316DA493779F9987ADF4C9A /* Debug */,
+				1F4184BEDBD23F839678084CF0195AF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A7E6DEB667053E49288356B5F65C7ED /* Project object */;
+}

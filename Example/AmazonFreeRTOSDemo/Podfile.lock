@@ -1,0 +1,72 @@
+PODS:
+  - Alertift (4.0)
+  - AmazonFreeRTOS (0.9.0):
+    - AWSIoT (= 2.6.35)
+    - AWSMobileClient (= 2.6.35)
+  - AWSAuthCore (2.6.35):
+    - AWSCore (= 2.6.35)
+  - AWSAuthUI (2.6.35):
+    - AWSAuthCore (= 2.6.35)
+    - AWSCore (= 2.6.35)
+  - AWSCognitoIdentityProvider (2.6.35):
+    - AWSCognitoIdentityProviderASF (= 1.0.1)
+    - AWSCore (= 2.6.35)
+  - AWSCognitoIdentityProviderASF (1.0.1)
+  - AWSCore (2.6.35)
+  - AWSIoT (2.6.35):
+    - AWSCore (= 2.6.35)
+  - AWSMobileClient (2.6.35):
+    - AWSAuthCore (= 2.6.35)
+  - AWSUserPoolsSignIn (2.6.35):
+    - AWSAuthCore (= 2.6.35)
+    - AWSCognitoIdentityProvider (= 2.6.35)
+  - LicensePlist (1.9.1)
+  - SwiftFormat/CLI (0.35.8)
+  - SwiftLint (0.28.2)
+
+DEPENDENCIES:
+  - Alertift
+  - AmazonFreeRTOS (from `../../`)
+  - AWSAuthUI (= 2.6.35)
+  - AWSUserPoolsSignIn (= 2.6.35)
+  - LicensePlist
+  - SwiftFormat/CLI
+  - SwiftLint
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alertift
+    - AWSAuthCore
+    - AWSAuthUI
+    - AWSCognitoIdentityProvider
+    - AWSCognitoIdentityProviderASF
+    - AWSCore
+    - AWSIoT
+    - AWSMobileClient
+    - AWSUserPoolsSignIn
+    - LicensePlist
+    - SwiftFormat
+    - SwiftLint
+
+EXTERNAL SOURCES:
+  AmazonFreeRTOS:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  Alertift: 393ace2617e96e95b4e85c88e80a85bf2d85c698
+  AmazonFreeRTOS: 5081c2f3eef729565f73f4f852b35d0d4814ecf5
+  AWSAuthCore: 386e045a341acebf2409425467e907ae1a45ed63
+  AWSAuthUI: 55b403e6f2ad010730c4dfa56b0eb96b041fce4c
+  AWSCognitoIdentityProvider: 0a041bd229a105d73f3a4d7eb90f696f1b5bd422
+  AWSCognitoIdentityProviderASF: f94f1a502e72ef3d0a1de93e10bf7a79c8698118
+  AWSCore: 2dab62ef2e5ca5d8c72c6cbdb3a6ea1532c27c2b
+  AWSIoT: c5deed4e2488e55d00554eca75e52f5d5ececd7b
+  AWSMobileClient: f89a36e0d95fc354a9d3b50d347371788c542449
+  AWSUserPoolsSignIn: cf3293cf2c423922e628082a9b09e77473afc8b0
+  LicensePlist: c39d3fd5cd100f52e97463d44426f2608a42f782
+  SwiftFormat: 5af0a2c27175163c317c88b00ae7b6f971a7822a
+  SwiftLint: f1629ae733b64e9cad20052de01d1debd5b640e7
+
+PODFILE CHECKSUM: 9a7d86845d4b0484f5fbcf49c3723fbcd2f33ebd
+
+COCOAPODS: 1.5.3
