@@ -26,7 +26,7 @@ PODS:
 
 DEPENDENCIES:
   - Alertift
-  - AmazonFreeRTOS (from `../../`)
+  - AmazonFreeRTOS (from `https://github.com/aws/amazon-freertos-ble-ios-sdk.git`)
   - AWSAuthUI (= 2.6.35)
   - AWSUserPoolsSignIn (= 2.6.35)
   - LicensePlist
@@ -50,11 +50,16 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   AmazonFreeRTOS:
-    :path: "../../"
+    :git: https://github.com/aws/amazon-freertos-ble-ios-sdk.git
+
+CHECKOUT OPTIONS:
+  AmazonFreeRTOS:
+    :commit: e805419cc056ac82867367f8e6391e91d84e9881
+    :git: https://github.com/aws/amazon-freertos-ble-ios-sdk.git
 
 SPEC CHECKSUMS:
   Alertift: 393ace2617e96e95b4e85c88e80a85bf2d85c698
-  AmazonFreeRTOS: 5081c2f3eef729565f73f4f852b35d0d4814ecf5
+  AmazonFreeRTOS: d252231013e17bcb01c65a4cdcf60370e0e06aae
   AWSAuthCore: 386e045a341acebf2409425467e907ae1a45ed63
   AWSAuthUI: 55b403e6f2ad010730c4dfa56b0eb96b041fce4c
   AWSCognitoIdentityProvider: 0a041bd229a105d73f3a4d7eb90f696f1b5bd422
@@ -67,6 +72,6 @@ SPEC CHECKSUMS:
   SwiftFormat: 5af0a2c27175163c317c88b00ae7b6f971a7822a
   SwiftLint: f1629ae733b64e9cad20052de01d1debd5b640e7
 
-PODFILE CHECKSUM: 9a7d86845d4b0484f5fbcf49c3723fbcd2f33ebd
+PODFILE CHECKSUM: e5aad1aeb96068595a623c8f51617c83db752fa3
 
 COCOAPODS: 1.5.3
