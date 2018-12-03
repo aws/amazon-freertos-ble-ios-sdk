@@ -43,7 +43,7 @@ disconnectPeripheral()
 The device information service provides basic device-related information. Its functions include:
 
 ```
-gatAfrVersionOfPeripheral(_ peripheral: CBPeripheral)
+getAfrVersionOfPeripheral(_ peripheral: CBPeripheral)
 getBrokerEndpointOfPeripheral(_ peripheral: CBPeripheral)
 getMtuOfPeripheral(_ peripheral: CBPeripheral)
 ```
