@@ -115,12 +115,12 @@ extension AmazonFreeRTOSManager {
      - Parameter peripheral: the FreeRTOS peripheral.
      - Precondition: `central` is ready and `peripheral` must be connected.
      */
-    public func gatAfrVersionOfPeripheral(_ peripheral: CBPeripheral) {
+    public func getAfrVersionOfPeripheral(_ peripheral: CBPeripheral) {
 
         debugPrint("↓ get afrVersion")
 
         guard let characteristic = peripheral.serviceOf(uuid: AmazonFreeRTOSGattService.DeviceInfo)?.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.AfrVersion) else {
-            debugPrint("Error (gatAfrVersionOfPeripheral): DeviceInfo service or AfrVersion characteristic doesn't exist")
+            debugPrint("Error (getAfrVersionOfPeripheral): DeviceInfo service or AfrVersion characteristic doesn't exist")
             return
         }
         peripheral.readValue(for: characteristic)
