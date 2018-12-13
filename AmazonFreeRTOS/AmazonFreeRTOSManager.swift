@@ -115,12 +115,12 @@ extension AmazonFreeRTOSManager {
      - Parameter peripheral: the FreeRTOS peripheral.
      - Precondition: `central` is ready and `peripheral` must be connected.
      */
-    public func gatAfrVersionOfPeripheral(_ peripheral: CBPeripheral) {
+    public func getAfrVersionOfPeripheral(_ peripheral: CBPeripheral) {
 
         debugPrint("↓ get afrVersion")
 
         guard let characteristic = peripheral.serviceOf(uuid: AmazonFreeRTOSGattService.DeviceInfo)?.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.AfrVersion) else {
-            debugPrint("Error (gatAfrVersionOfPeripheral): DeviceInfo service or AfrVersion characteristic doesn't exist")
+            debugPrint("Error (getAfrVersionOfPeripheral): DeviceInfo service or AfrVersion characteristic doesn't exist")
             return
         }
         peripheral.readValue(for: characteristic)
@@ -338,6 +338,9 @@ extension AmazonFreeRTOSManager: CBCentralManagerDelegate {
         }
         networks.removeValue(forKey: peripheral.identifier.uuidString)
         AWSIoTDataManager(forKey: peripheral.identifier.uuidString).disconnect()
+        rxLotDataQueues = rxLotDataQueues.filter { key, value -> Bool in
+            !key.contains(peripheral.identifier.uuidString)
+        }
         NotificationCenter.default.post(name: .afrCentralManagerDidDisconnectPeripheral, object: nil, userInfo: ["peripheral": peripheral.identifier])
     }
 
@@ -810,7 +813,10 @@ extension AmazonFreeRTOSManager {
             debugPrint("↑ \(disconnect)")
 
             AWSIoTDataManager(forKey: peripheral.identifier.uuidString).disconnect()
-
+            rxLotDataQueues = rxLotDataQueues.filter { key, value -> Bool in
+                !key.contains(peripheral.identifier.uuidString)
+            }
+            
         default:
             debugPrint("Error (didUpdateValueForTXMessage): Unsupported Mqtt Proxy Message Type")
         }
