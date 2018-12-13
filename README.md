@@ -1,34 +1,41 @@
 # iOS SDK for Amazon FreeRTOS Bluetooth Devices
 
-iOS SDK for Amazon FreeRTOS Bluetooth Devices.
-
 ## Introduction
 
-Use this SDK to communicate with Amazon FreeRTOS Bluetooth Devices. The SDK has two main features:
+Using the iOS SDK for Amazon FreeRTOS Bluetooth Devices, you can create mobile applications that do the following:
 
-**MQTT Proxy**
+- Scan for and connect to nearby BLE devices running Amazon FreeRTOS
 
-The MQTT Proxy enables an MQTT client, such as a device with Amazon FreeRTOS, to communicate with the AWS MQTT broker through a gateway device, such as a mobile phone.
+- Provision Wi-Fi networks for a BLE device running Amazon FreeRTOS
 
-**Network Config**
+- Act as a proxy for transmitting MQTT messages between a device running Amazon FreeRTOS and the AWS IoT cloud
 
-The Network Config enables you to provision Wi-Fi networks for a device.
+## Setting Up the SDK
 
-## Setting up
+**To install the iOS SDK for Amazon FreeRTOS Bluetooth Devices**
 
-The iOS SDK for Amazon FreeRTOS Bluetooth Devices is available through CocoaPods. To set up CocoaPods, follow the instructions for the AWS Mobile SDK for iOS at https://github.com/aws/aws-sdk-ios#cocoapods.
+1. Install CocoaPods:
+```
+$ gem install cocoapods
+$ pod setup
+```
 
-To install the SDK, use the following:
+**Note** 
+
+You might need to use sudo to install CocoaPods.
+
+2. Install the SDK with CocoaPods:
 ```
 pod 'AmazonFreeRTOS', :git => 'https://github.com/aws/amazon-freertos-ble-ios-sdk.git'
 ```
-## SDK Structure
 
-All main functions are in **AmazonFreeRTOSManager.swift**. These functions include:
+## Contents
+
+All main functions are defined in [AmazonFreeRTOSManager.swift](AmazonFreeRTOS/AmazonFreeRTOSManager.swift). These functions include:
 
 ### BLE Helper Functions
 
-The SDK includes some functions that help you perform BLE operations with Amazon FreeRTOS devices.
+The SDK includes some functions that help you perform BLE operations with Amazon FreeRTOS devices:
 
 ```
 startScanForPeripherals()
@@ -68,9 +75,9 @@ editNetworkOfPeripheral(_ peripheral: CBPeripheral, editNetworkReq: EditNetworkR
 deleteNetworkFromPeripheral(_ peripheral: CBPeripheral, deleteNetworkReq: DeleteNetworkReq)
 ```
 
-## Demo App
+## Demo Application
 
-Example/AmazonFreeRTOSDemo
+The SDK includes a demo application that demonstrates some of the main features of the SDK. You can find the demo in [Example/AmazonFreeRTOSDemo](Example/AmazonFreeRTOSDemo).
 
 ## License
 
