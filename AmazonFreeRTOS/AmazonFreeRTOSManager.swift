@@ -338,6 +338,9 @@ extension AmazonFreeRTOSManager: CBCentralManagerDelegate {
         }
         networks.removeValue(forKey: peripheral.identifier.uuidString)
         AWSIoTDataManager(forKey: peripheral.identifier.uuidString).disconnect()
+        rxLotDataQueues = rxLotDataQueues.filter { key, value -> Bool in
+            !key.contains(peripheral.identifier.uuidString)
+        }
         NotificationCenter.default.post(name: .afrCentralManagerDidDisconnectPeripheral, object: nil, userInfo: ["peripheral": peripheral.identifier])
     }
 
@@ -810,7 +813,10 @@ extension AmazonFreeRTOSManager {
             debugPrint("↑ \(disconnect)")
 
             AWSIoTDataManager(forKey: peripheral.identifier.uuidString).disconnect()
-
+            rxLotDataQueues = rxLotDataQueues.filter { key, value -> Bool in
+                !key.contains(peripheral.identifier.uuidString)
+            }
+            
         default:
             debugPrint("Error (didUpdateValueForTXMessage): Unsupported Mqtt Proxy Message Type")
         }
