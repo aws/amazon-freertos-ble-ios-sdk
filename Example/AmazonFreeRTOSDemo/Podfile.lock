@@ -1,6 +1,6 @@
 PODS:
   - Alertift (4.0)
-  - AmazonFreeRTOS (0.9.0):
+  - AmazonFreeRTOS (0.9.1):
     - AWSIoT (= 2.6.35)
     - AWSMobileClient (= 2.6.35)
   - AWSAuthCore (2.6.35):
@@ -21,12 +21,12 @@ PODS:
     - AWSAuthCore (= 2.6.35)
     - AWSCognitoIdentityProvider (= 2.6.35)
   - LicensePlist (2.0.0)
-  - SwiftFormat/CLI (0.35.9)
-  - SwiftLint (0.29.1)
+  - SwiftFormat/CLI (0.37.2)
+  - SwiftLint (0.29.3)
 
 DEPENDENCIES:
   - Alertift
-  - AmazonFreeRTOS (from `https://github.com/aws/amazon-freertos-ble-ios-sdk.git`)
+  - AmazonFreeRTOS (from `../../`)
   - AWSAuthUI (= 2.6.35)
   - AWSUserPoolsSignIn (= 2.6.35)
   - LicensePlist
@@ -50,16 +50,11 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   AmazonFreeRTOS:
-    :git: https://github.com/aws/amazon-freertos-ble-ios-sdk.git
-
-CHECKOUT OPTIONS:
-  AmazonFreeRTOS:
-    :commit: d892695e55e4e263325f73f2f2c9dfd8a3dfc281
-    :git: https://github.com/aws/amazon-freertos-ble-ios-sdk.git
+    :path: "../../"
 
 SPEC CHECKSUMS:
   Alertift: 393ace2617e96e95b4e85c88e80a85bf2d85c698
-  AmazonFreeRTOS: d252231013e17bcb01c65a4cdcf60370e0e06aae
+  AmazonFreeRTOS: 8c8678c363ef429ad5675273a6d1b13e848edde9
   AWSAuthCore: 386e045a341acebf2409425467e907ae1a45ed63
   AWSAuthUI: 55b403e6f2ad010730c4dfa56b0eb96b041fce4c
   AWSCognitoIdentityProvider: 0a041bd229a105d73f3a4d7eb90f696f1b5bd422
@@ -69,9 +64,9 @@ SPEC CHECKSUMS:
   AWSMobileClient: f89a36e0d95fc354a9d3b50d347371788c542449
   AWSUserPoolsSignIn: cf3293cf2c423922e628082a9b09e77473afc8b0
   LicensePlist: 558c95c739171b96896d38fa5502f3721aada13c
-  SwiftFormat: f1cf26ab5ce1f59aeaee018edc7e6d88e05bfb39
-  SwiftLint: 6772320e40b52049053a518c17db9b0634a0b45a
+  SwiftFormat: abbfb26dde4c6d683923cde153c88e10da9d7881
+  SwiftLint: bfa7ca7b4d170cfaf0d236ca3ffd969e88a2f002
 
-PODFILE CHECKSUM: e5aad1aeb96068595a623c8f51617c83db752fa3
+PODFILE CHECKSUM: 9a7d86845d4b0484f5fbcf49c3723fbcd2f33ebd
 
 COCOAPODS: 1.5.3

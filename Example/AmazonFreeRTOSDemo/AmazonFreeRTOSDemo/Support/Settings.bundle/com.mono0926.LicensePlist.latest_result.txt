@@ -7,7 +7,7 @@ version: 4.0
 name: AmazonFreeRTOS, nameSpecified: 
 body: 
                    …
-version: 0.9.0
+version: 0.9.1
 
 name: AWSAuthCore, nameSpecified: 
 body: The AWS Mobile SDK f…
@@ -51,11 +51,11 @@ name: SwiftFormat, nameSpecified:
 body: MIT License
 
 Copyrig…
-version: 0.35.9
+version: 0.37.2
 
 name: SwiftLint, nameSpecified: 
 body: The MIT License (MIT…
-version: 0.29.1
+version: 0.29.3
 
 add-version-numbers: false
 

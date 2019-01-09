@@ -696,7 +696,7 @@ extension AmazonFreeRTOSManager {
 
                     self.debugPrint("↓ \(publish)")
 
-                    guard let data = try? JSONEncoder().encode(publish) else {
+                    guard let escapedData = try? JSONEncoder().encode(publish), let unescapedDataStr = String(data: escapedData, encoding: .utf8)?.replacingOccurrences(of: "\\/", with: "/"), let data = unescapedDataStr.data(using: .utf8) else {
                         self.debugPrint("Error (writeValueForCharacteristic): Invalid Publish")
                         return
                     }
