@@ -8,13 +8,17 @@ import os.log
 /// Amazon FreeRTOS Manager.
 public class AmazonFreeRTOSManager: NSObject {
 
-    /// Enable debug messages
+    /// Enable debug messages.
     public var isDebug: Bool = false
+    /// Service UUIDs in the Advertising Packets.
+    public var advertisingServiceUUIDs: [CBUUID] = [AmazonFreeRTOSGattService.DeviceInfo]
+    /// Service UUIDs.
+    public var serviceUUIDs: [CBUUID] = [AmazonFreeRTOSGattService.DeviceInfo, AmazonFreeRTOSGattService.MqttProxy, AmazonFreeRTOSGattService.NetworkConfig]
 
     /// Shared instence of Amazon FreeRTOS Manager.
     public static let shared = AmazonFreeRTOSManager()
 
-    // BLE Central Manager for the SDK
+    // BLE Central Manager for the SDK.
     private var central: CBCentralManager?
     // used for large object transfer with peripheral identifier and characteristic uuid as keys, read from device.
     private var txLotDatas: [String: Data] = [:]
@@ -51,7 +55,7 @@ extension AmazonFreeRTOSManager {
      */
     public func startScanForPeripherals() {
         if let central = central, !central.isScanning {
-            central.scanForPeripherals(withServices: [AmazonFreeRTOSGattService.DeviceInfo], options: nil)
+            central.scanForPeripherals(withServices: advertisingServiceUUIDs, options: nil)
         }
     }
 
@@ -327,7 +331,7 @@ extension AmazonFreeRTOSManager: CBCentralManagerDelegate {
     public func centralManager(_: CBCentralManager, didConnect peripheral: CBPeripheral) {
         networks[peripheral.identifier.uuidString] = [[], []]
         peripheral.delegate = self
-        peripheral.discoverServices([AmazonFreeRTOSGattService.DeviceInfo, AmazonFreeRTOSGattService.MqttProxy, AmazonFreeRTOSGattService.NetworkConfig])
+        peripheral.discoverServices(serviceUUIDs)
         NotificationCenter.default.post(name: .afrCentralManagerDidConnectPeripheral, object: nil, userInfo: ["peripheral": peripheral.identifier])
     }
 
@@ -991,5 +995,6 @@ extension AmazonFreeRTOSManager {
             return
         }
         os_log("[FreeRTOS SDK] %@", log: .default, type: .debug, debugMessage)
+        NotificationCenter.default.post(name: .afrDebugMessage, object: nil, userInfo: ["debugMessage": debugMessage])
     }
 }

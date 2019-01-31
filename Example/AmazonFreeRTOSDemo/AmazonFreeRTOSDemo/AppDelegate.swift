@@ -18,9 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // FreeRTOS SDK Logging, will switch to AWSDDLog in future releases
 
+        _ = AmazonContext.shared
         AmazonFreeRTOSManager.shared.isDebug = true
 
+        // Override advertising Service UUIDs if needed.
+
+        // AmazonFreeRTOSManager.shared.advertisingServiceUUIDs = []
+        // AmazonFreeRTOSManager.shared.serviceUUIDs = []
+
         // AWS SDK Logging
+
         // AWSDDLog.sharedInstance.logLevel = .all
         // AWSDDLog.add(AWSDDTTYLogger.sharedInstance)
 

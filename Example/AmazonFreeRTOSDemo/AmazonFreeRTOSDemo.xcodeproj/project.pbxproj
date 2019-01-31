@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		044E27473A8A28E6638A64467FC9DED5 /* NetworkConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8A2D7355B9B9B02A7CC61697114432 /* NetworkConfigViewController.swift */; };
+		06598034C1B6CB81C8D45DC6DA91A3FC /* AmazonContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80EDFED5A7C09A53A434B097F0EC1D6 /* AmazonContext.swift */; };
 		08AD597ECB3906C7DACA6664CF96BAC8 /* CustomGattMqttViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A84E3345437F3698E5C8080F72B29E0 /* CustomGattMqttViewController.swift */; };
 		0FD30A8D8A6E3230288AAEC7B1D12332 /* NetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C204B5F1E4D79CA85AD9F1846EC8A /* NetworkCell.swift */; };
 		4C53E551A6CA77BE597EE6A6293D96BC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 98FE53C6F659FBE52AD3A99FDCE48AA6 /* Settings.bundle */; };
@@ -15,6 +16,7 @@
 		52D0082E01EA0AE7EFECF1134309AB75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B16B64BA7B0963E9141BCF5D643D8D84 /* LaunchScreen.storyboard */; };
 		5A07FE1E548F4FF60CAD01186FFD39FA /* UITableView+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49558FC3CE1728EDD7A627EC904498 /* UITableView+Amazon.swift */; };
 		5D7ED678C21C9CEEA426EA7750D428C3 /* AmazonEmber_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32AE05D3EC02B0F6F76402C7C51D568C /* AmazonEmber_Rg.ttf */; };
+		61D311E249D8A778D71A0BFEBF297A25 /* UITextView+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE09FF99F4162509EA68F0F210926C9F /* UITextView+Amazon.swift */; };
 		63721D23C1E1B41E8C0BD7509DEAA1A0 /* UIViewController+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16402AC7CF431816CBB9FDF8ED03639E /* UIViewController+Amazon.swift */; };
 		6978F15895FD1108F37E88017102C965 /* SectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7049DD2CD68ACDAFB4F3991A1E922D1 /* SectionHeaderCell.swift */; };
 		6A537528276AD68635BFD6EC0BDE4758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F7A63249FA526071688A928A61A258A /* Main.storyboard */; };
@@ -24,6 +26,7 @@
 		A4D3FC9DEAD3BEE4D59DCB63269A807D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E5F83A1105853B3CC07BEFC4C450C3 /* AppDelegate.swift */; };
 		C41B2BAC63346EC6ADCF0F1020604CF2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1153B8E39C5FACD77845D89841D7A54A /* Colors.xcassets */; };
 		C4354DB53C7207D8D3E95DA7B0E64985 /* AmazonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB0DC2E5B235A2F20A025E75F5E16E /* AmazonConstants.swift */; };
+		CD4EE3D553D10CD4CFD438B4CED93305 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4893E35DA1A01C14DD53306375E56C4D /* DebugViewController.swift */; };
 		D15B38FC1D259203E8BB8B0CA1D8AF3B /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 11A005061BF8D0A75B570470E96D89AA /* awsconfiguration.json */; };
 		EB3FFA23062C5A72F748BAB356284A7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81F950CC86CEB778FAFE75CA417D3B1A /* Assets.xcassets */; };
 		EF847AB78F26017A4C74F555C7EDF10F /* AmazonEmber_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 88FC46E66816F00AFA05E715CEAD8C9F /* AmazonEmber_Bd.ttf */; };
@@ -40,6 +43,7 @@
 		32AE05D3EC02B0F6F76402C7C51D568C /* AmazonEmber_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AmazonEmber_Rg.ttf; sourceTree = "<group>"; };
 		3B26FD445F1AB1343C222E23DAE649D1 /* Pods_AmazonFreeRTOSDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmazonFreeRTOSDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DD59836EA6E0D324D36F086F0C8A8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4893E35DA1A01C14DD53306375E56C4D /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		5329FFBB03FEC176C9EF64986D0B5B9B /* Pods-AmazonFreeRTOSDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazonFreeRTOSDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AmazonFreeRTOSDemo/Pods-AmazonFreeRTOSDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		5A77ED16DABA7E97CC8CC860E8832CDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A84E3345437F3698E5C8080F72B29E0 /* CustomGattMqttViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGattMqttViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +58,9 @@
 		BB49558FC3CE1728EDD7A627EC904498 /* UITableView+Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Amazon.swift"; sourceTree = "<group>"; };
 		C23F7DD2F9C4E040B67BE0D3360C6C56 /* Pods-AmazonFreeRTOSDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazonFreeRTOSDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AmazonFreeRTOSDemo/Pods-AmazonFreeRTOSDemo.release.xcconfig"; sourceTree = "<group>"; };
 		C7049DD2CD68ACDAFB4F3991A1E922D1 /* SectionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderCell.swift; sourceTree = "<group>"; };
+		C80EDFED5A7C09A53A434B097F0EC1D6 /* AmazonContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonContext.swift; sourceTree = "<group>"; };
 		CA4D512B68B6665868C7B5251A332A63 /* PeripheralCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralCell.swift; sourceTree = "<group>"; };
+		DE09FF99F4162509EA68F0F210926C9F /* UITextView+Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Amazon.swift"; sourceTree = "<group>"; };
 		FB5CD3714B0E37FFC2C995DE065B7CA8 /* AmazonEmber_Md.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AmazonEmber_Md.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				BB49558FC3CE1728EDD7A627EC904498 /* UITableView+Amazon.swift */,
+				DE09FF99F4162509EA68F0F210926C9F /* UITextView+Amazon.swift */,
 				16402AC7CF431816CBB9FDF8ED03639E /* UIViewController+Amazon.swift */,
 			);
 			path = Extensions;
@@ -134,6 +141,7 @@
 				C9F515BE36B19C99C31BCF3D68827ED5 /* Support */,
 				3D7A780F5588FB5F90F1CC628EBED8DB /* UI */,
 				79E5F83A1105853B3CC07BEFC4C450C3 /* AppDelegate.swift */,
+				4893E35DA1A01C14DD53306375E56C4D /* DebugViewController.swift */,
 				2075A45238BA0934245D4E9BA7E0DDDA /* DevicesViewController.swift */,
 			);
 			path = AmazonFreeRTOSDemo;
@@ -166,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				6BEB0DC2E5B235A2F20A025E75F5E16E /* AmazonConstants.swift */,
+				C80EDFED5A7C09A53A434B097F0EC1D6 /* AmazonContext.swift */,
 			);
 			path = Amazon;
 			sourceTree = "<group>";
@@ -377,8 +386,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4354DB53C7207D8D3E95DA7B0E64985 /* AmazonConstants.swift in Sources */,
+				06598034C1B6CB81C8D45DC6DA91A3FC /* AmazonContext.swift in Sources */,
 				A4D3FC9DEAD3BEE4D59DCB63269A807D /* AppDelegate.swift in Sources */,
 				08AD597ECB3906C7DACA6664CF96BAC8 /* CustomGattMqttViewController.swift in Sources */,
+				CD4EE3D553D10CD4CFD438B4CED93305 /* DebugViewController.swift in Sources */,
 				514A7CF2E02A4867756301D78F5C35FD /* DevicesViewController.swift in Sources */,
 				6F4E09A7F9C399C7FDCB3BE3E2C12B9A /* MqttProxyViewController.swift in Sources */,
 				0FD30A8D8A6E3230288AAEC7B1D12332 /* NetworkCell.swift in Sources */,
@@ -386,6 +397,7 @@
 				9A1F6B170DA1990C8F76A204038D74FB /* PeripheralCell.swift in Sources */,
 				6978F15895FD1108F37E88017102C965 /* SectionHeaderCell.swift in Sources */,
 				5A07FE1E548F4FF60CAD01186FFD39FA /* UITableView+Amazon.swift in Sources */,
+				61D311E249D8A778D71A0BFEBF297A25 /* UITextView+Amazon.swift in Sources */,
 				63721D23C1E1B41E8C0BD7509DEAA1A0 /* UIViewController+Amazon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,6 +1,7 @@
 disabled_rules:
   - closure_body_length
   - convenience_type
+  - custom_rules
   - cyclomatic_complexity
   - discouraged_object_literal
   - discouraged_optional_boolean
@@ -14,11 +15,13 @@ disabled_rules:
   - line_length
   - lower_acl_than_parent
   - multiline_arguments
+  - multiline_arguments_brackets
   - multiline_function_chains
   - no_grouping_extension
   - prohibited_interface_builder
   - trailing_closure
   - type_body_length
+  - vertical_whitespace_opening_braces
 opt_in_rules:
   - anyobject_protocol
   - array_init
@@ -46,15 +49,19 @@ opt_in_rules:
   - implicitly_unwrapped_optional
   - inert_defer
   - joined_default_parameter
+  - last_where
   - legacy_random
   - let_var_whitespace
   - literal_expression_end_indentation
   - missing_docs
   - modifier_order
+  - multiline_literal_brackets
   - multiline_parameters
+  - multiline_parameters_brackets
   - nimble_operator
   - number_separator
   - no_extension_access_modifier
+  - nslocalizedstring_key
   - object_literal
   - operator_usage_whitespace
   - overridden_super_call
@@ -75,17 +82,21 @@ opt_in_rules:
   - sorted_imports
   - static_operator
   - strict_fileprivate
+  - strong_iboutlet
   - switch_case_on_newline
   - toggle_bool
   - unavailable_function
   - unneeded_parentheses_in_closure_argument
   - untyped_error_in_catch
+  - unused_control_flow_label
   - vertical_parameter_alignment_on_call
+  - vertical_whitespace_between_cases
+  - vertical_whitespace_closing_braces
+  - xct_specific_matcher
   - yoda_condition
 excluded:
   - Pods
 analyzer_rules:
-  - explicit_self
   - unused_import
   - unused_private_declaration
 

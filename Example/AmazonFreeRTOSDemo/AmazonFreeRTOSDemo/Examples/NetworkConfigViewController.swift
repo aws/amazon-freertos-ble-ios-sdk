@@ -166,7 +166,6 @@ extension NetworkConfigViewController {
 
             tableView.disableTableView()
             AmazonFreeRTOSManager.shared.saveNetworkToPeripheral(peripheral, saveNetworkReq: SaveNetworkReq(index: network.index, ssid: network.ssid, bssid: network.bssid, psk: String(), security: network.security))
-
         } else if network.security == .notSupported {
 
             // Network not supported

@@ -6,6 +6,10 @@ extension UIViewController {
         _ = navigationController?.popViewController(animated: true)
     }
 
+    @IBAction private func btnClosePush(_: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+
     // Dismiss keyboard on done
     @objc
     func textFieldShouldReturn(_: UITextField) -> Bool {
