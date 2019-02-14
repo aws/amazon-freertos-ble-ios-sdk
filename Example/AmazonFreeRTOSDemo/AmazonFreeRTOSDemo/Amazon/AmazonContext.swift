@@ -4,7 +4,7 @@ class AmazonContext: NSObject {
 
     static let shared = AmazonContext()
 
-    var debugMessages = ""
+    var debugMessages = String()
     var debugAutoScroll = true
 
     override init() {

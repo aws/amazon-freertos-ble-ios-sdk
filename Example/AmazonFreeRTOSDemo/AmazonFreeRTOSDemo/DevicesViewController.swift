@@ -1,8 +1,7 @@
 import Alertift
 import AmazonFreeRTOS
-import AWSAuthCore
-import AWSAuthUI
 import AWSIoT
+import AWSMobileClient
 import CoreBluetooth
 import UIKit
 
@@ -59,30 +58,52 @@ extension DevicesViewController {
     }
 
     func showLogin() {
+        AWSMobileClient.sharedInstance().initialize { userState, error in
 
-        // Check if user is login
+            // initialize error
 
-        guard let navigationController = navigationController, !AWSSignInManager.sharedInstance().isLoggedIn else {
-
-            // -> User loged in, attach principal policy
-
-            attachPrincipalPolicy()
-            return
-        }
-
-        // -> User not loged in, present login ui.
-
-        AWSAuthUIViewController.presentViewController(with: navigationController, configuration: nil) { _, error in
             if let error = error {
-                Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: error.localizedDescription)
-                    .action(.default(NSLocalizedString("OK", comment: String())))
-                    .show()
+                DispatchQueue.main.async {
+                    Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: error.localizedDescription)
+                        .action(.default(NSLocalizedString("OK", comment: String())))
+                        .show()
+                }
                 return
             }
 
-            // -> User loged in, attach principal policy
+            // process userState
 
-            self.attachPrincipalPolicy()
+            guard let navigationController = self.navigationController, let userState = userState else {
+                return
+            }
+
+            switch userState {
+
+            case .signedIn:
+                self.attachPrincipalPolicy()
+
+            case .signedOut:
+
+                let signInUIOptions = SignInUIOptions(canCancel: false, logoImage: #imageLiteral(resourceName: "common_logo"), backgroundColor: UIColor(named: "teal_color"))
+                AWSMobileClient.sharedInstance().showSignIn(navigationController: navigationController, signInUIOptions: signInUIOptions, { _, error in
+
+                    // signin error
+
+                    if let error = error {
+                        DispatchQueue.main.async {
+                            Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: error.localizedDescription)
+                                .action(.default(NSLocalizedString("OK", comment: String())))
+                                .show()
+                        }
+                        return
+                    }
+
+                    self.attachPrincipalPolicy()
+                })
+
+            default:
+                AWSMobileClient.sharedInstance().signOut()
+            }
         }
     }
 
@@ -93,22 +114,42 @@ extension DevicesViewController {
      - Precondition: The AWS IoT policy must already have been created. Follow the get started guide if not.
      */
     func attachPrincipalPolicy() {
-        guard let attachPrincipalPolicyRequest = AWSIoTAttachPrincipalPolicyRequest() else {
-            return
-        }
-        // The AWS IoT Policy
-        attachPrincipalPolicyRequest.policyName = AmazonConstants.AWS.iotPolicyName
-        // The AWS Cognito Identity
-        attachPrincipalPolicyRequest.principal = AWSIdentityManager.default().identityId
 
-        AWSIoT.default().attachPrincipalPolicy(attachPrincipalPolicyRequest, completionHandler: { error in
-            if let error = error {
-                Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: error.localizedDescription)
-                    .action(.default(NSLocalizedString("OK", comment: String())))
-                    .show()
-                return
+        // get the AWS Cognito Identity
+
+        AWSMobileClient.sharedInstance().getIdentityId().continueWith { task -> Any? in
+
+            if let error = task.error {
+                DispatchQueue.main.async {
+                    Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: error.localizedDescription)
+                        .action(.default(NSLocalizedString("OK", comment: String())))
+                        .show()
+                }
+                return task
             }
-        })
+
+            guard let attachPrincipalPolicyRequest = AWSIoTAttachPrincipalPolicyRequest(), let principal = task.result else {
+                return task
+            }
+
+            // The AWS IoT Policy
+            attachPrincipalPolicyRequest.policyName = AmazonConstants.AWS.iotPolicyName
+            // The AWS Cognito Identity
+            attachPrincipalPolicyRequest.principal = String(principal)
+
+            AWSIoT.default().attachPrincipalPolicy(attachPrincipalPolicyRequest, completionHandler: { error in
+                if let error = error {
+                    DispatchQueue.main.async {
+                        Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: error.localizedDescription)
+                            .action(.default(NSLocalizedString("OK", comment: String())))
+                            .show()
+                        return
+                    }
+                }
+            })
+
+            return task
+        }
     }
 }
 
@@ -205,8 +246,7 @@ extension DevicesViewController {
     }
 
     @IBAction private func btnLogoutPush(_: UIBarButtonItem) {
-        AWSSignInManager.sharedInstance().logout(completionHandler: { _, _ in
-            self.showLogin()
-        })
+        AWSMobileClient.sharedInstance().signOut()
+        showLogin()
     }
 }

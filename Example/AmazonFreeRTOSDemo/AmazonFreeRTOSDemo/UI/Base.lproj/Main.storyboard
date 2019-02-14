@@ -125,7 +125,7 @@
                                 <action selector="btnRescanPush:" destination="LGX-Vw-h8s" id="yox-5M-XMF"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="icK-qt-K0J">
+                        <barButtonItem key="rightBarButtonItem" title="LOGOUT" id="icK-qt-K0J">
                             <connections>
                                 <action selector="btnLogoutPush:" destination="LGX-Vw-h8s" id="hEr-wb-AVl"/>
                             </connections>
@@ -571,6 +571,11 @@
                         <viewLayoutGuide key="safeArea" id="B9E-Am-dsE"/>
                     </view>
                     <navigationItem key="navigationItem" title="Debug" id="eXh-hp-QQO">
+                        <barButtonItem key="leftBarButtonItem" title="CLEAR" id="aPR-4G-GAN">
+                            <connections>
+                                <action selector="btnClearPush:" destination="Zfb-Ej-wui" id="v51-N7-zcj"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="nav_close" id="MJs-zJ-nnR">
                             <connections>
                                 <action selector="btnClosePush:" destination="Zfb-Ej-wui" id="SOB-dr-nyr"/>
@@ -601,7 +606,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dLw-Ep-mOe"/>
+        <segue reference="eC2-N5-eVr"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="teal_color"/>
 </document>

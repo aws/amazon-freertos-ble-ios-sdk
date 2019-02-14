@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="common_logo" translatesAutoresizingMaskIntoConstraints="NO" id="sdE-aj-LSW">
-                                <rect key="frame" x="122.66666666666669" y="383" width="169" height="130"/>
+                                <rect key="frame" x="72.666666666666686" y="333" width="269" height="230"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" name="teal_color"/>
@@ -37,7 +37,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="common_logo" width="169" height="130"/>
+        <image name="common_logo" width="269" height="230"/>
         <namedColor name="teal_color">
             <color red="0.0" green="0.63137254901960782" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

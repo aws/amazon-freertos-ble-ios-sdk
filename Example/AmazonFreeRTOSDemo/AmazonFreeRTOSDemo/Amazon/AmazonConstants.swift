@@ -1,5 +1,4 @@
 import AWSCore
-import CoreBluetooth
 import Foundation
 
 struct AmazonConstants {

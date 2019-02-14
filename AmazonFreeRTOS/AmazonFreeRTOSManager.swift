@@ -1,4 +1,3 @@
-import AWSCore
 import AWSIoT
 import AWSMobileClient
 import CoreBluetooth
@@ -567,7 +566,7 @@ extension AmazonFreeRTOSManager {
                 return
             }
 
-            guard let serviceConfiguration = AWSServiceConfiguration(region: String(region).aws_regionTypeValue(), endpoint: AWSEndpoint(urlString: "https://\(connect.brokerEndpoint)"), credentialsProvider: AWSMobileClient.sharedInstance().getCredentialsProvider()) else {
+            guard let serviceConfiguration = AWSServiceConfiguration(region: String(region).aws_regionTypeValue(), endpoint: AWSEndpoint(urlString: "https://\(connect.brokerEndpoint)"), credentialsProvider: AWSMobileClient.sharedInstance()) else {
                 debugPrint("Error (didUpdateValueForTXMessage): Invalid Connect - serviceConfiguration")
                 return
             }

@@ -212,7 +212,7 @@
 				44FE3162D60B4B0EC288ED861AF55086 /* Sources */,
 				4EDFC3E1CB8F589110D07E51188B6805 /* Frameworks */,
 				520416C06234CFC5DA4612A94524D118 /* Resources */,
-				C4E4F190F5C6450CEB7C0077EE5E69DC /* [CP] Embed Pods Frameworks */,
+				40D94F380539DAC66A5F4260CD4CB46A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -328,13 +328,13 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Scripts/swift-lint.sh\"\n";
 		};
-		C4E4F190F5C6450CEB7C0077EE5E69DC /* [CP] Embed Pods Frameworks */ = {
+		40D94F380539DAC66A5F4260CD4CB46A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AmazonFreeRTOSDemo/Pods-AmazonFreeRTOSDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-AmazonFreeRTOSDemo/Pods-AmazonFreeRTOSDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AWSAuthCore/AWSAuthCore.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSAuthUI/AWSAuthUI.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework",
@@ -361,7 +361,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AmazonFreeRTOSDemo/Pods-AmazonFreeRTOSDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AmazonFreeRTOSDemo/Pods-AmazonFreeRTOSDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E4F4BA345ED82C8B9AF2A787230A8FA0 /* [AMAZON] Swift Format */ = {

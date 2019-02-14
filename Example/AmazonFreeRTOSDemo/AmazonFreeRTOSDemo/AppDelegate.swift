@@ -1,5 +1,4 @@
 import AmazonFreeRTOS
-import AWSCore
 import AWSMobileClient
 import UIKit
 
@@ -8,7 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // Appearance
 
@@ -31,9 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // AWSDDLog.sharedInstance.logLevel = .all
         // AWSDDLog.add(AWSDDTTYLogger.sharedInstance)
 
-        // Setup the user sign-in with cognito: https://docs.aws.amazon.com/aws-mobile/latest/developerguide/add-aws-mobile-user-sign-in.html
+        // Setup the user sign-in with cognito: https://aws-amplify.github.io/docs/ios/authentication#manual-setup
 
-        AWSServiceManager.default().defaultServiceConfiguration = AWSServiceConfiguration(region: AmazonConstants.AWS.region, credentialsProvider: AWSMobileClient.sharedInstance().getCredentialsProvider())
-        return AWSMobileClient.sharedInstance().interceptApplication(application, didFinishLaunchingWithOptions: launchOptions)
+        AWSServiceManager.default().defaultServiceConfiguration = AWSServiceConfiguration(region: AmazonConstants.AWS.region, credentialsProvider: AWSMobileClient.sharedInstance())
+        return true
     }
 }

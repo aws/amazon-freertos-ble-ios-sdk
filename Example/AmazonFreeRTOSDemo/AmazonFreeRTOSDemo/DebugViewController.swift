@@ -32,6 +32,11 @@ extension DebugViewController {
 
 extension DebugViewController {
 
+    @IBAction private func btnClearPush(_: UIBarButtonItem) {
+        AmazonContext.shared.debugMessages = String()
+        tvDebugMessages.text = AmazonContext.shared.debugMessages
+    }
+
     @IBAction private func swAutoScrollValueChanged(_ sender: UISwitch) {
         AmazonContext.shared.debugAutoScroll = sender.isOn
         if sender.isOn {

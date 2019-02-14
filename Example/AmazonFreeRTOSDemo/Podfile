@@ -4,8 +4,8 @@ use_frameworks!
 target 'AmazonFreeRTOSDemo' do
   pod 'Alertift'
   pod 'AmazonFreeRTOS', :path => '../../'
-  pod 'AWSAuthUI', '2.6.35'
-  pod 'AWSUserPoolsSignIn', '2.6.35'
+  pod 'AWSAuthUI'
+  pod 'AWSUserPoolsSignIn'
   pod 'LicensePlist'
   pod 'SwiftFormat/CLI'
   pod 'SwiftLint'

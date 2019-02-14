@@ -1,5 +1,4 @@
 import AmazonFreeRTOS
-import AWSCore
 import AWSIoT
 import AWSMobileClient
 import CoreBluetooth
@@ -68,7 +67,7 @@ extension CustomGattMqttViewController {
 
         // Custom MQTT
 
-        guard let serviceConfiguration = AWSServiceConfiguration(region: AmazonConstants.AWS.region, endpoint: AWSEndpoint(urlString: "https://\(brokerEndpoint.brokerEndpoint)"), credentialsProvider: AWSMobileClient.sharedInstance().getCredentialsProvider()) else {
+        guard let serviceConfiguration = AWSServiceConfiguration(region: AmazonConstants.AWS.region, endpoint: AWSEndpoint(urlString: "https://\(brokerEndpoint.brokerEndpoint)"), credentialsProvider: AWSMobileClient.sharedInstance()) else {
             os_log("[FreeRTOS Demo] Error (AWSServiceConfiguration)", log: .default, type: .error)
             return
         }
