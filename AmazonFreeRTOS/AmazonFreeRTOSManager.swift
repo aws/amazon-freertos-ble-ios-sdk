@@ -9,6 +9,8 @@ public class AmazonFreeRTOSManager: NSObject {
 
     /// Enable debug messages.
     public var isDebug: Bool = false
+    /// Debug messages.
+    public var debugMessages: String = String()
     /// Service UUIDs in the Advertising Packets.
     public var advertisingServiceUUIDs: [CBUUID] = [AmazonFreeRTOSGattService.DeviceInfo]
     /// Service UUIDs.
@@ -993,7 +995,7 @@ extension AmazonFreeRTOSManager {
         guard isDebug else {
             return
         }
+        debugMessages += "[\(Date())] \(debugMessage)\n"
         os_log("[FreeRTOS SDK] %@", log: .default, type: .debug, debugMessage)
-        NotificationCenter.default.post(name: .afrDebugMessage, object: nil, userInfo: ["debugMessage": debugMessage])
     }
 }
