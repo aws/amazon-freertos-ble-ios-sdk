@@ -12,6 +12,8 @@ public struct SaveNetworkReq: Codable {
     public var psk: String
     /// Wifi security type.
     public var security: NetworkSecurityType
+    /// Connect immediately.
+    public var connect: Bool
 
     /**
      SaveNetworkReq is used to save wifi network.
@@ -22,13 +24,15 @@ public struct SaveNetworkReq: Codable {
         - bssid: Wifi bssid (Mac address).
         - psk: Wifi password. Saved network ignore this value.
         - security: Wifi security type.
+        - connect: Connect immediately. Default: true
      - Returns: A new SaveNetworkReq.
      */
-    public init(index: Int, ssid: String, bssid: String, psk: String, security: NetworkSecurityType) {
+    public init(index: Int, ssid: String, bssid: String, psk: String, security: NetworkSecurityType, connect: Bool) {
         self.index = index
         self.ssid = ssid
         self.bssid = bssid
         self.psk = psk
         self.security = security
+        self.connect = connect
     }
 }

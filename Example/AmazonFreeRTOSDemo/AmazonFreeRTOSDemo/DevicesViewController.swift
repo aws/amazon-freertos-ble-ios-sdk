@@ -38,11 +38,11 @@ class DevicesViewController: UITableViewController {
     // Segue
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-        if segue.identifier == "toMqttProxyViewController", let viewController: MqttProxyViewController = segue.destination as? MqttProxyViewController {
+        if segue.identifier == "toMqttProxyViewController", let viewController = segue.destination as? MqttProxyViewController {
             viewController.peripheral = peripheral
-        } else if segue.identifier == "toNetworkConfigViewController", let viewController: NetworkConfigViewController = segue.destination as? NetworkConfigViewController {
+        } else if segue.identifier == "toNetworkConfigViewController", let viewController = segue.destination as? NetworkConfigViewController {
             viewController.peripheral = peripheral
-        } else if segue.identifier == "toCustomGattMqttViewController", let viewController: CustomGattMqttViewController = segue.destination as? CustomGattMqttViewController {
+        } else if segue.identifier == "toCustomGattMqttViewController", let viewController = segue.destination as? CustomGattMqttViewController {
             viewController.peripheral = peripheral
         }
     }
@@ -66,7 +66,7 @@ extension DevicesViewController {
                 DispatchQueue.main.async {
                     Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: error.localizedDescription)
                         .action(.default(NSLocalizedString("OK", comment: String())))
-                        .show()
+                        .show(on: self)
                 }
                 return
             }
@@ -93,7 +93,7 @@ extension DevicesViewController {
                         DispatchQueue.main.async {
                             Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: error.localizedDescription)
                                 .action(.default(NSLocalizedString("OK", comment: String())))
-                                .show()
+                                .show(on: self)
                         }
                         return
                     }
@@ -123,7 +123,7 @@ extension DevicesViewController {
                 DispatchQueue.main.async {
                     Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: error.localizedDescription)
                         .action(.default(NSLocalizedString("OK", comment: String())))
-                        .show()
+                        .show(on: self)
                 }
                 return task
             }
@@ -142,7 +142,7 @@ extension DevicesViewController {
                     DispatchQueue.main.async {
                         Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: error.localizedDescription)
                             .action(.default(NSLocalizedString("OK", comment: String())))
-                            .show()
+                            .show(on: self)
                         return
                     }
                 }
@@ -214,7 +214,7 @@ extension DevicesViewController {
                     return
                 }
                 .action(.cancel(NSLocalizedString("Cancel", comment: String())))
-                .show()
+                .show(on: self)
         } else {
             AmazonFreeRTOSManager.shared.connectPeripheral(peripheral)
         }

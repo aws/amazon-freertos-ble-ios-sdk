@@ -11,6 +11,7 @@ import UIKit
 class NetworkConfigViewController: UITableViewController {
 
     var peripheral: CBPeripheral?
+    var network: ListNetworkResp?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,15 @@ class NetworkConfigViewController: UITableViewController {
         title = peripheral.name
 
         listNetworkOfPeripheral()
+    }
+
+    // Segue
+
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+        if segue.identifier == "toNetworkConfigAddViewController", let viewController = (segue.destination as? UINavigationController)?.topViewController as? NetworkConfigAddViewController {
+            viewController.peripheral = peripheral
+            viewController.network = network
+        }
     }
 }
 
@@ -160,35 +170,25 @@ extension NetworkConfigViewController {
 
         tableView.deselectRow(at: indexPath, animated: true)
 
-        if indexPath.section == 0 || network.security == .open {
+        if indexPath.section == 0 {
 
-            // Its saved network or network security is open
+            // Its saved network
 
             tableView.disableTableView()
-            AmazonFreeRTOSManager.shared.saveNetworkToPeripheral(peripheral, saveNetworkReq: SaveNetworkReq(index: network.index, ssid: network.ssid, bssid: network.bssid, psk: String(), security: network.security))
+            AmazonFreeRTOSManager.shared.saveNetworkToPeripheral(peripheral, saveNetworkReq: SaveNetworkReq(index: network.index, ssid: network.ssid, bssid: network.bssid, psk: String(), security: network.security, connect: true))
         } else if network.security == .notSupported {
 
             // Network not supported
 
             Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: NSLocalizedString("Network security type not supported.", comment: String()))
                 .action(.default(NSLocalizedString("OK", comment: String())))
-                .show()
+                .show(on: self)
         } else {
 
-            // Network has security
+            // Add Network
 
-            Alertift.alert(title: NSLocalizedString("Wi-Fi Password", comment: String()), message: NSLocalizedString("Please enter the password for this network.", comment: String()))
-                .textField { textField in
-                    textField.placeholder = NSLocalizedString("Password", comment: String())
-                    textField.isSecureTextEntry = true
-                }
-                .action(.cancel(NSLocalizedString("Cancel", comment: String())))
-                .action(.default(NSLocalizedString("Save", comment: String()))) { _, _, textFields in
-
-                    tableView.disableTableView()
-                    AmazonFreeRTOSManager.shared.saveNetworkToPeripheral(peripheral, saveNetworkReq: SaveNetworkReq(index: network.index, ssid: network.ssid, bssid: network.bssid, psk: textFields?.first?.text ?? String(), security: network.security))
-                }
-                .show()
+            self.network = network
+            performSegue(withIdentifier: "toNetworkConfigAddViewController", sender: self)
         }
     }
 
@@ -226,5 +226,10 @@ extension NetworkConfigViewController {
 
     @IBAction private func btnEditPush(_: UIButton) {
         tableView.setEditing(!tableView.isEditing, animated: true)
+    }
+
+    @IBAction private func btnAddPush(_: UIButton) {
+        network = nil
+        performSegue(withIdentifier: "toNetworkConfigAddViewController", sender: self)
     }
 }
