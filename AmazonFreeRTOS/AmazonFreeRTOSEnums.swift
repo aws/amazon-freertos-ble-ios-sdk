@@ -1,7 +1,7 @@
 import Foundation
 
 /// Mqtt proxy state.
-public enum MqttProxyState: Int, Codable {
+public enum MqttProxyState: Int {
     /// Mqtt proxy off.
     case off = 0
     /// Mqtt proxy on.
@@ -9,7 +9,7 @@ public enum MqttProxyState: Int, Codable {
 }
 
 /// Mqtt message types. Reference: http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718021
-public enum MqttMessageType: Int, Codable {
+public enum MqttMessageType: Int {
     /// Connect.
     case connect = 1
     /// Connack.
@@ -41,7 +41,7 @@ public enum MqttMessageType: Int, Codable {
 }
 
 /// Network security types.
-public enum NetworkSecurityType: Int, Codable {
+public enum NetworkSecurityType: Int {
     /// Open.
     case open = 0
     /// Wep.
@@ -55,7 +55,7 @@ public enum NetworkSecurityType: Int, Codable {
 }
 
 /// Network statuses.
-public enum NetworkOpStatus: Int, Codable {
+public enum NetworkOpStatus: Int {
     /// Success.
     case success = 0
     /// Failure.
@@ -64,4 +64,31 @@ public enum NetworkOpStatus: Int, Codable {
     case timeout = 2
     /// Not Supported.
     case notSupported = 3
+}
+
+/// Keys for cbor
+public enum CborKey: String {
+    case brokerEndpoint = "a"
+    case bssid = "b"
+    case cleanSession = "c"
+    case clientID = "d"
+    case connected = "e"
+    case hidden = "f"
+    case index = "g"
+    case maxNetworks = "h"
+    case msgID = "i"
+    case newIndex = "j"
+    case payloadVal = "k"
+    case proxyState = "l"
+    case psk = "m"
+    case qoS = "n"
+    case qoSs = "o"
+    case rssi = "p"
+    case security = "q"
+    case ssid = "r"
+    case status = "s"
+    case timeout = "t"
+    case topic = "u"
+    case topics = "v"
+    case type = "w"
 }

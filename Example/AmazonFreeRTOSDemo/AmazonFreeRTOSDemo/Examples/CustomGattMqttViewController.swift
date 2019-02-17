@@ -61,13 +61,13 @@ extension CustomGattMqttViewController {
 
     @objc
     func deviceInfoBrokerEndpoint(_ notification: NSNotification) {
-        guard let brokerEndpoint = notification.userInfo?["brokerEndpoint"] as? BrokerEndpoint else {
+        guard let brokerEndpoint = notification.userInfo?["brokerEndpoint"] as? String else {
             return
         }
 
         // Custom MQTT
 
-        guard let serviceConfiguration = AWSServiceConfiguration(region: AmazonConstants.AWS.region, endpoint: AWSEndpoint(urlString: "https://\(brokerEndpoint.brokerEndpoint)"), credentialsProvider: AWSMobileClient.sharedInstance()) else {
+        guard let serviceConfiguration = AWSServiceConfiguration(region: AmazonConstants.AWS.region, endpoint: AWSEndpoint(urlString: "https://\(brokerEndpoint)"), credentialsProvider: AWSMobileClient.sharedInstance()) else {
             os_log("[FreeRTOS Demo] Error (AWSServiceConfiguration)", log: .default, type: .error)
             return
         }

@@ -14,4 +14,5 @@ Pod::Spec.new do |s|
   s.frameworks    = "CoreBluetooth"
   s.dependency "AWSMobileClient"
   s.dependency "AWSIoT"
+  s.dependency "CBORSwift"
 end

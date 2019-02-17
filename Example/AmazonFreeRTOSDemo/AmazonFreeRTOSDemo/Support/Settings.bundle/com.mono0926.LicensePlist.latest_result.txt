@@ -41,6 +41,10 @@ name: AWSUserPoolsSignIn, nameSpecified:
 body: The AWS Mobile SDK f…
 version: 2.9.1
 
+name: CBORSwift, nameSpecified: 
+body: Copyright (c) 2011-2…
+version: 1.2.0
+
 name: LicensePlist, nameSpecified: 
 body: MIT License
 

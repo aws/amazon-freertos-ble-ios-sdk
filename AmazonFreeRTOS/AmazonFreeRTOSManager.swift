@@ -1,5 +1,6 @@
 import AWSIoT
 import AWSMobileClient
+import CBORSwift
 import CoreBluetooth
 import Foundation
 import os.log
@@ -29,7 +30,7 @@ public class AmazonFreeRTOSManager: NSObject {
     /// The peripherals using peripheral identifier as key.
     public var peripherals: [String: CBPeripheral] = [:]
     /// The mtus for peripherals using peripheral identifier as key.
-    public var mtus: [String: Mtu] = [:]
+    public var mtus: [String: Int] = [:]
     /// The networks peripherals scaned using peripheral identifier as key. [0] are saved networks and [1] are scaned networks.
     public var networks: [String: [[ListNetworkResp]]] = [:]
 
@@ -194,7 +195,7 @@ extension AmazonFreeRTOSManager {
 
         debugPrint("↓ \(mqttProxyControl)")
 
-        guard let data = try? JSONEncoder().encode(mqttProxyControl) else {
+        guard let data = encode(mqttProxyControl) else {
             debugPrint("Error (updateMqttProxyControlOfPeripheral): Invalid MqttProxyControl")
             return
         }
@@ -221,7 +222,7 @@ extension AmazonFreeRTOSManager {
         // reset networks list for the peripheral
         networks[peripheral.identifier.uuidString] = [[], []]
 
-        guard let data = try? JSONEncoder().encode(listNetworkReq) else {
+        guard let data = encode(listNetworkReq) else {
             debugPrint("Error (listNetworkOfPeripheral): Invalid ListNetworkReq")
             return
         }
@@ -243,7 +244,7 @@ extension AmazonFreeRTOSManager {
 
         debugPrint("↓ \(saveNetworkReq)")
 
-        guard let data = try? JSONEncoder().encode(saveNetworkReq) else {
+        guard let data = encode(saveNetworkReq) else {
             debugPrint("Error (saveNetworkToPeripheral): Invalid SaveNetworkReq")
             return
         }
@@ -265,7 +266,7 @@ extension AmazonFreeRTOSManager {
 
         debugPrint("↓ \(editNetworkReq)")
 
-        guard let data = try? JSONEncoder().encode(editNetworkReq) else {
+        guard let data = encode(editNetworkReq) else {
             debugPrint("Error (editNetworkOfPeripheral): Invalid EditNetworkReq")
             return
         }
@@ -287,7 +288,7 @@ extension AmazonFreeRTOSManager {
 
         debugPrint("↓ \(deleteNetworkReq)")
 
-        guard let data = try? JSONEncoder().encode(deleteNetworkReq) else {
+        guard let data = encode(deleteNetworkReq) else {
             debugPrint("Error (deleteNetworkFromPeripheral): Invalid DeleteNetworkReq")
             return
         }
@@ -343,7 +344,7 @@ extension AmazonFreeRTOSManager: CBCentralManagerDelegate {
         }
         networks.removeValue(forKey: peripheral.identifier.uuidString)
         AWSIoTDataManager(forKey: peripheral.identifier.uuidString).disconnect()
-        rxLotDataQueues = rxLotDataQueues.filter { key, value -> Bool in
+        rxLotDataQueues = rxLotDataQueues.filter { key, _ -> Bool in
             !key.contains(peripheral.identifier.uuidString)
         }
         NotificationCenter.default.post(name: .afrCentralManagerDidDisconnectPeripheral, object: nil, userInfo: ["peripheral": peripheral.identifier])
@@ -476,7 +477,7 @@ extension AmazonFreeRTOSManager {
      */
     public func didUpdateValueForAfrVersion(peripheral _: CBPeripheral, characteristic: CBCharacteristic) {
 
-        guard let value = characteristic.value, let afrVersion = try? JSONDecoder().decode(AfrVersion.self, from: value) else {
+        guard let value = characteristic.value, let afrVersion = String(data: value, encoding: .utf8) else {
             debugPrint("Error (didUpdateValueForDeviceInfo): Invalid AfrVersion")
             return
         }
@@ -493,7 +494,7 @@ extension AmazonFreeRTOSManager {
      */
     public func didUpdateValueForBrokerEndpoint(peripheral _: CBPeripheral, characteristic: CBCharacteristic) {
 
-        guard let value = characteristic.value, let brokerEndpoint = try? JSONDecoder().decode(BrokerEndpoint.self, from: value) else {
+        guard let value = characteristic.value, let brokerEndpoint = String(data: value, encoding: .utf8) else {
             debugPrint("Error (didUpdateValueForDeviceInfo): Invalid BrokerEndpoint")
             return
         }
@@ -510,7 +511,7 @@ extension AmazonFreeRTOSManager {
      */
     public func didUpdateValueForMtu(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
 
-        guard let value = characteristic.value, let mtu = try? JSONDecoder().decode(Mtu.self, from: value), mtu.mtu > 3 else {
+        guard let value = characteristic.value, let mtuStr = String(data: value, encoding: .utf8), let mtu = Int(mtuStr), mtu > 3 else {
             debugPrint("Error (didUpdateValueForDeviceInfo): Invalid Mtu")
             return
         }
@@ -530,7 +531,7 @@ extension AmazonFreeRTOSManager {
      */
     public func didUpdateValueForControl(peripheral _: CBPeripheral, characteristic: CBCharacteristic) {
 
-        guard let value = characteristic.value, let control = try? JSONDecoder().decode(MqttProxyControl.self, from: value) else {
+        guard let value = characteristic.value, let control = decode(MqttProxyControl.self, from: value) else {
             debugPrint("Error (didUpdateValueForControl): Invalid MqttProxyControl")
             return
         }
@@ -547,7 +548,7 @@ extension AmazonFreeRTOSManager {
      */
     public func didUpdateValueForTXMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic, data: Data?) {
 
-        guard let value = data ?? characteristic.value, let mqttProxyMessage = try? JSONDecoder().decode(MqttProxyMessage.self, from: value) else {
+        guard let value = data ?? characteristic.value, let mqttProxyMessage = decode(MqttProxyMessage.self, from: value) else {
             debugPrint("Error (didUpdateValueForTXMessage): Invalid MqttProxy Message")
             return
         }
@@ -556,7 +557,7 @@ extension AmazonFreeRTOSManager {
 
         case .connect:
 
-            guard let connect = try? JSONDecoder().decode(Connect.self, from: value) else {
+            guard let connect = decode(Connect.self, from: value) else {
                 debugPrint("Error (didUpdateValueForTXMessage): Invalid Connect")
                 return
             }
@@ -585,7 +586,7 @@ extension AmazonFreeRTOSManager {
 
                     self.debugPrint("↓ \(connack)")
 
-                    guard let data = try? JSONEncoder().encode(connack) else {
+                    guard let data = self.encode(connack) else {
                         self.debugPrint("Error (writeValueForCharacteristic): Invalid Connack")
                         return
                     }
@@ -608,22 +609,13 @@ extension AmazonFreeRTOSManager {
 
         case .publish:
 
-            guard let publish = try? JSONDecoder().decode(Publish.self, from: value) else {
+            guard let publish = decode(Publish.self, from: value) else {
                 debugPrint("Error (didUpdateValueForTXMessage): Invalid Publish")
                 return
             }
 
             debugPrint("↑ \(publish)")
-
-            guard let data = Data(base64Encoded: publish.payloadVal) else {
-                debugPrint("Error (didUpdateValueForTXMessage): Invalid Publish - base64 decode")
-                return
-            }
-            debugPrint("Base64Decode (didUpdateValueForTXMessage): \(publish.payloadVal.base64Decoded() ?? String())")
-            guard let topic = publish.topic.base64Decoded() else {
-                debugPrint("Error (didUpdateValueForTXMessage): Invalid Publish - topic")
-                return
-            }
+            
             guard let qoS = AWSIoTMQTTQoS(rawValue: publish.qoS) else {
                 debugPrint("Error (didUpdateValueForTXMessage): Invalid Publish - qos")
                 return
@@ -635,16 +627,16 @@ extension AmazonFreeRTOSManager {
             }
 
             if qoS == AWSIoTMQTTQoS.messageDeliveryAttemptedAtMostOnce {
-                AWSIoTDataManager(forKey: peripheral.identifier.uuidString).publishData(data, onTopic: topic, qoS: qoS)
+                AWSIoTDataManager(forKey: peripheral.identifier.uuidString).publishData(publish.payloadVal, onTopic: publish.topic, qoS: qoS)
                 return
             }
-            AWSIoTDataManager(forKey: peripheral.identifier.uuidString).publishData(data, onTopic: topic, qoS: qoS) {
+            AWSIoTDataManager(forKey: peripheral.identifier.uuidString).publishData(publish.payloadVal, onTopic: publish.topic, qoS: qoS) {
 
                 let puback = Puback(type: .puback, msgID: publish.msgID)
 
                 self.debugPrint("↓ \(puback)")
 
-                guard let data = try? JSONEncoder().encode(puback) else {
+                guard let data = self.encode(puback) else {
                     self.debugPrint("Error (writeValueForCharacteristic): Invalid Puback")
                     return
                 }
@@ -667,7 +659,7 @@ extension AmazonFreeRTOSManager {
 
         case .subscribe:
 
-            guard let subscribe = try? JSONDecoder().decode(Subscribe.self, from: value) else {
+            guard let subscribe = decode(Subscribe.self, from: value) else {
                 debugPrint("Error (didUpdateValueForTXMessage): Invalid Subscribe")
                 return
             }
@@ -681,10 +673,6 @@ extension AmazonFreeRTOSManager {
 
             for (index, topic) in subscribe.topics.enumerated() {
 
-                guard let topic = topic.base64Decoded() else {
-                    debugPrint("Error (didUpdateValueForTXMessage): Invalid Subscribe - topic")
-                    return
-                }
                 guard let qoS = AWSIoTMQTTQoS(rawValue: subscribe.qoSs[index]) else {
                     debugPrint("Error (didUpdateValueForTXMessage): Invalid Subscribe - qos")
                     return
@@ -697,11 +685,11 @@ extension AmazonFreeRTOSManager {
 
                 AWSIoTDataManager(forKey: peripheral.identifier.uuidString).subscribe(toTopic: topic, qoS: qoS, messageCallback: { data in
 
-                    let publish = Publish(type: .publish, topic: subscribe.topics[index], msgID: subscribe.msgID, qoS: subscribe.qoSs[index], payloadVal: data.base64EncodedString())
+                    let publish = Publish(type: .publish, topic: topic, msgID: subscribe.msgID, qoS: qoS.rawValue, payloadVal: data)
 
                     self.debugPrint("↓ \(publish)")
 
-                    guard let escapedData = try? JSONEncoder().encode(publish), let unescapedDataStr = String(data: escapedData, encoding: .utf8)?.replacingOccurrences(of: "\\/", with: "/"), let data = unescapedDataStr.data(using: .utf8) else {
+                    guard let data = self.encode(publish) else {
                         self.debugPrint("Error (writeValueForCharacteristic): Invalid Publish")
                         return
                     }
@@ -715,7 +703,7 @@ extension AmazonFreeRTOSManager {
                             return
                         }
 
-                        guard let mtu = self.mtus[peripheral.identifier.uuidString]?.mtu else {
+                        guard let mtu = self.mtus[peripheral.identifier.uuidString] else {
                             self.debugPrint("Error (writeValueForCharacteristic): Invalid Connack - Mtu Unknown")
                             return
                         }
@@ -747,7 +735,7 @@ extension AmazonFreeRTOSManager {
 
                     self.debugPrint("↓ \(suback)")
 
-                    guard let data = try? JSONEncoder().encode(suback) else {
+                    guard let data = self.encode(suback) else {
                         self.debugPrint("Error (writeValueForCharacteristic): Invalid Suback")
                         return
                     }
@@ -767,7 +755,7 @@ extension AmazonFreeRTOSManager {
 
         case .unsubscribe:
 
-            guard let unsubscribe = try? JSONDecoder().decode(Unsubscribe.self, from: value) else {
+            guard let unsubscribe = decode(Unsubscribe.self, from: value) else {
                 debugPrint("Error (didUpdateValueForTXMessage): Invalid Unsubscribe")
                 return
             }
@@ -775,11 +763,6 @@ extension AmazonFreeRTOSManager {
             debugPrint("↑ \(unsubscribe)")
 
             for topic in unsubscribe.topics {
-
-                guard let topic = topic.base64Decoded() else {
-                    debugPrint("Error (didUpdateValueForTXMessage): Invalid Unsubscribe - topic")
-                    return
-                }
 
                 guard AWSIoTDataManager(forKey: peripheral.identifier.uuidString).getConnectionStatus() == .connected else {
                     debugPrint("Error (didUpdateValueForTXMessage): Invalid Unsubscribe - AWSIoTDataManager not connected")
@@ -792,7 +775,7 @@ extension AmazonFreeRTOSManager {
 
                 debugPrint("↓ \(unsuback)")
 
-                guard let data = try? JSONEncoder().encode(unsuback) else {
+                guard let data = self.encode(unsuback) else {
                     debugPrint("Error (writeValueForCharacteristic): Invalid Unsuback")
                     return
                 }
@@ -810,7 +793,7 @@ extension AmazonFreeRTOSManager {
 
         case .disconnnect:
 
-            guard let disconnect = try? JSONDecoder().decode(Disconnect.self, from: value) else {
+            guard let disconnect = decode(Disconnect.self, from: value) else {
                 debugPrint("Error (didUpdateValueForTXMessage): Invalid Disconnect")
                 return
             }
@@ -818,7 +801,7 @@ extension AmazonFreeRTOSManager {
             debugPrint("↑ \(disconnect)")
 
             AWSIoTDataManager(forKey: peripheral.identifier.uuidString).disconnect()
-            rxLotDataQueues = rxLotDataQueues.filter { key, value -> Bool in
+            rxLotDataQueues = rxLotDataQueues.filter { key, _ -> Bool in
                 !key.contains(peripheral.identifier.uuidString)
             }
             
@@ -835,7 +818,7 @@ extension AmazonFreeRTOSManager {
         - characteristic: The TXMessage characteristic.
      */
     public func didUpdateValueForTXLargeMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
-        guard let mtu = mtus[peripheral.identifier.uuidString]?.mtu else {
+        guard let mtu = mtus[peripheral.identifier.uuidString] else {
             debugPrint("Error (didUpdateValueForTXLargeMessage): Mtu Unknown")
             return
         }
@@ -875,7 +858,7 @@ extension AmazonFreeRTOSManager {
         - characteristic: The RXLargeMessage characteristic.
      */
     public func writeValueToRXLargeMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
-        guard let mtu = mtus[peripheral.identifier.uuidString]?.mtu else {
+        guard let mtu = mtus[peripheral.identifier.uuidString] else {
             debugPrint("Error (writeValueForRXLargeMessage): Mtu Unknown")
             return
         }
@@ -903,7 +886,7 @@ extension AmazonFreeRTOSManager {
         - characteristic: The ListNetwork characteristic.
      */
     public func didUpdateValueForListNetwork(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
-        guard let value = characteristic.value, let listNetworkResp = try? JSONDecoder().decode(ListNetworkResp.self, from: value) else {
+        guard let value = characteristic.value, let listNetworkResp = decode(ListNetworkResp.self, from: value) else {
             debugPrint("Error (didUpdateValueForListNetwork): Invalid Message")
             return
         }
@@ -911,7 +894,7 @@ extension AmazonFreeRTOSManager {
 
         if listNetworkResp.index < 0 {
 
-            // Scaned networks also include saved networks so we filter that out when ssid, bssid and security are the same
+            // Scaned networks also include saved networks so we filter that out when ssid and security are the same
 
             if let index = networks[peripheral.identifier.uuidString]?[0].firstIndex(where: { network -> Bool in
                 network.ssid == listNetworkResp.ssid && network.bssid == listNetworkResp.bssid && network.security == listNetworkResp.security
@@ -948,7 +931,7 @@ extension AmazonFreeRTOSManager {
         - characteristic: The SaveNetwork characteristic.
      */
     public func didUpdateValueForSaveNetwork(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
-        guard let value = characteristic.value, let saveNetworkResp = try? JSONDecoder().decode(SaveNetworkResp.self, from: value) else {
+        guard let value = characteristic.value, let saveNetworkResp = decode(SaveNetworkResp.self, from: value) else {
             debugPrint("Error (didUpdateValueForSaveNetwork): Invalid Message")
             return
         }
@@ -964,7 +947,7 @@ extension AmazonFreeRTOSManager {
         - characteristic: The EditNetwork characteristic.
      */
     public func didUpdateValueForEditNetwork(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
-        guard let value = characteristic.value, let editNetworkResp = try? JSONDecoder().decode(EditNetworkResp.self, from: value) else {
+        guard let value = characteristic.value, let editNetworkResp = decode(EditNetworkResp.self, from: value) else {
             debugPrint("Error (didUpdateValueForEditNetwork): Invalid Message")
             return
         }
@@ -980,7 +963,7 @@ extension AmazonFreeRTOSManager {
         - characteristic: The DeleteNetwork characteristic.
      */
     public func didUpdateValueForDeleteNetwork(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
-        guard let value = characteristic.value, let deleteNetworkResp = try? JSONDecoder().decode(DeleteNetworkResp.self, from: value) else {
+        guard let value = characteristic.value, let deleteNetworkResp = decode(DeleteNetworkResp.self, from: value) else {
             debugPrint("Error (didUpdateValueForDeleteNetwork): Invalid Message")
             return
         }
@@ -990,6 +973,20 @@ extension AmazonFreeRTOSManager {
 }
 
 extension AmazonFreeRTOSManager {
+    
+    private func encode<T: Encborable>(_ object: T) -> Data? {
+        if let encoded = CBOR.encode(object.toDictionary()) {
+            return Data(encoded)
+        }
+        return nil
+    }
+    
+    private func decode<T: Decborable>(_: T.Type, from data: Data) -> T? {
+        if let decoded = CBOR.decode(Array([UInt8](data))) as? NSDictionary {
+            return T.toSelf(dictionary: decoded)
+        }
+        return nil
+    }
 
     private func debugPrint(_ debugMessage: String) {
         guard isDebug else {

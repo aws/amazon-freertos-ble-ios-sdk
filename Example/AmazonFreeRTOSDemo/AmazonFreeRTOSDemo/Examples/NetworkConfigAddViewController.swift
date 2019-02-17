@@ -50,7 +50,7 @@ class NetworkConfigAddViewController: UIViewController {
                 .show(on: self)
             return
         }
-        AmazonFreeRTOSManager.shared.saveNetworkToPeripheral(peripheral, saveNetworkReq: SaveNetworkReq(index: network?.index ?? -1, ssid: ssid, bssid: network?.bssid ?? "00:00:00:00:00:00", psk: tfPassword.text ?? String(), security: security, connect: connect))
+        AmazonFreeRTOSManager.shared.saveNetworkToPeripheral(peripheral, saveNetworkReq: SaveNetworkReq(index: network?.index ?? -1, ssid: ssid, bssid: network?.bssid ?? "000000000000", psk: tfPassword.text ?? String(), security: security, connect: connect))
         dismiss(animated: true)
     }
 }
