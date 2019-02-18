@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/Alertift</string>
+			<string>com.amazonaws.AmazonFreeRTOSDemo/Alertift</string>
 			<key>Title</key>
 			<string>Alertift</string>
 			<key>Type</key>
@@ -14,7 +14,7 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/AmazonFreeRTOS</string>
+			<string>com.amazonaws.AmazonFreeRTOSDemo/AmazonFreeRTOS</string>
 			<key>Title</key>
 			<string>AmazonFreeRTOS</string>
 			<key>Type</key>
@@ -22,7 +22,7 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/AWSAuthCore</string>
+			<string>com.amazonaws.AmazonFreeRTOSDemo/AWSAuthCore</string>
 			<key>Title</key>
 			<string>AWSAuthCore</string>
 			<key>Type</key>
@@ -30,7 +30,7 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/AWSAuthUI</string>
+			<string>com.amazonaws.AmazonFreeRTOSDemo/AWSAuthUI</string>
 			<key>Title</key>
 			<string>AWSAuthUI</string>
 			<key>Type</key>
@@ -38,7 +38,7 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/AWSCognitoIdentityProvider</string>
+			<string>com.amazonaws.AmazonFreeRTOSDemo/AWSCognitoIdentityProvider</string>
 			<key>Title</key>
 			<string>AWSCognitoIdentityProvider</string>
 			<key>Type</key>
@@ -46,7 +46,7 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/AWSCognitoIdentityProviderASF</string>
+			<string>com.amazonaws.AmazonFreeRTOSDemo/AWSCognitoIdentityProviderASF</string>
 			<key>Title</key>
 			<string>AWSCognitoIdentityProviderASF</string>
 			<key>Type</key>
@@ -54,7 +54,7 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/AWSCore</string>
+			<string>com.amazonaws.AmazonFreeRTOSDemo/AWSCore</string>
 			<key>Title</key>
 			<string>AWSCore</string>
 			<key>Type</key>
@@ -62,7 +62,7 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/AWSIoT</string>
+			<string>com.amazonaws.AmazonFreeRTOSDemo/AWSIoT</string>
 			<key>Title</key>
 			<string>AWSIoT</string>
 			<key>Type</key>
@@ -70,7 +70,7 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/AWSMobileClient</string>
+			<string>com.amazonaws.AmazonFreeRTOSDemo/AWSMobileClient</string>
 			<key>Title</key>
 			<string>AWSMobileClient</string>
 			<key>Type</key>
@@ -78,7 +78,7 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/AWSUserPoolsSignIn</string>
+			<string>com.amazonaws.AmazonFreeRTOSDemo/AWSUserPoolsSignIn</string>
 			<key>Title</key>
 			<string>AWSUserPoolsSignIn</string>
 			<key>Type</key>
@@ -86,7 +86,7 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/CBORSwift</string>
+			<string>com.amazonaws.AmazonFreeRTOSDemo/CBORSwift</string>
 			<key>Title</key>
 			<string>CBORSwift</string>
 			<key>Type</key>
@@ -94,7 +94,7 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/LicensePlist</string>
+			<string>com.amazonaws.AmazonFreeRTOSDemo/LicensePlist</string>
 			<key>Title</key>
 			<string>LicensePlist</string>
 			<key>Type</key>
@@ -102,7 +102,7 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/SwiftFormat</string>
+			<string>com.amazonaws.AmazonFreeRTOSDemo/SwiftFormat</string>
 			<key>Title</key>
 			<string>SwiftFormat</string>
 			<key>Type</key>
@@ -110,7 +110,7 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/SwiftLint</string>
+			<string>com.amazonaws.AmazonFreeRTOSDemo/SwiftLint</string>
 			<key>Title</key>
 			<string>SwiftLint</string>
 			<key>Type</key>
