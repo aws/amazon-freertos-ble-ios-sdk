@@ -1,6 +1,6 @@
 PODS:
   - Alertift (4.0)
-  - AmazonFreeRTOS (0.9.4):
+  - AmazonFreeRTOS (0.9.5):
     - AWSIoT
     - AWSMobileClient
     - CBORSwift
@@ -58,7 +58,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alertift: 393ace2617e96e95b4e85c88e80a85bf2d85c698
-  AmazonFreeRTOS: 6e1470c4112a035357763e234c99b356771914df
+  AmazonFreeRTOS: bc7d5e3d079eb5b19983f7fa2fbb34014b30df93
   AWSAuthCore: 4e37e2a6c58248411c7f7c9177236a4ec688de14
   AWSAuthUI: a50aaa84dbb4e21abc7332b6229da8cc47188deb
   AWSCognitoIdentityProvider: ced9888fd7d9742a6667cbff00e21bac3c631fc8

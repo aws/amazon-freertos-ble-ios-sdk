@@ -894,19 +894,26 @@ extension AmazonFreeRTOSManager {
 
         if listNetworkResp.index < 0 {
 
-            // Scaned networks also include saved networks so we filter that out when ssid and security are the same
+            // Scaned networks also include saved networks so we filter that out when ssid and security are the same, update the saved network with the scaned bssid, rssi and hidden prams.
 
-            if let index = networks[peripheral.identifier.uuidString]?[0].firstIndex(where: { network -> Bool in
-                network.ssid == listNetworkResp.ssid && network.bssid == listNetworkResp.bssid && network.security == listNetworkResp.security
+            if let indexSaved = networks[peripheral.identifier.uuidString]?[0].firstIndex(where: { network -> Bool in
+                network.ssid == listNetworkResp.ssid && network.security == listNetworkResp.security && network.rssi < listNetworkResp.rssi
             }) {
-                networks[peripheral.identifier.uuidString]?[0][index].rssi = listNetworkResp.rssi
-                networks[peripheral.identifier.uuidString]?[0][index].hidden = listNetworkResp.hidden
-                return
+                networks[peripheral.identifier.uuidString]?[0][indexSaved].status = listNetworkResp.status
+                networks[peripheral.identifier.uuidString]?[0][indexSaved].bssid = listNetworkResp.bssid
+                networks[peripheral.identifier.uuidString]?[0][indexSaved].rssi = listNetworkResp.rssi
+                networks[peripheral.identifier.uuidString]?[0][indexSaved].hidden = listNetworkResp.hidden
             }
 
-            // Scaned networks sorted by rssi
-
-            networks[peripheral.identifier.uuidString]?[1].append(listNetworkResp)
+            // Scaned networks sorted by rssi, if ssid and security are same, choose the network with stronger rssi.
+            
+            if let indexScaned = networks[peripheral.identifier.uuidString]?[1].firstIndex(where: { network -> Bool in
+                network.ssid == listNetworkResp.ssid && network.security == listNetworkResp.security && network.rssi < listNetworkResp.rssi
+            }) {
+                networks[peripheral.identifier.uuidString]?[1][indexScaned] = listNetworkResp
+            } else {
+                networks[peripheral.identifier.uuidString]?[1].append(listNetworkResp)
+            }
             networks[peripheral.identifier.uuidString]?[1].sort(by: { networkA, networkB -> Bool in
                 networkA.rssi > networkB.rssi
             })
