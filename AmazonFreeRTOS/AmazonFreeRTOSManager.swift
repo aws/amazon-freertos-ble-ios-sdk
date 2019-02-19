@@ -908,9 +908,11 @@ extension AmazonFreeRTOSManager {
             // Scaned networks sorted by rssi, if ssid and security are same, choose the network with stronger rssi.
             
             if let indexScaned = networks[peripheral.identifier.uuidString]?[1].firstIndex(where: { network -> Bool in
-                network.ssid == listNetworkResp.ssid && network.security == listNetworkResp.security && network.rssi < listNetworkResp.rssi
+                network.ssid == listNetworkResp.ssid && network.security == listNetworkResp.security
             }) {
-                networks[peripheral.identifier.uuidString]?[1][indexScaned] = listNetworkResp
+                if networks[peripheral.identifier.uuidString]?[1][indexScaned].rssi ?? -100 < listNetworkResp.rssi {
+                    networks[peripheral.identifier.uuidString]?[1][indexScaned] = listNetworkResp
+                }
             } else {
                 networks[peripheral.identifier.uuidString]?[1].append(listNetworkResp)
             }

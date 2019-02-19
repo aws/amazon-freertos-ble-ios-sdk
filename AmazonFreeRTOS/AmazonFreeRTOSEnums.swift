@@ -91,4 +91,5 @@ public enum CborKey: String {
     case topic = "u"
     case topics = "v"
     case type = "w"
+    case connect = "y"
 }

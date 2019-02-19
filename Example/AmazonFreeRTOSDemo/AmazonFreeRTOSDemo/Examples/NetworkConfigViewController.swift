@@ -158,7 +158,10 @@ extension NetworkConfigViewController {
         networkCell.labWifiSSID.textColor = network.connected ? UIColor(named: "seafoam_green_color") : UIColor(named: "teal_color")
         networkCell.labWifiSecurity.text = String(describing: network.security)
         networkCell.labWifiRSSI.text = String(network.rssi)
-        networkCell.labWifiBSSID.text = network.bssid
+        // only show mac address for scaned networks, the mac address for the saved network is stored at the time of save/connect and is NOT updated dynamically for some devices.
+        if indexPath.section == 1 {
+            networkCell.labWifiBSSID.text = String(network.bssid.enumerated().map { $0 > 0 && $0 % 2 == 0 ? [":", $1] : [$1] }.joined())
+        }
         return networkCell
     }
 

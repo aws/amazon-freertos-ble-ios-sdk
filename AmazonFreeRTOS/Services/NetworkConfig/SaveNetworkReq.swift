@@ -13,6 +13,7 @@ public struct SaveNetworkReq: Encborable {
         - bssid: Wifi bssid (Mac address).
         - psk: Wifi password. Saved network ignore this value.
         - security: Wifi security type.
+        - connect: Connect immediately or just save for later.
      - Returns: A new SaveNetworkReq.
      */
     public init(index: Int, ssid: String, bssid: String, psk: String, security: NetworkSecurityType, connect: Bool) {
@@ -21,6 +22,7 @@ public struct SaveNetworkReq: Encborable {
         self.bssid = bssid
         self.psk = psk
         self.security = security
+        self.connect = connect
     }
     
     /// Index of the network.
@@ -33,8 +35,10 @@ public struct SaveNetworkReq: Encborable {
     public var psk: String
     /// Wifi security type.
     public var security: NetworkSecurityType
+    /// Connect immediately or just save for later.
+    public var connect: Bool
 
     func toDictionary() -> NSDictionary {
-        return [CborKey.index.rawValue: index, CborKey.ssid.rawValue: ssid, CborKey.bssid.rawValue: NSByteString(bssid), CborKey.psk.rawValue: psk, CborKey.security.rawValue: security.rawValue]
+        return [CborKey.index.rawValue: index, CborKey.ssid.rawValue: ssid, CborKey.bssid.rawValue: NSByteString(bssid), CborKey.psk.rawValue: psk, CborKey.security.rawValue: security.rawValue, CborKey.connect.rawValue: NSSimpleValue(NSNumber(value: connect))]
     }
 }
