@@ -8,7 +8,7 @@ public struct Connack: Encborable {
     /// Mqtt connection status. Reference: https://github.com/aws/aws-sdk-ios/blob/master/AWSIoT/AWSIoTMQTTTypes.h#L20
     public var status: Int
 
-    public func toDictionary() -> NSDictionary {
+    func toDictionary() -> NSDictionary {
         return [CborKey.type.rawValue: type.rawValue, CborKey.status.rawValue: status]
     }
 }

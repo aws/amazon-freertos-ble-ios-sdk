@@ -68,28 +68,52 @@ public enum NetworkOpStatus: Int {
 
 /// Keys for cbor
 public enum CborKey: String {
+    /// brokerEndpoint.
     case brokerEndpoint = "a"
+    /// bssid.
     case bssid = "b"
+    /// cleanSession.
     case cleanSession = "c"
+    /// clientID.
     case clientID = "d"
+    /// connected.
     case connected = "e"
+    /// hidden.
     case hidden = "f"
+    /// index.
     case index = "g"
+    /// maxNetworks.
     case maxNetworks = "h"
+    /// msgID.
     case msgID = "i"
+    /// newIndex.
     case newIndex = "j"
-    case payloadVal = "k"
+    /// payload.
+    case payload = "k"
+    /// proxyState.
     case proxyState = "l"
+    /// psk.
     case psk = "m"
+    /// qoS.
     case qoS = "n"
+    /// qoSs.
     case qoSs = "o"
+    /// rssi.
     case rssi = "p"
+    /// security.
     case security = "q"
+    /// ssid.
     case ssid = "r"
+    /// status.
     case status = "s"
+    /// timeout.
     case timeout = "t"
+    /// topic.
     case topic = "u"
+    /// topics.
     case topics = "v"
+    /// type.
     case type = "w"
+    /// connect.
     case connect = "y"
 }

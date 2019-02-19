@@ -627,10 +627,10 @@ extension AmazonFreeRTOSManager {
             }
 
             if qoS == AWSIoTMQTTQoS.messageDeliveryAttemptedAtMostOnce {
-                AWSIoTDataManager(forKey: peripheral.identifier.uuidString).publishData(publish.payloadVal, onTopic: publish.topic, qoS: qoS)
+                AWSIoTDataManager(forKey: peripheral.identifier.uuidString).publishData(publish.payload, onTopic: publish.topic, qoS: qoS)
                 return
             }
-            AWSIoTDataManager(forKey: peripheral.identifier.uuidString).publishData(publish.payloadVal, onTopic: publish.topic, qoS: qoS) {
+            AWSIoTDataManager(forKey: peripheral.identifier.uuidString).publishData(publish.payload, onTopic: publish.topic, qoS: qoS) {
 
                 let puback = Puback(type: .puback, msgID: publish.msgID)
 
@@ -685,7 +685,7 @@ extension AmazonFreeRTOSManager {
 
                 AWSIoTDataManager(forKey: peripheral.identifier.uuidString).subscribe(toTopic: topic, qoS: qoS, messageCallback: { data in
 
-                    let publish = Publish(type: .publish, topic: topic, msgID: subscribe.msgID, qoS: qoS.rawValue, payloadVal: data)
+                    let publish = Publish(type: .publish, topic: topic, msgID: subscribe.msgID, qoS: qoS.rawValue, payload: data)
 
                     self.debugPrint("↓ \(publish)")
 

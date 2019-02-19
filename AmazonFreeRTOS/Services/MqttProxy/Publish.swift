@@ -4,12 +4,23 @@ import Foundation
 /// Mqtt proxy message of Publish.
 public struct Publish: Encborable, Decborable {
 
-    public init(type: MqttMessageType, topic: String, msgID: Int, qoS: Int, payloadVal: Data) {
+    /**
+     Publish msg init (internal).
+     
+     - Parameters:
+        - type: Mqtt message type.
+        - topic: Mqtt topic.
+        - msgID: Mqtt message id.
+        - qoS: Mqtt QoS.
+        - payload: Mqtt payload.
+     - Returns: A new SaveNetworkReq.
+     */
+    public init(type: MqttMessageType, topic: String, msgID: Int, qoS: Int, payload: Data) {
         self.type = type
         self.topic = topic
         self.msgID = msgID
         self.qoS = qoS
-        self.payloadVal = payloadVal
+        self.payload = payload
     }
 
     init?(dictionary: NSDictionary) {
@@ -34,10 +45,10 @@ public struct Publish: Encborable, Decborable {
         }
         self.qoS = qoS
 
-        guard let payloadVal = dictionary.object(forKey: CborKey.payloadVal.rawValue) as? String, let data = payloadVal.data else {
+        guard let payload = dictionary.object(forKey: CborKey.payload.rawValue) as? String, let data = payload.data else {
             return nil
         }
-        self.payloadVal = data
+        self.payload = data
     }
 
     /// Mqtt message type.
@@ -49,10 +60,10 @@ public struct Publish: Encborable, Decborable {
     /// Mqtt QoS.
     public var qoS: Int
     /// Mqtt payload.
-    public var payloadVal: Data
+    public var payload: Data
 
     func toDictionary() -> NSDictionary {
-        return [CborKey.type.rawValue: type.rawValue, CborKey.topic.rawValue: topic, CborKey.msgID.rawValue: msgID, CborKey.qoS.rawValue: qoS, CborKey.payloadVal.rawValue: NSByteString(payloadVal.hex)]
+        return [CborKey.type.rawValue: type.rawValue, CborKey.topic.rawValue: topic, CborKey.msgID.rawValue: msgID, CborKey.qoS.rawValue: qoS, CborKey.payload.rawValue: NSByteString(payload.hex)]
     }
 
     static func toSelf<T: Decborable>(dictionary: NSDictionary) -> T? {

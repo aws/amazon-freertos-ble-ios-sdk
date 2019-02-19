@@ -23,7 +23,7 @@ public struct MqttProxyControl: Encborable, Decborable {
     /// Mqtt proxy state.
     public var proxyState: MqttProxyState
 
-    public func toDictionary() -> NSDictionary {
+    func toDictionary() -> NSDictionary {
         return [CborKey.proxyState.rawValue: proxyState.rawValue]
     }
 
