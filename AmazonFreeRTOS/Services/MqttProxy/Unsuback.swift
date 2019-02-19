@@ -2,7 +2,7 @@ import Foundation
 
 /// Mqtt proxy message of Unsuback.
 public struct Unsuback: Encborable {
-    
+
     /// Mqtt message type.
     public var type: MqttMessageType
     /// Mqtt message id.

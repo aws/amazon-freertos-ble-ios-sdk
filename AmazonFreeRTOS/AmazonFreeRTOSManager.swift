@@ -615,7 +615,7 @@ extension AmazonFreeRTOSManager {
             }
 
             debugPrint("↑ \(publish)")
-            
+
             guard let qoS = AWSIoTMQTTQoS(rawValue: publish.qoS) else {
                 debugPrint("Error (didUpdateValueForTXMessage): Invalid Publish - qos")
                 return
@@ -804,7 +804,7 @@ extension AmazonFreeRTOSManager {
             rxLotDataQueues = rxLotDataQueues.filter { key, _ -> Bool in
                 !key.contains(peripheral.identifier.uuidString)
             }
-            
+
         default:
             debugPrint("Error (didUpdateValueForTXMessage): Unsupported Mqtt Proxy Message Type")
         }
@@ -906,7 +906,7 @@ extension AmazonFreeRTOSManager {
             }
 
             // Scaned networks sorted by rssi, if ssid and security are same, choose the network with stronger rssi.
-            
+
             if let indexScaned = networks[peripheral.identifier.uuidString]?[1].firstIndex(where: { network -> Bool in
                 network.ssid == listNetworkResp.ssid && network.security == listNetworkResp.security
             }) {
@@ -982,14 +982,14 @@ extension AmazonFreeRTOSManager {
 }
 
 extension AmazonFreeRTOSManager {
-    
+
     private func encode<T: Encborable>(_ object: T) -> Data? {
         if let encoded = CBOR.encode(object.toDictionary()) {
             return Data(encoded)
         }
         return nil
     }
-    
+
     private func decode<T: Decborable>(_: T.Type, from data: Data) -> T? {
         if let decoded = CBOR.decode(Array([UInt8](data))) as? NSDictionary {
             return T.toSelf(dictionary: decoded)

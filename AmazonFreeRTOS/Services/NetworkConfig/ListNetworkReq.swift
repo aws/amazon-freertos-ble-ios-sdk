@@ -2,10 +2,10 @@ import Foundation
 
 /// List network request.
 public struct ListNetworkReq: Encborable {
-    
+
     /**
      ListNetworkReq is used to list saved and scanned wifi networks.
-     
+
      - Parameters:
         - maxNetworks: Max number of networks to scan.
         - timeout: Time to scan in seconds.
@@ -15,7 +15,7 @@ public struct ListNetworkReq: Encborable {
         self.maxNetworks = maxNetworks
         self.timeout = timeout
     }
-    
+
     /// Max number of networks to scan.
     public var maxNetworks: Int
     /// Time to scan in seconds.

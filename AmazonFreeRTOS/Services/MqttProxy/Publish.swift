@@ -3,7 +3,7 @@ import Foundation
 
 /// Mqtt proxy message of Publish.
 public struct Publish: Encborable, Decborable {
-    
+
     public init(type: MqttMessageType, topic: String, msgID: Int, qoS: Int, payloadVal: Data) {
         self.type = type
         self.topic = topic
@@ -26,7 +26,7 @@ public struct Publish: Encborable, Decborable {
         if let msgID = dictionary.object(forKey: CborKey.msgID.rawValue) as? Int {
             self.msgID = msgID
         } else {
-            self.msgID = 0
+            msgID = 0
         }
 
         guard let qoS = dictionary.object(forKey: CborKey.qoS.rawValue) as? Int else {

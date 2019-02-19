@@ -2,7 +2,7 @@ import Foundation
 
 /// Mqtt proxy message of Puback.
 public struct Puback: Encborable {
-    
+
     /// Mqtt message type.
     public var type: MqttMessageType
     /// Mqtt message id.

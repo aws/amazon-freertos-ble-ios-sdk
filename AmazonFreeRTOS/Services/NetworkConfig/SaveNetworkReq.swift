@@ -3,10 +3,10 @@ import Foundation
 
 /// Save network request.
 public struct SaveNetworkReq: Encborable {
-    
+
     /**
      SaveNetworkReq is used to save wifi network.
-     
+
      - Parameters:
         - index: Index of the network.
         - ssid: Wifi ssid.
@@ -24,7 +24,7 @@ public struct SaveNetworkReq: Encborable {
         self.security = security
         self.connect = connect
     }
-    
+
     /// Index of the network.
     public var index: Int
     /// Wifi ssid.
