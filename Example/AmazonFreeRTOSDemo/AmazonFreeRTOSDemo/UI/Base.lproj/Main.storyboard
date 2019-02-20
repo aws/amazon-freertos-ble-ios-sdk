@@ -267,7 +267,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yd1-GF-zap">
                                                     <rect key="frame" x="8" y="11.999999999999998" width="366" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
-                                                    <color key="textColor" name="teal_color"/>
+                                                    <color key="textColor" name="dark_teal_color"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZs-qO-Q0o">
