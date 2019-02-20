@@ -24,7 +24,16 @@ $ pod setup
 
 You might need to use sudo to install CocoaPods.
 
-2. Install the SDK with CocoaPods:
+2. Install the SDK with CocoaPods (In Podfile):
+
+**Older version of the freertos firmware use JSON encoding, please use:**
+
+```
+pod 'AmazonFreeRTOS', :git => 'https://github.com/aws/amazon-freertos-ble-ios-sdk.git', :tag => '0.9.4'
+```
+
+**Newer version of the freertos firmware use CBOR encoding, please use:**
+
 ```
 pod 'AmazonFreeRTOS', :git => 'https://github.com/aws/amazon-freertos-ble-ios-sdk.git'
 ```

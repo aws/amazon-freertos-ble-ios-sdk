@@ -897,12 +897,15 @@ extension AmazonFreeRTOSManager {
             // Scaned networks also include saved networks so we filter that out when ssid and security are the same, update the saved network with the scaned bssid, rssi and hidden prams.
 
             if let indexSaved = networks[peripheral.identifier.uuidString]?[0].firstIndex(where: { network -> Bool in
-                network.ssid == listNetworkResp.ssid && network.security == listNetworkResp.security && network.rssi < listNetworkResp.rssi
+                network.ssid == listNetworkResp.ssid && network.security == listNetworkResp.security
             }) {
-                networks[peripheral.identifier.uuidString]?[0][indexSaved].status = listNetworkResp.status
-                networks[peripheral.identifier.uuidString]?[0][indexSaved].bssid = listNetworkResp.bssid
-                networks[peripheral.identifier.uuidString]?[0][indexSaved].rssi = listNetworkResp.rssi
-                networks[peripheral.identifier.uuidString]?[0][indexSaved].hidden = listNetworkResp.hidden
+                if let rssi = networks[peripheral.identifier.uuidString]?[0][indexSaved].rssi, rssi < listNetworkResp.rssi {
+                    networks[peripheral.identifier.uuidString]?[0][indexSaved].status = listNetworkResp.status
+                    networks[peripheral.identifier.uuidString]?[0][indexSaved].bssid = listNetworkResp.bssid
+                    networks[peripheral.identifier.uuidString]?[0][indexSaved].rssi = listNetworkResp.rssi
+                    networks[peripheral.identifier.uuidString]?[0][indexSaved].hidden = listNetworkResp.hidden
+                }
+                return
             }
 
             // Scaned networks sorted by rssi, if ssid and security are same, choose the network with stronger rssi.
@@ -910,7 +913,7 @@ extension AmazonFreeRTOSManager {
             if let indexScaned = networks[peripheral.identifier.uuidString]?[1].firstIndex(where: { network -> Bool in
                 network.ssid == listNetworkResp.ssid && network.security == listNetworkResp.security
             }) {
-                if networks[peripheral.identifier.uuidString]?[1][indexScaned].rssi ?? -100 < listNetworkResp.rssi {
+                if let rssi = networks[peripheral.identifier.uuidString]?[1][indexScaned].rssi, rssi < listNetworkResp.rssi {
                     networks[peripheral.identifier.uuidString]?[1][indexScaned] = listNetworkResp
                 }
             } else {
