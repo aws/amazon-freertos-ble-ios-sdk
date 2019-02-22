@@ -1,5 +1,3 @@
-import Foundation
-
 /// List network response.
 public struct ListNetworkResp: Decborable {
 

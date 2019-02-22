@@ -1,5 +1,3 @@
-import Foundation
-
 /// Mqtt proxy message of Connect.
 public struct Connect: Decborable {
 

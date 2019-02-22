@@ -1,5 +1,4 @@
 import CoreBluetooth
-import Foundation
 
 extension CBService {
 

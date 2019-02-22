@@ -1,5 +1,4 @@
 import CBORSwift
-import Foundation
 
 /// Save network request.
 public struct SaveNetworkReq: Encborable {

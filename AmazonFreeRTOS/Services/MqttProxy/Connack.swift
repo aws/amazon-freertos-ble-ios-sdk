@@ -1,5 +1,3 @@
-import Foundation
-
 /// Mqtt proxy message of Connack.
 public struct Connack: Encborable {
 

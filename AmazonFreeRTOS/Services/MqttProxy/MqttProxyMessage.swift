@@ -1,5 +1,3 @@
-import Foundation
-
 /// Generic mqtt proxy message.
 public struct MqttProxyMessage: Decborable {
 

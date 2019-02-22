@@ -1,5 +1,3 @@
-import Foundation
-
 /// Mqtt proxy state.
 public enum MqttProxyState: Int {
     /// Mqtt proxy off.

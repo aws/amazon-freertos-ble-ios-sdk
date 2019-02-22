@@ -1,5 +1,3 @@
-import Foundation
-
 /// Mqtt proxy message of Disconnect.
 public struct Disconnect: Decborable {
 

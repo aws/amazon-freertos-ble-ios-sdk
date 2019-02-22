@@ -1,5 +1,3 @@
-import Foundation
-
 /// Notifications for operations
 extension NSNotification.Name {
 

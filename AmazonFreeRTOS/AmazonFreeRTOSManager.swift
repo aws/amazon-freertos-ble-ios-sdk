@@ -2,7 +2,6 @@ import AWSIoT
 import AWSMobileClient
 import CBORSwift
 import CoreBluetooth
-import Foundation
 import os.log
 
 /// Amazon FreeRTOS Manager.

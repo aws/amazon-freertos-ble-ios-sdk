@@ -1,5 +1,3 @@
-import Foundation
-
 /// Mqtt proxy message of Subscribe.
 public struct Subscribe: Decborable {
 

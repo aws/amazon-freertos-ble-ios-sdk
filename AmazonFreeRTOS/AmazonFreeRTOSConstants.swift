@@ -1,5 +1,4 @@
 import CoreBluetooth
-import Foundation
 
 /// BLE services used by the SDK.
 public struct AmazonFreeRTOSGattService {

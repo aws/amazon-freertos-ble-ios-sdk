@@ -1,5 +1,3 @@
-import Foundation
-
 /// Edit network response.
 public struct EditNetworkResp: Decborable {
 

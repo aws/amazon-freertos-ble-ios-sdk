@@ -1,5 +1,3 @@
-import Foundation
-
 /// Edit network request.
 public struct EditNetworkReq: Encborable {
 

@@ -1,5 +1,3 @@
-import Foundation
-
 /// Mqtt proxy control.
 public struct MqttProxyControl: Encborable, Decborable {
 

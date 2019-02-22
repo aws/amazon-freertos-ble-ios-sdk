@@ -1,5 +1,3 @@
-import Foundation
-
 /// List network request.
 public struct ListNetworkReq: Encborable {
 

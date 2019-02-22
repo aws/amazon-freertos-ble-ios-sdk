@@ -1,5 +1,3 @@
-import Foundation
-
 /// Mqtt proxy message of Puback.
 public struct Puback: Encborable {
 

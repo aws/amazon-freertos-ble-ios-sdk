@@ -1,5 +1,3 @@
-import Foundation
-
 /// Mqtt proxy message of Unsuback.
 public struct Unsuback: Encborable {
 

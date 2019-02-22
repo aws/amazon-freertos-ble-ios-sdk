@@ -1,5 +1,3 @@
-import Foundation
-
 /// Mqtt proxy message of Unsubscribe.
 public struct Unsubscribe: Decborable {
 

@@ -1,5 +1,3 @@
-import Foundation
-
 /// Delete network response.
 public struct DeleteNetworkResp: Decborable {
 

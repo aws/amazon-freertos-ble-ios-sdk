@@ -1,5 +1,3 @@
-import Foundation
-
 extension Array {
 
     /// Helper - safe array access

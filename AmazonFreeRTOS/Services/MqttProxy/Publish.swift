@@ -1,5 +1,4 @@
 import CBORSwift
-import Foundation
 
 /// Mqtt proxy message of Publish.
 public struct Publish: Encborable, Decborable {

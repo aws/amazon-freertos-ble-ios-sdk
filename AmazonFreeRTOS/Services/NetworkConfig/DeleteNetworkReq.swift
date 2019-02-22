@@ -1,5 +1,3 @@
-import Foundation
-
 /// Delete network request.
 public struct DeleteNetworkReq: Encborable {
 

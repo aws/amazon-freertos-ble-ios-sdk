@@ -1,5 +1,3 @@
-import Foundation
-
 protocol Encborable {
     func toDictionary() -> NSDictionary
 }

@@ -1,5 +1,3 @@
-import Foundation
-
 /// Save network response.
 public struct SaveNetworkResp: Decborable {
 
