@@ -16,6 +16,8 @@ class MqttProxyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Go back if device got disconnected
+        NotificationCenter.default.addObserver(self, selector: #selector(centralManagerDidDisconnectPeripheral(_:)), name: .afrCentralManagerDidDisconnectPeripheral, object: nil)
         // Update the switch when mqtt proxy is turned on or off
         NotificationCenter.default.addObserver(self, selector: #selector(mqttProxyControl(_:)), name: .afrMqttProxyControl, object: nil)
 
@@ -32,6 +34,13 @@ class MqttProxyViewController: UIViewController {
 // Observer
 
 extension MqttProxyViewController {
+
+    @objc
+    func centralManagerDidDisconnectPeripheral(_ notification: NSNotification) {
+        if peripheral?.identifier == notification.userInfo?["peripheral"] as? UUID {
+            _ = navigationController?.popViewController(animated: true)
+        }
+    }
 
     @objc
     func mqttProxyControl(_ notification: NSNotification) {

@@ -55,11 +55,11 @@ name: SwiftFormat, nameSpecified:
 body: MIT License
 
 Copyrig…
-version: 0.39.3
+version: 0.39.4
 
 name: SwiftLint, nameSpecified: 
 body: The MIT License (MIT…
-version: 0.30.1
+version: 0.31.0
 
 add-version-numbers: false
 

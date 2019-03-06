@@ -19,6 +19,7 @@ disabled_rules:
   - multiline_function_chains
   - no_grouping_extension
   - prohibited_interface_builder
+  - required_deinit
   - trailing_closure
   - type_body_length
   - vertical_whitespace_opening_braces

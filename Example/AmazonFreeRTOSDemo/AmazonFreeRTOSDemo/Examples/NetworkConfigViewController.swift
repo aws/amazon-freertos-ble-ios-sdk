@@ -17,9 +17,10 @@ class NetworkConfigViewController: UITableViewController {
         super.viewDidLoad()
         extendedLayoutIncludesOpaqueBars = true
 
+        // Go back if device got disconnected
+        NotificationCenter.default.addObserver(self, selector: #selector(centralManagerDidDisconnectPeripheral(_:)), name: .afrCentralManagerDidDisconnectPeripheral, object: nil)
         // ListNetwork returned one network
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrDidListNetwork, object: nil)
-
+        NotificationCenter.default.addObserver(self, selector: #selector(didListNetwork), name: .afrDidListNetwork, object: nil)
         // Refresh list on network operations
         NotificationCenter.default.addObserver(self, selector: #selector(didOpNetwork), name: .afrDidSaveNetwork, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didOpNetwork), name: .afrDidEditNetwork, object: nil)
@@ -50,7 +51,14 @@ class NetworkConfigViewController: UITableViewController {
 extension NetworkConfigViewController {
 
     @objc
-    func reloadDataWithoutAnimation() {
+    func centralManagerDidDisconnectPeripheral(_ notification: NSNotification) {
+        if peripheral?.identifier == notification.userInfo?["peripheral"] as? UUID {
+            _ = navigationController?.popViewController(animated: true)
+        }
+    }
+
+    @objc
+    func didListNetwork() {
         refreshControl?.endRefreshing()
         UIView.performWithoutAnimation {
             self.tableView.reloadData()

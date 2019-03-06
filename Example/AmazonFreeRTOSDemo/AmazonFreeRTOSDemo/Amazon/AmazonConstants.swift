@@ -1,5 +1,4 @@
 import AWSCore
-import Foundation
 
 struct AmazonConstants {
 

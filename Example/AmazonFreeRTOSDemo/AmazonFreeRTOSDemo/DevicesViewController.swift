@@ -216,7 +216,7 @@ extension DevicesViewController {
                 .action(.cancel(NSLocalizedString("Cancel", comment: String())))
                 .show(on: self)
         } else {
-            AmazonFreeRTOSManager.shared.connectPeripheral(peripheral)
+            AmazonFreeRTOSManager.shared.connectPeripheral(peripheral, reconnect: true)
         }
     }
 

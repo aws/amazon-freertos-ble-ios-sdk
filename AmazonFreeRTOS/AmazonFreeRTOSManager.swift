@@ -28,6 +28,8 @@ public class AmazonFreeRTOSManager: NSObject {
 
     /// The peripherals using peripheral identifier as key.
     public var peripherals: [String: CBPeripheral] = [:]
+    /// The auto reconnect peripherals using peripheral identifier as key.
+    public var reconnectPeripherals: [String: CBPeripheral] = [:]
     /// The mtus for peripherals using peripheral identifier as key.
     public var mtus: [String: Int] = [:]
     /// The networks peripherals scaned using peripheral identifier as key. [0] are saved networks and [1] are scaned networks.
@@ -80,6 +82,7 @@ extension AmazonFreeRTOSManager {
         }
 
         peripherals.removeAll()
+        reconnectPeripherals.removeAll()
         mtus.removeAll()
         networks.removeAll()
         txLotDatas.removeAll()
@@ -89,24 +92,30 @@ extension AmazonFreeRTOSManager {
     }
 
     /**
-     Connect to FreeRTOS `peripheral`
+     Connect to FreeRTOS `peripheral`.
 
-     - Parameter peripheral: the FreeRTOS peripheral.
+     - Parameters:
+        - peripheral: the FreeRTOS peripheral.
+        - reconnect: Peripheral should auto reconnect on non-explicit disconnect.
      - Precondition: `central` is ready and `peripheral` must be disconnected, otherwise it will be ignored.
      */
-    public func connectPeripheral(_ peripheral: CBPeripheral) {
+    public func connectPeripheral(_ peripheral: CBPeripheral, reconnect: Bool) {
+        if reconnect {
+            reconnectPeripherals[peripheral.identifier.uuidString] = peripheral
+        }
         if let central = central, peripheral.state == .disconnected {
             central.connect(peripheral, options: nil)
         }
     }
 
     /**
-     Disconnect from FreeRTOS `peripheral`
+     Disconnect from FreeRTOS `peripheral`.
 
      - Parameter peripheral: the FreeRTOS peripheral.
      - Precondition: `central` is ready and `peripheral` must be connected, otherwise it will be ignored.
      */
     public func disconnectPeripheral(_ peripheral: CBPeripheral) {
+        reconnectPeripherals.removeValue(forKey: peripheral.identifier.uuidString)
         if let central = central, peripheral.state == .connected {
             central.cancelPeripheralConnection(peripheral)
         }
@@ -115,7 +124,7 @@ extension AmazonFreeRTOSManager {
     // Device Info Service
 
     /**
-     Get afrVersion of the Amazon FreeRTOS `peripheral`
+     Get afrVersion of the Amazon FreeRTOS `peripheral`.
 
      - Parameter peripheral: the FreeRTOS peripheral.
      - Precondition: `central` is ready and `peripheral` must be connected.
@@ -132,7 +141,7 @@ extension AmazonFreeRTOSManager {
     }
 
     /**
-     Get mqtt broker endpoint of the Amazon FreeRTOS `peripheral`
+     Get mqtt broker endpoint of the Amazon FreeRTOS `peripheral`.
 
      - Parameter peripheral: the FreeRTOS peripheral.
      - Precondition: `central` is ready and `peripheral` must be connected.
@@ -149,7 +158,7 @@ extension AmazonFreeRTOSManager {
     }
 
     /**
-     Get BLE mtu of the Amazon FreeRTOS `peripheral`
+     Get BLE mtu of the Amazon FreeRTOS `peripheral`.
 
      - Parameter peripheral: the FreeRTOS peripheral.
      - Precondition: `central` is ready and `peripheral` must be connected.
@@ -208,7 +217,7 @@ extension AmazonFreeRTOSManager {
     // Network Config Service
 
     /**
-     List saved and scanned wifi networks of `peripheral`. Wifi networks are returned one by one, saved wifi ordered by priority and scanned wifi ordered by signal strength (rssi)
+     List saved and scanned wifi networks of `peripheral`. Wifi networks are returned one by one, saved wifi ordered by priority and scanned wifi ordered by signal strength (rssi).
 
      - Parameters:
         - peripheral: the FreeRTOS peripheral.
@@ -237,7 +246,7 @@ extension AmazonFreeRTOSManager {
 
      - Parameters:
         - peripheral: the FreeRTOS peripheral.
-        - saveNetworkReq: The save network request
+        - saveNetworkReq: The save network request.
      */
     public func saveNetworkToPeripheral(_ peripheral: CBPeripheral, saveNetworkReq: SaveNetworkReq) {
 
@@ -255,11 +264,11 @@ extension AmazonFreeRTOSManager {
     }
 
     /**
-     Edit wifi network of `peripheral`. Currently only support priority change
+     Edit wifi network of `peripheral`. Currently only support priority change.
 
      - Parameters:
         - peripheral: the FreeRTOS peripheral.
-        - editNetworkReq: The edit network request
+        - editNetworkReq: The edit network request.
      */
     public func editNetworkOfPeripheral(_ peripheral: CBPeripheral, editNetworkReq: EditNetworkReq) {
 
@@ -281,7 +290,7 @@ extension AmazonFreeRTOSManager {
 
      - Parameters:
         - peripheral: the FreeRTOS peripheral.
-        - deleteNetworkReq: The delete network request
+        - deleteNetworkReq: The delete network request.
      */
     public func deleteNetworkFromPeripheral(_ peripheral: CBPeripheral, deleteNetworkReq: DeleteNetworkReq) {
 
@@ -320,6 +329,7 @@ extension AmazonFreeRTOSManager: CBCentralManagerDelegate {
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi _: NSNumber) {
         debugPrint("→ \(advertisementData)")
         if peripherals.keys.contains(peripheral.identifier.uuidString) {
+            debugPrint("Error (central_didDiscoverPeripheral): Duplicate Peripheral")
             return
         }
         peripherals[peripheral.identifier.uuidString] = peripheral
@@ -337,7 +347,7 @@ extension AmazonFreeRTOSManager: CBCentralManagerDelegate {
     }
 
     /// CBCentralManagerDelegate
-    public func centralManager(_: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+    public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         if let error = error {
             debugPrint("Error (central_didDisconnectPeripheral): \(error.localizedDescription)")
         }
@@ -347,6 +357,9 @@ extension AmazonFreeRTOSManager: CBCentralManagerDelegate {
             !key.contains(peripheral.identifier.uuidString)
         }
         NotificationCenter.default.post(name: .afrCentralManagerDidDisconnectPeripheral, object: nil, userInfo: ["peripheral": peripheral.identifier])
+        if let peripheral = reconnectPeripherals[peripheral.identifier.uuidString] {
+            central.connect(peripheral, options: nil)
+        }
     }
 
     /// CBCentralManagerDelegate

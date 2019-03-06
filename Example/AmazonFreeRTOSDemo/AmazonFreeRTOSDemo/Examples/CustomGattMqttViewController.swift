@@ -40,6 +40,9 @@ class CustomGattMqttViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Go back if device got disconnected
+        NotificationCenter.default.addObserver(self, selector: #selector(centralManagerDidDisconnectPeripheral(_:)), name: .afrCentralManagerDidDisconnectPeripheral, object: nil)
+        // Got the BrokerEndpoint from device
         NotificationCenter.default.addObserver(self, selector: #selector(deviceInfoBrokerEndpoint(_:)), name: .afrDeviceInfoBrokerEndpoint, object: nil)
 
         guard let peripheral = peripheral else {
@@ -58,6 +61,13 @@ class CustomGattMqttViewController: UIViewController {
 // Observer
 
 extension CustomGattMqttViewController {
+
+    @objc
+    func centralManagerDidDisconnectPeripheral(_ notification: NSNotification) {
+        if peripheral?.identifier == notification.userInfo?["peripheral"] as? UUID {
+            _ = navigationController?.popViewController(animated: true)
+        }
+    }
 
     @objc
     func deviceInfoBrokerEndpoint(_ notification: NSNotification) {

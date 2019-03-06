@@ -36,6 +36,6 @@ public struct AmazonFreeRTOSGattCharacteristic {
     static let SaveNetwork = CBUUID(string: "3113a187-4b9f-4f9a-aa83-c614e11bff02")
     /// Edit wifi network.
     static let EditNetwork = CBUUID(string: "3113a187-4b9f-4f9a-aa83-c614e11bff03")
-    /// Delete saved wifi network
+    /// Delete saved wifi network.
     static let DeleteNetwork = CBUUID(string: "3113a187-4b9f-4f9a-aa83-c614e11bff04")
 }

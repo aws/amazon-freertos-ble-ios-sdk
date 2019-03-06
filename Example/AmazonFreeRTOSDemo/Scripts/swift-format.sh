@@ -1,1 +1,1 @@
-"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat" "${SRCROOT}/AmazonFreeRTOSDemo" --disable blankLinesAtStartOfScope --decimalgrouping ignore
+"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat" "${SRCROOT}" --config "${SRCROOT}/.swiftformat"
