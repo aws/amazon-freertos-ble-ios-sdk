@@ -326,6 +326,33 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC20reconnectPeripheralsSDySSSo12CBPeripheralCGvp"></a>
+                    <a name="//apple_ref/swift/Property/reconnectPeripherals" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC20reconnectPeripheralsSDySSSo12CBPeripheralCGvp">reconnectPeripherals</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The auto reconnect peripherals using peripheral identifier as key.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">reconnectPeripherals</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC4mtusSDySSSiGvp"></a>
                     <a name="//apple_ref/swift/Property/mtus" class="dashAnchor"></a>
                     <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC4mtusSDySSSiGvp">mtus</a>
@@ -506,9 +533,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC17connectPeripheralyySo12CBPeripheralCF"></a>
-                    <a name="//apple_ref/swift/Method/connectPeripheral(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC17connectPeripheralyySo12CBPeripheralCF">connectPeripheral(_:)</a>
+                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC17connectPeripheral_9reconnectySo12CBPeripheralC_SbtF"></a>
+                    <a name="//apple_ref/swift/Method/connectPeripheral(_:reconnect:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC17connectPeripheral_9reconnectySo12CBPeripheralC_SbtF">connectPeripheral(_:reconnect:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -516,7 +543,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Connect to FreeRTOS <code>peripheral</code></p>
+                        <p>Connect to FreeRTOS <code>peripheral</code>.</p>
 <div class="aside aside-precondition">
     <p class="aside-title">Precondition</p>
     <code>central</code> is ready and <code>peripheral</code> must be disconnected, otherwise it will be ignored.
@@ -528,7 +555,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">connectPeripheral</span><span class="p">(</span><span class="n">_</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">connectPeripheral</span><span class="p">(</span><span class="n">_</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="nv">reconnect</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -544,7 +571,19 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>reconnect</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Peripheral should auto reconnect on non-explicit disconnect.</p>
                                 </div>
                               </td>
                             </tr>
@@ -567,7 +606,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Disconnect from FreeRTOS <code>peripheral</code></p>
+                        <p>Disconnect from FreeRTOS <code>peripheral</code>.</p>
 <div class="aside aside-precondition">
     <p class="aside-title">Precondition</p>
     <code>central</code> is ready and <code>peripheral</code> must be connected, otherwise it will be ignored.
@@ -595,7 +634,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -618,7 +657,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Get afrVersion of the Amazon FreeRTOS <code>peripheral</code></p>
+                        <p>Get afrVersion of the Amazon FreeRTOS <code>peripheral</code>.</p>
 <div class="aside aside-precondition">
     <p class="aside-title">Precondition</p>
     <code>central</code> is ready and <code>peripheral</code> must be connected.
@@ -646,7 +685,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -669,7 +708,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Get mqtt broker endpoint of the Amazon FreeRTOS <code>peripheral</code></p>
+                        <p>Get mqtt broker endpoint of the Amazon FreeRTOS <code>peripheral</code>.</p>
 <div class="aside aside-precondition">
     <p class="aside-title">Precondition</p>
     <code>central</code> is ready and <code>peripheral</code> must be connected.
@@ -697,7 +736,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -720,7 +759,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Get BLE mtu of the Amazon FreeRTOS <code>peripheral</code></p>
+                        <p>Get BLE mtu of the Amazon FreeRTOS <code>peripheral</code>.</p>
 <div class="aside aside-precondition">
     <p class="aside-title">Precondition</p>
     <code>central</code> is ready and <code>peripheral</code> must be connected.
@@ -748,7 +787,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -794,7 +833,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -840,7 +879,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -875,7 +914,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>List saved and scanned wifi networks of <code>peripheral</code>. Wifi networks are returned one by one, saved wifi ordered by priority and scanned wifi ordered by signal strength (rssi)</p>
+                        <p>List saved and scanned wifi networks of <code>peripheral</code>. Wifi networks are returned one by one, saved wifi ordered by priority and scanned wifi ordered by signal strength (rssi).</p>
 
                       </div>
                       <div class="declaration">
@@ -898,7 +937,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -956,7 +995,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -968,7 +1007,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The save network request</p>
+                                  <p>The save network request.</p>
                                 </div>
                               </td>
                             </tr>
@@ -991,7 +1030,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Edit wifi network of <code>peripheral</code>. Currently only support priority change</p>
+                        <p>Edit wifi network of <code>peripheral</code>. Currently only support priority change.</p>
 
                       </div>
                       <div class="declaration">
@@ -1014,7 +1053,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1026,7 +1065,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The edit network request</p>
+                                  <p>The edit network request.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1072,7 +1111,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1084,7 +1123,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The delete network request</p>
+                                  <p>The delete network request.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1199,7 +1238,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">centralManager</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">CBCentralManager</span><span class="p">,</span> <span class="n">didDisconnectPeripheral</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">centralManager</span><span class="p">(</span><span class="n">_</span> <span class="nv">central</span><span class="p">:</span> <span class="kt">CBCentralManager</span><span class="p">,</span> <span class="n">didDisconnectPeripheral</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -1385,7 +1424,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1443,7 +1482,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1501,7 +1540,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1559,7 +1598,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1617,7 +1656,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1675,7 +1714,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1733,7 +1772,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1791,7 +1830,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1849,7 +1888,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1907,7 +1946,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1965,7 +2004,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the FreeRTOS peripheral.</p>
+                                  <p>The FreeRTOS peripheral.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1992,7 +2031,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://aws.amazon.com/freertos/" target="_blank" rel="external">Amazon Web Services</a>. All rights reserved. (Last updated: 2019-02-19)</p>
+          <p>&copy; 2019 <a class="link" href="https://aws.amazon.com/freertos/" target="_blank" rel="external">Amazon Web Services</a>. All rights reserved. (Last updated: 2019-03-06)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

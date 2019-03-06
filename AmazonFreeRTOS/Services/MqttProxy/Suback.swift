@@ -5,7 +5,7 @@ public struct Suback: Encborable {
     public var type: MqttMessageType
     /// Mqtt message id.
     public var msgID: Int
-    /// Suback status. (Use subscribe Qos on iOS).
+    /// Suback status. Use subscribe Qos on iOS.
     public var status: Int
 
     func toDictionary() -> NSDictionary {

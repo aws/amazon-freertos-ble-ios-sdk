@@ -64,7 +64,7 @@ public enum NetworkOpStatus: Int {
     case notSupported = 3
 }
 
-/// Keys for cbor
+/// Keys for cbor.
 public enum CborKey: String {
     /// brokerEndpoint.
     case brokerEndpoint = "a"

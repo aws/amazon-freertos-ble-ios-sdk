@@ -95,7 +95,7 @@ extension AmazonFreeRTOSManager {
      Connect to FreeRTOS `peripheral`.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - reconnect: Peripheral should auto reconnect on non-explicit disconnect.
      - Precondition: `central` is ready and `peripheral` must be disconnected, otherwise it will be ignored.
      */
@@ -111,7 +111,7 @@ extension AmazonFreeRTOSManager {
     /**
      Disconnect from FreeRTOS `peripheral`.
 
-     - Parameter peripheral: the FreeRTOS peripheral.
+     - Parameter peripheral: The FreeRTOS peripheral.
      - Precondition: `central` is ready and `peripheral` must be connected, otherwise it will be ignored.
      */
     public func disconnectPeripheral(_ peripheral: CBPeripheral) {
@@ -126,7 +126,7 @@ extension AmazonFreeRTOSManager {
     /**
      Get afrVersion of the Amazon FreeRTOS `peripheral`.
 
-     - Parameter peripheral: the FreeRTOS peripheral.
+     - Parameter peripheral: The FreeRTOS peripheral.
      - Precondition: `central` is ready and `peripheral` must be connected.
      */
     public func getAfrVersionOfPeripheral(_ peripheral: CBPeripheral) {
@@ -143,7 +143,7 @@ extension AmazonFreeRTOSManager {
     /**
      Get mqtt broker endpoint of the Amazon FreeRTOS `peripheral`.
 
-     - Parameter peripheral: the FreeRTOS peripheral.
+     - Parameter peripheral: The FreeRTOS peripheral.
      - Precondition: `central` is ready and `peripheral` must be connected.
      */
     public func getBrokerEndpointOfPeripheral(_ peripheral: CBPeripheral) {
@@ -160,7 +160,7 @@ extension AmazonFreeRTOSManager {
     /**
      Get BLE mtu of the Amazon FreeRTOS `peripheral`.
 
-     - Parameter peripheral: the FreeRTOS peripheral.
+     - Parameter peripheral: The FreeRTOS peripheral.
      - Precondition: `central` is ready and `peripheral` must be connected.
      */
     public func getMtuOfPeripheral(_ peripheral: CBPeripheral) {
@@ -179,7 +179,7 @@ extension AmazonFreeRTOSManager {
     /**
      Get the mqtt proxy control state of the `peripheral`.
 
-     - Parameter peripheral: the FreeRTOS peripheral.
+     - Parameter peripheral: The FreeRTOS peripheral.
      */
     public func getMqttProxyControlOfPeripheral(_ peripheral: CBPeripheral) {
 
@@ -196,7 +196,7 @@ extension AmazonFreeRTOSManager {
      Update the mqtt proxy control of the `peripheral` to start and stop the proxy.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - mqttProxyControl: The mqtt proxy control.
      */
     public func updateMqttProxyControlOfPeripheral(_ peripheral: CBPeripheral, mqttProxyControl: MqttProxyControl) {
@@ -220,7 +220,7 @@ extension AmazonFreeRTOSManager {
      List saved and scanned wifi networks of `peripheral`. Wifi networks are returned one by one, saved wifi ordered by priority and scanned wifi ordered by signal strength (rssi).
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - listNetworkReq: The list network request.
      */
     public func listNetworkOfPeripheral(_ peripheral: CBPeripheral, listNetworkReq: ListNetworkReq) {
@@ -245,7 +245,7 @@ extension AmazonFreeRTOSManager {
      Save wifi network to `peripheral`.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - saveNetworkReq: The save network request.
      */
     public func saveNetworkToPeripheral(_ peripheral: CBPeripheral, saveNetworkReq: SaveNetworkReq) {
@@ -267,7 +267,7 @@ extension AmazonFreeRTOSManager {
      Edit wifi network of `peripheral`. Currently only support priority change.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - editNetworkReq: The edit network request.
      */
     public func editNetworkOfPeripheral(_ peripheral: CBPeripheral, editNetworkReq: EditNetworkReq) {
@@ -289,7 +289,7 @@ extension AmazonFreeRTOSManager {
      Delete saved wifi network from `peripheral`.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - deleteNetworkReq: The delete network request.
      */
     public func deleteNetworkFromPeripheral(_ peripheral: CBPeripheral, deleteNetworkReq: DeleteNetworkReq) {
@@ -484,7 +484,7 @@ extension AmazonFreeRTOSManager {
      Process data of AfrVersion characteristic from `peripheral`.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - characteristic: The AfrVersion characteristic.
      */
     public func didUpdateValueForAfrVersion(peripheral _: CBPeripheral, characteristic: CBCharacteristic) {
@@ -501,7 +501,7 @@ extension AmazonFreeRTOSManager {
      Process data of BrokerEndpoint characteristic from `peripheral`.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - characteristic: The BrokerEndpoint characteristic.
      */
     public func didUpdateValueForBrokerEndpoint(peripheral _: CBPeripheral, characteristic: CBCharacteristic) {
@@ -518,7 +518,7 @@ extension AmazonFreeRTOSManager {
      Process data of Mtu characteristic from `peripheral`. It will also triger on mtu value change.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - characteristic: The Mtu characteristic.
      */
     public func didUpdateValueForMtu(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
@@ -538,7 +538,7 @@ extension AmazonFreeRTOSManager {
      Process data of Control characteristic from `peripheral`.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - characteristic: The control characteristic.
      */
     public func didUpdateValueForControl(peripheral _: CBPeripheral, characteristic: CBCharacteristic) {
@@ -555,7 +555,7 @@ extension AmazonFreeRTOSManager {
      Process data of TXMessage characteristic from `peripheral`.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - characteristic: The TXMessage characteristic.
      */
     public func didUpdateValueForTXMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic, data: Data?) {
@@ -826,7 +826,7 @@ extension AmazonFreeRTOSManager {
      Process data of TXLargeMessage characteristic from `peripheral`. Used by large object transfer.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - characteristic: The TXMessage characteristic.
      */
     public func didUpdateValueForTXLargeMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
@@ -866,7 +866,7 @@ extension AmazonFreeRTOSManager {
      Write data to RXLargeMessage characteristic of `peripheral`. Used by large object transfer.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - characteristic: The RXLargeMessage characteristic.
      */
     public func writeValueToRXLargeMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
@@ -894,7 +894,7 @@ extension AmazonFreeRTOSManager {
      Process data of ListNetwork characteristic from `peripheral`.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - characteristic: The ListNetwork characteristic.
      */
     public func didUpdateValueForListNetwork(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
@@ -951,7 +951,7 @@ extension AmazonFreeRTOSManager {
      Process data of SaveNetwork characteristic from `peripheral`.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - characteristic: The SaveNetwork characteristic.
      */
     public func didUpdateValueForSaveNetwork(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
@@ -967,7 +967,7 @@ extension AmazonFreeRTOSManager {
      Process data of EditNetwork characteristic from `peripheral`.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - characteristic: The EditNetwork characteristic.
      */
     public func didUpdateValueForEditNetwork(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
@@ -983,7 +983,7 @@ extension AmazonFreeRTOSManager {
      Process data of DeleteNetwork characteristic from `peripheral`.
 
      - Parameters:
-        - peripheral: the FreeRTOS peripheral.
+        - peripheral: The FreeRTOS peripheral.
         - characteristic: The DeleteNetwork characteristic.
      */
     public func didUpdateValueForDeleteNetwork(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
