@@ -1006,7 +1006,7 @@ extension AmazonFreeRTOSManager {
     }
 
     private func decode<T: Decborable>(_: T.Type, from data: Data) -> T? {
-        if let decoded = CBOR.decode(Array([UInt8](data))) as? NSDictionary {
+        if !data.isEmpty, let decoded = CBOR.decode(Array([UInt8](data))) as? NSDictionary {
             return T.toSelf(dictionary: decoded)
         }
         return nil
