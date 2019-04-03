@@ -85,7 +85,7 @@ extension DevicesViewController {
             case .signedOut:
 
                 let signInUIOptions = SignInUIOptions(canCancel: false, logoImage: #imageLiteral(resourceName: "common_logo"), backgroundColor: UIColor(named: "teal_color"))
-                AWSMobileClient.sharedInstance().showSignIn(navigationController: navigationController, signInUIOptions: signInUIOptions, { _, error in
+                AWSMobileClient.sharedInstance().showSignIn(navigationController: navigationController, signInUIOptions: signInUIOptions) { _, error in
 
                     // signin error
 
@@ -99,7 +99,7 @@ extension DevicesViewController {
                     }
 
                     self.attachPrincipalPolicy()
-                })
+                }
 
             default:
                 AWSMobileClient.sharedInstance().signOut()
