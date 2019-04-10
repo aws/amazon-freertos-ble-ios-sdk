@@ -59,9 +59,6 @@ extension MqttProxyViewController {
             return
         }
 
-        // Get MTU again just in case we didnt get the notification
-        AmazonFreeRTOSManager.shared.getMtuOfPeripheral(peripheral)
-
         if sender.isOn {
 
             // Turn on mqtt proxy

@@ -2,7 +2,7 @@ name: Alertift, nameSpecified:
 body: MIT License
 
 Copyrig…
-version: 4.0
+version: 4.1
 
 name: AmazonFreeRTOS, nameSpecified: 
 body: 
@@ -49,13 +49,13 @@ name: LicensePlist, nameSpecified:
 body: MIT License
 
 Copyrig…
-version: 2.4.0
+version: 2.5.0
 
 name: SwiftFormat, nameSpecified: 
 body: MIT License
 
 Copyrig…
-version: 0.40.4
+version: 0.40.5
 
 name: SwiftLint, nameSpecified: 
 body: The MIT License (MIT…

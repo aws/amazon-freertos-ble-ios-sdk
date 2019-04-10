@@ -329,7 +329,7 @@ extension AmazonFreeRTOSManager: CBCentralManagerDelegate {
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi _: NSNumber) {
         debugPrint("→ \(advertisementData)")
         if peripherals.keys.contains(peripheral.identifier.uuidString) {
-            debugPrint("Error (central_didDiscoverPeripheral): Duplicate Peripheral")
+            debugPrint("Info (central_didDiscoverPeripheral): Duplicate Peripheral")
             return
         }
         peripherals[peripheral.identifier.uuidString] = peripheral
@@ -396,6 +396,10 @@ extension AmazonFreeRTOSManager: CBPeripheralDelegate {
         }
         for characteristic in service.characteristics ?? [] {
             peripheral.setNotifyValue(true, for: characteristic)
+        }
+        if service.uuid == AmazonFreeRTOSGattService.DeviceInfo {
+            AmazonFreeRTOSManager.shared.getMtuOfPeripheral(peripheral)
+            AmazonFreeRTOSManager.shared.getAfrVersionOfPeripheral(peripheral)
         }
         NotificationCenter.default.post(name: .afrPeripheralDidDiscoverCharacteristics, object: nil, userInfo: ["peripheral": peripheral.identifier, "service": service.uuid])
     }
@@ -487,13 +491,14 @@ extension AmazonFreeRTOSManager {
         - peripheral: The FreeRTOS peripheral.
         - characteristic: The AfrVersion characteristic.
      */
-    public func didUpdateValueForAfrVersion(peripheral _: CBPeripheral, characteristic: CBCharacteristic) {
+    public func didUpdateValueForAfrVersion(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
 
         guard let value = characteristic.value, let afrVersion = String(data: value, encoding: .utf8) else {
             debugPrint("Error (didUpdateValueForDeviceInfo): Invalid AfrVersion")
             return
         }
         debugPrint("→ \(afrVersion)")
+        AWSIoTDataManager(forKey: peripheral.identifier.uuidString).addUserMetaData(["AmazonFreeRTOSSDK": "iOS", "AmazonFreeRTOSSDKVersion": AmazonFreeRTOS.SDKVersion,"AmazonFreeRTOSLibVersion": afrVersion])
         NotificationCenter.default.post(name: .afrDeviceInfoAfrVersion, object: nil, userInfo: ["afrVersion": afrVersion])
     }
 
@@ -1006,7 +1011,7 @@ extension AmazonFreeRTOSManager {
     }
 
     private func decode<T: Decborable>(_: T.Type, from data: Data) -> T? {
-        if !data.isEmpty, let decoded = CBOR.decode(Array([UInt8](data))) as? NSDictionary {
+        if let decoded = CBOR.decode(Array([UInt8](data))) as? NSDictionary {
             return T.toSelf(dictionary: decoded)
         }
         return nil
