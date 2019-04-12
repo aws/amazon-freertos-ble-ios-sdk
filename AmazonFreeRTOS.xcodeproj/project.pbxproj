@@ -23,6 +23,7 @@
 		5AEC08F99865CF1CA8733956321CE875 /* AmazonFreeRTOSEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27012A2C92538E049A9373E2F3B51C45 /* AmazonFreeRTOSEnums.swift */; };
 		5C5D1FF0CC0B499900807B4C38F109E3 /* Unsubscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8696EFC7222C2FBF88D3B86E210F1446 /* Unsubscribe.swift */; };
 		80B6D2D4B29F7240FE06D0C6CC54E9C0 /* CBService+AmazonFreeRTOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF0DFB8C3EA0F92D7AEDEF2F8BB879 /* CBService+AmazonFreeRTOS.swift */; };
+		80F360648FB1F8F85213A4288B807BBB /* Pods_AmazonFreeRTOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DC2987DF6D5893D8B85F93290D61B4 /* Pods_AmazonFreeRTOS.framework */; };
 		82D4EBE455CA5C7BE6C74CDC962F4453 /* Array+AmazonFreeRTOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E836B9470F0AFD629EBB0729FD3027 /* Array+AmazonFreeRTOS.swift */; };
 		8353E916124CD3A497067BA9258A52A7 /* AmazonFreeRTOS.h in Headers */ = {isa = PBXBuildFile; fileRef = BA6DAB3EB5854F930C3A8D5207E95DAE /* AmazonFreeRTOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8439CA8D59D0A827282C998F9BC3DECC /* ListNetworkResp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF6F5CA3478AF260F248A9A2EDBFD38 /* ListNetworkResp.swift */; };
@@ -68,6 +69,7 @@
 		8696EFC7222C2FBF88D3B86E210F1446 /* Unsubscribe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unsubscribe.swift; sourceTree = "<group>"; };
 		88A8F59A03219C1D7EBC0C06274537C0 /* AmazonFreeRTOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonFreeRTOSTests.swift; sourceTree = "<group>"; };
 		8A831A9BC8D77A27243D4122E93DEE5F /* AmazonFreeRTOSConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonFreeRTOSConstants.swift; sourceTree = "<group>"; };
+		8AF9F8C50FE5E62F7A9DF46154267F66 /* Pods-AmazonFreeRTOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazonFreeRTOS.release.xcconfig"; path = "Target Support Files/Pods-AmazonFreeRTOS/Pods-AmazonFreeRTOS.release.xcconfig"; sourceTree = "<group>"; };
 		925E2F51CF057F98C0233AA54C8CE4B7 /* AmazonFreeRTOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AmazonFreeRTOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		949E661F4FE4DC8C28951A24BF613BB8 /* EditNetworkResp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditNetworkResp.swift; sourceTree = "<group>"; };
 		95D2FDF7C700C4692271C7B5A3C7CFBE /* Puback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puback.swift; sourceTree = "<group>"; };
@@ -75,7 +77,9 @@
 		ABDE5CBC8A390E781BD4A4A781DB60F6 /* CBPeripheral+AmazonFreeRTOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CBPeripheral+AmazonFreeRTOS.swift"; sourceTree = "<group>"; };
 		B59F755AA12C9A885CBC95D6A576D440 /* SaveNetworkReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveNetworkReq.swift; sourceTree = "<group>"; };
 		BA6DAB3EB5854F930C3A8D5207E95DAE /* AmazonFreeRTOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmazonFreeRTOS.h; sourceTree = "<group>"; };
+		BC73270EF67795E1F9ECDC299D5E4A1C /* Pods-AmazonFreeRTOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazonFreeRTOS.debug.xcconfig"; path = "Target Support Files/Pods-AmazonFreeRTOS/Pods-AmazonFreeRTOS.debug.xcconfig"; sourceTree = "<group>"; };
 		CD3F46DB7919E6982EDBAA76D1B2E328 /* ListNetworkReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListNetworkReq.swift; sourceTree = "<group>"; };
+		D2DC2987DF6D5893D8B85F93290D61B4 /* Pods_AmazonFreeRTOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmazonFreeRTOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E836B9470F0AFD629EBB0729FD3027 /* Array+AmazonFreeRTOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+AmazonFreeRTOS.swift"; sourceTree = "<group>"; };
 		DB523B38B013A027C74DEE63D78EF3A4 /* AmazonFreeRTOSProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonFreeRTOSProtocols.swift; sourceTree = "<group>"; };
 		E154B3FBD26C461DBC35A9B56F3FF441 /* EditNetworkReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditNetworkReq.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80F360648FB1F8F85213A4288B807BBB /* Pods_AmazonFreeRTOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +147,8 @@
 			children = (
 				41E99361269D78F8E687FE19F6854FF0 /* AmazonFreeRTOS */,
 				76EA18D51E273455F436B5FADA1370A7 /* AmazonFreeRTOSTests */,
+				B81E46A7AF105388E52A98680A424DCA /* Frameworks */,
+				7DE489A6EB5441F154931867D6960EB2 /* Pods */,
 				EB3DF67B91832AEB39F36FD060BAF21C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -190,6 +197,23 @@
 			path = AmazonFreeRTOSTests;
 			sourceTree = "<group>";
 		};
+		7DE489A6EB5441F154931867D6960EB2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BC73270EF67795E1F9ECDC299D5E4A1C /* Pods-AmazonFreeRTOS.debug.xcconfig */,
+				8AF9F8C50FE5E62F7A9DF46154267F66 /* Pods-AmazonFreeRTOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B81E46A7AF105388E52A98680A424DCA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2DC2987DF6D5893D8B85F93290D61B4 /* Pods_AmazonFreeRTOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EB3DF67B91832AEB39F36FD060BAF21C /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +259,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B0D508533217E8D707C9714ED8636379 /* Build configuration list for PBXNativeTarget "AmazonFreeRTOS" */;
 			buildPhases = (
+				8EFDABC9064332716CAB138C6018A256 /* [CP] Check Pods Manifest.lock */,
 				30869594B6DDA30CC41E575DA761F435 /* Headers */,
 				492DC109971F3C164D8C59394980FA77 /* Sources */,
 				2BE433CCD6238AA8740CC10FF6DF2F27 /* Frameworks */,
@@ -261,10 +286,11 @@
 				TargetAttributes = {
 					678FA8B61E15427EB91089B7F4B67480 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					D2BEF735E09D00E457FB4EBEFBA6335C = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -274,6 +300,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 55498F94CE0FBE6758BF277D8DF9A724;
 			productRefGroup = EB3DF67B91832AEB39F36FD060BAF21C /* Products */;
@@ -302,6 +329,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8EFDABC9064332716CAB138C6018A256 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AmazonFreeRTOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		492DC109971F3C164D8C59394980FA77 /* Sources */ = {
@@ -403,7 +455,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -417,12 +469,13 @@
 		};
 		6C21EBF795CB61FA4E1D1BA5AEB8E033 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8AF9F8C50FE5E62F7A9DF46154267F66 /* Pods-AmazonFreeRTOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 94KV3E626L;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -436,7 +489,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.AmazonFreeRTOS;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -493,7 +546,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -510,7 +563,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 94KV3E626L;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AmazonFreeRTOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -519,19 +572,20 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.AmazonFreeRTOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		AF91F981C26AA0BE73F95DF15FB0996D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC73270EF67795E1F9ECDC299D5E4A1C /* Pods-AmazonFreeRTOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 94KV3E626L;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -546,7 +600,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -556,7 +610,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 94KV3E626L;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AmazonFreeRTOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -565,7 +619,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.AmazonFreeRTOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

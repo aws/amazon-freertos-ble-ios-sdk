@@ -593,7 +593,7 @@ extension AmazonFreeRTOSManager {
 
             AWSIoTDataManager.register(with: serviceConfiguration, forKey: peripheral.identifier.uuidString)
             AWSIoTDataManager(forKey: peripheral.identifier.uuidString).disconnect()
-            AWSIoTDataManager(forKey: peripheral.identifier.uuidString).connectUsingWebSocket(withClientId: "\(connect.clientID)_\(Int.random(in: 1 ..< 1_000_000))", cleanSession: connect.cleanSession) { status in
+            AWSIoTDataManager(forKey: peripheral.identifier.uuidString).connectUsingWebSocket(withClientId: connect.clientID, cleanSession: connect.cleanSession) { status in
 
                 switch status {
 
