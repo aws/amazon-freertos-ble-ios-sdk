@@ -1,0 +1,348 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSDevice.swift",
+      "line": null,
+      "symbol": "AmazonFreeRTOSDevice",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSDevice.swift",
+      "line": null,
+      "symbol": "AmazonFreeRTOSDevice",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSDevice.swift",
+      "line": null,
+      "symbol": "AmazonFreeRTOSDevice",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSDevice.swift",
+      "line": 4,
+      "symbol": "AmazonFreeRTOSDevice",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSManager.swift",
+      "line": 13,
+      "symbol": "AmazonFreeRTOSManager.isDebug",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSManager.swift",
+      "line": 16,
+      "symbol": "AmazonFreeRTOSManager.debugMessages",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSManager.swift",
+      "line": 24,
+      "symbol": "AmazonFreeRTOSManager.central",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSManager.swift",
+      "line": 70,
+      "symbol": "AmazonFreeRTOSManager.centralManagerDidUpdateState(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSManager.swift",
+      "line": 75,
+      "symbol": "AmazonFreeRTOSManager.centralManager(_:didDiscover:advertisementData:rssi:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSManager.swift",
+      "line": 85,
+      "symbol": "AmazonFreeRTOSManager.centralManager(_:didConnect:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSManager.swift",
+      "line": 93,
+      "symbol": "AmazonFreeRTOSManager.centralManager(_:didDisconnectPeripheral:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSManager.swift",
+      "line": 106,
+      "symbol": "AmazonFreeRTOSManager.centralManager(_:didFailToConnect:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSManager.swift",
+      "line": 118,
+      "symbol": "AmazonFreeRTOSManager.peripheral(_:didDiscoverServices:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSManager.swift",
+      "line": 129,
+      "symbol": "AmazonFreeRTOSManager.peripheral(_:didDiscoverCharacteristicsFor:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSManager.swift",
+      "line": 165,
+      "symbol": "AmazonFreeRTOSManager.peripheral(_:didUpdateValueFor:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/AmazonFreeRTOSManager.swift",
+      "line": 194,
+      "symbol": "AmazonFreeRTOSManager.peripheral(_:didWriteValueFor:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/CBOR.swift",
+      "line": 11,
+      "symbol": "CBOR",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/CBOR.swift",
+      "line": 15,
+      "symbol": "CBOR.encode(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/CBOR.swift",
+      "line": 21,
+      "symbol": "CBOR.decode(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/CBOR.swift",
+      "line": 28,
+      "symbol": "NSObject.encode()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/CBOR.swift",
+      "line": 34,
+      "symbol": "Array.decode()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 12,
+      "symbol": "Data.bytes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 16,
+      "symbol": "Data.binary_decimal",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 24,
+      "symbol": "Data.hex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 32,
+      "symbol": "Data.string",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 38,
+      "symbol": "Int.decimal_binary",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 42,
+      "symbol": "Int.hex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 64,
+      "symbol": "String.bytes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 90,
+      "symbol": "String.data",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 101,
+      "symbol": "String.hex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 105,
+      "symbol": "String.hex_ascii",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 125,
+      "symbol": "String.ascii_bytes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 129,
+      "symbol": "String.hex_decimal",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 133,
+      "symbol": "String.hex_binary",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 139,
+      "symbol": "NSString.hex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 143,
+      "symbol": "NSString.ascii_bytes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 149,
+      "symbol": "Array.hex_decimal",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/Extensions.swift",
+      "line": 157,
+      "symbol": "Array.binary_decimal",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/MyNSObject.swift",
+      "line": 11,
+      "symbol": "NSByteString",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/MyNSObject.swift",
+      "line": 14,
+      "symbol": "NSByteString.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/MyNSObject.swift",
+      "line": 19,
+      "symbol": "NSByteString.stringValue()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/MyNSObject.swift",
+      "line": 37,
+      "symbol": "NSSimpleValue",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/MyNSObject.swift",
+      "line": 43,
+      "symbol": "NSSimpleValue.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/MyNSObject.swift",
+      "line": 48,
+      "symbol": "NSSimpleValue.stringValue()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/MyNSObject.swift",
+      "line": 67,
+      "symbol": "NSSimpleValue.decode(header:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/MyNSObject.swift",
+      "line": 80,
+      "symbol": "NSTag",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/MyNSObject.swift",
+      "line": 84,
+      "symbol": "NSTag.init(tag:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/MyNSObject.swift",
+      "line": 102,
+      "symbol": "NSTag.tagValue()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk/AmazonFreeRTOS/SwiftCBOR/MyNSObject.swift",
+      "line": 106,
+      "symbol": "NSTag.objectValue()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/xuazh/Documents/GitHub/amazon-freertos-ble-ios-sdk"
+}

@@ -1,16 +1,14 @@
 /// Mqtt proxy message of Publish.
 public struct Publish: Encborable, Decborable {
 
-    /**
-     Publish msg init (internal).
-
-     - Parameters:
-        - topic: Mqtt topic.
-        - msgID: Mqtt message id.
-        - qoS: Mqtt QoS.
-        - payload: Mqtt payload.
-     - Returns: A new SaveNetworkReq.
-     */
+    /// Publish msg init (internal).
+    ///
+    /// - Parameters:
+    ///     - topic: Mqtt topic.
+    ///     - msgID: Mqtt message id.
+    ///     - qoS: Mqtt QoS.
+    ///     - payload: Mqtt payload.
+    /// - Returns: A new SaveNetworkReq.
     public init(topic: String, msgID: Int, qoS: Int, payload: Data) {
         self.topic = topic
         self.msgID = msgID

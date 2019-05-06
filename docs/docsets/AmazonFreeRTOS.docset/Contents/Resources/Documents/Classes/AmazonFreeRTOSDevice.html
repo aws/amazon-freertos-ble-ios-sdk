@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AmazonFreeRTOSDevice Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/AmazonFreeRTOSDevice" class="dashAnchor"></a>
+    <a title="AmazonFreeRTOSDevice Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">AmazonFreeRTOS Docs</a> (79% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">AmazonFreeRTOS Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        AmazonFreeRTOSDevice Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AmazonFreeRTOSDevice.html">AmazonFreeRTOSDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AmazonFreeRTOSManager.html">AmazonFreeRTOSManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CBOR.html">CBOR</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NSByteString.html">NSByteString</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NSSimpleValue.html">NSSimpleValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NSTag.html">NSTag</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/CborKey.html">CborKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MqttMessageType.html">MqttMessageType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkMessageType.html">NetworkMessageType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkOpStatus.html">NetworkOpStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkSecurityType.html">NetworkSecurityType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CBPeripheral.html">CBPeripheral</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CBService.html">CBService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Data.html">Data</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSNotification.html">NSNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSNotification/Name.html">– Name</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSObject.html">NSObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSString.html">NSString</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14AmazonFreeRTOSAAV">AmazonFreeRTOS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14AmazonFreeRTOS0aB22RTOSGattCharacteristicV">AmazonFreeRTOSGattCharacteristic</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14AmazonFreeRTOS0aB15RTOSGattServiceV">AmazonFreeRTOSGattService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Connack.html">Connack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Connect.html">Connect</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DeleteNetworkReq.html">DeleteNetworkReq</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DeleteNetworkResp.html">DeleteNetworkResp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14AmazonFreeRTOS10DisconnectV">Disconnect</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EditNetworkReq.html">EditNetworkReq</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EditNetworkResp.html">EditNetworkResp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ListNetworkReq.html">ListNetworkReq</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ListNetworkResp.html">ListNetworkResp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MqttMessage.html">MqttMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NetworkMessage.html">NetworkMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14AmazonFreeRTOS7PingreqV">Pingreq</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14AmazonFreeRTOS8PingrespV">Pingresp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Puback.html">Puback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Publish.html">Publish</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SaveNetworkReq.html">SaveNetworkReq</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SaveNetworkResp.html">SaveNetworkResp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Suback.html">Suback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Subscribe.html">Subscribe</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Unsuback.html">Unsuback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Unsubscribe.html">Unsubscribe</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>AmazonFreeRTOSDevice</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AmazonFreeRTOSDevice</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC10peripheralSo12CBPeripheralCvp"></a>
+                    <a name="//apple_ref/swift/Property/peripheral" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC10peripheralSo12CBPeripheralCvp">peripheral</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>CBPeripheral.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC17advertisementDataSDySSypGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/advertisementData" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC17advertisementDataSDySSypGSgvp">advertisementData</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>advertisementData.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">advertisementData</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC4RSSISo8NSNumberCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/RSSI" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC4RSSISo8NSNumberCSgvp">RSSI</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>rssi.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">RSSI</span><span class="p">:</span> <span class="kt">NSNumber</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC9reconnectSbvp"></a>
+                    <a name="//apple_ref/swift/Property/reconnect" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC9reconnectSbvp">reconnect</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>AmazonFreeRTOS device should auto reconnect on non-explicit disconnect.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">reconnect</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC13certificateIdSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/certificateId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC13certificateIdSSSgvp">certificateId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The certificateId used to connect. see: <a href="https://github.com/awslabs/aws-sdk-ios-samples/tree/master/IoT-Sample/Swift">https://github.com/awslabs/aws-sdk-ios-samples/tree/master/IoT-Sample/Swift</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">certificateId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC19credentialsProviderXevp"></a>
+                    <a name="//apple_ref/swift/Property/credentialsProvider" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC19credentialsProviderXevp">credentialsProvider</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The credentialsProvider used to connect like AWSMobileClient for Cognito.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">credentialsProvider</span><span class="p">:</span> <span class="kt">AWSCredentialsProvider</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC10afrVersionSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/afrVersion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC10afrVersionSSSgvp">afrVersion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>AmazonFreeRTOSLibVersion on the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">afrVersion</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC14brokerEndpointSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/brokerEndpoint" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC14brokerEndpointSSSgvp">brokerEndpoint</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The brokerEndpoint on the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">brokerEndpoint</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC3mtuSiSgvp"></a>
+                    <a name="//apple_ref/swift/Property/mtu" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC3mtuSiSgvp">mtu</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The MTU of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">mtu</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC13savedNetworksSayAA15ListNetworkRespVGvp"></a>
+                    <a name="//apple_ref/swift/Property/savedNetworks" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC13savedNetworksSayAA15ListNetworkRespVGvp">savedNetworks</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The saved networks.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">savedNetworks</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/ListNetworkResp.html">ListNetworkResp</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC14scanedNetworksSayAA15ListNetworkRespVGvp"></a>
+                    <a name="//apple_ref/swift/Property/scanedNetworks" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC14scanedNetworksSayAA15ListNetworkRespVGvp">scanedNetworks</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The scaned networks.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">scanedNetworks</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/ListNetworkResp.html">ListNetworkResp</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC10peripheralACSo12CBPeripheralC_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(peripheral:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC10peripheralACSo12CBPeripheralC_tcfc">init(peripheral:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a new AmazonFreeRTOS device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>peripheral</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The CBPeripheral.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new AmazonFreeRTOS device.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC7connectyySb_SSSgXetcACF"></a>
+                    <a name="//apple_ref/swift/Method/connect(reconnect:certificateId:credentialsProvider:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC7connectyySb_SSSgXetcACF">connect(reconnect:certificateId:credentialsProvider:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Connect to the AmazonFreeRTOS device.</p>
+<div class="aside aside-precondition">
+    <p class="aside-title">Precondition</p>
+    central is ready and device must be disconnected, otherwise it will be ignored.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">connect</span><span class="p">(</span><span class="nv">reconnect</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">certificateId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">credentialsProvider</span><span class="p">:</span> <span class="kt">AWSCredentialsProvider</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>reconnect</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>AmazonFreeRTOS device should auto reconnect on non-explicit disconnect.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>certificateId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The certificateId used to connect. see: <a href="https://github.com/awslabs/aws-sdk-ios-samples/tree/master/IoT-Sample/Swift">https://github.com/awslabs/aws-sdk-ios-samples/tree/master/IoT-Sample/Swift</a></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>credentialsProvider</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The credentialsProvider used to connect like AWSMobileClient for Cognito.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC10disconnectyyF"></a>
+                    <a name="//apple_ref/swift/Method/disconnect()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC10disconnectyyF">disconnect()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Disconnect from the AmazonFreeRTOS device.</p>
+<div class="aside aside-precondition">
+    <p class="aside-title">Precondition</p>
+    central is ready and device must be connected, otherwise it will be ignored.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">disconnect</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC13getAfrVersionyyF"></a>
+                    <a name="//apple_ref/swift/Method/getAfrVersion()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC13getAfrVersionyyF">getAfrVersion()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get afrVersion of the AmazonFreeRTOS device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getAfrVersion</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC17getBrokerEndpointyyF"></a>
+                    <a name="//apple_ref/swift/Method/getBrokerEndpoint()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC17getBrokerEndpointyyF">getBrokerEndpoint()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get mqtt broker endpoint of the AmazonFreeRTOS device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getBrokerEndpoint</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC6getMtuyyF"></a>
+                    <a name="//apple_ref/swift/Method/getMtu()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC6getMtuyyF">getMtu()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get BLE mtu of the AmazonFreeRTOS device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getMtu</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC11listNetworkyyAA04ListF3ReqVF"></a>
+                    <a name="//apple_ref/swift/Method/listNetwork(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC11listNetworkyyAA04ListF3ReqVF">listNetwork(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>List saved and scanned wifi networks of device. Wifi networks are returned one by one, saved wifi ordered by priority and scanned wifi ordered by signal strength (rssi).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">listNetwork</span><span class="p">(</span><span class="n">_</span> <span class="nv">listNetworkReq</span><span class="p">:</span> <span class="kt"><a href="../Structs/ListNetworkReq.html">ListNetworkReq</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>listNetworkReq</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The list network request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC11saveNetworkyyAA04SaveF3ReqVF"></a>
+                    <a name="//apple_ref/swift/Method/saveNetwork(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC11saveNetworkyyAA04SaveF3ReqVF">saveNetwork(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Save wifi network to device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">saveNetwork</span><span class="p">(</span><span class="n">_</span> <span class="nv">saveNetworkReq</span><span class="p">:</span> <span class="kt"><a href="../Structs/SaveNetworkReq.html">SaveNetworkReq</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>saveNetworkReq</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The save network request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC11editNetworkyyAA04EditF3ReqVF"></a>
+                    <a name="//apple_ref/swift/Method/editNetwork(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC11editNetworkyyAA04EditF3ReqVF">editNetwork(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Edit wifi network of device. Currently only support priority change.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">editNetwork</span><span class="p">(</span><span class="n">_</span> <span class="nv">editNetworkReq</span><span class="p">:</span> <span class="kt"><a href="../Structs/EditNetworkReq.html">EditNetworkReq</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>editNetworkReq</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The edit network request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB10RTOSDeviceC13deleteNetworkyyAA06DeleteF3ReqVF"></a>
+                    <a name="//apple_ref/swift/Method/deleteNetwork(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB10RTOSDeviceC13deleteNetworkyyAA06DeleteF3ReqVF">deleteNetwork(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete saved wifi network from device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">deleteNetwork</span><span class="p">(</span><span class="n">_</span> <span class="nv">deleteNetworkReq</span><span class="p">:</span> <span class="kt"><a href="../Structs/DeleteNetworkReq.html">DeleteNetworkReq</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deleteNetworkReq</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The delete network request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://aws.amazon.com/freertos/" target="_blank" rel="external">Amazon Web Services</a>. All rights reserved. (Last updated: 2019-05-06)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

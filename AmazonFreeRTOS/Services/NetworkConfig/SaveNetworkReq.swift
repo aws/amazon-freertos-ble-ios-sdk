@@ -1,18 +1,16 @@
 /// Save network request.
 public struct SaveNetworkReq: Encborable {
 
-    /**
-     SaveNetworkReq is used to save wifi network.
-
-     - Parameters:
-        - index: Index of the network.
-        - ssid: Wifi ssid.
-        - bssid: Wifi bssid (Mac address).
-        - psk: Wifi password. Saved network ignore this value.
-        - security: Wifi security type.
-        - connect: Connect immediately or just save for later.
-     - Returns: A new SaveNetworkReq.
-     */
+    /// SaveNetworkReq is used to save wifi network.
+    ///
+    /// - Parameters:
+    ///     - index: Index of the network.
+    ///     - ssid: Wifi ssid.
+    ///     - bssid: Wifi bssid (Mac address).
+    ///     - psk: Wifi password. Saved network ignore this value.
+    ///     - security: Wifi security type.
+    ///     - connect: Connect immediately or just save for later.
+    /// - Returns: A new SaveNetworkReq.
     public init(index: Int, ssid: String, bssid: String, psk: String, security: NetworkSecurityType, connect: Bool) {
         self.index = index
         self.ssid = ssid

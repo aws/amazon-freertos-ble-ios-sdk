@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AmazonFreeRTOSManager Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/AmazonFreeRTOSManager" class="dashAnchor"></a>
+    <a title="AmazonFreeRTOSManager Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">AmazonFreeRTOS Docs</a> (79% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">AmazonFreeRTOS Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        AmazonFreeRTOSManager Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AmazonFreeRTOSDevice.html">AmazonFreeRTOSDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AmazonFreeRTOSManager.html">AmazonFreeRTOSManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CBOR.html">CBOR</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NSByteString.html">NSByteString</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NSSimpleValue.html">NSSimpleValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NSTag.html">NSTag</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/CborKey.html">CborKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MqttMessageType.html">MqttMessageType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkMessageType.html">NetworkMessageType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkOpStatus.html">NetworkOpStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkSecurityType.html">NetworkSecurityType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CBPeripheral.html">CBPeripheral</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CBService.html">CBService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Data.html">Data</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSNotification.html">NSNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSNotification/Name.html">– Name</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSObject.html">NSObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSString.html">NSString</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14AmazonFreeRTOSAAV">AmazonFreeRTOS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14AmazonFreeRTOS0aB22RTOSGattCharacteristicV">AmazonFreeRTOSGattCharacteristic</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14AmazonFreeRTOS0aB15RTOSGattServiceV">AmazonFreeRTOSGattService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Connack.html">Connack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Connect.html">Connect</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DeleteNetworkReq.html">DeleteNetworkReq</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DeleteNetworkResp.html">DeleteNetworkResp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14AmazonFreeRTOS10DisconnectV">Disconnect</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EditNetworkReq.html">EditNetworkReq</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EditNetworkResp.html">EditNetworkResp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ListNetworkReq.html">ListNetworkReq</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ListNetworkResp.html">ListNetworkResp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MqttMessage.html">MqttMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NetworkMessage.html">NetworkMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14AmazonFreeRTOS7PingreqV">Pingreq</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14AmazonFreeRTOS8PingrespV">Pingresp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Puback.html">Puback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Publish.html">Publish</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SaveNetworkReq.html">SaveNetworkReq</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SaveNetworkResp.html">SaveNetworkResp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Suback.html">Suback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Subscribe.html">Subscribe</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Unsuback.html">Unsuback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Unsubscribe.html">Unsubscribe</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>AmazonFreeRTOSManager</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AmazonFreeRTOSManager</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>AmazonFreeRTOS manager.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC6sharedACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/shared" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC6sharedACvpZ">shared</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Shared instence of AmazonFreeRTOS manager.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span><span class="p">:</span> <span class="kt">AmazonFreeRTOSManager</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC7isDebugSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isDebug" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC7isDebugSbvp">isDebug</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isDebug</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC13debugMessagesSSvp"></a>
+                    <a name="//apple_ref/swift/Property/debugMessages" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC13debugMessagesSSvp">debugMessages</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">debugMessages</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC23advertisingServiceUUIDsSaySo6CBUUIDCGvp"></a>
+                    <a name="//apple_ref/swift/Property/advertisingServiceUUIDs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC23advertisingServiceUUIDsSaySo6CBUUIDCGvp">advertisingServiceUUIDs</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Service UUIDs in the advertising packets.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">advertisingServiceUUIDs</span><span class="p">:</span> <span class="p">[</span><span class="kt">CBUUID</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC7devicesSDy10Foundation4UUIDVAA0aB10RTOSDeviceCGvp"></a>
+                    <a name="//apple_ref/swift/Property/devices" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC7devicesSDy10Foundation4UUIDVAA0aB10RTOSDeviceCGvp">devices</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The AmazonFreeRTOS devices using peripheral identifier as key.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">devices</span><span class="p">:</span> <span class="p">[</span><span class="kt">UUID</span> <span class="p">:</span> <span class="kt"><a href="../Classes/AmazonFreeRTOSDevice.html">AmazonFreeRTOSDevice</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC7centralSo16CBCentralManagerCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/central" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC7centralSo16CBCentralManagerCSgvp">central</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">central</span><span class="p">:</span> <span class="kt">CBCentralManager</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)init"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)init">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a new AmazonFreeRTOS manager.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new AmazonFreeRTOS manager.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC19startScanForDevicesyyF"></a>
+                    <a name="//apple_ref/swift/Method/startScanForDevices()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC19startScanForDevicesyyF">startScanForDevices()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Start scan for AmazonFreeRTOS devices.</p>
+<div class="aside aside-precondition">
+    <p class="aside-title">Precondition</p>
+    <code><a href="../Classes/AmazonFreeRTOSManager.html#/s:14AmazonFreeRTOS0aB11RTOSManagerC7centralSo16CBCentralManagerCSgvp">central</a></code> is ready and not scanning.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">startScanForDevices</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC18stopScanForDevicesyyF"></a>
+                    <a name="//apple_ref/swift/Method/stopScanForDevices()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC18stopScanForDevicesyyF">stopScanForDevices()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Stop scan for AmazonFreeRTOS devices.</p>
+<div class="aside aside-precondition">
+    <p class="aside-title">Precondition</p>
+    <code><a href="../Classes/AmazonFreeRTOSManager.html#/s:14AmazonFreeRTOS0aB11RTOSManagerC7centralSo16CBCentralManagerCSgvp">central</a></code> is ready and is scanning.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stopScanForDevices</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC16rescanForDevicesyyF"></a>
+                    <a name="//apple_ref/swift/Method/rescanForDevices()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC16rescanForDevicesyyF">rescanForDevices()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Disconnect. Clear all contexts. Scan for AmazonFreeRTOS devices.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">rescanForDevices</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)centralManagerDidUpdateState:"></a>
+                    <a name="//apple_ref/swift/Method/centralManagerDidUpdateState(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)centralManagerDidUpdateState:">centralManagerDidUpdateState(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">centralManagerDidUpdateState</span><span class="p">(</span><span class="n">_</span> <span class="nv">central</span><span class="p">:</span> <span class="kt">CBCentralManager</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)centralManager:didDiscoverPeripheral:advertisementData:RSSI:"></a>
+                    <a name="//apple_ref/swift/Method/centralManager(_:didDiscover:advertisementData:rssi:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)centralManager:didDiscoverPeripheral:advertisementData:RSSI:">centralManager(_:didDiscover:advertisementData:rssi:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">centralManager</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">CBCentralManager</span><span class="p">,</span> <span class="n">didDiscover</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="nv">advertisementData</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">],</span> <span class="n">rssi</span> <span class="kt">RSSI</span><span class="p">:</span> <span class="kt">NSNumber</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)centralManager:didConnectPeripheral:"></a>
+                    <a name="//apple_ref/swift/Method/centralManager(_:didConnect:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)centralManager:didConnectPeripheral:">centralManager(_:didConnect:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">centralManager</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">CBCentralManager</span><span class="p">,</span> <span class="n">didConnect</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)centralManager:didDisconnectPeripheral:error:"></a>
+                    <a name="//apple_ref/swift/Method/centralManager(_:didDisconnectPeripheral:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)centralManager:didDisconnectPeripheral:error:">centralManager(_:didDisconnectPeripheral:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">centralManager</span><span class="p">(</span><span class="n">_</span> <span class="nv">central</span><span class="p">:</span> <span class="kt">CBCentralManager</span><span class="p">,</span> <span class="n">didDisconnectPeripheral</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)centralManager:didFailToConnectPeripheral:error:"></a>
+                    <a name="//apple_ref/swift/Method/centralManager(_:didFailToConnect:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)centralManager:didFailToConnectPeripheral:error:">centralManager(_:didFailToConnect:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">centralManager</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">CBCentralManager</span><span class="p">,</span> <span class="n">didFailToConnect</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)peripheral:didDiscoverServices:"></a>
+                    <a name="//apple_ref/swift/Method/peripheral(_:didDiscoverServices:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)peripheral:didDiscoverServices:">peripheral(_:didDiscoverServices:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">peripheral</span><span class="p">(</span><span class="n">_</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="n">didDiscoverServices</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)peripheral:didDiscoverCharacteristicsForService:error:"></a>
+                    <a name="//apple_ref/swift/Method/peripheral(_:didDiscoverCharacteristicsFor:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)peripheral:didDiscoverCharacteristicsForService:error:">peripheral(_:didDiscoverCharacteristicsFor:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">peripheral</span><span class="p">(</span><span class="n">_</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="n">didDiscoverCharacteristicsFor</span> <span class="nv">service</span><span class="p">:</span> <span class="kt">CBService</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)peripheral:didUpdateValueForCharacteristic:error:"></a>
+                    <a name="//apple_ref/swift/Method/peripheral(_:didUpdateValueFor:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)peripheral:didUpdateValueForCharacteristic:error:">peripheral(_:didUpdateValueFor:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">peripheral</span><span class="p">(</span><span class="n">_</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="n">didUpdateValueFor</span> <span class="nv">characteristic</span><span class="p">:</span> <span class="kt">CBCharacteristic</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)peripheral:didWriteValueForCharacteristic:error:"></a>
+                    <a name="//apple_ref/swift/Method/peripheral(_:didWriteValueFor:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@AmazonFreeRTOS@objc(cs)AmazonFreeRTOSManager(im)peripheral:didWriteValueForCharacteristic:error:">peripheral(_:didWriteValueFor:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">peripheral</span><span class="p">(</span><span class="n">_</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="n">didWriteValueFor</span> <span class="nv">characteristic</span><span class="p">:</span> <span class="kt">CBCharacteristic</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC27didUpdateValueForAfrVersion10peripheral14characteristicySo12CBPeripheralC_So16CBCharacteristicCtF"></a>
+                    <a name="//apple_ref/swift/Method/didUpdateValueForAfrVersion(peripheral:characteristic:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC27didUpdateValueForAfrVersion10peripheral14characteristicySo12CBPeripheralC_So16CBCharacteristicCtF">didUpdateValueForAfrVersion(peripheral:characteristic:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Process data of AfrVersion characteristic from <code>peripheral</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">didUpdateValueForAfrVersion</span><span class="p">(</span><span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="nv">characteristic</span><span class="p">:</span> <span class="kt">CBCharacteristic</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>peripheral</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The FreeRTOS peripheral.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>characteristic</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The AfrVersion characteristic.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC31didUpdateValueForBrokerEndpoint10peripheral14characteristicySo12CBPeripheralC_So16CBCharacteristicCtF"></a>
+                    <a name="//apple_ref/swift/Method/didUpdateValueForBrokerEndpoint(peripheral:characteristic:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC31didUpdateValueForBrokerEndpoint10peripheral14characteristicySo12CBPeripheralC_So16CBCharacteristicCtF">didUpdateValueForBrokerEndpoint(peripheral:characteristic:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Process data of BrokerEndpoint characteristic from <code>peripheral</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">didUpdateValueForBrokerEndpoint</span><span class="p">(</span><span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="nv">characteristic</span><span class="p">:</span> <span class="kt">CBCharacteristic</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>peripheral</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The FreeRTOS peripheral.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>characteristic</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The BrokerEndpoint characteristic.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14AmazonFreeRTOS0aB11RTOSManagerC20didUpdateValueForMtu10peripheral14characteristicySo12CBPeripheralC_So16CBCharacteristicCtF"></a>
+                    <a name="//apple_ref/swift/Method/didUpdateValueForMtu(peripheral:characteristic:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AmazonFreeRTOS0aB11RTOSManagerC20didUpdateValueForMtu10peripheral14characteristicySo12CBPeripheralC_So16CBCharacteristicCtF">didUpdateValueForMtu(peripheral:characteristic:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Process data of Mtu characteristic from <code>peripheral</code>. It will also triger on mtu value change.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">didUpdateValueForMtu</span><span class="p">(</span><span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="nv">characteristic</span><span class="p">:</span> <span class="kt">CBCharacteristic</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>peripheral</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The FreeRTOS peripheral.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>characteristic</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Mtu characteristic.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://aws.amazon.com/freertos/" target="_blank" rel="external">Amazon Web Services</a>. All rights reserved. (Last updated: 2019-05-06)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -3,30 +3,48 @@ import CoreBluetooth
 
 public class AmazonFreeRTOSDevice: NSObject {
 
+    /// CBPeripheral.
     public var peripheral: CBPeripheral
+    /// advertisementData.
     public var advertisementData: [String: Any]?
+    /// rssi.
     public var RSSI: NSNumber?
 
+    /// AmazonFreeRTOS device should auto reconnect on non-explicit disconnect.
     public var reconnect = false
+    /// The certificateId used to connect. see: https://github.com/awslabs/aws-sdk-ios-samples/tree/master/IoT-Sample/Swift
     public var certificateId: String?
+    /// The credentialsProvider used to connect like AWSMobileClient for Cognito.
     public var credentialsProvider: AWSCredentialsProvider?
 
+    /// AmazonFreeRTOSLibVersion on the device.
     public var afrVersion: String?
+    /// The brokerEndpoint on the device.
     public var brokerEndpoint: String?
+    /// The MTU of the device.
     public var mtu: Int?
 
+    /// The saved networks.
     public var savedNetworks: [ListNetworkResp] = []
+    /// The scaned networks.
     public var scanedNetworks: [ListNetworkResp] = []
 
-    public var txLotDatas: [String: Data] = [:]
-    public var rxLotDataQueues: [String: [Data]] = [:]
+    // Used for LOT read.
+    internal var txLotDatas: [String: Data] = [:]
+    // Used for LOT write.
+    internal var rxLotDataQueues: [String: [Data]] = [:]
 
+    /// Initializes a new AmazonFreeRTOS device.
+    ///
+    /// - Parameter peripheral: The CBPeripheral.
+    /// - Returns: A new AmazonFreeRTOS device.
     public init(peripheral: CBPeripheral) {
         self.peripheral = peripheral
         super.init()
     }
 
-    public func reset() {
+    // clear context of the device.
+    internal func reset() {
 
         removeIoTDataManager()
 
@@ -41,7 +59,8 @@ public class AmazonFreeRTOSDevice: NSObject {
         scanedNetworks.removeAll()
     }
 
-    public func registerIoTDataManager(connect: Connect) -> Bool {
+    // register the AWSIoTDataManager
+    internal func registerIoTDataManager(connect: Connect) -> Bool {
 
         let brokerEndpointParts = connect.brokerEndpoint.split(separator: ".")
         guard let endpoint = AWSEndpoint(urlString: "https://\(connect.brokerEndpoint)"), brokerEndpointParts.count > 2, let serviceConfiguration = AWSServiceConfiguration(region: String(brokerEndpointParts[2]).aws_regionTypeValue(), endpoint: endpoint, credentialsProvider: credentialsProvider) else {
@@ -52,7 +71,8 @@ public class AmazonFreeRTOSDevice: NSObject {
         return true
     }
 
-    public func removeIoTDataManager() {
+    // remove the AWSIoTDataManager
+    internal func removeIoTDataManager() {
         AWSIoTDataManager(forKey: peripheral.identifier.uuidString).disconnect()
         AWSIoTDataManager.remove(forKey: peripheral.identifier.uuidString)
 
@@ -60,7 +80,8 @@ public class AmazonFreeRTOSDevice: NSObject {
         rxLotDataQueues.removeValue(forKey: AmazonFreeRTOSGattService.MqttProxy.uuidString)
     }
 
-    public func updateIoTDataManager() {
+    // update the metadata of the AWSIoTDataManager
+    internal func updateIoTDataManager() {
         var userMetaData = ["AmazonFreeRTOSSDK": "iOS", "AmazonFreeRTOSSDKVersion": AmazonFreeRTOS.SDKVersion]
         if let afrVersion = afrVersion {
             userMetaData["AmazonFreeRTOSLibVersion"] = afrVersion
@@ -71,15 +92,12 @@ public class AmazonFreeRTOSDevice: NSObject {
 
 extension AmazonFreeRTOSDevice {
 
-    /**
-     Connect to the AmazonFreeRTOS device.
-
-     - Parameters:
-     - reconnect: AmazonFreeRTOS device should auto reconnect on non-explicit disconnect.
-     - certificateId: The certificateId used to connect. see: https://github.com/awslabs/aws-sdk-ios-samples/tree/master/IoT-Sample/Swift
-     - credentialsProvider: The credentialsProvider used to connect like AWSMobileClient for Cognito.
-     - Precondition: central is ready and device must be disconnected, otherwise it will be ignored.
-     */
+    /// Connect to the AmazonFreeRTOS device.
+    /// - Parameters:
+    ///    - reconnect: AmazonFreeRTOS device should auto reconnect on non-explicit disconnect.
+    ///    - certificateId: The certificateId used to connect. see: https://github.com/awslabs/aws-sdk-ios-samples/tree/master/IoT-Sample/Swift
+    ///    - credentialsProvider: The credentialsProvider used to connect like AWSMobileClient for Cognito.
+    /// - Precondition: central is ready and device must be disconnected, otherwise it will be ignored.
     public func connect(reconnect: Bool, certificateId: String? = nil, credentialsProvider: AWSCredentialsProvider? = nil) {
         self.reconnect = reconnect
         self.certificateId = certificateId
@@ -89,11 +107,9 @@ extension AmazonFreeRTOSDevice {
         }
     }
 
-    /**
-     Disconnect from the AmazonFreeRTOS device.
-
-     - Precondition: central is ready and device must be connected, otherwise it will be ignored.
-     */
+    /// Disconnect from the AmazonFreeRTOS device.
+    ///
+    /// - Precondition: central is ready and device must be connected, otherwise it will be ignored.
     public func disconnect() {
         reconnect = false
         if peripheral.state == .connected {
@@ -147,11 +163,9 @@ extension AmazonFreeRTOSDevice {
 
 extension AmazonFreeRTOSDevice {
 
-    /**
-     List saved and scanned wifi networks of device. Wifi networks are returned one by one, saved wifi ordered by priority and scanned wifi ordered by signal strength (rssi).
-
-     - Parameter listNetworkReq: The list network request.
-     */
+    /// List saved and scanned wifi networks of device. Wifi networks are returned one by one, saved wifi ordered by priority and scanned wifi ordered by signal strength (rssi).
+    ///
+    /// - Parameter listNetworkReq: The list network request.
     public func listNetwork(_ listNetworkReq: ListNetworkReq) {
 
         // reset networks list for the peripheral
@@ -162,29 +176,23 @@ extension AmazonFreeRTOSDevice {
         AmazonFreeRTOSManager.shared.listNetwork(peripheral, listNetworkReq: listNetworkReq)
     }
 
-    /**
-     Save wifi network to device.
-
-     - Parameter saveNetworkReq: The save network request.
-     */
+    /// Save wifi network to device.
+    ///
+    /// - Parameter saveNetworkReq: The save network request.
     public func saveNetwork(_ saveNetworkReq: SaveNetworkReq) {
         AmazonFreeRTOSManager.shared.saveNetwork(peripheral, saveNetworkReq: saveNetworkReq)
     }
 
-    /**
-     Edit wifi network of device. Currently only support priority change.
-
-     - Parameter editNetworkReq: The edit network request.
-     */
+    /// Edit wifi network of device. Currently only support priority change.
+    ///
+    /// - Parameter editNetworkReq: The edit network request.
     public func editNetwork(_ editNetworkReq: EditNetworkReq) {
         AmazonFreeRTOSManager.shared.editNetwork(peripheral, editNetworkReq: editNetworkReq)
     }
 
-    /**
-     Delete saved wifi network from device.
-
-     - Parameter deleteNetworkReq: The delete network request.
-     */
+    /// Delete saved wifi network from device.
+    ///
+    /// - Parameter deleteNetworkReq: The delete network request.
     public func deleteNetwork(_ deleteNetworkReq: DeleteNetworkReq) {
         AmazonFreeRTOSManager.shared.deleteNetwork(peripheral, deleteNetworkReq: deleteNetworkReq)
     }

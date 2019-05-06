@@ -1,14 +1,12 @@
 /// Edit network request.
 public struct EditNetworkReq: Encborable {
 
-    /**
-     EditNetworkReq is used to update the priority of a saved network.
-
-     - Parameters:
-        - index: Old index of the saved network.
-        - newIndex: New index of the saved network.
-     - Returns: A new EditNetworkReq.
-     */
+    /// EditNetworkReq is used to update the priority of a saved network.
+    ///
+    /// - Parameters:
+    ///     - index: Old index of the saved network.
+    ///     - newIndex: New index of the saved network.
+    /// - Returns: A new EditNetworkReq.
     public init(index: Int, newIndex: Int) {
         self.index = index
         self.newIndex = newIndex
