@@ -1,5 +1,3 @@
-import CBORSwift
-
 /// Save network request.
 public struct SaveNetworkReq: Encborable {
 
@@ -38,6 +36,6 @@ public struct SaveNetworkReq: Encborable {
     public var connect: Bool
 
     func toDictionary() -> NSDictionary {
-        return [CborKey.index.rawValue: index, CborKey.ssid.rawValue: ssid, CborKey.bssid.rawValue: NSByteString(bssid), CborKey.psk.rawValue: psk, CborKey.security.rawValue: security.rawValue, CborKey.connect.rawValue: NSSimpleValue(NSNumber(value: connect))]
+        return [CborKey.type.rawValue: NetworkMessageType.saveNetworkReq.rawValue, CborKey.index.rawValue: index, CborKey.ssid.rawValue: ssid, CborKey.bssid.rawValue: NSByteString(bssid), CborKey.psk.rawValue: psk, CborKey.security.rawValue: security.rawValue, CborKey.connect.rawValue: NSSimpleValue(NSNumber(value: connect))]
     }
 }

@@ -1,0 +1,4 @@
+--exclude Pods
+--decimalgrouping ignore
+--disable blankLinesAtStartOfScope
+--enable isEmpty

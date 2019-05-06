@@ -20,6 +20,6 @@ public struct EditNetworkReq: Encborable {
     public var newIndex: Int
 
     func toDictionary() -> NSDictionary {
-        return [CborKey.index.rawValue: index, CborKey.newIndex.rawValue: newIndex]
+        return [CborKey.type.rawValue: NetworkMessageType.editNetworkReq.rawValue, CborKey.index.rawValue: index, CborKey.newIndex.rawValue: newIndex]
     }
 }

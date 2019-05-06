@@ -11,8 +11,8 @@ class NetworkConfigAddViewController: UIViewController {
     @IBOutlet private var segSecurity: UISegmentedControl!
     @IBOutlet private var lcScrollViewBottom: NSLayoutConstraint!
 
-    var peripheral: CBPeripheral?
-    var network: ListNetworkResp?
+    var uuid: UUID?
+    var listNetworkResp: ListNetworkResp?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +21,13 @@ class NetworkConfigAddViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 
-        if let network = network {
-            tfSSID.text = network.ssid
+        if let listNetworkResp = listNetworkResp {
+            tfSSID.text = listNetworkResp.ssid
             tfSSID.isEnabled = false
-            if network.security == .open {
+            if listNetworkResp.security == .open {
                 viewPassword.isHidden = true
             }
-            segSecurity.selectedSegmentIndex = network.security.rawValue
+            segSecurity.selectedSegmentIndex = listNetworkResp.security.rawValue
             segSecurity.isUserInteractionEnabled = false
         }
 
@@ -35,7 +35,7 @@ class NetworkConfigAddViewController: UIViewController {
     }
 
     func addNetwork(connect: Bool) {
-        guard let peripheral = peripheral, let security = NetworkSecurityType(rawValue: segSecurity.selectedSegmentIndex) else {
+        guard let uuid = uuid, let security = NetworkSecurityType(rawValue: segSecurity.selectedSegmentIndex) else {
             return
         }
         guard let ssid = tfSSID.text, !ssid.isEmpty else {
@@ -50,7 +50,7 @@ class NetworkConfigAddViewController: UIViewController {
                 .show(on: self)
             return
         }
-        AmazonFreeRTOSManager.shared.saveNetworkToPeripheral(peripheral, saveNetworkReq: SaveNetworkReq(index: network?.index ?? -1, ssid: ssid, bssid: network?.bssid ?? "000000000000", psk: tfPassword.text ?? String(), security: security, connect: connect))
+        AmazonFreeRTOSManager.shared.devices[uuid]?.saveNetwork(SaveNetworkReq(index: listNetworkResp?.index ?? -1, ssid: ssid, bssid: listNetworkResp?.bssid ?? "000000000000", psk: tfPassword.text ?? String(), security: security, connect: connect))
         dismiss(animated: true)
     }
 }

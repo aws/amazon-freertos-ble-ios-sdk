@@ -32,7 +32,7 @@ class CustomGattMqttViewController: UIViewController {
     @IBOutlet private var btnStopCounter: UIButton!
     @IBOutlet private var btnResetCounter: UIButton!
 
-    var peripheral: CBPeripheral?
+    var uuid: UUID?
 
     var customCentral: CBCentralManager?
     var customPeripheral: CBPeripheral?
@@ -40,56 +40,29 @@ class CustomGattMqttViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Go back if device got disconnected
-        NotificationCenter.default.addObserver(self, selector: #selector(centralManagerDidDisconnectPeripheral(_:)), name: .afrCentralManagerDidDisconnectPeripheral, object: nil)
-        // Got the BrokerEndpoint from device
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceInfoBrokerEndpoint(_:)), name: .afrDeviceInfoBrokerEndpoint, object: nil)
-
-        guard let peripheral = peripheral else {
+        guard let uuid = uuid else {
             return
         }
-        title = peripheral.name
-
-        // Use the same IoT Broker Endpoint for custom mqtt
-        AmazonFreeRTOSManager.shared.getBrokerEndpointOfPeripheral(peripheral)
+        title = AmazonFreeRTOSManager.shared.devices[uuid]?.peripheral.name
 
         // Custom GATT
+
         customCentral = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: true])
-    }
-}
-
-// Observer
-
-extension CustomGattMqttViewController {
-
-    @objc
-    func centralManagerDidDisconnectPeripheral(_ notification: NSNotification) {
-        if peripheral?.identifier == notification.userInfo?["peripheral"] as? UUID {
-            _ = navigationController?.popViewController(animated: true)
-        }
-    }
-
-    @objc
-    func deviceInfoBrokerEndpoint(_ notification: NSNotification) {
-        guard let brokerEndpoint = notification.userInfo?["brokerEndpoint"] as? String else {
-            return
-        }
 
         // Custom MQTT
 
-        guard let serviceConfiguration = AWSServiceConfiguration(region: AmazonConstants.AWS.region, endpoint: AWSEndpoint(urlString: "https://\(brokerEndpoint)"), credentialsProvider: AWSMobileClient.sharedInstance()) else {
-            os_log("[FreeRTOS Demo] Error (AWSServiceConfiguration)", log: .default, type: .error)
+        guard let brokerEndpoint = AmazonFreeRTOSManager.shared.devices[uuid]?.brokerEndpoint, let serviceConfiguration = AWSServiceConfiguration(region: AmazonConstants.AWS.region, endpoint: AWSEndpoint(urlString: "https://\(brokerEndpoint)"), credentialsProvider: AWSMobileClient.sharedInstance()) else {
+            os_log("[FreeRTOS Demo] Error can't create serviceConfiguration", log: .default, type: .error)
             return
         }
 
         // Register a new AWSIoTDataManager with "uuidString_custom".
 
-        guard let peripheral = peripheral else {
-            return
+        AWSIoTDataManager.register(with: serviceConfiguration, forKey: "\(uuid.uuidString)_custom")
+        AWSIoTDataManager(forKey: "\(uuid.uuidString)_custom").disconnect()
+        AWSIoTDataManager(forKey: "\(uuid.uuidString)_custom").connectUsingWebSocket(withClientId: uuid.uuidString, cleanSession: true) { status in
+            os_log("[FreeRTOS Demo] connectUsingWebSocket status: %@", log: .default, type: .default, status.rawValue)
         }
-        AWSIoTDataManager.register(with: serviceConfiguration, forKey: "\(peripheral.identifier.uuidString)_custom")
-        AWSIoTDataManager(forKey: "\(peripheral.identifier.uuidString)_custom").disconnect()
-        AWSIoTDataManager(forKey: "\(peripheral.identifier.uuidString)_custom").connectUsingWebSocket(withClientId: peripheral.identifier.uuidString, cleanSession: true) { _ in }
     }
 }
 
@@ -98,10 +71,12 @@ extension CustomGattMqttViewController: CBCentralManagerDelegate {
     // BLE state change
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        if central.state == .poweredOn, let peripheral = peripheral, let retrievedPeripheral = central.retrievePeripherals(withIdentifiers: [peripheral.identifier]).first {
-            customPeripheral = retrievedPeripheral
-            central.connect(retrievedPeripheral, options: nil)
+        guard let uuid = uuid, central.state == .poweredOn, let retrievedPeripheral = central.retrievePeripherals(withIdentifiers: [uuid]).first else {
+            os_log("[FreeRTOS Demo] Error can't retrievePeripherals", log: .default, type: .error)
+            return
         }
+        customPeripheral = retrievedPeripheral
+        central.connect(retrievedPeripheral, options: nil)
     }
 
     // Connection

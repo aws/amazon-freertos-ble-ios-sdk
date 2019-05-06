@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = "AmazonFreeRTOS"
-  s.version       = "0.9.7"
+  s.version       = "0.9.8"
   s.summary       = "Amazon FreeRTOS SDK for iOS."
   s.description   = "The AWS SDK for iOS provides a library, code samples, and documentation for developers to build connected mobile applications using AWS."
   s.homepage      = "https://aws.amazon.com/freertos/"
@@ -8,11 +8,9 @@ Pod::Spec.new do |s|
   s.author        = { 'Amazon Web Services' => 'amazonwebservices' }
   s.platform      = :ios, '10.0'
   s.swift_version = "5.0"
-  s.source        = { :git => "https://github.com/aws/amazon-freertos-ble-ios-sdk.git", :tag => "0.9.7" }
+  s.source        = { :git => "https://github.com/aws/amazon-freertos-ble-ios-sdk.git", :tag => "0.9.8" }
   s.source_files  = "AmazonFreeRTOS/**/*.{swift,m,h}"
   s.requires_arc  = true
   s.frameworks    = "CoreBluetooth"
-  s.dependency "AWSMobileClient"
   s.dependency "AWSIoT"
-  s.dependency "CBORSwift"
 end

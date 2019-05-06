@@ -5,14 +5,14 @@ extension NSNotification.Name {
 
     /// Amazon FreeRTOS BLE Central Manager didUpdateState.
     public static let afrCentralManagerDidUpdateState: NSNotification.Name = NSNotification.Name("afrCentralManagerDidUpdateState")
-    /// Amazon FreeRTOS BLE Central Manager didDiscoverPeripheral.
-    public static let afrCentralManagerDidDiscoverPeripheral: NSNotification.Name = NSNotification.Name("afrCentralManagerDidDiscoverPeripheral")
-    /// Amazon FreeRTOS BLE Central Manager didConnectPeripheral.
-    public static let afrCentralManagerDidConnectPeripheral: NSNotification.Name = NSNotification.Name("afrCentralManagerDidConnectPeripheral")
-    /// Amazon FreeRTOS BLE Central Manager didDisconnectPeripheral.
-    public static let afrCentralManagerDidDisconnectPeripheral: NSNotification.Name = NSNotification.Name("afrCentralManagerDidDisconnectPeripheral")
-    /// Amazon FreeRTOS BLE Central Manager didFailToConnectPeripheral.
-    public static let afrCentralManagerDidFailToConnectPeripheral: NSNotification.Name = NSNotification.Name("afrCentralManagerDidFailToConnectPeripheral")
+    /// Amazon FreeRTOS BLE Central Manager didDiscoverDevice.
+    public static let afrCentralManagerDidDiscoverDevice: NSNotification.Name = NSNotification.Name("afrCentralManagerDidDiscoverDevice")
+    /// Amazon FreeRTOS BLE Central Manager didConnectDevice.
+    public static let afrCentralManagerDidConnectDevice: NSNotification.Name = NSNotification.Name("afrCentralManagerDidConnectDevice")
+    /// Amazon FreeRTOS BLE Central Manager didDisconnectDevice.
+    public static let afrCentralManagerDidDisconnectDevice: NSNotification.Name = NSNotification.Name("afrCentralManagerDidDisconnectDevice")
+    /// Amazon FreeRTOS BLE Central Manager didFailToConnectDevice.
+    public static let afrCentralManagerDidFailToConnectDevice: NSNotification.Name = NSNotification.Name("afrCentralManagerDidFailToConnectDevice")
 
     // BLE Peripheral
 
@@ -29,11 +29,6 @@ extension NSNotification.Name {
     public static let afrDeviceInfoBrokerEndpoint: NSNotification.Name = NSNotification.Name("afrDeviceInfoBrokerEndpoint")
     /// Amazon FreeRTOS return device info mtu.
     public static let afrDeviceInfoMtu: NSNotification.Name = NSNotification.Name("afrDeviceInfoMtu")
-
-    // MqttProxy
-
-    /// Amazon FreeRTOS return mqtt proxy control.
-    public static let afrMqttProxyControl: NSNotification.Name = NSNotification.Name("afrMqttProxyControl")
 
     // NetworkConfig
 

@@ -10,7 +10,7 @@ import UIKit
  */
 class DevicesViewController: UITableViewController {
 
-    var peripheral: CBPeripheral?
+    var uuid: UUID?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,13 +18,13 @@ class DevicesViewController: UITableViewController {
         extendedLayoutIncludesOpaqueBars = true
 
         // Add observe for AmazonFreeRTOSManager NSNotifications
+        NotificationCenter.default.addObserver(self, selector: #selector(centralManagerDidUpdateState), name: .afrCentralManagerDidUpdateState, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(centralManagerDidDisconnectDevice), name: .afrCentralManagerDidDisconnectDevice, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrCentralManagerDidDiscoverDevice, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrCentralManagerDidConnectDevice, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrCentralManagerDidFailToConnectDevice, object: nil)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrCentralManagerDidUpdateState, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrCentralManagerDidDiscoverPeripheral, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrCentralManagerDidConnectPeripheral, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrCentralManagerDidDisconnectPeripheral, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrCentralManagerDidFailToConnectPeripheral, object: nil)
-
+        centralManagerDidUpdateState()
         showLogin()
     }
 
@@ -39,16 +39,34 @@ class DevicesViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "toMqttProxyViewController", let viewController = segue.destination as? MqttProxyViewController {
-            viewController.peripheral = peripheral
+            viewController.uuid = uuid
         } else if segue.identifier == "toNetworkConfigViewController", let viewController = segue.destination as? NetworkConfigViewController {
-            viewController.peripheral = peripheral
+            viewController.uuid = uuid
         } else if segue.identifier == "toCustomGattMqttViewController", let viewController = segue.destination as? CustomGattMqttViewController {
-            viewController.peripheral = peripheral
+            viewController.uuid = uuid
         }
     }
 }
 
 extension DevicesViewController {
+
+    #warning("Scan forever when BLE is on, stop when off. However in production app there should be a timer to stop scan after some time.")
+    @objc
+    func centralManagerDidUpdateState() {
+        if AmazonFreeRTOSManager.shared.central?.state == .poweredOn {
+            AmazonFreeRTOSManager.shared.startScanForDevices()
+            return
+        }
+        AmazonFreeRTOSManager.shared.stopScanForDevices()
+    }
+
+    @objc
+    func centralManagerDidDisconnectDevice(_ notification: NSNotification) {
+        reloadDataWithoutAnimation()
+        if notification.userInfo?["identifier"] as? UUID == uuid {
+            _ = navigationController?.popToRootViewController(animated: true)
+        }
+    }
 
     @objc
     func reloadDataWithoutAnimation() {
@@ -158,28 +176,27 @@ extension DevicesViewController {
 extension DevicesViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
-        tableView.backgroundColor = .white
-        if AmazonFreeRTOSManager.shared.peripherals.isEmpty {
-            tableView.backgroundColor = .clear
-        }
-        return AmazonFreeRTOSManager.shared.peripherals.count
+        return AmazonFreeRTOSManager.shared.devices.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PeripheralCell", for: indexPath)
-        guard let peripheralCell = cell as? PeripheralCell else {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceCell", for: indexPath)
+        guard let deviceCell = cell as? DeviceCell else {
             return cell
         }
-        let peripheral = Array(AmazonFreeRTOSManager.shared.peripherals.values)[indexPath.row]
-        peripheralCell.labPeripheralName.text = peripheral.name
+        let device = Array(AmazonFreeRTOSManager.shared.devices.values)[indexPath.row]
+
+        #warning("the GAP name (peripheral.name) is cached on iOS and refreshes on connect so we use advertisementData name to get the latest.")
+        deviceCell.labDeviceName.text = device.advertisementData?["kCBAdvDataLocalName"] as? String ?? device.peripheral.name
         // iOS use generated identifier, it will be different on other devices.
-        peripheralCell.labPeripheralUUID.text = peripheral.identifier.uuidString
-        if peripheral.state == .connected {
-            peripheralCell.viewPeripheralStateIndicator.backgroundColor = UIColor(named: "seafoam_green_color")
+        deviceCell.labDeviceIdentifier.text = device.peripheral.identifier.uuidString
+        deviceCell.labDeviceRSSI.text = device.RSSI?.stringValue ?? NSLocalizedString("N/A", comment: String())
+        if device.peripheral.state == .connected {
+            deviceCell.viewDeviceStateIndicator.backgroundColor = UIColor(named: "seafoam_green_color")
         } else {
-            peripheralCell.viewPeripheralStateIndicator.backgroundColor = UIColor.clear
+            deviceCell.viewDeviceStateIndicator.backgroundColor = UIColor.clear
         }
-        return peripheralCell
+        return deviceCell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -187,9 +204,9 @@ extension DevicesViewController {
             return
         }
         tableView.deselectRow(at: indexPath, animated: true)
-        let peripheral = Array(AmazonFreeRTOSManager.shared.peripherals.values)[indexPath.row]
-        self.peripheral = peripheral
-        if peripheral.state == .connected {
+        uuid = Array(AmazonFreeRTOSManager.shared.devices.keys)[indexPath.row]
+        let device = Array(AmazonFreeRTOSManager.shared.devices.values)[indexPath.row]
+        if device.peripheral.state == .connected {
             Alertift.actionSheet()
                 .popover(anchorView: cell)
 
@@ -216,13 +233,13 @@ extension DevicesViewController {
                 .action(.cancel(NSLocalizedString("Cancel", comment: String())))
                 .show(on: self)
         } else {
-            AmazonFreeRTOSManager.shared.connectPeripheral(peripheral, reconnect: true)
+            device.connect(reconnect: true, credentialsProvider: AWSMobileClient.sharedInstance())
         }
     }
 
     override func tableView(_: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        let peripheral = Array(AmazonFreeRTOSManager.shared.peripherals.values)[indexPath.row]
-        if peripheral.state == .connected {
+        let device = Array(AmazonFreeRTOSManager.shared.devices.values)[indexPath.row]
+        if device.peripheral.state == .connected {
             return true
         }
         return false
@@ -233,15 +250,15 @@ extension DevicesViewController {
     }
 
     override func tableView(_: UITableView, commit _: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let peripheral = Array(AmazonFreeRTOSManager.shared.peripherals.values)[indexPath.row]
-        AmazonFreeRTOSManager.shared.disconnectPeripheral(peripheral)
+        let device = Array(AmazonFreeRTOSManager.shared.devices.values)[indexPath.row]
+        device.disconnect()
     }
 }
 
 extension DevicesViewController {
 
     @IBAction private func btnRescanPush(_: UIBarButtonItem) {
-        AmazonFreeRTOSManager.shared.rescanForPeripherals()
+        AmazonFreeRTOSManager.shared.rescanForDevices()
         reloadDataWithoutAnimation()
     }
 

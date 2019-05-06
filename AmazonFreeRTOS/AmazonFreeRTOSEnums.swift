@@ -1,11 +1,3 @@
-/// Mqtt proxy state.
-public enum MqttProxyState: Int {
-    /// Mqtt proxy off.
-    case off = 0
-    /// Mqtt proxy on.
-    case on = 1
-}
-
 /// Mqtt message types. Reference: http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718021
 public enum MqttMessageType: Int {
     /// Connect.
@@ -30,12 +22,32 @@ public enum MqttMessageType: Int {
     case unsubscribe = 10
     /// Unsuback.
     case unsuback = 11
-    /// Not supported by AWS IoT.
+    /// Pingreq.
     case pingreq = 12
-    /// Not supported by AWS IoT.
+    /// Pingresp.
     case pingresp = 13
     /// Disconnnect.
     case disconnnect = 14
+}
+
+/// Network message type.
+public enum NetworkMessageType: Int {
+    /// ListNetworkReq.
+    case listNetworkReq = 1
+    /// ListNetworkResp.
+    case listNetworkResp = 2
+    /// SaveNetworkReq.
+    case saveNetworkReq = 3
+    /// SaveNetworkResp.
+    case saveNetworkResp = 4
+    /// EditNetworkReq.
+    case editNetworkReq = 5
+    /// EditNetworkResp.
+    case editNetworkResp = 6
+    /// DeleteNetworkReq.
+    case deleteNetworkReq = 7
+    /// DeleteNetworkResp.
+    case deleteNetworkResp = 8
 }
 
 /// Network security types.

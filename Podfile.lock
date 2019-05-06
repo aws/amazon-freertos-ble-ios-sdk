@@ -1,50 +1,28 @@
 PODS:
-  - AWSAuthCore (2.9.5):
-    - AWSCore (= 2.9.5)
-  - AWSCognitoIdentityProvider (2.9.5):
-    - AWSCognitoIdentityProviderASF (= 1.0.1)
-    - AWSCore (= 2.9.5)
-  - AWSCognitoIdentityProviderASF (1.0.1)
-  - AWSCore (2.9.5)
-  - AWSIoT (2.9.5):
-    - AWSCore (= 2.9.5)
-  - AWSMobileClient (2.9.5):
-    - AWSAuthCore (= 2.9.5)
-    - AWSCognitoIdentityProvider (= 2.9.5)
-  - CBORSwift (1.2.0)
-  - SwiftFormat/CLI (0.40.6)
-  - SwiftLint (0.31.0)
+  - AWSCore (2.9.7)
+  - AWSIoT (2.9.7):
+    - AWSCore (= 2.9.7)
+  - SwiftFormat/CLI (0.40.8)
+  - SwiftLint (0.32.0)
 
 DEPENDENCIES:
   - AWSIoT
-  - AWSMobileClient
-  - CBORSwift
   - SwiftFormat/CLI
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - AWSAuthCore
-    - AWSCognitoIdentityProvider
-    - AWSCognitoIdentityProviderASF
     - AWSCore
     - AWSIoT
-    - AWSMobileClient
-    - CBORSwift
     - SwiftFormat
     - SwiftLint
 
 SPEC CHECKSUMS:
-  AWSAuthCore: 62400ec16e67ebe810f0f8b662e8c532487d0178
-  AWSCognitoIdentityProvider: 52d859858e5166513fd7e1774d15596f405fa115
-  AWSCognitoIdentityProviderASF: f94f1a502e72ef3d0a1de93e10bf7a79c8698118
-  AWSCore: 90ddc0234a321d5649c9572b1447f528f68d41b9
-  AWSIoT: 31d85adfce6119409040c9c7430c4830697239a4
-  AWSMobileClient: 43aeda9d2e89438c70b456d96c1a1c347e8ec4dc
-  CBORSwift: 977f597254ee0d89cf343e9d058b31a4902203a8
-  SwiftFormat: e881ba9c8f6d73e2465eb46f6b845a632708bd95
-  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  AWSCore: c98ab96784580d7a141c6f1999aa919ef45a312c
+  AWSIoT: 063be4464b17c07046749d50838efc7c8ffa4c34
+  SwiftFormat: d9e5ca1aed735164fe9d26510ec508ddb8a93598
+  SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
-PODFILE CHECKSUM: 1840edcddc7ad62de7b1e3dc3488fb8b5ce7fc20
+PODFILE CHECKSUM: cbec781e91646505adad1612ba0fdba3ec916720
 
-COCOAPODS: 1.7.0.beta.3
+COCOAPODS: 1.7.0.rc.1

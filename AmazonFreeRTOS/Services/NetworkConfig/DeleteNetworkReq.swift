@@ -15,6 +15,6 @@ public struct DeleteNetworkReq: Encborable {
     public var index: Int
 
     func toDictionary() -> NSDictionary {
-        return [CborKey.index.rawValue: index]
+        return [CborKey.type.rawValue: NetworkMessageType.deleteNetworkReq.rawValue, CborKey.index.rawValue: index]
     }
 }

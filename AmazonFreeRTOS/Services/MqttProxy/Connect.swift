@@ -2,11 +2,6 @@
 public struct Connect: Decborable {
 
     init?(dictionary: NSDictionary) {
-        guard let typeRawValue = dictionary.object(forKey: CborKey.type.rawValue) as? Int, let type = MqttMessageType(rawValue: typeRawValue) else {
-            return nil
-        }
-        self.type = type
-
         guard let clientID = dictionary.object(forKey: CborKey.clientID.rawValue) as? String else {
             return nil
         }
@@ -23,8 +18,6 @@ public struct Connect: Decborable {
         self.cleanSession = cleanSession
     }
 
-    /// Mqtt message type.
-    public var type: MqttMessageType
     /// Mqtt client id.
     public var clientID: String
     /// Mqtt broker endpoint.

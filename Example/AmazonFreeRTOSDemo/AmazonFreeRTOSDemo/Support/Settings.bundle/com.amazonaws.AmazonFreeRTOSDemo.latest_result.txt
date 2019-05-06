@@ -7,19 +7,19 @@ version: 4.1
 name: AmazonFreeRTOS, nameSpecified: 
 body: 
                    …
-version: 0.9.7
+version: 0.9.8
 
 name: AWSAuthCore, nameSpecified: 
 body: The AWS Mobile SDK f…
-version: 2.9.5
+version: 2.9.7
 
 name: AWSAuthUI, nameSpecified: 
 body: The AWS Mobile SDK f…
-version: 2.9.5
+version: 2.9.7
 
 name: AWSCognitoIdentityProvider, nameSpecified: 
 body: The AWS Mobile SDK f…
-version: 2.9.5
+version: 2.9.7
 
 name: AWSCognitoIdentityProviderASF, nameSpecified: 
 body: The AWS Mobile SDK f…
@@ -27,23 +27,19 @@ version: 1.0.1
 
 name: AWSCore, nameSpecified: 
 body: The AWS Mobile SDK f…
-version: 2.9.5
+version: 2.9.7
 
 name: AWSIoT, nameSpecified: 
 body: The AWS Mobile SDK f…
-version: 2.9.5
+version: 2.9.7
 
 name: AWSMobileClient, nameSpecified: 
 body: The AWS Mobile SDK f…
-version: 2.9.5
+version: 2.9.7
 
 name: AWSUserPoolsSignIn, nameSpecified: 
 body: The AWS Mobile SDK f…
-version: 2.9.5
-
-name: CBORSwift, nameSpecified: 
-body: Copyright (c) 2011-2…
-version: 1.2.0
+version: 2.9.7
 
 name: LicensePlist, nameSpecified: 
 body: MIT License
@@ -55,11 +51,11 @@ name: SwiftFormat, nameSpecified:
 body: MIT License
 
 Copyrig…
-version: 0.40.6
+version: 0.40.8
 
 name: SwiftLint, nameSpecified: 
 body: The MIT License (MIT…
-version: 0.31.0
+version: 0.32.0
 
 add-version-numbers: false
 

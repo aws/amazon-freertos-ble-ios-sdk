@@ -10,15 +10,13 @@ import UIKit
  */
 class NetworkConfigViewController: UITableViewController {
 
-    var peripheral: CBPeripheral?
-    var network: ListNetworkResp?
+    var uuid: UUID?
+    var listNetworkResp: ListNetworkResp?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         extendedLayoutIncludesOpaqueBars = true
 
-        // Go back if device got disconnected
-        NotificationCenter.default.addObserver(self, selector: #selector(centralManagerDidDisconnectPeripheral(_:)), name: .afrCentralManagerDidDisconnectPeripheral, object: nil)
         // ListNetwork returned one network
         NotificationCenter.default.addObserver(self, selector: #selector(didListNetwork), name: .afrDidListNetwork, object: nil)
         // Refresh list on network operations
@@ -28,10 +26,10 @@ class NetworkConfigViewController: UITableViewController {
 
         refreshControl?.addTarget(self, action: #selector(didOpNetwork), for: .valueChanged)
 
-        guard let peripheral = peripheral else {
+        guard let uuid = uuid else {
             return
         }
-        title = peripheral.name
+        title = AmazonFreeRTOSManager.shared.devices[uuid]?.peripheral.name
 
         listNetworkOfPeripheral()
     }
@@ -40,8 +38,8 @@ class NetworkConfigViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "toNetworkConfigAddViewController", let viewController = (segue.destination as? UINavigationController)?.topViewController as? NetworkConfigAddViewController {
-            viewController.peripheral = peripheral
-            viewController.network = network
+            viewController.uuid = uuid
+            viewController.listNetworkResp = listNetworkResp
         }
     }
 }
@@ -49,13 +47,6 @@ class NetworkConfigViewController: UITableViewController {
 // Observer
 
 extension NetworkConfigViewController {
-
-    @objc
-    func centralManagerDidDisconnectPeripheral(_ notification: NSNotification) {
-        if peripheral?.identifier == notification.userInfo?["peripheral"] as? UUID {
-            _ = navigationController?.popViewController(animated: true)
-        }
-    }
 
     @objc
     func didListNetwork() {
@@ -73,15 +64,15 @@ extension NetworkConfigViewController {
         listNetworkOfPeripheral()
     }
 
-    // listNetworkOfPeripheral: scan max of 50 networks an scan for 3s
+    // listNetworkOfPeripheral: scan max of 10 networks an scan for 3s
 
     func listNetworkOfPeripheral() {
-        guard let peripheral = peripheral else {
+        guard let uuid = uuid else {
             return
         }
 
         // Perform network scan
-        AmazonFreeRTOSManager.shared.listNetworkOfPeripheral(peripheral, listNetworkReq: ListNetworkReq(maxNetworks: 50, timeout: 3))
+        AmazonFreeRTOSManager.shared.devices[uuid]?.listNetwork(ListNetworkReq(maxNetworks: 10, timeout: 3))
 
         tableView.reloadData()
     }
@@ -96,10 +87,12 @@ extension NetworkConfigViewController {
     }
 
     override func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let peripheral = peripheral else {
+        guard let uuid = uuid, let networks = {
+            section == 0 ? AmazonFreeRTOSManager.shared.devices[uuid]?.savedNetworks : AmazonFreeRTOSManager.shared.devices[uuid]?.scanedNetworks
+        }() else {
             return 0
         }
-        return AmazonFreeRTOSManager.shared.networks[peripheral.identifier.uuidString]?[section].count ?? 0
+        return networks.count
     }
 
     override func tableView(_: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -148,10 +141,12 @@ extension NetworkConfigViewController {
     }
 
     override func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard let peripheral = peripheral else {
+        guard let uuid = uuid, let networks = {
+            section == 0 ? AmazonFreeRTOSManager.shared.devices[uuid]?.savedNetworks : AmazonFreeRTOSManager.shared.devices[uuid]?.scanedNetworks
+        }() else {
             return 112.0
         }
-        if AmazonFreeRTOSManager.shared.networks[peripheral.identifier.uuidString]?[section].isEmpty ?? true {
+        if networks.isEmpty {
             return 112.0
         }
         return 52.0
@@ -159,7 +154,9 @@ extension NetworkConfigViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NetworkCell", for: indexPath)
-        guard let networkCell = cell as? NetworkCell, let peripheral = peripheral, let network = AmazonFreeRTOSManager.shared.networks[peripheral.identifier.uuidString]?[indexPath.section][indexPath.row] else {
+        guard let networkCell = cell as? NetworkCell, let uuid = uuid, let network = {
+            indexPath.section == 0 ? AmazonFreeRTOSManager.shared.devices[uuid]?.savedNetworks[indexPath.row] : AmazonFreeRTOSManager.shared.devices[uuid]?.scanedNetworks[indexPath.row]
+        }() else {
             return cell
         }
         networkCell.labWifiSSID.text = network.ssid
@@ -177,7 +174,9 @@ extension NetworkConfigViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        guard let peripheral = peripheral, let network = AmazonFreeRTOSManager.shared.networks[peripheral.identifier.uuidString]?[indexPath.section][indexPath.row] else {
+        guard let uuid = uuid, let network = {
+            indexPath.section == 0 ? AmazonFreeRTOSManager.shared.devices[uuid]?.savedNetworks[indexPath.row] : AmazonFreeRTOSManager.shared.devices[uuid]?.scanedNetworks[indexPath.row]
+        }() else {
             return
         }
 
@@ -188,7 +187,7 @@ extension NetworkConfigViewController {
             // Its saved network
 
             tableView.disableTableView()
-            AmazonFreeRTOSManager.shared.saveNetworkToPeripheral(peripheral, saveNetworkReq: SaveNetworkReq(index: network.index, ssid: network.ssid, bssid: network.bssid, psk: String(), security: network.security, connect: true))
+            AmazonFreeRTOSManager.shared.devices[uuid]?.saveNetwork(SaveNetworkReq(index: network.index, ssid: network.ssid, bssid: network.bssid, psk: String(), security: network.security, connect: true))
         } else if network.security == .notSupported {
 
             // Network not supported
@@ -200,38 +199,35 @@ extension NetworkConfigViewController {
 
             // Add Network
 
-            self.network = network
+            listNetworkResp = network
             performSegue(withIdentifier: "toNetworkConfigAddViewController", sender: self)
         }
     }
 
     override func tableView(_: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section == 0 {
-            return true
-        }
-        return false
+        return indexPath.section == 0
     }
 
     override func tableView(_: UITableView, commit _: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard let peripheral = peripheral, let network = AmazonFreeRTOSManager.shared.networks[peripheral.identifier.uuidString]?[indexPath.section][indexPath.row] else {
+
+        // Only saved networks can delete
+
+        guard let uuid = uuid, let network = AmazonFreeRTOSManager.shared.devices[uuid]?.savedNetworks[indexPath.row] else {
             return
         }
-
-        // Delete network
-
         tableView.disableTableView()
-        AmazonFreeRTOSManager.shared.deleteNetworkFromPeripheral(peripheral, deleteNetworkReq: DeleteNetworkReq(index: network.index))
+        AmazonFreeRTOSManager.shared.devices[uuid]?.deleteNetwork(DeleteNetworkReq(index: network.index))
     }
 
     override func tableView(_: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        guard let peripheral = peripheral, let sourceNetwork = AmazonFreeRTOSManager.shared.networks[peripheral.identifier.uuidString]?[sourceIndexPath.section][sourceIndexPath.row], let destinationNetwork = AmazonFreeRTOSManager.shared.networks[peripheral.identifier.uuidString]?[destinationIndexPath.section][destinationIndexPath.row] else {
+
+        // Only saved networks can edit
+
+        guard let uuid = uuid, let sourceNetwork = AmazonFreeRTOSManager.shared.devices[uuid]?.savedNetworks[sourceIndexPath.row], let destinationNetwork = AmazonFreeRTOSManager.shared.devices[uuid]?.savedNetworks[destinationIndexPath.row] else {
             return
         }
-
-        // Edit network
-
         tableView.disableTableView()
-        AmazonFreeRTOSManager.shared.editNetworkOfPeripheral(peripheral, editNetworkReq: EditNetworkReq(index: sourceNetwork.index, newIndex: destinationNetwork.index))
+        AmazonFreeRTOSManager.shared.devices[uuid]?.editNetwork(EditNetworkReq(index: sourceNetwork.index, newIndex: destinationNetwork.index))
     }
 }
 
@@ -242,7 +238,7 @@ extension NetworkConfigViewController {
     }
 
     @IBAction private func btnAddPush(_: UIButton) {
-        network = nil
+        listNetworkResp = nil
         performSegue(withIdentifier: "toNetworkConfigAddViewController", sender: self)
     }
 }

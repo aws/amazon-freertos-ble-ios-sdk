@@ -1,6 +1,7 @@
 import AmazonFreeRTOS
 import UIKit
 
+#warning("This will be removed for release")
 class DebugViewController: UIViewController {
 
     @IBOutlet private var swAutoScroll: UISwitch!

@@ -20,6 +20,6 @@ public struct ListNetworkReq: Encborable {
     public var timeout: Int
 
     func toDictionary() -> NSDictionary {
-        return [CborKey.maxNetworks.rawValue: maxNetworks, CborKey.timeout.rawValue: timeout]
+        return [CborKey.type.rawValue: NetworkMessageType.listNetworkReq.rawValue, CborKey.maxNetworks.rawValue: maxNetworks, CborKey.timeout.rawValue: timeout]
     }
 }

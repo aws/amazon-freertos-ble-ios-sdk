@@ -1,5 +1,5 @@
 /// Generic mqtt proxy message.
-public struct MqttProxyMessage: Decborable {
+public struct MqttMessage: Decborable {
 
     init?(dictionary: NSDictionary) {
         guard let typeRawValue = dictionary.object(forKey: CborKey.type.rawValue) as? Int, let type = MqttMessageType(rawValue: typeRawValue) else {
@@ -12,6 +12,6 @@ public struct MqttProxyMessage: Decborable {
     public var type: MqttMessageType
 
     static func toSelf<T: Decborable>(dictionary: NSDictionary) -> T? {
-        return MqttProxyMessage(dictionary: dictionary) as? T
+        return MqttMessage(dictionary: dictionary) as? T
     }
 }

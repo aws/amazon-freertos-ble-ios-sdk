@@ -5,6 +5,7 @@ target 'AmazonFreeRTOSDemo' do
   pod 'Alertift'
   pod 'AmazonFreeRTOS', :path => '../../'
   pod 'AWSAuthUI'
+  pod 'AWSMobileClient'
   pod 'AWSUserPoolsSignIn'
   pod 'LicensePlist'
   pod 'SwiftFormat/CLI'
