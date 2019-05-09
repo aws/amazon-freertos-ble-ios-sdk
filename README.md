@@ -47,7 +47,9 @@ All main functions are defined in
 
 These functions include:
 
-### BLE Helper Functions (AmazonFreeRTOSManager)
+## AmazonFreeRTOSManager
+
+### BLE Helper Functions
 
 The SDK includes some functions that help you perform BLE operations with Amazon FreeRTOS devices:
 
@@ -62,9 +64,9 @@ stopScanForDevices()
 rescanForDevices()
 ```
 
-### BLE Helper Functions (AmazonFreeRTOSDevice)
+## AmazonFreeRTOSDevice
 
-### Device Information Service 
+### BLE Helper Functions
 
 The device ble options:
 
@@ -76,11 +78,11 @@ connect(reconnect: Bool, certificateId: String? = nil, credentialsProvider: AWSC
 disconnect()
 ```
 
-### MQTT Proxy Service 
+### MQTT Proxy Service
 
 MQTT proxy service start automatically
 
-### Network Config Service 
+### Network Config Service
 
 The network configuration service configures the Wi-Fi network of the Amazon FreeRTOS Device. Its functions include:
 
