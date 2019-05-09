@@ -35,53 +35,60 @@ pod 'AmazonFreeRTOS', :git => 'https://github.com/aws/amazon-freertos-ble-ios-sd
 **Newer version of the freertos firmware use CBOR encoding, please use:**
 
 ```
-pod 'AmazonFreeRTOS', :git => 'https://github.com/aws/amazon-freertos-ble-ios-sdk.git'
+pod 'AmazonFreeRTOS', :git => 'https://github.com/aws/amazon-freertos-ble-ios-sdk.git', :tag => '0.9.8'
 ```
 
 ## Contents
 
-All main functions are defined in [AmazonFreeRTOSManager.swift](AmazonFreeRTOS/AmazonFreeRTOSManager.swift). These functions include:
+All main functions are defined in 
 
-### BLE Helper Functions
+[AmazonFreeRTOSManager.swift](AmazonFreeRTOS/AmazonFreeRTOSManager.swift)
+[AmazonFreeRTOSDevice.swift](AmazonFreeRTOS/AmazonFreeRTOSDevice.swift)
+
+These functions include:
+
+### BLE Helper Functions (AmazonFreeRTOSManager)
 
 The SDK includes some functions that help you perform BLE operations with Amazon FreeRTOS devices:
 
 ```
-startScanForPeripherals()
-stopScanForPeripherals()
-rescanForPeripherals()
-connectPeripheral()
-disconnectPeripheral()
+// Start scan for AmazonFreeRTOS devices.
+startScanForDevices()
+
+// Stop scan for AmazonFreeRTOS devices.
+stopScanForDevices()
+
+//  Disconnect. Clear all contexts. Scan for AmazonFreeRTOS devices.
+rescanForDevices()
 ```
+
+### BLE Helper Functions (AmazonFreeRTOSDevice)
 
 ### Device Information Service 
 
-The device information service provides basic device-related information. Its functions include:
+The device ble options:
 
 ```
-getAfrVersionOfPeripheral(_ peripheral: CBPeripheral)
-getBrokerEndpointOfPeripheral(_ peripheral: CBPeripheral)
-getMtuOfPeripheral(_ peripheral: CBPeripheral)
+// Connect to the AmazonFreeRTOS device.
+connect(reconnect: Bool, certificateId: String? = nil, credentialsProvider: AWSCredentialsProvider? = nil)
+
+// Disconnect from the AmazonFreeRTOS device.
+disconnect()
 ```
 
 ### MQTT Proxy Service 
 
-The MQTT proxy service controls the MQTT proxy. Its functions include:
-
-```
-getMqttProxyControlOfPeripheral(_ peripheral: CBPeripheral)
-updateMqttProxyControlOfPeripheral(_ peripheral: CBPeripheral, mqttProxyControl: MqttProxyControl)
-```
+MQTT proxy service start automatically
 
 ### Network Config Service 
 
 The network configuration service configures the Wi-Fi network of the Amazon FreeRTOS Device. Its functions include:
 
 ```
-listNetworkOfPeripheral(_ peripheral: CBPeripheral, listNetworkReq: ListNetworkReq)
-saveNetworkToPeripheral(_ peripheral: CBPeripheral, saveNetworkReq: SaveNetworkReq)
-editNetworkOfPeripheral(_ peripheral: CBPeripheral, editNetworkReq: EditNetworkReq)
-deleteNetworkFromPeripheral(_ peripheral: CBPeripheral, deleteNetworkReq: DeleteNetworkReq)
+listNetwork(_ listNetworkReq: ListNetworkReq)
+saveNetwork(_ saveNetworkReq: SaveNetworkReq)
+editNetwork(_ editNetworkReq: EditNetworkReq)
+deleteNetwork(_ deleteNetworkReq: DeleteNetworkReq)
 ```
 
 ## Demo Application
