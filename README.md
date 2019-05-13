@@ -37,6 +37,8 @@ pod 'AmazonFreeRTOS', :git => 'https://github.com/aws/amazon-freertos-ble-ios-sd
 ```
 pod 'AmazonFreeRTOS', :git => 'https://github.com/aws/amazon-freertos-ble-ios-sdk.git', :tag => '0.9.8'
 ```
+for https://github.com/aws/amazon-freertos/tree/release-1.5
+
 
 ## Contents
 
