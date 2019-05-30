@@ -140,6 +140,7 @@ extension AmazonFreeRTOSManager: CBPeripheralDelegate {
             devices[peripheral.identifier]?.getAfrVersion()
             devices[peripheral.identifier]?.getBrokerEndpoint()
             devices[peripheral.identifier]?.getMtu()
+            devices[peripheral.identifier]?.getAfrPlatform()
 
         case AmazonFreeRTOSGattService.MqttProxy:
             guard let characteristic = service.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.MqttProxyControl) else {
@@ -179,6 +180,9 @@ extension AmazonFreeRTOSManager: CBPeripheralDelegate {
 
         case AmazonFreeRTOSGattCharacteristic.Mtu:
             didUpdateValueForMtu(peripheral: peripheral, characteristic: characteristic)
+
+        case AmazonFreeRTOSGattCharacteristic.AfrPlatform:
+            didUpdateValueForAfrPlatform(peripheral: peripheral, characteristic: characteristic)
 
         case AmazonFreeRTOSGattCharacteristic.TXMqttMessage, AmazonFreeRTOSGattCharacteristic.TXNetworkMessage:
             didUpdateValueForTXMessage(peripheral: peripheral, characteristic: characteristic, data: nil)
@@ -285,6 +289,23 @@ extension AmazonFreeRTOSManager {
         devices[peripheral.identifier]?.mtu = mtu
         NotificationCenter.default.post(name: .afrDeviceInfoMtu, object: nil, userInfo: ["mtu": mtu])
         debugPrint("[\(peripheral.identifier.uuidString)] → afrDeviceInfoMtu: \(mtu)")
+    }
+
+    /// Process data of AfrPlatform characteristic from `peripheral`. It will also triger on mtu value change.
+    ///
+    /// - Parameters:
+    ///     - peripheral: The FreeRTOS peripheral.
+    ///     - characteristic: The AfrPlatform characteristic.
+    public func didUpdateValueForAfrPlatform(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+
+        guard let value = characteristic.value, let afrPlatform = String(data: value, encoding: .utf8) else {
+            debugPrint("[\(peripheral.identifier.uuidString)][ERROR] afrDeviceInfoAfrPlatform: Invalid AfrPlatform")
+            return
+        }
+        devices[peripheral.identifier]?.afrPlatform = afrPlatform
+        devices[peripheral.identifier]?.updateIoTDataManager()
+        NotificationCenter.default.post(name: .afrDeviceInfoAfrPlatform, object: nil, userInfo: ["afrPlatform": afrPlatform])
+        debugPrint("[\(peripheral.identifier.uuidString)] → afrDeviceInfoAfrPlatform: \(afrPlatform)")
     }
 }
 

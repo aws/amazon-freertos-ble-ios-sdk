@@ -17,12 +17,14 @@ public class AmazonFreeRTOSDevice: NSObject {
     /// The credentialsProvider used to connect like AWSMobileClient for Cognito.
     public var credentialsProvider: AWSCredentialsProvider?
 
-    /// AmazonFreeRTOSLibVersion on the device.
+    /// Afr Version of the device.
     public var afrVersion: String?
     /// The brokerEndpoint on the device.
     public var brokerEndpoint: String?
     /// The MTU of the device.
     public var mtu: Int?
+    /// Afr Platform of the device.
+    public var afrPlatform: String?
 
     /// The saved networks.
     public var savedNetworks: [ListNetworkResp] = []
@@ -54,6 +56,7 @@ public class AmazonFreeRTOSDevice: NSObject {
         afrVersion = nil
         brokerEndpoint = nil
         mtu = nil
+        afrPlatform = nil
 
         savedNetworks.removeAll()
         scanedNetworks.removeAll()
@@ -82,9 +85,12 @@ public class AmazonFreeRTOSDevice: NSObject {
 
     // update the metadata of the AWSIoTDataManager
     internal func updateIoTDataManager() {
-        var userMetaData = ["AmazonFreeRTOSSDK": "iOS", "AmazonFreeRTOSSDKVersion": AmazonFreeRTOS.SDKVersion]
+        var userMetaData = ["AFRSDK": "iOS", "AFRSDKVersion": AmazonFreeRTOS.SDKVersion]
         if let afrVersion = afrVersion {
-            userMetaData["AmazonFreeRTOSLibVersion"] = afrVersion
+            userMetaData["AFRLibVersion"] = afrVersion
+        }
+        if let afrPlatform = afrPlatform {
+            userMetaData["Platform"] = afrPlatform
         }
         AWSIoTDataManager(forKey: peripheral.identifier.uuidString).updateUserMetaData(userMetaData)
     }
@@ -153,6 +159,18 @@ extension AmazonFreeRTOSDevice {
 
         guard let characteristic = peripheral.serviceOf(uuid: AmazonFreeRTOSGattService.DeviceInfo)?.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.Mtu) else {
             AmazonFreeRTOSManager.shared.debugPrint("[\(peripheral.identifier.uuidString)][ERROR] DeviceInfo service or Mtu characteristic doesn't exist")
+            return
+        }
+        peripheral.readValue(for: characteristic)
+    }
+
+    /// Get afrPlatform of the AmazonFreeRTOS device.
+    public func getAfrPlatform() {
+
+        AmazonFreeRTOSManager.shared.debugPrint("[\(peripheral.identifier.uuidString)] ↓ get afrPlatform")
+
+        guard let characteristic = peripheral.serviceOf(uuid: AmazonFreeRTOSGattService.DeviceInfo)?.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.AfrPlatform) else {
+            AmazonFreeRTOSManager.shared.debugPrint("[\(peripheral.identifier.uuidString)][ERROR] DeviceInfo service or AfrPlatform characteristic doesn't exist")
             return
         }
         peripheral.readValue(for: characteristic)

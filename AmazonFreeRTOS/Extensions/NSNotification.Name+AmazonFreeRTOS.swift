@@ -29,6 +29,8 @@ extension NSNotification.Name {
     public static let afrDeviceInfoBrokerEndpoint: NSNotification.Name = NSNotification.Name("afrDeviceInfoBrokerEndpoint")
     /// Amazon FreeRTOS return device info mtu.
     public static let afrDeviceInfoMtu: NSNotification.Name = NSNotification.Name("afrDeviceInfoMtu")
+    /// Amazon FreeRTOS return device info afr platform.
+    public static let afrDeviceInfoAfrPlatform: NSNotification.Name = NSNotification.Name("afrDeviceInfoAfrPlatform")
 
     // NetworkConfig
 
