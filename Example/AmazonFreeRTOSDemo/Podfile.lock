@@ -22,7 +22,7 @@ PODS:
     - AWSCognitoIdentityProvider (= 2.9.8)
   - LicensePlist (2.5.0)
   - SwiftFormat/CLI (0.40.9)
-  - SwiftLint (0.32.0)
+  - SwiftLint (0.33.0)
 
 DEPENDENCIES:
   - Alertift
@@ -66,7 +66,7 @@ SPEC CHECKSUMS:
   AWSUserPoolsSignIn: 127aebb7fd668b4e897063c34356f9e25a576b84
   LicensePlist: e5f8f2e3465620e53ec4c669955a5a7d0692b9cb
   SwiftFormat: 6b67b6e7fe73d664f0cbb4f13721f130462c86a5
-  SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
+  SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
 
 PODFILE CHECKSUM: 93e4028eeb7a2569b77e57e7fccc56afdd5fc9a8
 

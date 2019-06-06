@@ -26,6 +26,8 @@ public struct AmazonFreeRTOSGattCharacteristic {
     static let Mtu = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff03")
     /// The platform of the Amazon FreeRTOS.
     static let AfrPlatform = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff04")
+    /// The device id of the Amazon FreeRTOS.
+    static let AfrDevId = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff05")
 
     /// Used for mqtt control state.
     static let MqttProxyControl = CBUUID(string: "a9d7166a-d72e-40a9-a002-48044cc30001")

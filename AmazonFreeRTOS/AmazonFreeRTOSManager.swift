@@ -141,6 +141,7 @@ extension AmazonFreeRTOSManager: CBPeripheralDelegate {
             devices[peripheral.identifier]?.getBrokerEndpoint()
             devices[peripheral.identifier]?.getMtu()
             devices[peripheral.identifier]?.getAfrPlatform()
+            devices[peripheral.identifier]?.getAfrDevId()
 
         case AmazonFreeRTOSGattService.MqttProxy:
             guard let characteristic = service.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.MqttProxyControl) else {
@@ -183,6 +184,9 @@ extension AmazonFreeRTOSManager: CBPeripheralDelegate {
 
         case AmazonFreeRTOSGattCharacteristic.AfrPlatform:
             didUpdateValueForAfrPlatform(peripheral: peripheral, characteristic: characteristic)
+
+        case AmazonFreeRTOSGattCharacteristic.AfrDevId:
+            didUpdateValueForAfrDevId(peripheral: peripheral, characteristic: characteristic)
 
         case AmazonFreeRTOSGattCharacteristic.TXMqttMessage, AmazonFreeRTOSGattCharacteristic.TXNetworkMessage:
             didUpdateValueForTXMessage(peripheral: peripheral, characteristic: characteristic, data: nil)
@@ -291,7 +295,7 @@ extension AmazonFreeRTOSManager {
         debugPrint("[\(peripheral.identifier.uuidString)] → afrDeviceInfoMtu: \(mtu)")
     }
 
-    /// Process data of AfrPlatform characteristic from `peripheral`. It will also triger on mtu value change.
+    /// Process data of AfrPlatform characteristic from `peripheral`.
     ///
     /// - Parameters:
     ///     - peripheral: The FreeRTOS peripheral.
@@ -306,6 +310,23 @@ extension AmazonFreeRTOSManager {
         devices[peripheral.identifier]?.updateIoTDataManager()
         NotificationCenter.default.post(name: .afrDeviceInfoAfrPlatform, object: nil, userInfo: ["afrPlatform": afrPlatform])
         debugPrint("[\(peripheral.identifier.uuidString)] → afrDeviceInfoAfrPlatform: \(afrPlatform)")
+    }
+
+    /// Process data of AfrDevId characteristic from `peripheral`.
+    ///
+    /// - Parameters:
+    ///     - peripheral: The FreeRTOS peripheral.
+    ///     - characteristic: The AfrDevId characteristic.
+    public func didUpdateValueForAfrDevId(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+
+        guard let value = characteristic.value, let afrDevId = String(data: value, encoding: .utf8) else {
+            debugPrint("[\(peripheral.identifier.uuidString)][ERROR] afrDeviceInfoAfrDevId: Invalid AfrDevId")
+            return
+        }
+        devices[peripheral.identifier]?.afrDevId = afrDevId
+        devices[peripheral.identifier]?.updateIoTDataManager()
+        NotificationCenter.default.post(name: .afrDeviceInfoAfrDevId, object: nil, userInfo: ["afrDevId": afrDevId])
+        debugPrint("[\(peripheral.identifier.uuidString)] → afrDeviceInfoAfrDevId: \(afrDevId)")
     }
 }
 

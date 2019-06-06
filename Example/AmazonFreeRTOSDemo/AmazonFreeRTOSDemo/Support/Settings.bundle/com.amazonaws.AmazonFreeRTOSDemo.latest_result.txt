@@ -55,7 +55,7 @@ version: 0.40.9
 
 name: SwiftLint, nameSpecified: 
 body: The MIT License (MIT…
-version: 0.32.0
+version: 0.33.0
 
 add-version-numbers: false
 
