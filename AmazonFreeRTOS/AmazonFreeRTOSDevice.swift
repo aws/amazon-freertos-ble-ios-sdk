@@ -89,13 +89,13 @@ public class AmazonFreeRTOSDevice: NSObject {
     // update the metadata of the AWSIoTDataManager
     internal func updateIoTDataManager() {
         var userMetaData = ["AFRSDK": "iOS", "AFRSDKVersion": AmazonFreeRTOS.SDKVersion]
-        if let afrVersion = afrVersion {
+        if let afrVersion = afrVersion, !afrVersion.isEmpty {
             userMetaData["AFRLibVersion"] = afrVersion
         }
-        if let afrPlatform = afrPlatform {
+        if let afrPlatform = afrPlatform, !afrPlatform.isEmpty{
             userMetaData["Platform"] = afrPlatform
         }
-        if let afrDevId = afrDevId {
+        if let afrDevId = afrDevId, !afrDevId.isEmpty {
             userMetaData["AFRDevID"] = afrDevId
         }
         AWSIoTDataManager(forKey: peripheral.identifier.uuidString).updateUserMetaData(userMetaData)
