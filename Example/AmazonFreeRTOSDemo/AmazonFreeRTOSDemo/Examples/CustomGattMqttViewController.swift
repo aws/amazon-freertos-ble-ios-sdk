@@ -61,7 +61,7 @@ class CustomGattMqttViewController: UIViewController {
         AWSIoTDataManager.register(with: serviceConfiguration, forKey: "\(uuid.uuidString)_custom")
         AWSIoTDataManager(forKey: "\(uuid.uuidString)_custom").disconnect()
         AWSIoTDataManager(forKey: "\(uuid.uuidString)_custom").connectUsingWebSocket(withClientId: uuid.uuidString, cleanSession: true) { status in
-            os_log("[FreeRTOS Demo] connectUsingWebSocket status: %@", log: .default, type: .default, status.rawValue)
+            os_log("[FreeRTOS Demo] connectUsingWebSocket status: %d", log: .default, type: .default, status.rawValue)
         }
     }
 }
@@ -82,6 +82,7 @@ extension CustomGattMqttViewController: CBCentralManagerDelegate {
     // Connection
 
     func centralManager(_: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        os_log("[FreeRTOS Demo] didConnect", log: .default, type: .default)
         peripheral.delegate = self
         // You should only discover the custom service you want to use, DO NOT discover the FreeRTOS services.
         peripheral.discoverServices([AmazonFreeRTOSGattService.Custom])
@@ -107,6 +108,7 @@ extension CustomGattMqttViewController: CBPeripheralDelegate {
             os_log("[FreeRTOS Demo] Error (didDiscoverServices): %@", log: .default, type: .error, error.localizedDescription)
             return
         }
+        os_log("[FreeRTOS Demo] didDiscoverServices", log: .default, type: .default)
         for service in peripheral.services ?? [] {
             peripheral.discoverCharacteristics(nil, for: service)
         }
@@ -114,9 +116,10 @@ extension CustomGattMqttViewController: CBPeripheralDelegate {
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let error = error {
-            os_log("[FreeRTOS Demo] Error (didDiscoverCharacteristicsFor): %@", log: .default, type: .error, error.localizedDescription)
+            os_log("[FreeRTOS Demo] Error (didDiscoverCharacteristics): %@", log: .default, type: .error, error.localizedDescription)
             return
         }
+        os_log("[FreeRTOS Demo] didDiscoverCharacteristics", log: .default, type: .default)
         for characteristic in service.characteristics ?? [] {
             peripheral.setNotifyValue(true, for: characteristic)
         }
