@@ -1,5 +1,9 @@
 # iOS SDK for Amazon FreeRTOS Bluetooth Devices
 
+[![CocoaPods Version](https://img.shields.io/cocoapods/v/AmazonFreeRTOS.svg?style=flat)](https://cocoapods.org/pods/AmazonFreeRTOS)
+[![License](https://img.shields.io/cocoapods/l/AmazonFreeRTOS.svg?style=flat)](https://cocoapods.org/pods/AmazonFreeRTOS)
+[![Platform](https://img.shields.io/cocoapods/p/AmazonFreeRTOS.svg?style=flat)](https://cocoapods.org/pods/AmazonFreeRTOS)
+
 ## Introduction
 
 Using the iOS SDK for Amazon FreeRTOS Bluetooth Devices, you can create mobile applications that do the following:
