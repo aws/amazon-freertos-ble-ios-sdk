@@ -95,6 +95,9 @@ saveNetwork(_ saveNetworkReq: SaveNetworkReq)
 editNetwork(_ editNetworkReq: EditNetworkReq)
 deleteNetwork(_ deleteNetworkReq: DeleteNetworkReq)
 ```
+## Documentation
+
+https://aws.github.io/amazon-freertos-ble-ios-sdk/
 
 ## Demo Application
 
