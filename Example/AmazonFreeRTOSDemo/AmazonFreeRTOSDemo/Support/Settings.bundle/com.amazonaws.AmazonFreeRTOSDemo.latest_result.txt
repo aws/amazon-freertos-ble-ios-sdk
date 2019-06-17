@@ -7,7 +7,7 @@ version: 4.1
 name: AmazonFreeRTOS, nameSpecified: 
 body: 
                    …
-version: 0.9.8
+version: 1.0.0
 
 name: AWSAuthCore, nameSpecified: 
 body: The AWS Mobile SDK f…

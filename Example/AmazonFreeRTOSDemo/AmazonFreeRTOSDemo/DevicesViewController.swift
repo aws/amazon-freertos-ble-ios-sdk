@@ -5,9 +5,7 @@ import AWSMobileClient
 import CoreBluetooth
 import UIKit
 
-/**
- This is the main controller used to list the nearby Amazon FreeRTOS devices that has the BLE capability.
- */
+/// This is the main controller used to list the nearby Amazon FreeRTOS devices that has the BLE capability.
 class DevicesViewController: UITableViewController {
 
     var uuid: UUID?
@@ -126,11 +124,10 @@ extension DevicesViewController {
     }
 
     #warning("attachPrincipalPolicy should NOT be done in the app, this is just for demo purposes. See getting started guide.")
-    /**
-     Attach the coginto identity to the AWS IoT policy.
 
-     - Precondition: The AWS IoT policy must already have been created. Follow the get started guide if not.
-     */
+    /// Attach the coginto identity to the AWS IoT policy.
+    ///
+    /// - Precondition: The AWS IoT policy must already have been created. Follow the get started guide if not.
     func attachPrincipalPolicy() {
 
         // get the AWS Cognito Identity

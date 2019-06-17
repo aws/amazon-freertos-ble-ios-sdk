@@ -21,11 +21,9 @@ enum GattDemo: Int {
     case reset = 2
 }
 
-/**
- Example 3: Custom GATT and MQTT
-
- This example showcases how to use another GATT(BLE) and MQTT stack along side with the one that's in the Amazon FreeRTOS SDK
- */
+/// Example 3: Custom GATT and MQTT
+///
+/// This example showcases how to use another GATT(BLE) and MQTT stack along side with the one that's in the Amazon FreeRTOS SDK
 class CustomGattMqttViewController: UIViewController {
 
     @IBOutlet private var btnStartCounter: UIButton!

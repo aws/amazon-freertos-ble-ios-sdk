@@ -1,6 +1,7 @@
 import AWSIoT
 import CoreBluetooth
 
+/// AmazonFreeRTOS device.
 public class AmazonFreeRTOSDevice: NSObject {
 
     /// CBPeripheral.
@@ -92,7 +93,7 @@ public class AmazonFreeRTOSDevice: NSObject {
         if let afrVersion = afrVersion, !afrVersion.isEmpty {
             userMetaData["AFRLibVersion"] = afrVersion
         }
-        if let afrPlatform = afrPlatform, !afrPlatform.isEmpty{
+        if let afrPlatform = afrPlatform, !afrPlatform.isEmpty {
             userMetaData["Platform"] = afrPlatform
         }
         if let afrDevId = afrDevId, !afrDevId.isEmpty {

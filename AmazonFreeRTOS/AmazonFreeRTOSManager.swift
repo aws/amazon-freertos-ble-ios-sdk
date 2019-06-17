@@ -9,10 +9,8 @@ public class AmazonFreeRTOSManager: NSObject {
     public static let shared = AmazonFreeRTOSManager()
 
     /// Enable debug messages.
-    #warning("This will be removed for release")
     public var isDebug: Bool = false
     /// Debug messages.
-    #warning("This will be removed for release")
     public var debugMessages = String()
 
     /// Service UUIDs in the advertising packets.
@@ -20,7 +18,7 @@ public class AmazonFreeRTOSManager: NSObject {
     /// The AmazonFreeRTOS devices using peripheral identifier as key.
     public var devices: [UUID: AmazonFreeRTOSDevice] = [:]
 
-    // BLE Central Manager for the SDK.
+    /// BLE Central Manager of the AmazonFreeRTOS manager.
     public var central: CBCentralManager?
 
     /// Initializes a new AmazonFreeRTOS manager.
@@ -67,11 +65,13 @@ extension AmazonFreeRTOSManager {
 
 extension AmazonFreeRTOSManager: CBCentralManagerDelegate {
 
+    /// CBCentralManagerDelegate
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         NotificationCenter.default.post(name: .afrCentralManagerDidUpdateState, object: nil)
         debugPrint("[Central] afrCentralManagerDidUpdateState: \(central.state.rawValue)")
     }
 
+    /// CBCentralManagerDelegate
     public func centralManager(_: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         if !devices.keys.contains(peripheral.identifier) {
             devices[peripheral.identifier] = AmazonFreeRTOSDevice(peripheral: peripheral)
@@ -82,6 +82,7 @@ extension AmazonFreeRTOSManager: CBCentralManagerDelegate {
         debugPrint("[Central] afrCentralManagerDidDiscoverPeripheral: \(peripheral.identifier.uuidString)")
     }
 
+    /// CBCentralManagerDelegate
     public func centralManager(_: CBCentralManager, didConnect peripheral: CBPeripheral) {
         devices[peripheral.identifier]?.reset()
         peripheral.delegate = self
@@ -90,6 +91,7 @@ extension AmazonFreeRTOSManager: CBCentralManagerDelegate {
         debugPrint("[\(peripheral.identifier.uuidString)] afrCentralManagerDidConnectPeripheral")
     }
 
+    /// CBCentralManagerDelegate
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         devices[peripheral.identifier]?.reset()
         if devices[peripheral.identifier]?.reconnect ?? false {
@@ -103,6 +105,7 @@ extension AmazonFreeRTOSManager: CBCentralManagerDelegate {
         debugPrint("[\(peripheral.identifier.uuidString)] afrCentralManagerDidDisconnectPeripheral")
     }
 
+    /// CBCentralManagerDelegate
     public func centralManager(_: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         NotificationCenter.default.post(name: .afrCentralManagerDidFailToConnectDevice, object: nil, userInfo: ["identifier": peripheral.identifier])
         if let error = error {
@@ -115,6 +118,7 @@ extension AmazonFreeRTOSManager: CBCentralManagerDelegate {
 
 extension AmazonFreeRTOSManager: CBPeripheralDelegate {
 
+    /// CBPeripheralDelegate
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let error = error {
             debugPrint("[\(peripheral.identifier.uuidString)][ERROR] afrPeripheralDidDiscoverServices: \(error.localizedDescription)")
@@ -126,6 +130,7 @@ extension AmazonFreeRTOSManager: CBPeripheralDelegate {
         NotificationCenter.default.post(name: .afrPeripheralDidDiscoverServices, object: nil, userInfo: ["peripheral": peripheral])
     }
 
+    /// CBPeripheralDelegate
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let error = error {
             debugPrint("[\(peripheral.identifier.uuidString)][ERROR] afrPeripheralDidDiscoverCharacteristics: \(error.localizedDescription)")
@@ -164,6 +169,7 @@ extension AmazonFreeRTOSManager: CBPeripheralDelegate {
         NotificationCenter.default.post(name: .afrPeripheralDidDiscoverCharacteristics, object: nil, userInfo: ["peripheral": peripheral, "service": service])
     }
 
+    /// CBPeripheralDelegate
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
 
         if let error = error {
@@ -199,6 +205,7 @@ extension AmazonFreeRTOSManager: CBPeripheralDelegate {
         }
     }
 
+    /// CBPeripheralDelegate
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
 
         if let error = error {
@@ -233,7 +240,6 @@ extension AmazonFreeRTOSManager {
         return nil
     }
 
-    #warning("This will be removed for release")
     internal func debugPrint(_ debugMessage: String) {
         guard isDebug else {
             return

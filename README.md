@@ -35,7 +35,7 @@ pod 'AmazonFreeRTOS', :git => 'https://github.com/aws/amazon-freertos-ble-ios-sd
 **Newer version of the freertos firmware use CBOR encoding, please use:**
 
 ```
-pod 'AmazonFreeRTOS', :git => 'https://github.com/aws/amazon-freertos-ble-ios-sdk.git', :tag => '0.9.8'
+pod 'AmazonFreeRTOS', :git => 'https://github.com/aws/amazon-freertos-ble-ios-sdk.git', :tag => '1.0.0'
 ```
 for https://github.com/aws/amazon-freertos/tree/release-1.5
 

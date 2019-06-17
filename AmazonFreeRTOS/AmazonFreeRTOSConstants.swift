@@ -3,7 +3,7 @@ import CoreBluetooth
 /// AmazonFreeRTOSConstants
 public struct AmazonFreeRTOS {
     /// AmazonFreeRTOSSDKVersion.
-    static let SDKVersion = "0.9.8"
+    static let SDKVersion = "1.0.0"
 }
 
 /// BLE services used by the SDK.
