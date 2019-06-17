@@ -13,7 +13,7 @@
     <a title="AmazonFreeRTOS  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">AmazonFreeRTOS Docs</a> (79% documented)</p>
+        <p><a href="index.html">AmazonFreeRTOS Docs</a> (100% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -34,18 +34,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="Classes/AmazonFreeRTOSManager.html">AmazonFreeRTOSManager</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/CBOR.html">CBOR</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/NSByteString.html">NSByteString</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/NSSimpleValue.html">NSSimpleValue</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/NSTag.html">NSTag</a>
               </li>
             </ul>
           </li>
@@ -73,34 +61,16 @@
             <a href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Extensions/Array.html">Array</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Extensions/CBPeripheral.html">CBPeripheral</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/CBService.html">CBService</a>
               </li>
               <li class="nav-group-task">
-                <a href="Extensions/Data.html">Data</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions/Int.html">Int</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Extensions/NSNotification.html">NSNotification</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/NSNotification/Name.html">– Name</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions/NSObject.html">NSObject</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions/NSString.html">NSString</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions/String.html">String</a>
               </li>
             </ul>
           </li>
@@ -222,40 +192,51 @@ $ pod setup
 </code></pre>
 
 <p><strong>Newer version of the freertos firmware use CBOR encoding, please use:</strong></p>
-<pre class="highlight plaintext"><code>pod 'AmazonFreeRTOS', :git =&gt; 'https://github.com/aws/amazon-freertos-ble-ios-sdk.git'
+<pre class="highlight plaintext"><code>pod 'AmazonFreeRTOS', :git =&gt; 'https://github.com/aws/amazon-freertos-ble-ios-sdk.git', :tag =&gt; '1.0.0'
 </code></pre>
+
+<p>for <a href="https://github.com/aws/amazon-freertos/tree/release-1.5">https://github.com/aws/amazon-freertos/tree/release-1.5</a></p>
 <h2 id='contents' class='heading'>Contents</h2>
 
-<p>All main functions are defined in <a href="AmazonFreeRTOS/AmazonFreeRTOSManager.swift">AmazonFreeRTOSManager.swift</a>. These functions include:</p>
+<p>All main functions are defined in </p>
+
+<p><a href="AmazonFreeRTOS/AmazonFreeRTOSManager.swift">AmazonFreeRTOSManager.swift</a>
+<a href="AmazonFreeRTOS/AmazonFreeRTOSDevice.swift">AmazonFreeRTOSDevice.swift</a></p>
+
+<p>These functions include:</p>
+<h2 id='amazonfreertosmanager' class='heading'>AmazonFreeRTOSManager</h2>
 <h3 id='ble-helper-functions' class='heading'>BLE Helper Functions</h3>
 
 <p>The SDK includes some functions that help you perform BLE operations with Amazon FreeRTOS devices:</p>
-<pre class="highlight plaintext"><code>startScanForPeripherals()
-stopScanForPeripherals()
-rescanForPeripherals()
-connectPeripheral()
-disconnectPeripheral()
-</code></pre>
-<h3 id='device-information-service' class='heading'>Device Information Service</h3>
+<pre class="highlight plaintext"><code>// Start scan for AmazonFreeRTOS devices.
+startScanForDevices()
 
-<p>The device information service provides basic device-related information. Its functions include:</p>
-<pre class="highlight plaintext"><code>getAfrVersionOfPeripheral(_ peripheral: CBPeripheral)
-getBrokerEndpointOfPeripheral(_ peripheral: CBPeripheral)
-getMtuOfPeripheral(_ peripheral: CBPeripheral)
+// Stop scan for AmazonFreeRTOS devices.
+stopScanForDevices()
+
+//  Disconnect. Clear all contexts. Scan for AmazonFreeRTOS devices.
+rescanForDevices()
+</code></pre>
+<h2 id='amazonfreertosdevice' class='heading'>AmazonFreeRTOSDevice</h2>
+<h3 id='ble-helper-functions' class='heading'>BLE Helper Functions</h3>
+
+<p>The device ble options:</p>
+<pre class="highlight plaintext"><code>// Connect to the AmazonFreeRTOS device.
+connect(reconnect: Bool, certificateId: String? = nil, credentialsProvider: AWSCredentialsProvider? = nil)
+
+// Disconnect from the AmazonFreeRTOS device.
+disconnect()
 </code></pre>
 <h3 id='mqtt-proxy-service' class='heading'>MQTT Proxy Service</h3>
 
-<p>The MQTT proxy service controls the MQTT proxy. Its functions include:</p>
-<pre class="highlight plaintext"><code>getMqttProxyControlOfPeripheral(_ peripheral: CBPeripheral)
-updateMqttProxyControlOfPeripheral(_ peripheral: CBPeripheral, mqttProxyControl: MqttProxyControl)
-</code></pre>
+<p>MQTT proxy service start automatically</p>
 <h3 id='network-config-service' class='heading'>Network Config Service</h3>
 
 <p>The network configuration service configures the Wi-Fi network of the Amazon FreeRTOS Device. Its functions include:</p>
-<pre class="highlight plaintext"><code>listNetworkOfPeripheral(_ peripheral: CBPeripheral, listNetworkReq: ListNetworkReq)
-saveNetworkToPeripheral(_ peripheral: CBPeripheral, saveNetworkReq: SaveNetworkReq)
-editNetworkOfPeripheral(_ peripheral: CBPeripheral, editNetworkReq: EditNetworkReq)
-deleteNetworkFromPeripheral(_ peripheral: CBPeripheral, deleteNetworkReq: DeleteNetworkReq)
+<pre class="highlight plaintext"><code>listNetwork(_ listNetworkReq: ListNetworkReq)
+saveNetwork(_ saveNetworkReq: SaveNetworkReq)
+editNetwork(_ editNetworkReq: EditNetworkReq)
+deleteNetwork(_ deleteNetworkReq: DeleteNetworkReq)
 </code></pre>
 <h2 id='demo-application' class='heading'>Demo Application</h2>
 
@@ -267,7 +248,7 @@ deleteNetworkFromPeripheral(_ peripheral: CBPeripheral, deleteNetworkReq: Delete
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://aws.amazon.com/freertos/" target="_blank" rel="external">Amazon Web Services</a>. All rights reserved. (Last updated: 2019-05-06)</p>
+          <p>&copy; 2019 <a class="link" href="https://aws.amazon.com/freertos/" target="_blank" rel="external">Amazon Web Services</a>. All rights reserved. (Last updated: 2019-06-17)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
