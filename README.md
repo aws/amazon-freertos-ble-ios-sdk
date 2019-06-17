@@ -38,7 +38,9 @@ pod 'AmazonFreeRTOS'
 pod 'AmazonFreeRTOS', :git => 'https://github.com/aws/amazon-freertos-ble-ios-sdk.git', :tag => '0.9.4'
 ```
 
-for https://github.com/aws/amazon-freertos/tree/release-1.5
+**For Amazon FreeRTOS**
+
+https://github.com/aws/amazon-freertos release 201906.00_Major and after
 
 
 ## Contents
@@ -46,6 +48,7 @@ for https://github.com/aws/amazon-freertos/tree/release-1.5
 All main functions are defined in 
 
 [AmazonFreeRTOSManager.swift](AmazonFreeRTOS/AmazonFreeRTOSManager.swift)
+
 [AmazonFreeRTOSDevice.swift](AmazonFreeRTOS/AmazonFreeRTOSDevice.swift)
 
 These functions include:
