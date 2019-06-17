@@ -23,6 +23,7 @@ class DevicesViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrCentralManagerDidFailToConnectDevice, object: nil)
 
         centralManagerDidUpdateState()
+        #warning("remove showLogin() if you do not plan to use the MQTT demo")
         showLogin()
     }
 

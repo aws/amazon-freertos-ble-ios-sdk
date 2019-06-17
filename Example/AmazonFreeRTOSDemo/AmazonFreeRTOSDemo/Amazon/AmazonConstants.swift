@@ -4,6 +4,8 @@ struct AmazonConstants {
 
     struct AWS {
 
+        #warning("if you do not plan to use the MQTT demo, you can remove these #error.")
+
         #error("Replace with your AWS Region. eg: AWSRegionType.USEast1")
 
         static let region = AWSRegionType.USEast1
