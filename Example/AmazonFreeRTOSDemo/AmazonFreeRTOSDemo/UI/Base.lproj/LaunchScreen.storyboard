@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="common_logo" translatesAutoresizingMaskIntoConstraints="NO" id="sdE-aj-LSW">
-                                <rect key="frame" x="72.666666666666686" y="333" width="269" height="230"/>
+                                <rect key="frame" x="-62" y="218" width="538" height="460"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" name="teal_color"/>
+                        <color key="backgroundColor" name="teal_dark_color"/>
                         <constraints>
                             <constraint firstItem="sdE-aj-LSW" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mBN-pE-Gvq"/>
                             <constraint firstItem="sdE-aj-LSW" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="zzk-4M-Wsg"/>
@@ -38,7 +36,7 @@
     </scenes>
     <resources>
         <image name="common_logo" width="269" height="230"/>
-        <namedColor name="teal_color">
+        <namedColor name="teal_dark_color">
             <color red="0.0" green="0.63137254901960782" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>

@@ -5,6 +5,12 @@
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
+			<key>Title</key>
+			<string>Licenses</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
 			<key>File</key>
 			<string>com.amazonaws.AmazonFreeRTOSDemo/Alertift</string>
 			<key>Title</key>

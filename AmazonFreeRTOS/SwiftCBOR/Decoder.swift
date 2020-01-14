@@ -22,7 +22,7 @@ class Decoder: NSObject {
 
     public func decode() -> NSObject {
         let header = body[0]
-        body = [UInt8](body[1 ..< self.body.count])
+        body = [UInt8](body[1 ..< body.count])
 
         var decoded = NSObject()
         if let type = extractMajorType(Int(header)) {
@@ -76,7 +76,7 @@ extension Decoder {
 
         let value = [UInt8](body[0 ..< len])
         let data = Data(value)
-        body = [UInt8](body[value.count ..< self.body.count])
+        body = [UInt8](body[value.count ..< body.count])
 
         return (isByteString ? data.hex : data.string) as NSString
     }
@@ -160,6 +160,6 @@ extension Decoder {
             offset += 3
         }
 
-        body = [UInt8](body[offset ..< self.body.count])
+        body = [UInt8](body[offset ..< body.count])
     }
 }

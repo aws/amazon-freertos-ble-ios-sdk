@@ -679,7 +679,7 @@ extension AmazonFreeRTOSManager {
 
         debugPrint("[\(peripheral.identifier.uuidString)][MQTT] ↓ \(connack)")
 
-        guard let data = self.encode(connack) else {
+        guard let data = encode(connack) else {
             debugPrint("[\(peripheral.identifier.uuidString)][MQTT][ERROR] Invalid connack")
             return
         }
@@ -693,7 +693,7 @@ extension AmazonFreeRTOSManager {
 
         debugPrint("[\(peripheral.identifier.uuidString)][MQTT] ↓ \(puback)")
 
-        guard let data = self.encode(puback) else {
+        guard let data = encode(puback) else {
             debugPrint("[\(peripheral.identifier.uuidString)][MQTT][ERROR] Invalid puback")
             return
         }
@@ -707,7 +707,7 @@ extension AmazonFreeRTOSManager {
 
         debugPrint("[\(peripheral.identifier.uuidString)][MQTT] ↓ \(publish)")
 
-        guard let data = self.encode(publish) else {
+        guard let data = encode(publish) else {
             debugPrint("[\(peripheral.identifier.uuidString)][MQTT][ERROR] Invalid publish")
             return
         }
@@ -721,7 +721,7 @@ extension AmazonFreeRTOSManager {
 
         debugPrint("[\(peripheral.identifier.uuidString)][MQTT] ↓ \(suback)")
 
-        guard let data = self.encode(suback) else {
+        guard let data = encode(suback) else {
             debugPrint("[\(peripheral.identifier.uuidString)][MQTT][ERROR] Invalid suback")
             return
         }
@@ -735,7 +735,7 @@ extension AmazonFreeRTOSManager {
 
         debugPrint("[\(peripheral.identifier.uuidString)][MQTT] ↓ \(unsuback)")
 
-        guard let data = self.encode(unsuback) else {
+        guard let data = encode(unsuback) else {
             debugPrint("[\(peripheral.identifier.uuidString)][MQTT][ERROR] Invalid unsuback")
             return
         }
@@ -749,7 +749,7 @@ extension AmazonFreeRTOSManager {
 
         debugPrint("[\(peripheral.identifier.uuidString)][MQTT] ↓ \(pingresp)")
 
-        guard let data = self.encode(pingresp) else {
+        guard let data = encode(pingresp) else {
             debugPrint("[\(peripheral.identifier.uuidString)][MQTT][ERROR] Invalid pingresp")
             return
         }

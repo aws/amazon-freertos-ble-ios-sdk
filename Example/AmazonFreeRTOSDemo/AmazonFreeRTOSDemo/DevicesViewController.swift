@@ -75,7 +75,7 @@ extension DevicesViewController {
     }
 
     func showLogin() {
-        AWSMobileClient.sharedInstance().initialize { userState, error in
+        AWSMobileClient.default().initialize { userState, error in
 
             // initialize error
 
@@ -102,7 +102,7 @@ extension DevicesViewController {
             case .signedOut:
 
                 let signInUIOptions = SignInUIOptions(canCancel: false, logoImage: #imageLiteral(resourceName: "common_logo"), backgroundColor: UIColor(named: "teal_color"))
-                AWSMobileClient.sharedInstance().showSignIn(navigationController: navigationController, signInUIOptions: signInUIOptions) { _, error in
+                AWSMobileClient.default().showSignIn(navigationController: navigationController, signInUIOptions: signInUIOptions) { _, error in
 
                     // signin error
 
@@ -119,7 +119,7 @@ extension DevicesViewController {
                 }
 
             default:
-                AWSMobileClient.sharedInstance().signOut()
+                AWSMobileClient.default().signOut()
             }
         }
     }
@@ -133,7 +133,7 @@ extension DevicesViewController {
 
         // get the AWS Cognito Identity
 
-        AWSMobileClient.sharedInstance().getIdentityId().continueWith { task -> Any? in
+        AWSMobileClient.default().getIdentityId().continueWith { task -> Any? in
 
             if let error = task.error {
                 DispatchQueue.main.async {
@@ -231,7 +231,7 @@ extension DevicesViewController {
                 .action(.cancel(NSLocalizedString("Cancel", comment: String())))
                 .show(on: self)
         } else {
-            device.connect(reconnect: true, credentialsProvider: AWSMobileClient.sharedInstance())
+            device.connect(reconnect: true, credentialsProvider: AWSMobileClient.default())
         }
     }
 
@@ -261,7 +261,7 @@ extension DevicesViewController {
     }
 
     @IBAction private func btnLogoutPush(_: UIBarButtonItem) {
-        AWSMobileClient.sharedInstance().signOut()
+        AWSMobileClient.default().signOut()
         showLogin()
     }
 }

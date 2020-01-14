@@ -17,7 +17,6 @@
 		514A7CF2E02A4867756301D78F5C35FD /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2075A45238BA0934245D4E9BA7E0DDDA /* DevicesViewController.swift */; };
 		52D0082E01EA0AE7EFECF1134309AB75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B16B64BA7B0963E9141BCF5D643D8D84 /* LaunchScreen.storyboard */; };
 		5A07FE1E548F4FF60CAD01186FFD39FA /* UITableView+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49558FC3CE1728EDD7A627EC904498 /* UITableView+Amazon.swift */; };
-		5D7ED678C21C9CEEA426EA7750D428C3 /* AmazonEmber_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32AE05D3EC02B0F6F76402C7C51D568C /* AmazonEmber_Rg.ttf */; };
 		61D311E249D8A778D71A0BFEBF297A25 /* UITextView+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE09FF99F4162509EA68F0F210926C9F /* UITextView+Amazon.swift */; };
 		63721D23C1E1B41E8C0BD7509DEAA1A0 /* UIViewController+Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16402AC7CF431816CBB9FDF8ED03639E /* UIViewController+Amazon.swift */; };
 		6978F15895FD1108F37E88017102C965 /* SectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7049DD2CD68ACDAFB4F3991A1E922D1 /* SectionHeaderCell.swift */; };
@@ -31,8 +30,6 @@
 		CD4EE3D553D10CD4CFD438B4CED93305 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4893E35DA1A01C14DD53306375E56C4D /* DebugViewController.swift */; };
 		D15B38FC1D259203E8BB8B0CA1D8AF3B /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 11A005061BF8D0A75B570470E96D89AA /* awsconfiguration.json */; };
 		EB3FFA23062C5A72F748BAB356284A7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81F950CC86CEB778FAFE75CA417D3B1A /* Assets.xcassets */; };
-		EF847AB78F26017A4C74F555C7EDF10F /* AmazonEmber_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 88FC46E66816F00AFA05E715CEAD8C9F /* AmazonEmber_Bd.ttf */; };
-		F3F2DAEBF6BCAA7F0F4539D2F4F0908F /* AmazonEmber_Md.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB5CD3714B0E37FFC2C995DE065B7CA8 /* AmazonEmber_Md.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +39,6 @@
 		1ECEFBA9B880D2BDAC4B02920300581C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2075A45238BA0934245D4E9BA7E0DDDA /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
 		2F3C204B5F1E4D79CA85AD9F1846EC8A /* NetworkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCell.swift; sourceTree = "<group>"; };
-		32AE05D3EC02B0F6F76402C7C51D568C /* AmazonEmber_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AmazonEmber_Rg.ttf; sourceTree = "<group>"; };
 		391EF96B9AAE883F36750E8FC7318815 /* DeviceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCell.swift; sourceTree = "<group>"; };
 		3B26FD445F1AB1343C222E23DAE649D1 /* Pods_AmazonFreeRTOSDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmazonFreeRTOSDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DD59836EA6E0D324D36F086F0C8A8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +51,6 @@
 		6BEB0DC2E5B235A2F20A025E75F5E16E /* AmazonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonConstants.swift; sourceTree = "<group>"; };
 		79E5F83A1105853B3CC07BEFC4C450C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81F950CC86CEB778FAFE75CA417D3B1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		88FC46E66816F00AFA05E715CEAD8C9F /* AmazonEmber_Bd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AmazonEmber_Bd.ttf; sourceTree = "<group>"; };
 		98FE53C6F659FBE52AD3A99FDCE48AA6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A67DACC68A170F3A8FFC2D87C11838A3 /* NetworkConfigAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigAddViewController.swift; sourceTree = "<group>"; };
 		AE8A2D7355B9B9B02A7CC61697114432 /* NetworkConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigViewController.swift; sourceTree = "<group>"; };
@@ -65,7 +60,6 @@
 		C7049DD2CD68ACDAFB4F3991A1E922D1 /* SectionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderCell.swift; sourceTree = "<group>"; };
 		C80EDFED5A7C09A53A434B097F0EC1D6 /* AmazonContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonContext.swift; sourceTree = "<group>"; };
 		DE09FF99F4162509EA68F0F210926C9F /* UITextView+Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Amazon.swift"; sourceTree = "<group>"; };
-		FB5CD3714B0E37FFC2C995DE065B7CA8 /* AmazonEmber_Md.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AmazonEmber_Md.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,16 +81,6 @@
 				8F7A63249FA526071688A928A61A258A /* Main.storyboard */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		4738F80C4B0BADBEF3933F41B8FD7C81 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				88FC46E66816F00AFA05E715CEAD8C9F /* AmazonEmber_Bd.ttf */,
-				FB5CD3714B0E37FFC2C995DE065B7CA8 /* AmazonEmber_Md.ttf */,
-				32AE05D3EC02B0F6F76402C7C51D568C /* AmazonEmber_Rg.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		5106C5173004628D3830009E74A71CED /* Examples */ = {
@@ -165,7 +149,6 @@
 		C9F515BE36B19C99C31BCF3D68827ED5 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				4738F80C4B0BADBEF3933F41B8FD7C81 /* Fonts */,
 				81F950CC86CEB778FAFE75CA417D3B1A /* Assets.xcassets */,
 				1153B8E39C5FACD77845D89841D7A54A /* Colors.xcassets */,
 				5A77ED16DABA7E97CC8CC860E8832CDE /* Info.plist */,
@@ -273,9 +256,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF847AB78F26017A4C74F555C7EDF10F /* AmazonEmber_Bd.ttf in Resources */,
-				F3F2DAEBF6BCAA7F0F4539D2F4F0908F /* AmazonEmber_Md.ttf in Resources */,
-				5D7ED678C21C9CEEA426EA7750D428C3 /* AmazonEmber_Rg.ttf in Resources */,
 				EB3FFA23062C5A72F748BAB356284A7B /* Assets.xcassets in Resources */,
 				C41B2BAC63346EC6ADCF0F1020604CF2 /* Colors.xcassets in Resources */,
 				52D0082E01EA0AE7EFECF1134309AB75 /* LaunchScreen.storyboard in Resources */,

@@ -1,101 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m0e-Nf-rG3">
-    <device id="retina6_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y3s-WY-8M9">
+    <device id="retina6_5" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="AmazonEmber_Bd.ttf">
-            <string>AmazonEmber-Bold</string>
-        </array>
-        <array key="AmazonEmber_Md.ttf">
-            <string>AmazonEmber-Medium</string>
-        </array>
-        <array key="AmazonEmber_Rg.ttf">
-            <string>AmazonEmber-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="wqg-HS-wDq">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m0e-Nf-rG3" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="RyE-bt-hde">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" name="teal_color"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="17"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="LGX-Vw-h8s" kind="relationship" relationship="rootViewController" id="bIU-yh-XlC"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CCc-8x-GWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2382" y="173"/>
-        </scene>
         <!--Devices-->
         <scene sceneID="dwh-ih-4cX">
             <objects>
                 <tableViewController storyboardIdentifier="DevicesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LGX-Vw-h8s" customClass="DevicesViewController" customModule="AmazonFreeRTOSDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8eG-KU-HpG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeviceCell" rowHeight="103" id="PMe-Er-1Vd" customClass="DeviceCell" customModule="AmazonFreeRTOSDemo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="103"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeviceCell" rowHeight="105" id="PMe-Er-1Vd" customClass="DeviceCell" customModule="AmazonFreeRTOSDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="105"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PMe-Er-1Vd" id="rVg-2A-k8Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Lh-qT-069">
-                                            <rect key="frame" x="16" y="8" width="382" height="87"/>
+                                            <rect key="frame" x="16" y="8" width="382" height="89"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKh-5I-TZl">
-                                                    <rect key="frame" x="8" y="8" width="366" height="23"/>
-                                                    <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="19"/>
+                                                    <rect key="frame" x="8" y="8" width="366" height="21"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <color key="textColor" name="teal_color"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CE-Nu-RLc">
-                                                    <rect key="frame" x="8" y="39" width="366" height="17"/>
-                                                    <fontDescription key="fontDescription" name="AmazonEmber-Regular" family="Amazon Ember" pointSize="14"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <rect key="frame" x="8" y="37" width="366" height="18"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7l-wC-1LL">
-                                                    <rect key="frame" x="378" y="0.0" width="4" height="87"/>
+                                                    <rect key="frame" x="378" y="0.0" width="4" height="89"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="4" id="6gt-GY-ohe"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="RSSI:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTE-jO-wUf">
-                                                    <rect key="frame" x="8" y="64" width="28" height="15"/>
-                                                    <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="12"/>
-                                                    <color key="textColor" name="dark_teal_color"/>
+                                                    <rect key="frame" x="8" y="63" width="36.333333333333336" height="18"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ia-M5-zfi">
-                                                    <rect key="frame" x="44" y="64.333333333333329" width="326" height="14.666666666666671"/>
-                                                    <fontDescription key="fontDescription" name="AmazonEmber-Regular" family="Amazon Ember" pointSize="12"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <rect key="frame" x="52.333333333333343" y="63" width="317.66666666666663" height="18"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" name="alabaster_color"/>
+                                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="dTE-jO-wUf" firstAttribute="top" secondItem="0CE-Nu-RLc" secondAttribute="bottom" constant="8" id="1nP-nK-W3M"/>
                                                 <constraint firstAttribute="trailing" secondItem="F7l-wC-1LL" secondAttribute="trailing" id="Brw-33-3Pf"/>
@@ -122,7 +86,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="6Lh-qT-069" secondAttribute="trailing" constant="16" id="CfK-cS-uRR"/>
-                                        <constraint firstAttribute="bottom" secondItem="6Lh-qT-069" secondAttribute="bottom" constant="8" id="Yby-lg-Occ"/>
+                                        <constraint firstAttribute="bottom" secondItem="6Lh-qT-069" secondAttribute="bottom" constant="8" id="JK4-z1-zOA"/>
                                         <constraint firstItem="6Lh-qT-069" firstAttribute="top" secondItem="rVg-2A-k8Q" secondAttribute="top" constant="8" id="asp-zd-LHQ"/>
                                         <constraint firstItem="6Lh-qT-069" firstAttribute="leading" secondItem="rVg-2A-k8Q" secondAttribute="leading" constant="16" id="kq4-L5-UqM"/>
                                     </constraints>
@@ -167,17 +131,17 @@
             <objects>
                 <viewController storyboardIdentifier="MqttProxyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iEC-5Y-Uuk" customClass="MqttProxyViewController" customModule="AmazonFreeRTOSDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jl1-On-wzt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MQTT should now be runing. Click DEBUG to see the log." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzX-fv-gcT">
-                                <rect key="frame" x="16" y="20.000000000000004" width="382" height="38.333333333333343"/>
-                                <fontDescription key="fontDescription" name="AmazonEmber-Regular" family="Amazon Ember" pointSize="16"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="16" y="107.99999999999999" width="382" height="42.333333333333329"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="SzX-fv-gcT" firstAttribute="top" secondItem="KOs-7w-tsn" secondAttribute="top" constant="20" id="Ji9-XQ-Oyv"/>
                             <constraint firstItem="SzX-fv-gcT" firstAttribute="leading" secondItem="KOs-7w-tsn" secondAttribute="leading" constant="16" id="gVT-wb-ZFb"/>
@@ -193,7 +157,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="DEBUG" id="mh2-Xg-wcx">
                             <connections>
-                                <segue destination="AQ8-Vj-hrS" kind="presentation" id="dLw-Ep-mOe"/>
+                                <segue destination="AQ8-Vj-hrS" kind="presentation" modalPresentationStyle="fullScreen" id="dLw-Ep-mOe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -207,20 +171,20 @@
             <objects>
                 <tableViewController storyboardIdentifier="NetworkConfigViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uRx-gg-NTV" customClass="NetworkConfigViewController" customModule="AmazonFreeRTOSDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sRT-1S-X3L">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="5aE-Jx-jx8">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AuT-wE-L9W">
-                                    <rect key="frame" x="16" y="16" width="382" height="32"/>
-                                    <color key="backgroundColor" name="alabaster_color"/>
+                                    <rect key="frame" x="16" y="16" width="382" height="40"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="32" id="Wdp-7P-KAP"/>
+                                        <constraint firstAttribute="height" constant="40" id="Wdp-7P-KAP"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                     <state key="normal" title="Editing Mode"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -232,12 +196,12 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qcy-4e-QdW">
-                                    <rect key="frame" x="16" y="64" width="382" height="32"/>
-                                    <color key="backgroundColor" name="alabaster_color"/>
+                                    <rect key="frame" x="16" y="72" width="382" height="40"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="32" id="n0P-h3-Le3"/>
+                                        <constraint firstAttribute="height" constant="40" id="n0P-h3-Le3"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                     <state key="normal" title="Add Manually"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -249,7 +213,6 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="AuT-wE-L9W" firstAttribute="leading" secondItem="5aE-Jx-jx8" secondAttribute="leading" constant="16" id="4QJ-sX-IKs"/>
                                 <constraint firstAttribute="trailing" secondItem="Qcy-4e-QdW" secondAttribute="trailing" constant="16" id="78S-ae-Tma"/>
@@ -261,54 +224,54 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NetworkCell" rowHeight="139" id="9mm-Yo-8S2" customClass="NetworkCell" customModule="AmazonFreeRTOSDemo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="140" width="414" height="139"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NetworkCell" rowHeight="143" id="9mm-Yo-8S2" customClass="NetworkCell" customModule="AmazonFreeRTOSDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="156" width="414" height="143"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9mm-Yo-8S2" id="yzz-Hw-BXB">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="139"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="143"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ts-m1-ESM">
-                                            <rect key="frame" x="16" y="8" width="382" height="123"/>
+                                            <rect key="frame" x="16" y="8" width="382" height="127"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yd1-GF-zap">
-                                                    <rect key="frame" x="8" y="11.999999999999998" width="366" height="19.333333333333329"/>
-                                                    <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
-                                                    <color key="textColor" name="dark_teal_color"/>
+                                                    <rect key="frame" x="8" y="11.999999999999998" width="366" height="20.333333333333329"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZs-qO-Q0o">
-                                                    <rect key="frame" x="8" y="94" width="179" height="17"/>
-                                                    <fontDescription key="fontDescription" name="AmazonEmber-Regular" family="Amazon Ember" pointSize="14"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <rect key="frame" x="8" y="97" width="179" height="18"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab0-7h-l2d">
-                                                    <rect key="frame" x="8" y="69" width="179" height="17"/>
-                                                    <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="14"/>
-                                                    <color key="textColor" name="dark_teal_color"/>
+                                                    <rect key="frame" x="8" y="71" width="179" height="18"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJH-7W-UIS">
-                                                    <rect key="frame" x="195" y="94" width="179" height="17"/>
-                                                    <fontDescription key="fontDescription" name="AmazonEmber-Regular" family="Amazon Ember" pointSize="14"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <rect key="frame" x="195" y="97" width="179" height="18"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSSI:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRb-jp-FOl">
-                                                    <rect key="frame" x="195" y="69" width="179" height="17"/>
-                                                    <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="14"/>
-                                                    <color key="textColor" name="dark_teal_color"/>
+                                                    <rect key="frame" x="195" y="71" width="179" height="18"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="PLACEHOLDER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="st5-w8-DCb">
-                                                    <rect key="frame" x="8" y="43.333333333333336" width="366" height="17.666666666666664"/>
-                                                    <fontDescription key="fontDescription" name="AmazonEmber-Regular" family="Amazon Ember" pointSize="14"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <rect key="frame" x="8" y="44.333333333333336" width="366" height="18.666666666666664"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" name="alabaster_color"/>
+                                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="yd1-GF-zap" firstAttribute="top" secondItem="5Ts-m1-ESM" secondAttribute="top" constant="12" id="1Xd-ec-6Jc"/>
                                                 <constraint firstAttribute="trailing" secondItem="ZJH-7W-UIS" secondAttribute="trailing" constant="8" id="4tx-qP-sgw"/>
@@ -339,8 +302,8 @@
                                         </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="5Ts-m1-ESM" secondAttribute="bottom" constant="8" id="XKx-nf-8T6"/>
                                         <constraint firstItem="5Ts-m1-ESM" firstAttribute="top" secondItem="yzz-Hw-BXB" secondAttribute="top" constant="8" id="cUI-f6-eQx"/>
-                                        <constraint firstAttribute="bottom" secondItem="5Ts-m1-ESM" secondAttribute="bottom" constant="8" id="enh-XU-js1"/>
                                         <constraint firstItem="5Ts-m1-ESM" firstAttribute="leading" secondItem="yzz-Hw-BXB" secondAttribute="leading" constant="16" id="uya-QF-Wsa"/>
                                         <constraint firstAttribute="trailing" secondItem="5Ts-m1-ESM" secondAttribute="trailing" constant="16" id="voq-xn-ydd"/>
                                     </constraints>
@@ -353,7 +316,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionHeaderCell" rowHeight="112" id="5GZ-IO-qvf" customClass="SectionHeaderCell" customModule="AmazonFreeRTOSDemo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="279" width="414" height="112"/>
+                                <rect key="frame" x="0.0" y="299" width="414" height="112"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5GZ-IO-qvf" id="zMS-lB-JME">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
@@ -373,19 +336,19 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="PLACEHOLDER" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqX-Wb-qqW">
-                                            <rect key="frame" x="28" y="17.666666666666668" width="370" height="17.000000000000004"/>
-                                            <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="14"/>
-                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <rect key="frame" x="28" y="17" width="370" height="18"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="PLACEHOLDER" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvv-fP-sAt">
-                                            <rect key="frame" x="16" y="64.666666666666671" width="382" height="17"/>
-                                            <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="14"/>
-                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <rect key="frame" x="16" y="65" width="382" height="18"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstItem="TqX-Wb-qqW" firstAttribute="centerY" secondItem="akD-Ey-dhx" secondAttribute="centerY" id="8hK-9d-Qkw"/>
                                         <constraint firstAttribute="trailing" secondItem="Wvv-fP-sAt" secondAttribute="trailing" constant="16" id="C5w-D4-dIe"/>
@@ -416,7 +379,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="DEBUG" id="Stf-Yd-Trv">
                             <connections>
-                                <segue destination="AQ8-Vj-hrS" kind="presentation" id="eC2-N5-eVr"/>
+                                <segue destination="AQ8-Vj-hrS" kind="presentation" modalPresentationStyle="fullScreen" id="eC2-N5-eVr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -425,28 +388,60 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>
-                        <segue destination="DRe-FJ-fO3" kind="presentation" identifier="toNetworkConfigAddViewController" id="05A-bk-pyk"/>
+                        <segue destination="q0B-hP-fcQ" kind="presentation" identifier="toNetworkConfigAddViewController" modalPresentationStyle="fullScreen" id="3yR-B0-dGo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ulf-Nq-eND" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="21.739130434782609" y="172.76785714285714"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Gsn-sO-KhA">
+            <objects>
+                <navigationController id="Y3s-WY-8M9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="92r-mT-ljH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="LGX-Vw-h8s" kind="relationship" relationship="rootViewController" id="IZi-jA-aqz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uK3-e7-3aW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2257" y="173"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="o1X-1U-dnY">
+            <objects>
+                <navigationController id="q0B-hP-fcQ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lMd-Ot-UsH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1HI-dH-gmw" kind="relationship" relationship="rootViewController" id="kTc-1U-4Kq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pjs-3e-Q2x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1190" y="173"/>
+        </scene>
         <!--Custom Gatt Mqtt View Controller-->
         <scene sceneID="mzW-71-SVh">
             <objects>
                 <viewController storyboardIdentifier="CustomGattMqttViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="brS-Me-h6W" customClass="CustomGattMqttViewController" customModule="AmazonFreeRTOSDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yv5-ov-vko">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8U-hg-BzJ">
-                                <rect key="frame" x="16" y="213.66666666666669" width="382" height="40"/>
-                                <color key="backgroundColor" name="alabaster_color"/>
+                                <rect key="frame" x="16" y="306.66666666666669" width="382" height="40"/>
+                                <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0h3-vf-an8"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <state key="normal" title="Stop Counter"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -458,12 +453,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2X-fs-jBS">
-                                <rect key="frame" x="16" y="285.66666666666669" width="382" height="40"/>
-                                <color key="backgroundColor" name="alabaster_color"/>
+                                <rect key="frame" x="16" y="378.66666666666669" width="382" height="40"/>
+                                <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="sPv-Uc-D5F"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <state key="normal" title="Reset Counter"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -475,12 +470,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3c-UF-xCw">
-                                <rect key="frame" x="16" y="141.66666666666669" width="382" height="40"/>
-                                <color key="backgroundColor" name="alabaster_color"/>
+                                <rect key="frame" x="16" y="234.66666666666666" width="382" height="39.999999999999972"/>
+                                <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="eol-hw-Gry"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <state key="normal" title="Start Counter"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -492,19 +487,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom GATT Service" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oC-gj-ui3">
-                                <rect key="frame" x="16" y="90.333333333333343" width="382" height="19.333333333333329"/>
-                                <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
+                                <rect key="frame" x="16" y="182.33333333333334" width="382" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" name="teal_color"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MQTT should now be runing. Click DEBUG to see the log." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5l-Cx-8sQ">
-                                <rect key="frame" x="16" y="20.000000000000004" width="382" height="38.333333333333343"/>
-                                <fontDescription key="fontDescription" name="AmazonEmber-Regular" family="Amazon Ember" pointSize="16"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="16" y="107.99999999999999" width="382" height="42.333333333333329"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="mhn-aN-ZU9" firstAttribute="trailing" secondItem="W2X-fs-jBS" secondAttribute="trailing" constant="16" id="4vW-yB-z6k"/>
                             <constraint firstItem="u5l-Cx-8sQ" firstAttribute="leading" secondItem="mhn-aN-ZU9" secondAttribute="leading" constant="16" id="5Oa-8i-So7"/>
@@ -532,7 +527,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="DEBUG" id="8jA-sZ-ycV">
                             <connections>
-                                <segue destination="AQ8-Vj-hrS" kind="presentation" id="D3C-w1-X3r"/>
+                                <segue destination="AQ8-Vj-hrS" kind="presentation" modalPresentationStyle="fullScreen" id="D3C-w1-X3r"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -549,23 +544,18 @@
         <!--Navigation Controller-->
         <scene sceneID="iUo-en-BXk">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AQ8-Vj-hrS" sceneMemberID="viewController">
+                <navigationController id="AQ8-Vj-hrS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="CAN-SS-17A">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CAN-SS-17A">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" name="teal_color"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="17"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="Zfb-Ej-wui" kind="relationship" relationship="rootViewController" id="Yqe-hD-hrX"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3cg-sH-ubH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3cg-sH-ubH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1190" y="1060"/>
         </scene>
@@ -574,29 +564,30 @@
             <objects>
                 <viewController storyboardIdentifier="DebugViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zfb-Ej-wui" customClass="DebugViewController" customModule="AmazonFreeRTOSDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GdD-go-UNF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nvW-PT-YWL">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="651"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="AmazonEmber-Regular" family="Amazon Ember" pointSize="11"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="703"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Scroll" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qI-ng-9ws">
-                                <rect key="frame" x="16" y="677" width="317" height="19.333333333333371"/>
-                                <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="16"/>
+                                <rect key="frame" x="16" y="816.33333333333337" width="317" height="20.333333333333371"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" name="teal_color"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gcA-qq-eJ9">
-                                <rect key="frame" x="349" y="671" width="51" height="31"/>
+                                <rect key="frame" x="349" y="811" width="51" height="31"/>
                                 <connections>
                                     <action selector="swAutoScrollValueChanged:" destination="Zfb-Ej-wui" eventType="valueChanged" id="Wjc-KI-dbm"/>
                                 </connections>
                             </switch>
                         </subviews>
-                        <color key="backgroundColor" name="alabaster_color"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="B9E-Am-dsE" firstAttribute="trailing" secondItem="gcA-qq-eJ9" secondAttribute="trailing" constant="16" id="2Ga-EX-PYy"/>
                             <constraint firstItem="nvW-PT-YWL" firstAttribute="leading" secondItem="B9E-Am-dsE" secondAttribute="leading" id="7TZ-eT-SLy"/>
@@ -636,21 +627,21 @@
             <objects>
                 <viewController storyboardIdentifier="NetworkConfigAddViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1HI-dH-gmw" customClass="NetworkConfigAddViewController" customModule="AmazonFreeRTOSDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rvn-Mb-BcM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzq-xB-IwE">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="552"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="604"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="B4j-p7-F5t">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="315.33333333333331"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="She-7V-mrf">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="107"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="110.33333333333333"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NBR-dQ-kp1" customClass="AmazonTextField" customModule="AmazonFreeRTOSDemo" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="41" width="382" height="50"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        <rect key="frame" x="16" y="44.333333333333343" width="382" height="50"/>
+                                                        <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="4js-HQ-6gy"/>
                                                         </constraints>
@@ -667,13 +658,12 @@
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="SSID:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awE-ZD-Qdh">
-                                                        <rect key="frame" x="16" y="16" width="382" height="17"/>
-                                                        <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="14"/>
-                                                        <color key="textColor" name="dark_teal_color"/>
+                                                        <rect key="frame" x="16" y="15.999999999999998" width="382" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                        <color key="textColor" name="teal_color"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="awE-ZD-Qdh" firstAttribute="top" secondItem="She-7V-mrf" secondAttribute="top" constant="16" id="0Yi-i7-BUs"/>
                                                     <constraint firstAttribute="trailing" secondItem="NBR-dQ-kp1" secondAttribute="trailing" constant="16" id="71t-jk-W3C"/>
@@ -685,11 +675,11 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fyc-hk-8UT">
-                                                <rect key="frame" x="0.0" y="107" width="414" height="107"/>
+                                                <rect key="frame" x="0.0" y="110.33333333333334" width="414" height="108"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDT-nB-G5x" customClass="AmazonTextField" customModule="AmazonFreeRTOSDemo" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="41" width="382" height="50"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        <rect key="frame" x="16" y="42" width="382" height="50"/>
+                                                        <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="S1D-Ah-2GN"/>
                                                         </constraints>
@@ -706,13 +696,12 @@
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Password:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3t3-d1-0wG">
-                                                        <rect key="frame" x="16" y="16" width="382" height="17"/>
-                                                        <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="14"/>
-                                                        <color key="textColor" name="dark_teal_color"/>
+                                                        <rect key="frame" x="16" y="16" width="382" height="18"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                        <color key="textColor" name="teal_color"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="3t3-d1-0wG" firstAttribute="top" secondItem="Fyc-hk-8UT" secondAttribute="top" constant="16" id="KMJ-Gm-8Cc"/>
                                                     <constraint firstAttribute="trailing" secondItem="hDT-nB-G5x" secondAttribute="trailing" constant="16" id="NMl-EQ-25V"/>
@@ -724,16 +713,16 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spH-Bk-Uo4">
-                                                <rect key="frame" x="0.0" y="214" width="414" height="93"/>
+                                                <rect key="frame" x="0.0" y="218.33333333333331" width="414" height="97"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Security:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2x-sc-gsn">
-                                                        <rect key="frame" x="16" y="16" width="382" height="17"/>
-                                                        <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="14"/>
-                                                        <color key="textColor" name="dark_teal_color"/>
+                                                        <rect key="frame" x="16" y="16" width="382" height="18"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                        <color key="textColor" name="teal_color"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sCE-NY-6B2">
-                                                        <rect key="frame" x="16" y="49" width="382" height="29"/>
+                                                        <rect key="frame" x="16" y="50" width="382" height="32"/>
                                                         <segments>
                                                             <segment title="NONE"/>
                                                             <segment title="WEP"/>
@@ -745,7 +734,6 @@
                                                         </connections>
                                                     </segmentedControl>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="A2x-sc-gsn" firstAttribute="leading" secondItem="spH-Bk-Uo4" secondAttribute="leading" constant="16" id="09N-CI-dtt"/>
                                                     <constraint firstItem="A2x-sc-gsn" firstAttribute="top" secondItem="spH-Bk-Uo4" secondAttribute="top" constant="16" id="HbZ-M3-hKo"/>
@@ -768,12 +756,12 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="m9m-C4-FCh">
-                                <rect key="frame" x="16" y="572" width="382" height="55"/>
+                                <rect key="frame" x="16" y="712" width="382" height="55"/>
                                 <color key="backgroundColor" name="teal_color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="ISL-gP-CnZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AmazonEmber-Bold" family="Amazon Ember" pointSize="16"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Connect">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -788,12 +776,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="pkr-dT-Lix">
-                                <rect key="frame" x="16" y="647" width="382" height="55"/>
-                                <color key="backgroundColor" name="alabaster_color"/>
+                                <rect key="frame" x="16" y="787" width="382" height="55"/>
+                                <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="eUM-GZ-2bJ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AmazonEmber-Bold" family="Amazon Ember" pointSize="16"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Save For Later">
                                     <color key="titleColor" name="teal_color"/>
@@ -808,7 +796,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="m9m-C4-FCh" firstAttribute="leading" secondItem="BAG-yV-9L7" secondAttribute="leading" constant="16" id="1iu-Tq-6JX"/>
                             <constraint firstItem="BAG-yV-9L7" firstAttribute="bottom" secondItem="bzq-xB-IwE" secondAttribute="bottom" constant="170" id="DaZ-02-gy4"/>
@@ -842,36 +830,10 @@
             </objects>
             <point key="canvasLocation" x="2327.536231884058" y="172.76785714285714"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="d2p-b2-DPS">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DRe-FJ-fO3" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="KbM-0Q-AtO">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" name="teal_color"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="AmazonEmber-Medium" family="Amazon Ember" pointSize="17"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="1HI-dH-gmw" kind="relationship" relationship="rootViewController" id="sWI-OS-4tA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IEC-Ge-SY6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1190" y="173"/>
-        </scene>
     </scenes>
     <resources>
         <image name="nav_back" width="19" height="18"/>
         <image name="nav_close" width="16" height="16"/>
-        <namedColor name="alabaster_color">
-            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="dark_teal_color">
             <color red="0.0" green="0.1803921568627451" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
@@ -880,7 +842,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eC2-N5-eVr"/>
+        <segue reference="D3C-w1-X3r"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="teal_color"/>
 </document>

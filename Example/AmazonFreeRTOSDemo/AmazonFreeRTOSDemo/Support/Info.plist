@@ -24,12 +24,6 @@
 	<true/>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>The app needs access to Bluetooth</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>AmazonEmber_Bd.ttf</string>
-		<string>AmazonEmber_Md.ttf</string>
-		<string>AmazonEmber_Rg.ttf</string>
-	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
