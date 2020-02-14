@@ -1,6 +1,6 @@
 PODS:
   - Alertift (4.1.1)
-  - AmazonFreeRTOS (1.0.0):
+  - AmazonFreeRTOS (1.1.0):
     - AWSIoT
   - AWSAuthCore (2.12.7):
     - AWSCore (= 2.12.7)
@@ -55,7 +55,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alertift: 950483ca193717cc8bb508a7dbbe34f4af321daf
-  AmazonFreeRTOS: 863723e3e367fa183f316323b22b2c41ed808f30
+  AmazonFreeRTOS: d32c0360e0d27c336f874f2b7f2c855423cd6df2
   AWSAuthCore: 288cb737a35ff031fbf42edaa8d0062328791d4e
   AWSAuthUI: 464fbab1841f8878e6370ec76581f9bea67e6252
   AWSCognitoIdentityProvider: 4998bdbfbafe5038dae0237a598580e102e7b6b5
