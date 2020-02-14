@@ -4,7 +4,7 @@ import UIKit
 
 /// Example 1: Mqtt Proxy
 ///
-/// This example showcases how to start and stop the mqtt proxy service that allows mqtt messages from Amazon FreeRTOS device to be passed to AWS IoT.
+/// This example showcases how to start and stop the mqtt proxy service that allows mqtt messages from FreeRTOS device to be passed to AWS IoT.
 class MqttProxyViewController: UIViewController {
 
     var uuid: UUID?

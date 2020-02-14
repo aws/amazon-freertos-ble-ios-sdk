@@ -1,4 +1,4 @@
-# iOS SDK for Amazon FreeRTOS Bluetooth Devices
+# iOS SDK for FreeRTOS Bluetooth Devices
 
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/AmazonFreeRTOS.svg?style=flat)](https://cocoapods.org/pods/AmazonFreeRTOS)
 [![License](https://img.shields.io/cocoapods/l/AmazonFreeRTOS.svg?style=flat)](https://cocoapods.org/pods/AmazonFreeRTOS)
@@ -6,17 +6,17 @@
 
 ## Introduction
 
-Using the iOS SDK for Amazon FreeRTOS Bluetooth Devices, you can create mobile applications that do the following:
+Using the iOS SDK for FreeRTOS Bluetooth Devices, you can create mobile applications that do the following:
 
-- Scan for and connect to nearby BLE devices running Amazon FreeRTOS
+- Scan for and connect to nearby BLE devices running FreeRTOS
 
-- Provision Wi-Fi networks for a BLE device running Amazon FreeRTOS
+- Provision Wi-Fi networks for a BLE device running FreeRTOS
 
-- Act as a proxy for transmitting MQTT messages between a device running Amazon FreeRTOS and the AWS IoT cloud
+- Act as a proxy for transmitting MQTT messages between a device running FreeRTOS and the AWS IoT cloud
 
 ## Setting Up the SDK
 
-**To install the iOS SDK for Amazon FreeRTOS Bluetooth Devices**
+**To install the iOS SDK for FreeRTOS Bluetooth Devices**
 
 1. Install CocoaPods:
 ```
@@ -42,7 +42,7 @@ pod 'AmazonFreeRTOS'
 pod 'AmazonFreeRTOS', :git => 'https://github.com/aws/amazon-freertos-ble-ios-sdk.git', :tag => '0.9.4'
 ```
 
-**For Amazon FreeRTOS**
+**For FreeRTOS**
 
 https://github.com/aws/amazon-freertos release 201906.00_Major and after
 
@@ -64,13 +64,13 @@ These functions include:
 The SDK includes some functions that help you perform BLE operations with Amazon FreeRTOS devices:
 
 ```
-// Start scan for AmazonFreeRTOS devices.
+// Start scan for FreeRTOS devices.
 startScanForDevices()
 
-// Stop scan for AmazonFreeRTOS devices.
+// Stop scan for FreeRTOS devices.
 stopScanForDevices()
 
-//  Disconnect. Clear all contexts. Scan for AmazonFreeRTOS devices.
+//  Disconnect. Clear all contexts. Scan for FreeRTOS devices.
 rescanForDevices()
 ```
 
@@ -81,10 +81,10 @@ rescanForDevices()
 The device ble options:
 
 ```
-// Connect to the AmazonFreeRTOS device.
+// Connect to the FreeRTOS device.
 connect(reconnect: Bool, certificateId: String? = nil, credentialsProvider: AWSCredentialsProvider? = nil)
 
-// Disconnect from the AmazonFreeRTOS device.
+// Disconnect from the FreeRTOS device.
 disconnect()
 ```
 
@@ -94,7 +94,7 @@ MQTT proxy service start automatically
 
 ### Network Config Service
 
-The network configuration service configures the Wi-Fi network of the Amazon FreeRTOS Device. Its functions include:
+The network configuration service configures the Wi-Fi network of the FreeRTOS Device. Its functions include:
 
 ```
 listNetwork(_ listNetworkReq: ListNetworkReq)

@@ -1,9 +1,9 @@
 PODS:
-  - AWSCore (2.12.5)
-  - AWSIoT (2.12.5):
-    - AWSCore (= 2.12.5)
-  - SwiftFormat/CLI (0.43.5)
-  - SwiftLint (0.38.2)
+  - AWSCore (2.12.7)
+  - AWSIoT (2.12.7):
+    - AWSCore (= 2.12.7)
+  - SwiftFormat/CLI (0.44.2)
+  - SwiftLint (0.39.1)
 
 DEPENDENCIES:
   - AWSIoT
@@ -18,10 +18,10 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
-  AWSCore: 543d1c281ad08401d0a99e181526aa529051a8ad
-  AWSIoT: 09549f30b376fc08c125f78757fbf4df7d4c94d9
-  SwiftFormat: 352ea545e3e13cfd7a449e621c1f3c2e244d4906
-  SwiftLint: 8f5d2f903e1c9bcbc832fd16771e80a263ac6cbb
+  AWSCore: 2f0f88ae94a63a198274d683c7d0e18709d7090b
+  AWSIoT: 7e6bc2899c38ef93d7a2f7db933fef26d74d8c8e
+  SwiftFormat: 53968b5cc5d466727e796f789fa9be6c38da34cb
+  SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
 
 PODFILE CHECKSUM: cbec781e91646505adad1612ba0fdba3ec916720
 

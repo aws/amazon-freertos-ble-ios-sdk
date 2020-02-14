@@ -5,7 +5,7 @@ import AWSMobileClient
 import CoreBluetooth
 import UIKit
 
-/// This is the main controller used to list the nearby Amazon FreeRTOS devices that has the BLE capability.
+/// This is the main controller used to list the nearby FreeRTOS devices that has the BLE capability.
 class DevicesViewController: UITableViewController {
 
     var uuid: UUID?

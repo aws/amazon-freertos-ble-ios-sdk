@@ -5,7 +5,7 @@ import UIKit
 
 /// Example 2: Network Config
 ///
-/// This example showcases how to use the network config service to configure the wifi network on the Amazon FreeRTOS device.
+/// This example showcases how to use the network config service to configure the wifi network on the FreeRTOS device.
 class NetworkConfigViewController: UITableViewController {
 
     var uuid: UUID?

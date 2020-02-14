@@ -1,14 +1,14 @@
 import CoreBluetooth
 
-/// AmazonFreeRTOSConstants
+/// FreeRTOS Constants
 public struct AmazonFreeRTOS {
-    /// AmazonFreeRTOSSDKVersion.
+    /// FreeRTOS SDK Version.
     static let SDKVersion = "1.0.0"
 }
 
 /// BLE services used by the SDK.
 public struct AmazonFreeRTOSGattService {
-    /// Device Info Service. This is a required service for Amazon FreeRTOS.
+    /// Device Info Service. This is a required service for FreeRTOS.
     static let DeviceInfo = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff00")
     /// Mqtt Proxy Service.
     static let MqttProxy = CBUUID(string: "a9d7166a-d72e-40a9-a002-48044cc30000")
@@ -18,15 +18,15 @@ public struct AmazonFreeRTOSGattService {
 
 /// BLE characteristics used by the SDK.
 public struct AmazonFreeRTOSGattCharacteristic {
-    /// The version of the Amazon FreeRTOS.
+    /// The version of the FreeRTOS.
     static let AfrVersion = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff01")
     /// The broker endpoint of the mqtt.
     static let BrokerEndpoint = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff02")
     /// The mtu of the device.
     static let Mtu = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff03")
-    /// The platform of the Amazon FreeRTOS.
+    /// The platform of the FreeRTOS.
     static let AfrPlatform = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff04")
-    /// The device id of the Amazon FreeRTOS.
+    /// The device id of the FreeRTOS.
     static let AfrDevId = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff05")
 
     /// Used for mqtt control state.

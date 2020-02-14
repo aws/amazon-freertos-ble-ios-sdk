@@ -2,27 +2,27 @@ PODS:
   - Alertift (4.1.1)
   - AmazonFreeRTOS (1.0.0):
     - AWSIoT
-  - AWSAuthCore (2.12.5):
-    - AWSCore (= 2.12.5)
-  - AWSAuthUI (2.12.5):
-    - AWSAuthCore (= 2.12.5)
-    - AWSCore (= 2.12.5)
-  - AWSCognitoIdentityProvider (2.12.5):
+  - AWSAuthCore (2.12.7):
+    - AWSCore (= 2.12.7)
+  - AWSAuthUI (2.12.7):
+    - AWSAuthCore (= 2.12.7)
+    - AWSCore (= 2.12.7)
+  - AWSCognitoIdentityProvider (2.12.7):
     - AWSCognitoIdentityProviderASF (= 1.0.1)
-    - AWSCore (= 2.12.5)
+    - AWSCore (= 2.12.7)
   - AWSCognitoIdentityProviderASF (1.0.1)
-  - AWSCore (2.12.5)
-  - AWSIoT (2.12.5):
-    - AWSCore (= 2.12.5)
-  - AWSMobileClient (2.12.5):
-    - AWSAuthCore (= 2.12.5)
-    - AWSCognitoIdentityProvider (= 2.12.5)
-  - AWSUserPoolsSignIn (2.12.5):
-    - AWSAuthCore (= 2.12.5)
-    - AWSCognitoIdentityProvider (= 2.12.5)
-  - LicensePlist (2.11.4)
-  - SwiftFormat/CLI (0.43.5)
-  - SwiftLint (0.38.2)
+  - AWSCore (2.12.7)
+  - AWSIoT (2.12.7):
+    - AWSCore (= 2.12.7)
+  - AWSMobileClient (2.12.7):
+    - AWSAuthCore (= 2.12.7)
+    - AWSCognitoIdentityProvider (= 2.12.7)
+  - AWSUserPoolsSignIn (2.12.7):
+    - AWSAuthCore (= 2.12.7)
+    - AWSCognitoIdentityProvider (= 2.12.7)
+  - LicensePlist (2.13.0)
+  - SwiftFormat/CLI (0.44.2)
+  - SwiftLint (0.39.1)
 
 DEPENDENCIES:
   - Alertift
@@ -56,17 +56,17 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alertift: 950483ca193717cc8bb508a7dbbe34f4af321daf
   AmazonFreeRTOS: 863723e3e367fa183f316323b22b2c41ed808f30
-  AWSAuthCore: 6b81b748f2fc0b315cda0acdf55f3a540eb8f9b7
-  AWSAuthUI: 03e83f0a9fab660d43cb57e2fe073965737b910a
-  AWSCognitoIdentityProvider: 7c8cbd6477fd84ccce33a349a46fb44d07edb252
+  AWSAuthCore: 288cb737a35ff031fbf42edaa8d0062328791d4e
+  AWSAuthUI: 464fbab1841f8878e6370ec76581f9bea67e6252
+  AWSCognitoIdentityProvider: 4998bdbfbafe5038dae0237a598580e102e7b6b5
   AWSCognitoIdentityProviderASF: f94f1a502e72ef3d0a1de93e10bf7a79c8698118
-  AWSCore: 543d1c281ad08401d0a99e181526aa529051a8ad
-  AWSIoT: 09549f30b376fc08c125f78757fbf4df7d4c94d9
-  AWSMobileClient: 5ce94de58005c3042e99d51c2e6bec7956ef2b36
-  AWSUserPoolsSignIn: 96d6c17f826b2cc9f3232ae96900d8df4b5cee24
-  LicensePlist: c33fc7fd031062df4db91e96c78ed39d482f1948
-  SwiftFormat: 352ea545e3e13cfd7a449e621c1f3c2e244d4906
-  SwiftLint: 8f5d2f903e1c9bcbc832fd16771e80a263ac6cbb
+  AWSCore: 2f0f88ae94a63a198274d683c7d0e18709d7090b
+  AWSIoT: 7e6bc2899c38ef93d7a2f7db933fef26d74d8c8e
+  AWSMobileClient: bf1fb0868f9187141ca7b69220383c14878c0a29
+  AWSUserPoolsSignIn: fffc46e512e326783585e53639e58c355aae320f
+  LicensePlist: a5395002c74b45c38bb8661374f5608534f0f5a7
+  SwiftFormat: 53968b5cc5d466727e796f789fa9be6c38da34cb
+  SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
 
 PODFILE CHECKSUM: 93e4028eeb7a2569b77e57e7fccc56afdd5fc9a8
 

@@ -1,7 +1,7 @@
 import AWSIoT
 import CoreBluetooth
 
-/// AmazonFreeRTOS device.
+/// FreeRTOS device.
 public class AmazonFreeRTOSDevice: NSObject {
 
     /// CBPeripheral.
@@ -11,7 +11,7 @@ public class AmazonFreeRTOSDevice: NSObject {
     /// rssi.
     public var RSSI: NSNumber?
 
-    /// AmazonFreeRTOS device should auto reconnect on non-explicit disconnect.
+    /// FreeRTOS device should auto reconnect on non-explicit disconnect.
     public var reconnect = false
     /// The certificateId used to connect. see: https://github.com/awslabs/aws-sdk-ios-samples/tree/master/IoT-Sample/Swift
     public var certificateId: String?
@@ -39,10 +39,10 @@ public class AmazonFreeRTOSDevice: NSObject {
     // Used for LOT write.
     internal var rxLotDataQueues: [String: [Data]] = [:]
 
-    /// Initializes a new AmazonFreeRTOS device.
+    /// Initializes a new FreeRTOS device.
     ///
     /// - Parameter peripheral: The CBPeripheral.
-    /// - Returns: A new AmazonFreeRTOS device.
+    /// - Returns: A new FreeRTOS device.
     public init(peripheral: CBPeripheral) {
         self.peripheral = peripheral
         super.init()
@@ -105,9 +105,9 @@ public class AmazonFreeRTOSDevice: NSObject {
 
 extension AmazonFreeRTOSDevice {
 
-    /// Connect to the AmazonFreeRTOS device.
+    /// Connect to the FreeRTOS device.
     /// - Parameters:
-    ///    - reconnect: AmazonFreeRTOS device should auto reconnect on non-explicit disconnect.
+    ///    - reconnect: FreeRTOS device should auto reconnect on non-explicit disconnect.
     ///    - certificateId: The certificateId used to connect. see: https://github.com/awslabs/aws-sdk-ios-samples/tree/master/IoT-Sample/Swift
     ///    - credentialsProvider: The credentialsProvider used to connect like AWSMobileClient for Cognito.
     /// - Precondition: central is ready and device must be disconnected, otherwise it will be ignored.
@@ -120,7 +120,7 @@ extension AmazonFreeRTOSDevice {
         }
     }
 
-    /// Disconnect from the AmazonFreeRTOS device.
+    /// Disconnect from the FreeRTOS device.
     ///
     /// - Precondition: central is ready and device must be connected, otherwise it will be ignored.
     public func disconnect() {
@@ -135,7 +135,7 @@ extension AmazonFreeRTOSDevice {
 
 extension AmazonFreeRTOSDevice {
 
-    /// Get afrVersion of the AmazonFreeRTOS device.
+    /// Get afrVersion of the FreeRTOS device.
     public func getAfrVersion() {
 
         AmazonFreeRTOSManager.shared.debugPrint("[\(peripheral.identifier.uuidString)] ↓ get afrVersion")
@@ -147,7 +147,7 @@ extension AmazonFreeRTOSDevice {
         peripheral.readValue(for: characteristic)
     }
 
-    /// Get mqtt broker endpoint of the AmazonFreeRTOS device.
+    /// Get mqtt broker endpoint of the FreeRTOS device.
     public func getBrokerEndpoint() {
 
         AmazonFreeRTOSManager.shared.debugPrint("[\(peripheral.identifier.uuidString)] ↓ get brokerEndpoint")
@@ -159,7 +159,7 @@ extension AmazonFreeRTOSDevice {
         peripheral.readValue(for: characteristic)
     }
 
-    /// Get BLE mtu of the AmazonFreeRTOS device.
+    /// Get BLE mtu of the FreeRTOS device.
     public func getMtu() {
 
         AmazonFreeRTOSManager.shared.debugPrint("[\(peripheral.identifier.uuidString)] ↓ get mtu")
@@ -171,7 +171,7 @@ extension AmazonFreeRTOSDevice {
         peripheral.readValue(for: characteristic)
     }
 
-    /// Get afrPlatform of the AmazonFreeRTOS device.
+    /// Get afrPlatform of the FreeRTOS device.
     public func getAfrPlatform() {
 
         AmazonFreeRTOSManager.shared.debugPrint("[\(peripheral.identifier.uuidString)] ↓ get afrPlatform")
@@ -183,7 +183,7 @@ extension AmazonFreeRTOSDevice {
         peripheral.readValue(for: characteristic)
     }
 
-    /// Get afrDevId of the AmazonFreeRTOS device.
+    /// Get afrDevId of the FreeRTOS device.
     public func getAfrDevId() {
 
         AmazonFreeRTOSManager.shared.debugPrint("[\(peripheral.identifier.uuidString)] ↓ get afrDevId")

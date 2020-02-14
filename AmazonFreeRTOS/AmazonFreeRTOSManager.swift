@@ -2,10 +2,10 @@ import AWSIoT
 import CoreBluetooth
 import os.log
 
-/// AmazonFreeRTOS manager.
+/// FreeRTOS manager.
 public class AmazonFreeRTOSManager: NSObject {
 
-    /// Shared instence of AmazonFreeRTOS manager.
+    /// Shared instence of FreeRTOS manager.
     public static let shared = AmazonFreeRTOSManager()
 
     /// Enable debug messages.
@@ -15,15 +15,15 @@ public class AmazonFreeRTOSManager: NSObject {
 
     /// Service UUIDs in the advertising packets.
     public var advertisingServiceUUIDs: [CBUUID] = [AmazonFreeRTOSGattService.DeviceInfo]
-    /// The AmazonFreeRTOS devices using peripheral identifier as key.
+    /// The FreeRTOS devices using peripheral identifier as key.
     public var devices: [UUID: AmazonFreeRTOSDevice] = [:]
 
-    /// BLE Central Manager of the AmazonFreeRTOS manager.
+    /// BLE Central Manager of the FreeRTOS manager.
     public var central: CBCentralManager?
 
-    /// Initializes a new AmazonFreeRTOS manager.
+    /// Initializes a new FreeRTOS manager.
     ///
-    /// - Returns: A new AmazonFreeRTOS manager.
+    /// - Returns: A new FreeRTOS manager.
     public override init() {
         super.init()
         central = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: true])
@@ -32,7 +32,7 @@ public class AmazonFreeRTOSManager: NSObject {
 
 extension AmazonFreeRTOSManager {
 
-    /// Start scan for AmazonFreeRTOS devices.
+    /// Start scan for FreeRTOS devices.
     ///
     /// - Precondition: `central` is ready and not scanning.
     public func startScanForDevices() {
@@ -41,7 +41,7 @@ extension AmazonFreeRTOSManager {
         }
     }
 
-    /// Stop scan for AmazonFreeRTOS devices.
+    /// Stop scan for FreeRTOS devices.
     ///
     /// - Precondition: `central` is ready and is scanning.
     public func stopScanForDevices() {
@@ -50,7 +50,7 @@ extension AmazonFreeRTOSManager {
         }
     }
 
-    /// Disconnect. Clear all contexts. Scan for AmazonFreeRTOS devices.
+    /// Disconnect. Clear all contexts. Scan for FreeRTOS devices.
     public func rescanForDevices() {
         stopScanForDevices()
 

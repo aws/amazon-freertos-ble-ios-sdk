@@ -161,10 +161,12 @@
               <div class="declaration">
                 <div class="language">
                   <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AmazonFreeRTOSManager</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">AmazonFreeRTOSManager</span><span class="p">:</span> <span class="kt">CBCentralManagerDelegate</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">AmazonFreeRTOSManager</span><span class="p">:</span> <span class="kt">CBPeripheralDelegate</span></code></pre>
 
                 </div>
               </div>
-            <p>AmazonFreeRTOS manager.</p>
+            <p>FreeRTOS manager.</p>
 
           </section>
           <section class="section task-group-section">
@@ -183,7 +185,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Shared instence of AmazonFreeRTOS manager.</p>
+                        <p>Shared instence of FreeRTOS manager.</p>
 
                       </div>
                       <div class="declaration">
@@ -291,7 +293,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The AmazonFreeRTOS devices using peripheral identifier as key.</p>
+                        <p>The FreeRTOS devices using peripheral identifier as key.</p>
 
                       </div>
                       <div class="declaration">
@@ -318,7 +320,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>BLE Central Manager of the AmazonFreeRTOS manager.</p>
+                        <p>BLE Central Manager of the FreeRTOS manager.</p>
 
                       </div>
                       <div class="declaration">
@@ -345,7 +347,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initializes a new AmazonFreeRTOS manager.</p>
+                        <p>Initializes a new FreeRTOS manager.</p>
 
                       </div>
                       <div class="declaration">
@@ -358,15 +360,11 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>A new AmazonFreeRTOS manager.</p>
+                        <p>A new FreeRTOS manager.</p>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -380,7 +378,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Start scan for AmazonFreeRTOS devices.</p>
+                        <p>Start scan for FreeRTOS devices.</p>
 <div class="aside aside-precondition">
     <p class="aside-title">Precondition</p>
     <code><a href="../Classes/AmazonFreeRTOSManager.html#/s:14AmazonFreeRTOS0aB11RTOSManagerC7centralSo16CBCentralManagerCSgvp">central</a></code> is ready and not scanning.
@@ -412,7 +410,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Stop scan for AmazonFreeRTOS devices.</p>
+                        <p>Stop scan for FreeRTOS devices.</p>
 <div class="aside aside-precondition">
     <p class="aside-title">Precondition</p>
     <code><a href="../Classes/AmazonFreeRTOSManager.html#/s:14AmazonFreeRTOS0aB11RTOSManagerC7centralSo16CBCentralManagerCSgvp">central</a></code> is ready and is scanning.
@@ -444,7 +442,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Disconnect. Clear all contexts. Scan for AmazonFreeRTOS devices.</p>
+                        <p>Disconnect. Clear all contexts. Scan for FreeRTOS devices.</p>
 
                       </div>
                       <div class="declaration">
@@ -458,10 +456,6 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -597,10 +591,6 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -709,10 +699,6 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -1008,8 +994,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://aws.amazon.com/freertos/" target="_blank" rel="external">Amazon Web Services</a>. All rights reserved. (Last updated: 2019-06-17)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="https://aws.amazon.com/freertos/" target="_blank" rel="external">Amazon Web Services</a>. All rights reserved. (Last updated: 2020-02-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
