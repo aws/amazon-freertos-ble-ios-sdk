@@ -60,8 +60,10 @@ public enum NetworkSecurityType: Int {
     case wpa = 2
     /// Wpa 2.
     case wpa2 = 3
+    /// Wpa 2 Enterprise.
+    case wpa2Ent = 4
     /// Not Supported.
-    case notSupported = 4
+    case notSupported = 5
 }
 
 /// Network statuses.
