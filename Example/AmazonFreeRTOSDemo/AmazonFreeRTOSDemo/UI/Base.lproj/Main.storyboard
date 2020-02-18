@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y3s-WY-8M9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y3s-WY-8M9">
     <device id="retina6_5" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -645,7 +645,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="4js-HQ-6gy"/>
                                                         </constraints>
-                                                        <color key="textColor" name="dark_teal_color"/>
+                                                        <color key="textColor" name="alabaster_color"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                                         <userDefinedRuntimeAttributes>
@@ -683,7 +683,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="S1D-Ah-2GN"/>
                                                         </constraints>
-                                                        <color key="textColor" name="dark_teal_color"/>
+                                                        <color key="textColor" name="alabaster_color"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                                                         <userDefinedRuntimeAttributes>
@@ -834,15 +834,15 @@
     <resources>
         <image name="nav_back" width="19" height="18"/>
         <image name="nav_close" width="16" height="16"/>
-        <namedColor name="dark_teal_color">
-            <color red="0.0" green="0.1803921568627451" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        <namedColor name="alabaster_color">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="teal_color">
             <color red="0.0" green="0.63137254901960782" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="D3C-w1-X3r"/>
+        <segue reference="eC2-N5-eVr"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="teal_color"/>
 </document>
