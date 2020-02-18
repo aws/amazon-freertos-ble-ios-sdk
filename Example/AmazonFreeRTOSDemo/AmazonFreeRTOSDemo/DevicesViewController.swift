@@ -17,6 +17,7 @@ class DevicesViewController: UITableViewController {
 
         // Add observe for AmazonFreeRTOSManager NSNotifications
         NotificationCenter.default.addObserver(self, selector: #selector(centralManagerDidUpdateState), name: .afrCentralManagerDidUpdateState, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(peripheralDidDiscoverCharacteristics), name: .afrPeripheralDidDiscoverCharacteristics, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(centralManagerDidDisconnectDevice), name: .afrCentralManagerDidDisconnectDevice, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrCentralManagerDidDiscoverDevice, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrCentralManagerDidConnectDevice, object: nil)
@@ -57,6 +58,23 @@ extension DevicesViewController {
             return
         }
         AmazonFreeRTOSManager.shared.stopScanForDevices()
+    }
+
+    @objc
+    func peripheralDidDiscoverCharacteristics(_ notification: NSNotification) {
+        if let userInfo = notification.userInfo as? [String: Any] {
+            if let peripheral = userInfo["peripheral"] as? CBPeripheral {
+                guard AmazonFreeRTOSManager.shared.devices[peripheral.identifier]?.mtu != nil else {
+                    DispatchQueue.main.async {
+                        Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: "Unable to deocode data from device. Forget the device and pair it again")
+                            .action(.default(NSLocalizedString("OK", comment: String())))
+                            .show(on: self)
+                    }
+                    AmazonFreeRTOSManager.shared.devices[peripheral.identifier]?.disconnect()
+                    return
+                }
+            }
+        }
     }
 
     @objc
