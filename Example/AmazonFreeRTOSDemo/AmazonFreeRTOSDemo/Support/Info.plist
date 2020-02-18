@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>The app needs access to Bluetooth</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>We need to acces BLE to update the device</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>

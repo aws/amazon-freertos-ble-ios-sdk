@@ -205,31 +205,40 @@ extension DevicesViewController {
         uuid = Array(AmazonFreeRTOSManager.shared.devices.keys)[indexPath.row]
         let device = Array(AmazonFreeRTOSManager.shared.devices.values)[indexPath.row]
         if device.peripheral.state == .connected {
-            Alertift.actionSheet()
-                .popover(anchorView: cell)
+            if device.mtu != nil {
+                Alertift.actionSheet()
+                    .popover(anchorView: cell)
 
-                // Example 1: MQTT Proxy
+                    // Example 1: MQTT Proxy
 
-                .action(.default(NSLocalizedString("MQTT Proxy", comment: String()))) { _, _ in
-                    self.performSegue(withIdentifier: "toMqttProxyViewController", sender: self)
-                    return
+                    .action(.default(NSLocalizedString("MQTT Proxy", comment: String()))) { _, _ in
+                        self.performSegue(withIdentifier: "toMqttProxyViewController", sender: self)
+                        return
+                    }
+
+                    // Example 2: Network Config
+
+                    .action(.default(NSLocalizedString("Network Config", comment: String()))) { _, _ in
+                        self.performSegue(withIdentifier: "toNetworkConfigViewController", sender: self)
+                        return
+                    }
+
+                    // Example 3: Custom GATT MQTT
+
+                    .action(.default(NSLocalizedString("Custom GATT MQTT", comment: String()))) { _, _ in
+                        self.performSegue(withIdentifier: "toCustomGattMqttViewController", sender: self)
+                        return
+                    }
+                    .action(.cancel(NSLocalizedString("Cancel", comment: String())))
+                    .show(on: self)
+            } else {
+                if let deviceCell = cell as? DeviceCell {
+                    deviceCell.viewDeviceStateIndicator.backgroundColor = UIColor(named: "orange_color")
+                    Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: "Unable to read secure values. You need to forget this device pair it again")
+                        .action(.default(NSLocalizedString("OK", comment: String())))
+                        .show(on: self)
                 }
-
-                // Example 2: Network Config
-
-                .action(.default(NSLocalizedString("Network Config", comment: String()))) { _, _ in
-                    self.performSegue(withIdentifier: "toNetworkConfigViewController", sender: self)
-                    return
-                }
-
-                // Example 3: Custom GATT MQTT
-
-                .action(.default(NSLocalizedString("Custom GATT MQTT", comment: String()))) { _, _ in
-                    self.performSegue(withIdentifier: "toCustomGattMqttViewController", sender: self)
-                    return
-                }
-                .action(.cancel(NSLocalizedString("Cancel", comment: String())))
-                .show(on: self)
+            }
         } else {
             device.connect(reconnect: true, credentialsProvider: AWSMobileClient.default())
         }

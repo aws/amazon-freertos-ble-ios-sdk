@@ -11,8 +11,26 @@
         "components" : {
           "red" : "0x00",
           "alpha" : "1.000",
-          "blue" : "0x36",
-          "green" : "0x2E"
+          "blue" : "0x57",
+          "green" : "0x4A"
+        }
+      }
+    },
+    {
+      "idiom" : "universal",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "color" : {
+        "color-space" : "display-p3",
+        "components" : {
+          "red" : "0.000",
+          "alpha" : "1.000",
+          "blue" : "0.647",
+          "green" : "0.551"
         }
       }
     }
