@@ -1,0 +1,11 @@
+language: objective-c
+xcode_workspace: Example/AmazonFreeRTOSDemo/AmazonFreeRTOSDemo.xcworkspace # path to your xcodeproj folder
+xcode_scheme: AmazonFreeRTOSDemo
+podfile: Example/AmazonFreeRTOSDemo/Podfile 
+osx_image: xcode11.3
+
+script:
+- set -o pipefail
+- cd Example/AmazonFreeRTOSDemo
+- pod install
+- xcodebuild -workspace AmazonFreeRTOSDemo.xcworkspace -sdk iphonesimulator -scheme AmazonFreeRTOSDemo -platform='iOS Simulator,OS=10.1,name=iPad Pro (9.7-inch)' build | xcpretty
