@@ -7,5 +7,7 @@ osx_image: xcode11.3
 script:
 - set -o pipefail
 - cd Example/AmazonFreeRTOSDemo
+  # Remove compiler errors
+- sed -i '' 's/error/warning/' AmazonFreeRTOSDemo/Amazon/AmazonConstants.swift
 - pod install
 - xcodebuild -workspace AmazonFreeRTOSDemo.xcworkspace -sdk iphonesimulator -scheme AmazonFreeRTOSDemo -platform='iOS Simulator,OS=10.1,name=iPad Pro (9.7-inch)' build | xcpretty
