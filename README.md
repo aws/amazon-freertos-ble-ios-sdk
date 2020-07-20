@@ -3,6 +3,7 @@
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/AmazonFreeRTOS.svg?style=flat)](https://cocoapods.org/pods/AmazonFreeRTOS)
 [![License](https://img.shields.io/cocoapods/l/AmazonFreeRTOS.svg?style=flat)](https://cocoapods.org/pods/AmazonFreeRTOS)
 [![Platform](https://img.shields.io/cocoapods/p/AmazonFreeRTOS.svg?style=flat)](https://cocoapods.org/pods/AmazonFreeRTOS)
+[![Build Status](https://travis-ci.org/aws/amazon-freertos-ble-ios-sdk.svg?branch=master)](https://travis-ci.org/aws/amazon-freertos-ble-ios-sdk)
 
 ## Introduction
 
