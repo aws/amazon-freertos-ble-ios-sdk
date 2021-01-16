@@ -67,9 +67,9 @@ extension NSNumber {
 
 extension NSString {
     @objc override func encode() -> String {
-        let encodedArray = Encoder.prepareByteArray(major: .major3, measure: length)
+        let encodedArray = Encoder.prepareByteArray(major: .major3, measure: utf8_bytes.count)
         let headerData = Data(encodedArray).binary_decimal.hex
-        let strData = Data(ascii_bytes).hex
+        let strData = Data(utf8_bytes).hex
 
         return headerData.appending(strData)
     }
