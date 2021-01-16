@@ -126,6 +126,10 @@ extension String {
         return data(using: .ascii)!.bytes
     }
 
+    public var utf8_bytes: [UInt8] {
+        return data(using: .utf8)!.bytes
+    }
+
     public var hex_decimal: Int {
         return Int(self, radix: 16)!
     }
@@ -142,6 +146,10 @@ extension NSString {
 
     public var ascii_bytes: [UInt8] {
         return String(self).ascii_bytes
+    }
+
+    public var utf8_bytes: [UInt8] {
+        return String(self).utf8_bytes
     }
 }
 
