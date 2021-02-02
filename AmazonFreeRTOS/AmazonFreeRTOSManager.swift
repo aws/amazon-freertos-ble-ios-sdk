@@ -1,4 +1,5 @@
 import AWSIoT
+import CBORCoding
 import CoreBluetooth
 import os.log
 
@@ -28,6 +29,9 @@ public class AmazonFreeRTOSManager: NSObject {
         super.init()
         central = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: true])
     }
+
+    public var start = DispatchTime.now()
+    public var end = DispatchTime.now()
 }
 
 extension AmazonFreeRTOSManager {
@@ -226,16 +230,27 @@ extension AmazonFreeRTOSManager: CBPeripheralDelegate {
 
 extension AmazonFreeRTOSManager {
 
-    internal func encode<T: Encborable>(_ object: T) -> Data? {
-        if let encoded = CBOR.encode(object.toDictionary()) {
+    internal func encode<T: Encodable>(_ object: T) -> Data? {
+        // if let encoded = CBOR.encode(object.toPublish_CBOR()) {
+        //    return Data(encoded)
+        // }
+        // return nil
+
+        let encoder = CBOREncoder()
+        if let encoded = try? encoder.encode(object) {
             return Data(encoded)
         }
         return nil
     }
 
-    internal func decode<T: Decborable>(_: T.Type, from data: Data) -> T? {
-        if let decoded = CBOR.decode(Array([UInt8](data))) as? NSDictionary {
-            return T.toSelf(dictionary: decoded)
+    internal func decode<T: Decodable>(_ type: T.Type, from data: Data) -> T? {
+        // if let decoded = CBOR.decode(Array([UInt8](data))) as? NSDictionary {
+        //    return T.toSelf(dictionary: decoded)
+        // }
+
+        let decoder = CBORDecoder()
+        if let decoded = try? decoder.decode(type, from: data) {
+            return decoded
         }
         return nil
     }
@@ -620,6 +635,7 @@ extension AmazonFreeRTOSManager {
     // Write data to RXMqttMessage or RXNetworkMessage characteristic of `peripheral`. Used by large object transfer.
     internal func writeValueToRXMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic, data: Data) {
         DispatchQueue.main.async {
+
             guard let mtu = self.devices[peripheral.identifier]?.mtu else {
                 self.debugPrint("[\(peripheral.identifier.uuidString)][ERROR] Mtu unknown")
                 return
@@ -637,6 +653,7 @@ extension AmazonFreeRTOSManager {
                 if self.devices[peripheral.identifier]?.rxLotDataQueues[characteristic.service.uuid.uuidString]?.count == 1 {
                     self.writeValueToRXLargeMessage(peripheral: peripheral, characteristic: characteristic)
                 }
+
                 return
             }
             guard let characteristic = characteristic.service.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.RXMqttMessage) ?? characteristic.service.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.RXNetworkMessage) else {
@@ -650,7 +667,9 @@ extension AmazonFreeRTOSManager {
 
     // Write data to RXLargeMqttMessage or RXLargeNetworkMessage characteristic of `peripheral`. Used by large object transfer.
     internal func writeValueToRXLargeMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+
         DispatchQueue.main.async {
+
             guard let mtu = self.devices[peripheral.identifier]?.mtu else {
                 self.debugPrint("[\(peripheral.identifier.uuidString)][LOT][ERROR] Mtu unknown")
                 return
@@ -707,10 +726,16 @@ extension AmazonFreeRTOSManager {
 
         debugPrint("[\(peripheral.identifier.uuidString)][MQTT] ↓ \(publish)")
 
+        start = DispatchTime.now() // <<<<<<<<<< Start time
+
         guard let data = encode(publish) else {
             debugPrint("[\(peripheral.identifier.uuidString)][MQTT][ERROR] Invalid publish")
             return
         }
+        end = DispatchTime.now()
+        let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds (UInt64)
+        let timeInterval = Double(nanoTime) / 1_000_000 // Technically could overflow for long running tests
+        print("Time to evaluate problem \(timeInterval) milliseconds")
 
         writeValueToRXMessage(peripheral: peripheral, characteristic: characteristic, data: data)
     }

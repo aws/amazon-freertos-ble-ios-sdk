@@ -5,4 +5,5 @@ target 'AmazonFreeRTOS' do
   pod "AWSIoT"
   pod 'SwiftFormat/CLI'
   pod 'SwiftLint'
+  pod 'CBORCoding'
 end

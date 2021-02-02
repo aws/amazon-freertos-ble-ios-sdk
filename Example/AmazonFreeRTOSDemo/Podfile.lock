@@ -20,6 +20,9 @@ PODS:
   - AWSUserPoolsSignIn (2.12.7):
     - AWSAuthCore (= 2.12.7)
     - AWSCognitoIdentityProvider (= 2.12.7)
+  - CBORCoding (1.2.0):
+    - Half (~> 1.2)
+  - Half (1.2.0)
   - LicensePlist (2.13.0)
   - SwiftFormat/CLI (0.44.2)
   - SwiftLint (0.39.1)
@@ -30,6 +33,7 @@ DEPENDENCIES:
   - AWSAuthUI
   - AWSMobileClient
   - AWSUserPoolsSignIn
+  - CBORCoding
   - LicensePlist
   - SwiftFormat/CLI
   - SwiftLint
@@ -45,6 +49,8 @@ SPEC REPOS:
     - AWSIoT
     - AWSMobileClient
     - AWSUserPoolsSignIn
+    - CBORCoding
+    - Half
     - LicensePlist
     - SwiftFormat
     - SwiftLint
@@ -64,10 +70,12 @@ SPEC CHECKSUMS:
   AWSIoT: 7e6bc2899c38ef93d7a2f7db933fef26d74d8c8e
   AWSMobileClient: bf1fb0868f9187141ca7b69220383c14878c0a29
   AWSUserPoolsSignIn: fffc46e512e326783585e53639e58c355aae320f
+  CBORCoding: 12cd1a0e84b09a4d583087e923358902b78cd667
+  Half: 672e8edf40996dd500ce6308b9cf8da82c709d90
   LicensePlist: a5395002c74b45c38bb8661374f5608534f0f5a7
   SwiftFormat: 53968b5cc5d466727e796f789fa9be6c38da34cb
   SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
 
-PODFILE CHECKSUM: 93e4028eeb7a2569b77e57e7fccc56afdd5fc9a8
+PODFILE CHECKSUM: c7bbc423d127435b8b790ae10d8bb23551a07b1a
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0

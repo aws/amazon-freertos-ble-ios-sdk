@@ -1,5 +1,6 @@
 /// Edit network response.
-public struct EditNetworkResp: Decborable {
+/*
+ public struct EditNetworkResp: Decborable {
 
     init?(dictionary: NSDictionary) {
         guard let statusRawValue = dictionary.object(forKey: CborKey.status.rawValue) as? Int, let status = NetworkOpStatus(rawValue: statusRawValue) else {
@@ -13,5 +14,15 @@ public struct EditNetworkResp: Decborable {
 
     static func toSelf<T: Decborable>(dictionary: NSDictionary) -> T? {
         return EditNetworkResp(dictionary: dictionary) as? T
+    }
+ }
+ */
+
+public struct EditNetworkResp: Decodable {
+    /// Edit operation status.
+    public var status: NetworkOpStatus
+
+    private enum CodingKeys: String, CodingKey {
+        case status = "s" /// CborKey.status.rawValue
     }
 }

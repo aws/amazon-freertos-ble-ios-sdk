@@ -2,11 +2,15 @@ PODS:
   - AWSCore (2.12.7)
   - AWSIoT (2.12.7):
     - AWSCore (= 2.12.7)
+  - CBORCoding (1.2.0):
+    - Half (~> 1.2)
+  - Half (1.2.0)
   - SwiftFormat/CLI (0.44.2)
   - SwiftLint (0.39.1)
 
 DEPENDENCIES:
   - AWSIoT
+  - CBORCoding
   - SwiftFormat/CLI
   - SwiftLint
 
@@ -14,15 +18,19 @@ SPEC REPOS:
   trunk:
     - AWSCore
     - AWSIoT
+    - CBORCoding
+    - Half
     - SwiftFormat
     - SwiftLint
 
 SPEC CHECKSUMS:
   AWSCore: 2f0f88ae94a63a198274d683c7d0e18709d7090b
   AWSIoT: 7e6bc2899c38ef93d7a2f7db933fef26d74d8c8e
+  CBORCoding: 12cd1a0e84b09a4d583087e923358902b78cd667
+  Half: 672e8edf40996dd500ce6308b9cf8da82c709d90
   SwiftFormat: 53968b5cc5d466727e796f789fa9be6c38da34cb
   SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
 
-PODFILE CHECKSUM: cbec781e91646505adad1612ba0fdba3ec916720
+PODFILE CHECKSUM: 764ffa21ae5ebd7cd282b751f241bee7b676084e
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0
