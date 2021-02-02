@@ -10,5 +10,4 @@ target 'AmazonFreeRTOSDemo' do
   pod 'LicensePlist'
   pod 'SwiftFormat/CLI'
   pod 'SwiftLint'
-  pod 'CBORCoding'
 end
