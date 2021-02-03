@@ -1,5 +1,12 @@
 /// Edit network request.
-public struct EditNetworkReq: Encborable {
+public struct EditNetworkReq: Encodable {
+
+    /// message type
+    private var messageType: Int
+    /// Old index of the saved network.
+    public var index: Int
+    /// New index of the saved network.
+    public var newIndex: Int
 
     /// EditNetworkReq is used to update the priority of a saved network.
     ///
@@ -8,16 +15,14 @@ public struct EditNetworkReq: Encborable {
     ///     - newIndex: New index of the saved network.
     /// - Returns: A new EditNetworkReq.
     public init(index: Int, newIndex: Int) {
+        messageType = NetworkMessageType.editNetworkReq.rawValue
         self.index = index
         self.newIndex = newIndex
     }
 
-    /// Old index of the saved network.
-    public var index: Int
-    /// New index of the saved network.
-    public var newIndex: Int
-
-    func toDictionary() -> NSDictionary {
-        return [CborKey.type.rawValue: NetworkMessageType.editNetworkReq.rawValue, CborKey.index.rawValue: index, CborKey.newIndex.rawValue: newIndex]
+    private enum CodingKeys: String, CodingKey {
+        case messageType = "w" /// CborKey.type.rawValue
+        case index = "g" /// CborKey.index.rawValue
+        case newIndex = "j" /// CborKey.newIndex.rawValue
     }
 }

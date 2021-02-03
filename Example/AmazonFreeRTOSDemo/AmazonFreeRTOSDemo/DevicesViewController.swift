@@ -173,7 +173,7 @@ extension DevicesViewController {
 
 extension DevicesViewController {
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
+    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return AmazonFreeRTOSManager.shared.devices.count
     }
 

@@ -1,4 +1,5 @@
 import AWSIoT
+import CBORCoding
 import CoreBluetooth
 import os.log
 
@@ -24,7 +25,7 @@ public class AmazonFreeRTOSManager: NSObject {
     /// Initializes a new FreeRTOS manager.
     ///
     /// - Returns: A new FreeRTOS manager.
-    public override init() {
+    override public init() {
         super.init()
         central = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: true])
     }
@@ -35,7 +36,7 @@ extension AmazonFreeRTOSManager {
     /// Start scan for FreeRTOS devices.
     ///
     /// - Precondition: `central` is ready and not scanning.
-    public func startScanForDevices() {
+    func startScanForDevices() {
         if let central = central, !central.isScanning {
             central.scanForPeripherals(withServices: advertisingServiceUUIDs, options: nil)
         }
@@ -44,14 +45,14 @@ extension AmazonFreeRTOSManager {
     /// Stop scan for FreeRTOS devices.
     ///
     /// - Precondition: `central` is ready and is scanning.
-    public func stopScanForDevices() {
+    func stopScanForDevices() {
         if let central = central, central.isScanning {
             central.stopScan()
         }
     }
 
     /// Disconnect. Clear all contexts. Scan for FreeRTOS devices.
-    public func rescanForDevices() {
+    func rescanForDevices() {
         stopScanForDevices()
 
         for device in devices.values {
@@ -226,21 +227,23 @@ extension AmazonFreeRTOSManager: CBPeripheralDelegate {
 
 extension AmazonFreeRTOSManager {
 
-    internal func encode<T: Encborable>(_ object: T) -> Data? {
-        if let encoded = CBOR.encode(object.toDictionary()) {
+    func encode<T: Encodable>(_ object: T) -> Data? {
+        let encoder = CBOREncoder()
+        if let encoded = try? encoder.encode(object) {
             return Data(encoded)
         }
         return nil
     }
 
-    internal func decode<T: Decborable>(_: T.Type, from data: Data) -> T? {
-        if let decoded = CBOR.decode(Array([UInt8](data))) as? NSDictionary {
-            return T.toSelf(dictionary: decoded)
+    func decode<T: Decodable>(_ type: T.Type, from data: Data) -> T? {
+        let decoder = CBORDecoder()
+        if let decoded = try? decoder.decode(type, from: data) {
+            return decoded
         }
         return nil
     }
 
-    internal func debugPrint(_ debugMessage: String) {
+    func debugPrint(_ debugMessage: String) {
         guard isDebug else {
             return
         }
@@ -256,7 +259,7 @@ extension AmazonFreeRTOSManager {
     /// - Parameters:
     ///    - peripheral: The FreeRTOS peripheral.
     ///    - characteristic: The AfrVersion characteristic.
-    public func didUpdateValueForAfrVersion(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+    func didUpdateValueForAfrVersion(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
 
         guard let value = characteristic.value, let afrVersion = String(data: value, encoding: .utf8) else {
             debugPrint("[\(peripheral.identifier.uuidString)][ERROR] afrDeviceInfoAfrVersion: Invalid AfrVersion")
@@ -274,7 +277,7 @@ extension AmazonFreeRTOSManager {
     ///     - peripheral: The FreeRTOS peripheral.
     ///     - characteristic: The BrokerEndpoint characteristic.
     ///
-    public func didUpdateValueForBrokerEndpoint(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+    func didUpdateValueForBrokerEndpoint(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
 
         guard let value = characteristic.value, let brokerEndpoint = String(data: value, encoding: .utf8) else {
             debugPrint("[\(peripheral.identifier.uuidString)][ERROR] afrDeviceInfoBrokerEndpoint: Invalid BrokerEndpoint")
@@ -290,7 +293,7 @@ extension AmazonFreeRTOSManager {
     /// - Parameters:
     ///     - peripheral: The FreeRTOS peripheral.
     ///     - characteristic: The Mtu characteristic.
-    public func didUpdateValueForMtu(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+    func didUpdateValueForMtu(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
 
         guard let value = characteristic.value, let mtuStr = String(data: value, encoding: .utf8), let mtu = Int(mtuStr), mtu > 3 else {
             debugPrint("[\(peripheral.identifier.uuidString)][ERROR] afrDeviceInfoMtu: Invalid Mtu")
@@ -306,7 +309,7 @@ extension AmazonFreeRTOSManager {
     /// - Parameters:
     ///     - peripheral: The FreeRTOS peripheral.
     ///     - characteristic: The AfrPlatform characteristic.
-    public func didUpdateValueForAfrPlatform(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+    func didUpdateValueForAfrPlatform(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
 
         guard let value = characteristic.value, let afrPlatform = String(data: value, encoding: .utf8) else {
             debugPrint("[\(peripheral.identifier.uuidString)][ERROR] afrDeviceInfoAfrPlatform: Invalid AfrPlatform")
@@ -323,7 +326,7 @@ extension AmazonFreeRTOSManager {
     /// - Parameters:
     ///     - peripheral: The FreeRTOS peripheral.
     ///     - characteristic: The AfrDevId characteristic.
-    public func didUpdateValueForAfrDevId(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+    func didUpdateValueForAfrDevId(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
 
         guard let value = characteristic.value, let afrDevId = String(data: value, encoding: .utf8) else {
             debugPrint("[\(peripheral.identifier.uuidString)][ERROR] afrDeviceInfoAfrDevId: Invalid AfrDevId")
@@ -339,7 +342,7 @@ extension AmazonFreeRTOSManager {
 extension AmazonFreeRTOSManager {
 
     // Process data of TXMqttMessage or TXNetworkMessage characteristic from `peripheral`.
-    internal func didUpdateValueForTXMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic, data: Data?) {
+    func didUpdateValueForTXMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic, data: Data?) {
 
         guard let value = data ?? characteristic.value else {
             debugPrint("[\(peripheral.identifier.uuidString)][ERROR] didUpdateValueForTXMessage: Invalid message")
@@ -592,7 +595,7 @@ extension AmazonFreeRTOSManager {
     }
 
     // Process data of TXLargeMqttMessage or TXLargeNetworkMessage characteristic from `peripheral`. Used by large object transfer.
-    internal func didUpdateValueForTXLargeMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+    func didUpdateValueForTXLargeMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
         guard let mtu = devices[peripheral.identifier]?.mtu else {
             debugPrint("[\(peripheral.identifier.uuidString)][LOT][ERROR] Mtu unknown")
             return
@@ -618,7 +621,7 @@ extension AmazonFreeRTOSManager {
     }
 
     // Write data to RXMqttMessage or RXNetworkMessage characteristic of `peripheral`. Used by large object transfer.
-    internal func writeValueToRXMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic, data: Data) {
+    func writeValueToRXMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic, data: Data) {
         DispatchQueue.main.async {
             guard let mtu = self.devices[peripheral.identifier]?.mtu else {
                 self.debugPrint("[\(peripheral.identifier.uuidString)][ERROR] Mtu unknown")
@@ -649,7 +652,7 @@ extension AmazonFreeRTOSManager {
     }
 
     // Write data to RXLargeMqttMessage or RXLargeNetworkMessage characteristic of `peripheral`. Used by large object transfer.
-    internal func writeValueToRXLargeMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+    func writeValueToRXLargeMessage(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
         DispatchQueue.main.async {
             guard let mtu = self.devices[peripheral.identifier]?.mtu else {
                 self.debugPrint("[\(peripheral.identifier.uuidString)][LOT][ERROR] Mtu unknown")
@@ -673,7 +676,7 @@ extension AmazonFreeRTOSManager {
 
 extension AmazonFreeRTOSManager {
 
-    internal func mqttConnack(peripheral: CBPeripheral, characteristic: CBCharacteristic, status: Int) {
+    func mqttConnack(peripheral: CBPeripheral, characteristic: CBCharacteristic, status: Int) {
 
         let connack = Connack(status: status)
 
@@ -687,7 +690,7 @@ extension AmazonFreeRTOSManager {
         writeValueToRXMessage(peripheral: peripheral, characteristic: characteristic, data: data)
     }
 
-    internal func mqttPuback(peripheral: CBPeripheral, characteristic: CBCharacteristic, msgID: Int) {
+    func mqttPuback(peripheral: CBPeripheral, characteristic: CBCharacteristic, msgID: Int) {
 
         let puback = Puback(msgID: msgID)
 
@@ -701,7 +704,7 @@ extension AmazonFreeRTOSManager {
         writeValueToRXMessage(peripheral: peripheral, characteristic: characteristic, data: data)
     }
 
-    internal func mqttPublish(peripheral: CBPeripheral, characteristic: CBCharacteristic, msgID: Int, topic: String, qoS: Int, data: Data) {
+    func mqttPublish(peripheral: CBPeripheral, characteristic: CBCharacteristic, msgID: Int, topic: String, qoS: Int, data: Data) {
 
         let publish = Publish(topic: topic, msgID: msgID, qoS: qoS, payload: data)
 
@@ -715,7 +718,7 @@ extension AmazonFreeRTOSManager {
         writeValueToRXMessage(peripheral: peripheral, characteristic: characteristic, data: data)
     }
 
-    internal func mqttSuback(peripheral: CBPeripheral, characteristic: CBCharacteristic, msgID: Int, status: Int) {
+    func mqttSuback(peripheral: CBPeripheral, characteristic: CBCharacteristic, msgID: Int, status: Int) {
 
         let suback = Suback(msgID: msgID, status: status)
 
@@ -729,7 +732,7 @@ extension AmazonFreeRTOSManager {
         writeValueToRXMessage(peripheral: peripheral, characteristic: characteristic, data: data)
     }
 
-    internal func mqttUnsubscribe(peripheral: CBPeripheral, characteristic: CBCharacteristic, msgID: Int) {
+    func mqttUnsubscribe(peripheral: CBPeripheral, characteristic: CBCharacteristic, msgID: Int) {
 
         let unsuback = Unsuback(msgID: msgID)
 
@@ -743,7 +746,7 @@ extension AmazonFreeRTOSManager {
         writeValueToRXMessage(peripheral: peripheral, characteristic: characteristic, data: data)
     }
 
-    internal func mqttPingresp(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+    func mqttPingresp(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
 
         let pingresp = Pingresp()
 
@@ -760,7 +763,7 @@ extension AmazonFreeRTOSManager {
 
 extension AmazonFreeRTOSManager {
 
-    internal func listNetwork(_ peripheral: CBPeripheral, listNetworkReq: ListNetworkReq) {
+    func listNetwork(_ peripheral: CBPeripheral, listNetworkReq: ListNetworkReq) {
 
         debugPrint("[\(peripheral.identifier.uuidString)][NETWORK] ↓ \(listNetworkReq)")
 
@@ -775,7 +778,7 @@ extension AmazonFreeRTOSManager {
         writeValueToRXMessage(peripheral: peripheral, characteristic: characteristic, data: data)
     }
 
-    internal func saveNetwork(_ peripheral: CBPeripheral, saveNetworkReq: SaveNetworkReq) {
+    func saveNetwork(_ peripheral: CBPeripheral, saveNetworkReq: SaveNetworkReq) {
 
         debugPrint("[\(peripheral.identifier.uuidString)][NETWORK] ↓ \(saveNetworkReq)")
 
@@ -790,7 +793,7 @@ extension AmazonFreeRTOSManager {
         writeValueToRXMessage(peripheral: peripheral, characteristic: characteristic, data: data)
     }
 
-    internal func editNetwork(_ peripheral: CBPeripheral, editNetworkReq: EditNetworkReq) {
+    func editNetwork(_ peripheral: CBPeripheral, editNetworkReq: EditNetworkReq) {
 
         debugPrint("[\(peripheral.identifier.uuidString)][NETWORK] ↓ \(editNetworkReq)")
 
@@ -805,7 +808,7 @@ extension AmazonFreeRTOSManager {
         writeValueToRXMessage(peripheral: peripheral, characteristic: characteristic, data: data)
     }
 
-    internal func deleteNetwork(_ peripheral: CBPeripheral, deleteNetworkReq: DeleteNetworkReq) {
+    func deleteNetwork(_ peripheral: CBPeripheral, deleteNetworkReq: DeleteNetworkReq) {
 
         debugPrint("[\(peripheral.identifier.uuidString)][NETWORK] ↓ \(deleteNetworkReq)")
 

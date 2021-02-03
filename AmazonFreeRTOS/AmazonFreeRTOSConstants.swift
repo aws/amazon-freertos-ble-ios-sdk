@@ -1,13 +1,13 @@
 import CoreBluetooth
 
 /// FreeRTOS Constants
-public struct AmazonFreeRTOS {
+public enum AmazonFreeRTOS {
     /// FreeRTOS SDK Version.
     static let SDKVersion = "1.1.0"
 }
 
 /// BLE services used by the SDK.
-public struct AmazonFreeRTOSGattService {
+public enum AmazonFreeRTOSGattService {
     /// Device Info Service. This is a required service for FreeRTOS.
     static let DeviceInfo = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff00")
     /// Mqtt Proxy Service.
@@ -17,7 +17,7 @@ public struct AmazonFreeRTOSGattService {
 }
 
 /// BLE characteristics used by the SDK.
-public struct AmazonFreeRTOSGattCharacteristic {
+public enum AmazonFreeRTOSGattCharacteristic {
     /// The version of the FreeRTOS.
     static let AfrVersion = CBUUID(string: "8a7f1168-48af-4efb-83b5-e679f932ff01")
     /// The broker endpoint of the mqtt.
