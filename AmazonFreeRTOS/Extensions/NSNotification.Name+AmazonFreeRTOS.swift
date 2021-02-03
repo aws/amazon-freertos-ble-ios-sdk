@@ -4,44 +4,44 @@ extension NSNotification.Name {
     // BLE Central
 
     /// FreeRTOS BLE Central Manager didUpdateState.
-    static let afrCentralManagerDidUpdateState = NSNotification.Name("afrCentralManagerDidUpdateState")
+    public static let afrCentralManagerDidUpdateState: NSNotification.Name = NSNotification.Name("afrCentralManagerDidUpdateState")
     /// FreeRTOS BLE Central Manager didDiscoverDevice.
-    static let afrCentralManagerDidDiscoverDevice = NSNotification.Name("afrCentralManagerDidDiscoverDevice")
+    public static let afrCentralManagerDidDiscoverDevice: NSNotification.Name = NSNotification.Name("afrCentralManagerDidDiscoverDevice")
     /// FreeRTOS BLE Central Manager didConnectDevice.
-    static let afrCentralManagerDidConnectDevice = NSNotification.Name("afrCentralManagerDidConnectDevice")
+    public static let afrCentralManagerDidConnectDevice: NSNotification.Name = NSNotification.Name("afrCentralManagerDidConnectDevice")
     /// FreeRTOS BLE Central Manager didDisconnectDevice.
-    static let afrCentralManagerDidDisconnectDevice = NSNotification.Name("afrCentralManagerDidDisconnectDevice")
+    public static let afrCentralManagerDidDisconnectDevice: NSNotification.Name = NSNotification.Name("afrCentralManagerDidDisconnectDevice")
     /// FreeRTOS BLE Central Manager didFailToConnectDevice.
-    static let afrCentralManagerDidFailToConnectDevice = NSNotification.Name("afrCentralManagerDidFailToConnectDevice")
+    public static let afrCentralManagerDidFailToConnectDevice: NSNotification.Name = NSNotification.Name("afrCentralManagerDidFailToConnectDevice")
 
     // BLE Peripheral
 
     /// FreeRTOS BLE Peripheral didDiscoverServices.
-    static let afrPeripheralDidDiscoverServices = NSNotification.Name("afrPeripheralDidDiscoverServices")
+    public static let afrPeripheralDidDiscoverServices: NSNotification.Name = NSNotification.Name("afrPeripheralDidDiscoverServices")
     /// FreeRTOS BLE Peripheral didDiscoverCharacteristics.
-    static let afrPeripheralDidDiscoverCharacteristics = NSNotification.Name("afrPeripheralDidDiscoverCharacteristics")
+    public static let afrPeripheralDidDiscoverCharacteristics: NSNotification.Name = NSNotification.Name("afrPeripheralDidDiscoverCharacteristics")
 
     // DeviceInfo
 
     /// FreeRTOS return device info afr version.
-    static let afrDeviceInfoAfrVersion = NSNotification.Name("afrDeviceInfoAfrVersion")
+    public static let afrDeviceInfoAfrVersion: NSNotification.Name = NSNotification.Name("afrDeviceInfoAfrVersion")
     /// FreeRTOS return device info broker endpoint.
-    static let afrDeviceInfoBrokerEndpoint = NSNotification.Name("afrDeviceInfoBrokerEndpoint")
+    public static let afrDeviceInfoBrokerEndpoint: NSNotification.Name = NSNotification.Name("afrDeviceInfoBrokerEndpoint")
     /// FreeRTOS return device info mtu.
-    static let afrDeviceInfoMtu = NSNotification.Name("afrDeviceInfoMtu")
+    public static let afrDeviceInfoMtu: NSNotification.Name = NSNotification.Name("afrDeviceInfoMtu")
     /// FreeRTOS return device info afr platform.
-    static let afrDeviceInfoAfrPlatform = NSNotification.Name("afrDeviceInfoAfrPlatform")
+    public static let afrDeviceInfoAfrPlatform: NSNotification.Name = NSNotification.Name("afrDeviceInfoAfrPlatform")
     /// FreeRTOS return device info afr dev id.
-    static let afrDeviceInfoAfrDevId = NSNotification.Name("afrDeviceInfoAfrDevId")
+    public static let afrDeviceInfoAfrDevId: NSNotification.Name = NSNotification.Name("afrDeviceInfoAfrDevId")
 
     // NetworkConfig
 
     /// FreeRTOS list network returned a saved or scaned network.
-    static let afrDidListNetwork = NSNotification.Name("afrDidListNetwork")
+    public static let afrDidListNetwork: NSNotification.Name = NSNotification.Name("afrDidListNetwork")
     /// FreeRTOS save network did save a network.
-    static let afrDidSaveNetwork = NSNotification.Name("afrDidSaveNetwork")
+    public static let afrDidSaveNetwork: NSNotification.Name = NSNotification.Name("afrDidSaveNetwork")
     /// FreeRTOS edit network did edit a saved network.
-    static let afrDidEditNetwork = NSNotification.Name("afrDidEditNetwork")
+    public static let afrDidEditNetwork: NSNotification.Name = NSNotification.Name("afrDidEditNetwork")
     /// FreeRTOS delete network did delete a saved network.
-    static let afrDidDeleteNetwork = NSNotification.Name("afrDidDeleteNetwork")
+    public static let afrDidDeleteNetwork: NSNotification.Name = NSNotification.Name("afrDidDeleteNetwork")
 }

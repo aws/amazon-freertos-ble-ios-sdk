@@ -111,7 +111,7 @@ extension AmazonFreeRTOSDevice {
     ///    - certificateId: The certificateId used to connect. see: https://github.com/awslabs/aws-sdk-ios-samples/tree/master/IoT-Sample/Swift
     ///    - credentialsProvider: The credentialsProvider used to connect like AWSMobileClient for Cognito.
     /// - Precondition: central is ready and device must be disconnected, otherwise it will be ignored.
-    func connect(reconnect: Bool, certificateId: String? = nil, credentialsProvider: AWSCredentialsProvider? = nil) {
+    public func connect(reconnect: Bool, certificateId: String? = nil, credentialsProvider: AWSCredentialsProvider? = nil) {
         self.reconnect = reconnect
         self.certificateId = certificateId
         self.credentialsProvider = credentialsProvider
@@ -123,7 +123,7 @@ extension AmazonFreeRTOSDevice {
     /// Disconnect from the FreeRTOS device.
     ///
     /// - Precondition: central is ready and device must be connected, otherwise it will be ignored.
-    func disconnect() {
+    public func disconnect() {
         reconnect = false
         if peripheral.state == .connected {
             AmazonFreeRTOSManager.shared.central?.cancelPeripheralConnection(peripheral)
@@ -136,7 +136,7 @@ extension AmazonFreeRTOSDevice {
 extension AmazonFreeRTOSDevice {
 
     /// Get afrVersion of the FreeRTOS device.
-    func getAfrVersion() {
+    public func getAfrVersion() {
 
         AmazonFreeRTOSManager.shared.debugPrint("[\(peripheral.identifier.uuidString)] ↓ get afrVersion")
 
@@ -148,7 +148,7 @@ extension AmazonFreeRTOSDevice {
     }
 
     /// Get mqtt broker endpoint of the FreeRTOS device.
-    func getBrokerEndpoint() {
+    public func getBrokerEndpoint() {
 
         AmazonFreeRTOSManager.shared.debugPrint("[\(peripheral.identifier.uuidString)] ↓ get brokerEndpoint")
 
@@ -160,7 +160,7 @@ extension AmazonFreeRTOSDevice {
     }
 
     /// Get BLE mtu of the FreeRTOS device.
-    func getMtu() {
+    public func getMtu() {
 
         AmazonFreeRTOSManager.shared.debugPrint("[\(peripheral.identifier.uuidString)] ↓ get mtu")
 
@@ -172,7 +172,7 @@ extension AmazonFreeRTOSDevice {
     }
 
     /// Get afrPlatform of the FreeRTOS device.
-    func getAfrPlatform() {
+    public func getAfrPlatform() {
 
         AmazonFreeRTOSManager.shared.debugPrint("[\(peripheral.identifier.uuidString)] ↓ get afrPlatform")
 
@@ -184,7 +184,7 @@ extension AmazonFreeRTOSDevice {
     }
 
     /// Get afrDevId of the FreeRTOS device.
-    func getAfrDevId() {
+    public func getAfrDevId() {
 
         AmazonFreeRTOSManager.shared.debugPrint("[\(peripheral.identifier.uuidString)] ↓ get afrDevId")
 
@@ -203,7 +203,7 @@ extension AmazonFreeRTOSDevice {
     /// List saved and scanned wifi networks of device. Wifi networks are returned one by one, saved wifi ordered by priority and scanned wifi ordered by signal strength (rssi).
     ///
     /// - Parameter listNetworkReq: The list network request.
-    func listNetwork(_ listNetworkReq: ListNetworkReq) {
+    public func listNetwork(_ listNetworkReq: ListNetworkReq) {
 
         // reset networks list for the peripheral
 
@@ -216,21 +216,21 @@ extension AmazonFreeRTOSDevice {
     /// Save wifi network to device.
     ///
     /// - Parameter saveNetworkReq: The save network request.
-    func saveNetwork(_ saveNetworkReq: SaveNetworkReq) {
+    public func saveNetwork(_ saveNetworkReq: SaveNetworkReq) {
         AmazonFreeRTOSManager.shared.saveNetwork(peripheral, saveNetworkReq: saveNetworkReq)
     }
 
     /// Edit wifi network of device. Currently only support priority change.
     ///
     /// - Parameter editNetworkReq: The edit network request.
-    func editNetwork(_ editNetworkReq: EditNetworkReq) {
+    public func editNetwork(_ editNetworkReq: EditNetworkReq) {
         AmazonFreeRTOSManager.shared.editNetwork(peripheral, editNetworkReq: editNetworkReq)
     }
 
     /// Delete saved wifi network from device.
     ///
     /// - Parameter deleteNetworkReq: The delete network request.
-    func deleteNetwork(_ deleteNetworkReq: DeleteNetworkReq) {
+    public func deleteNetwork(_ deleteNetworkReq: DeleteNetworkReq) {
         AmazonFreeRTOSManager.shared.deleteNetwork(peripheral, deleteNetworkReq: deleteNetworkReq)
     }
 }
