@@ -1,4 +1,6 @@
 /// Mqtt proxy message of Connack.
+/// To reduce the encoded CBOR message size, we maps the variable name with a single character by CodingKey
+/// Check the "CborKey" Enum to see the mapping relationship.
 public struct Connack: Encodable {
 
     /// Mqtt connection status. Reference: https://github.com/aws/aws-sdk-ios/blob/master/AWSIoT/AWSIoTMQTTTypes.h#L20
@@ -11,7 +13,7 @@ public struct Connack: Encodable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case messageType = "w" /// CborKey.type.rawValue
-        case status = "s" /// CborKey.status.rawValue
+        case messageType = "w"
+        case status = "s"
     }
 }

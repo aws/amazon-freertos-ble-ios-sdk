@@ -1,4 +1,6 @@
 /// Mqtt proxy message of Publish.
+/// To reduce the encoded CBOR message size, we maps the variable name with a single character by CodingKey
+/// Check the "CborKey" Enum to see the mapping relationship.
 public struct Publish: Codable {
     /// Mqtt message type
     private var messageType: Int
@@ -28,11 +30,11 @@ public struct Publish: Codable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case messageType = "w" /// CborKey.type.rawValue
-        case topic = "u" /// CborKey.topic.rawValue
-        case msgID = "i" /// CborKey.msgID.rawValue
-        case qoS = "n" /// CborKey.qoS.rawValue
-        case payload = "k" /// CborKey.payload.rawValue
+        case messageType = "w"
+        case topic = "u"
+        case msgID = "i"
+        case qoS = "n"
+        case payload = "k"
     }
 
     public init(from decoder: Decoder) throws {

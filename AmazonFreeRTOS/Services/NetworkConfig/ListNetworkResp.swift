@@ -1,4 +1,6 @@
 /// List network response.
+/// To reduce the encoded CBOR message size, we maps the variable name with a single character by CodingKey
+/// Check the "CborKey" Enum to see the mapping relationship.
 public struct ListNetworkResp: Decodable {
     /// Index of the network. < 0 for scaned networks.
     public var index: Int
@@ -18,13 +20,13 @@ public struct ListNetworkResp: Decodable {
     public var connected: Bool
 
     private enum CodingKeys: String, CodingKey {
-        case index = "g" /// CborKey.index.rawValue
-        case status = "s" /// CborKey.status.rawValue
-        case ssid = "r" /// CborKey.ssid.rawValue
-        case bssid = "b" /// CborKey.bssid.rawValue
-        case rssi = "p" /// CborKey.rssi.rawValue
-        case security = "q" /// CborKey.security.rawValue
-        case hidden = "f" /// CborKey.hidden.rawValue
-        case connected = "e" /// CborKey.connected.rawValue
+        case index = "g"
+        case status = "s"
+        case ssid = "r"
+        case bssid = "b"
+        case rssi = "p"
+        case security = "q"
+        case hidden = "f"
+        case connected = "e"
     }
 }

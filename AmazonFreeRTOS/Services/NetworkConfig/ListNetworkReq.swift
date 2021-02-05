@@ -1,4 +1,6 @@
 /// List network request.
+/// To reduce the encoded CBOR message size, we maps the variable name with a single character by CodingKey
+/// Check the "CborKey" Enum to see the mapping relationship.
 public struct ListNetworkReq: Encodable {
 
     /// message type
@@ -21,8 +23,8 @@ public struct ListNetworkReq: Encodable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case messageType = "w" /// CborKey.type.rawValue
-        case maxNetworks = "h" /// CborKey.maxNetworks.rawValue
-        case timeout = "t" /// CborKey.timeout.rawValue
+        case messageType = "w"
+        case maxNetworks = "h"
+        case timeout = "t"
     }
 }

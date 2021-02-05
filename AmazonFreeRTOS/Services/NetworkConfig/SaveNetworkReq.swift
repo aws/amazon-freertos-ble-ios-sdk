@@ -1,4 +1,6 @@
 /// Save network request.
+/// To reduce the encoded CBOR message size, we maps the variable name with a single character by CodingKey
+/// Check the "CborKey" Enum to see the mapping relationship.
 public struct SaveNetworkReq: Encodable {
     /// Mqtt message type
     private var messageType: Int
@@ -36,12 +38,12 @@ public struct SaveNetworkReq: Encodable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case messageType = "w" /// CborKey.type.rawValue
-        case index = "g" /// CborKey.index.rawValue
-        case ssid = "r" /// CborKey.ssid.rawValue
-        case bssid = "b" /// CborKey.bssid.rawValue
-        case psk = "m" /// CborKey.psk.rawValue
-        case security = "q" /// CborKey.security.rawValue
-        case connect = "y" /// CborKey.connect.rawValue
+        case messageType = "w"
+        case index = "g"
+        case ssid = "r"
+        case bssid = "b"
+        case psk = "m"
+        case security = "q"
+        case connect = "y"
     }
 }

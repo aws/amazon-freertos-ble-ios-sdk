@@ -1,4 +1,6 @@
 /// Mqtt proxy message of Suback.
+/// To reduce the encoded CBOR message size, we maps the variable name with a single character by CodingKey
+/// Check the "CborKey" Enum to see the mapping relationship.
 public struct Suback: Encodable {
 
     /// Mqtt message type
@@ -15,8 +17,8 @@ public struct Suback: Encodable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case messageType = "w" /// CborKey.type.rawValue
-        case msgID = "i" /// CborKey.msgID.rawValue
-        case status = "s" /// CborKey.status.rawValue
+        case messageType = "w"
+        case msgID = "i"
+        case status = "s"
     }
 }

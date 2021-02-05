@@ -1,4 +1,6 @@
 /// Mqtt proxy message of Subscribe.
+/// To reduce the encoded CBOR message size, we maps the variable name with a single character by CodingKey
+/// Check the "CborKey" Enum to see the mapping relationship.
 public struct Subscribe: Decodable {
     /// Mqtt topics.
     public var topics: [String]
@@ -8,8 +10,8 @@ public struct Subscribe: Decodable {
     public var qoSs: [Int]
 
     private enum CodingKeys: String, CodingKey {
-        case topics = "v" /// CborKey.topics.rawValue
-        case msgID = "i" /// CborKey.msgID.rawValue
-        case qoSs = "o" /// CborKey.qoSs.rawValue
+        case topics = "v"
+        case msgID = "i"
+        case qoSs = "o"
     }
 }
