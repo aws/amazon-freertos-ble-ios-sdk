@@ -236,9 +236,12 @@ extension AmazonFreeRTOSManager {
     }
 
     internal func decode<T: Decodable>(_ type: T.Type, from data: Data) -> T? {
-        let decoder = CBORDecoder()
-        if let decoded = try? decoder.decode(type, from: data) {
+        do {
+            let decoder = CBORDecoder()
+            let decoded = try decoder.decode(type, from: data)
             return decoded
+        } catch {
+            debugPrint("[ERROR] CBOR decode error: \(error)")
         }
         return nil
     }
