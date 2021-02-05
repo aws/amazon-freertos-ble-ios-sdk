@@ -7,7 +7,7 @@ public struct SaveNetworkReq: Encodable {
     /// Wifi ssid.
     public var ssid: String
     /// Wifi bssid (Mac address).
-    public var bssid: String
+    public var bssid: Data
     /// Wifi password. Saved network ignore this value.
     public var psk: String
     /// Wifi security type.
@@ -25,7 +25,7 @@ public struct SaveNetworkReq: Encodable {
     ///     - security: Wifi security type.
     ///     - connect: Connect immediately or just save for later.
     /// - Returns: A new SaveNetworkReq.
-    public init(index: Int, ssid: String, bssid: String, psk: String, security: NetworkSecurityType, connect: Bool) {
+    public init(index: Int, ssid: String, bssid: Data, psk: String, security: NetworkSecurityType, connect: Bool) {
         messageType = NetworkMessageType.saveNetworkReq.rawValue
         self.index = index
         self.ssid = ssid

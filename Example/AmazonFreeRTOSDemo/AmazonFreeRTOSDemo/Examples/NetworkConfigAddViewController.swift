@@ -50,7 +50,7 @@ class NetworkConfigAddViewController: UIViewController {
                 .show(on: self)
             return
         }
-        AmazonFreeRTOSManager.shared.devices[uuid]?.saveNetwork(SaveNetworkReq(index: listNetworkResp?.index ?? -1, ssid: ssid, bssid: listNetworkResp?.bssid ?? "000000000000", psk: tfPassword.text ?? String(), security: security, connect: connect))
+        AmazonFreeRTOSManager.shared.devices[uuid]?.saveNetwork(SaveNetworkReq(index: listNetworkResp?.index ?? -1, ssid: ssid, bssid: listNetworkResp?.bssid ?? Data(repeating: 0, count: 6), psk: tfPassword.text ?? String(), security: security, connect: connect))
         dismiss(animated: true)
     }
 }

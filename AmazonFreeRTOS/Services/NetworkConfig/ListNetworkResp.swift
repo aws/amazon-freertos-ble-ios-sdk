@@ -7,7 +7,7 @@ public struct ListNetworkResp: Decodable {
     /// Wifi ssid.
     public var ssid: String
     /// Wifi bssid (Mac address).
-    public var bssid: String
+    public var bssid: Data
     /// Wifi rssi (Signal strenth).
     public var rssi: Int
     /// Wifi security type.
