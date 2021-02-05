@@ -228,9 +228,12 @@ extension AmazonFreeRTOSManager: CBPeripheralDelegate {
 extension AmazonFreeRTOSManager {
 
     internal func encode<T: Encodable>(_ object: T) -> Data? {
-        let encoder = CBOREncoder()
-        if let encoded = try? encoder.encode(object) {
+        do {
+            let encoder = CBOREncoder()
+            let encoded = try encoder.encode(object)
             return Data(encoded)
+        } catch {
+            debugPrint("[ERROR] CBOR decode error: \(error)")
         }
         return nil
     }
