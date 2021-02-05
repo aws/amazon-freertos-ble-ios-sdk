@@ -1,23 +1,7 @@
 /// Mqtt proxy message of Connect.
-public struct Connect: Decborable {
-
-    init?(dictionary: NSDictionary) {
-        guard let clientID = dictionary.object(forKey: CborKey.clientID.rawValue) as? String else {
-            return nil
-        }
-        self.clientID = clientID
-
-        guard let brokerEndpoint = dictionary.object(forKey: CborKey.brokerEndpoint.rawValue) as? String else {
-            return nil
-        }
-        self.brokerEndpoint = brokerEndpoint
-
-        guard let cleanSession = dictionary.object(forKey: CborKey.cleanSession.rawValue) as? Bool else {
-            return nil
-        }
-        self.cleanSession = cleanSession
-    }
-
+/// To reduce the encoded CBOR message size, we maps the variable name with a single character by CodingKey
+/// Check the "CborKey" Enum to see the mapping relationship.
+public struct Connect: Decodable {
     /// Mqtt client id.
     public var clientID: String
     /// Mqtt broker endpoint.
@@ -25,7 +9,9 @@ public struct Connect: Decborable {
     /// Mqtt clean session.
     public var cleanSession: Bool
 
-    static func toSelf<T: Decborable>(dictionary: NSDictionary) -> T? {
-        return Connect(dictionary: dictionary) as? T
+    private enum CodingKeys: String, CodingKey {
+        case clientID = "d"
+        case brokerEndpoint = "a"
+        case cleanSession = "c"
     }
 }

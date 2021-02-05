@@ -1,17 +1,11 @@
 /// Save network response.
-public struct SaveNetworkResp: Decborable {
-
-    init?(dictionary: NSDictionary) {
-        guard let statusRawValue = dictionary.object(forKey: CborKey.status.rawValue) as? Int, let status = NetworkOpStatus(rawValue: statusRawValue) else {
-            return nil
-        }
-        self.status = status
-    }
-
+/// To reduce the encoded CBOR message size, we maps the variable name with a single character by CodingKey
+/// Check the "CborKey" Enum to see the mapping relationship.
+public struct SaveNetworkResp: Decodable {
     /// Save operation status.
     public var status: NetworkOpStatus
 
-    static func toSelf<T: Decborable>(dictionary: NSDictionary) -> T? {
-        return SaveNetworkResp(dictionary: dictionary) as? T
+    private enum CodingKeys: String, CodingKey {
+        case status = "s"
     }
 }

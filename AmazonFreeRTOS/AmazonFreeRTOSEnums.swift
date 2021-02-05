@@ -1,5 +1,5 @@
 /// Mqtt message types. Reference: http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718021
-public enum MqttMessageType: Int {
+public enum MqttMessageType: Int, Codable {
     /// Connect.
     case connect = 1
     /// Connack.
@@ -31,7 +31,7 @@ public enum MqttMessageType: Int {
 }
 
 /// Network message type.
-public enum NetworkMessageType: Int {
+public enum NetworkMessageType: Int, Codable {
     /// ListNetworkReq.
     case listNetworkReq = 1
     /// ListNetworkResp.
@@ -51,7 +51,7 @@ public enum NetworkMessageType: Int {
 }
 
 /// Network security types.
-public enum NetworkSecurityType: Int {
+public enum NetworkSecurityType: Int, Codable {
     /// Open.
     case open = 0
     /// Wep.
@@ -67,7 +67,7 @@ public enum NetworkSecurityType: Int {
 }
 
 /// Network statuses.
-public enum NetworkOpStatus: Int {
+public enum NetworkOpStatus: Int, Codable {
     /// Success.
     case success = 0
     /// Failure.

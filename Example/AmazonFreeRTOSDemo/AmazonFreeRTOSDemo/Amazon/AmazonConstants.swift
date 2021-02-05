@@ -2,7 +2,7 @@ import AWSCore
 
 struct AmazonConstants {
 
-    struct AWS {
+    enum AWS {
 
         #warning("if you do not plan to use the MQTT demo, you can remove these #error.")
 

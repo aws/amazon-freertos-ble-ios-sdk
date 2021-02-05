@@ -1,4 +1,5 @@
 import AWSIoT
+import CBORCoding
 import CoreBluetooth
 import os.log
 
@@ -226,16 +227,24 @@ extension AmazonFreeRTOSManager: CBPeripheralDelegate {
 
 extension AmazonFreeRTOSManager {
 
-    internal func encode<T: Encborable>(_ object: T) -> Data? {
-        if let encoded = CBOR.encode(object.toDictionary()) {
+    internal func encode<T: Encodable>(_ object: T) -> Data? {
+        do {
+            let encoder = CBOREncoder()
+            let encoded = try encoder.encode(object)
             return Data(encoded)
+        } catch {
+            debugPrint("[ERROR] CBOR decode error: \(error)")
         }
         return nil
     }
 
-    internal func decode<T: Decborable>(_: T.Type, from data: Data) -> T? {
-        if let decoded = CBOR.decode(Array([UInt8](data))) as? NSDictionary {
-            return T.toSelf(dictionary: decoded)
+    internal func decode<T: Decodable>(_ type: T.Type, from data: Data) -> T? {
+        do {
+            let decoder = CBORDecoder()
+            let decoded = try decoder.decode(type, from: data)
+            return decoded
+        } catch {
+            debugPrint("[ERROR] CBOR decode error: \(error)")
         }
         return nil
     }

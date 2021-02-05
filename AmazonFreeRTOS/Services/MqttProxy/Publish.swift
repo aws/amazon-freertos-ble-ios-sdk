@@ -1,5 +1,17 @@
 /// Mqtt proxy message of Publish.
-public struct Publish: Encborable, Decborable {
+/// To reduce the encoded CBOR message size, we maps the variable name with a single character by CodingKey
+/// Check the "CborKey" Enum to see the mapping relationship.
+public struct Publish: Codable {
+    /// Mqtt message type
+    private var messageType: Int
+    /// Mqtt topic.
+    public var topic: String
+    /// Mqtt message id.
+    public var msgID: Int
+    /// Mqtt QoS.
+    public var qoS: Int
+    /// Mqtt payload.
+    public var payload: Data
 
     /// Publish msg init (internal).
     ///
@@ -10,49 +22,33 @@ public struct Publish: Encborable, Decborable {
     ///     - payload: Mqtt payload.
     /// - Returns: A new SaveNetworkReq.
     public init(topic: String, msgID: Int, qoS: Int, payload: Data) {
+        messageType = MqttMessageType.publish.rawValue
         self.topic = topic
         self.msgID = msgID
         self.qoS = qoS
         self.payload = payload
     }
 
-    init?(dictionary: NSDictionary) {
-        guard let topic = dictionary.object(forKey: CborKey.topic.rawValue) as? String else {
-            return nil
-        }
-        self.topic = topic
+    private enum CodingKeys: String, CodingKey {
+        case messageType = "w"
+        case topic = "u"
+        case msgID = "i"
+        case qoS = "n"
+        case payload = "k"
+    }
 
-        if let msgID = dictionary.object(forKey: CborKey.msgID.rawValue) as? Int {
-            self.msgID = msgID
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        messageType = try values.decode(Int.self, forKey: .messageType)
+        topic = try values.decode(String.self, forKey: .topic)
+
+        if values.contains(.msgID) {
+            msgID = try values.decode(Int.self, forKey: .msgID)
         } else {
             msgID = 0
         }
 
-        guard let qoS = dictionary.object(forKey: CborKey.qoS.rawValue) as? Int else {
-            return nil
-        }
-        self.qoS = qoS
-
-        guard let payload = dictionary.object(forKey: CborKey.payload.rawValue) as? String, let data = payload.data else {
-            return nil
-        }
-        self.payload = data
-    }
-
-    /// Mqtt topic.
-    public var topic: String
-    /// Mqtt message id.
-    public var msgID: Int
-    /// Mqtt QoS.
-    public var qoS: Int
-    /// Mqtt payload.
-    public var payload: Data
-
-    func toDictionary() -> NSDictionary {
-        return [CborKey.type.rawValue: MqttMessageType.publish.rawValue, CborKey.topic.rawValue: topic, CborKey.msgID.rawValue: msgID, CborKey.qoS.rawValue: qoS, CborKey.payload.rawValue: NSByteString(payload.hex)]
-    }
-
-    static func toSelf<T: Decborable>(dictionary: NSDictionary) -> T? {
-        return Publish(dictionary: dictionary) as? T
+        qoS = try values.decode(Int.self, forKey: .qoS)
+        payload = try values.decode(Data.self, forKey: .payload)
     }
 }
