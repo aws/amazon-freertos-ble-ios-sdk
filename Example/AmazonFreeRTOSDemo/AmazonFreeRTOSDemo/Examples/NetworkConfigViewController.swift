@@ -18,9 +18,9 @@ class NetworkConfigViewController: UITableViewController {
         // ListNetwork returned one network
         NotificationCenter.default.addObserver(self, selector: #selector(didListNetwork), name: .afrDidListNetwork, object: nil)
         // Refresh list on network operations
-        NotificationCenter.default.addObserver(self, selector: #selector(didOpNetwork), name: .afrDidSaveNetwork, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didOpNetwork), name: .afrDidEditNetwork, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didOpNetwork), name: .afrDidDeleteNetwork, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSaveNetwork), name: .afrDidSaveNetwork, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didEditNetwork), name: .afrDidEditNetwork, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didDeleteNetwork), name: .afrDidDeleteNetwork, object: nil)
 
         refreshControl?.addTarget(self, action: #selector(didOpNetwork), for: .valueChanged)
 
@@ -52,6 +52,45 @@ extension NetworkConfigViewController {
         UIView.performWithoutAnimation {
             self.tableView.reloadData()
         }
+    }
+
+    @objc
+    func didSaveNetwork(_ notification: Notification) {
+        if let saveNetworkResp = notification.userInfo?["saveNetworkResp"] as? SaveNetworkResp {
+            if saveNetworkResp.status != NetworkOpStatus.success {
+                Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: NSLocalizedString("Failed to save the WiFi network with status: \(saveNetworkResp.status)", comment: String()))
+                    .action(.default(NSLocalizedString("OK", comment: String())))
+                    .show(on: self)
+            }
+        }
+
+        didOpNetwork()
+    }
+
+    @objc
+    func didEditNetwork(_ notification: Notification) {
+        if let editNetworkResp = notification.userInfo?["editNetworkResp"] as? EditNetworkResp {
+            if editNetworkResp.status != NetworkOpStatus.success {
+                Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: NSLocalizedString("Failed to save the WiFi network with status: \(editNetworkResp.status)", comment: String()))
+                    .action(.default(NSLocalizedString("OK", comment: String())))
+                    .show(on: self)
+            }
+        }
+
+        didOpNetwork()
+    }
+
+    @objc
+    func didDeleteNetwork(_ notification: Notification) {
+        if let deleteNetworkResp = notification.userInfo?["deleteNetworkResp"] as? DeleteNetworkResp {
+            if deleteNetworkResp.status != NetworkOpStatus.success {
+                Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: NSLocalizedString("Failed to save the WiFi network with status: \(deleteNetworkResp.status)", comment: String()))
+                    .action(.default(NSLocalizedString("OK", comment: String())))
+                    .show(on: self)
+            }
+        }
+
+        didOpNetwork()
     }
 
     @objc
