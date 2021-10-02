@@ -355,7 +355,14 @@ extension AmazonFreeRTOSManager {
             return
         }
 
-        switch characteristic.service.uuid {
+        let testCharacteristicService: CBService? = characteristic.service
+        guard let guardCharacteristicService = testCharacteristicService else {
+            debugPrint("[\(peripheral.identifier.uuidString)][ERROR] didUpdateValueForTXMessage: Invalid characteristic")
+            return
+        }
+        let characteristicService: CBService = guardCharacteristicService
+
+        switch characteristicService.uuid {
 
         case AmazonFreeRTOSGattService.MqttProxy:
 
@@ -607,20 +614,27 @@ extension AmazonFreeRTOSManager {
             return
         }
 
-        if let txLotData = devices[peripheral.identifier]?.txLotDatas[characteristic.service.uuid.uuidString], let value = characteristic.value {
+        let testCharacteristicService: CBService? = characteristic.service
+        guard let guardCharacteristicService = testCharacteristicService else {
+            debugPrint("[\(peripheral.identifier.uuidString)][ERROR] didUpdateValueForTXLargeMessage: Invalid characteristic")
+            return
+        }
+        let characteristicService: CBService = guardCharacteristicService
+
+        if let txLotData = devices[peripheral.identifier]?.txLotDatas[characteristicService.uuid.uuidString], let value = characteristic.value {
             let data = Data([UInt8](txLotData) + [UInt8](value))
-            devices[peripheral.identifier]?.txLotDatas[characteristic.service.uuid.uuidString] = data
+            devices[peripheral.identifier]?.txLotDatas[characteristicService.uuid.uuidString] = data
             debugPrint("[\(peripheral.identifier.uuidString)][LOT] ↑ \(data)")
         } else if let value = characteristic.value {
-            devices[peripheral.identifier]?.txLotDatas[characteristic.service.uuid.uuidString] = value
+            devices[peripheral.identifier]?.txLotDatas[characteristicService.uuid.uuidString] = value
             debugPrint("[\(peripheral.identifier.uuidString)][LOT] ↑ \(value)")
         }
         if characteristic.value?.count ?? 0 < mtu - 3 {
-            if let txLotData = devices[peripheral.identifier]?.txLotDatas[characteristic.service.uuid.uuidString] {
+            if let txLotData = devices[peripheral.identifier]?.txLotDatas[characteristicService.uuid.uuidString] {
                 didUpdateValueForTXMessage(peripheral: peripheral, characteristic: characteristic, data: txLotData)
                 debugPrint("[\(peripheral.identifier.uuidString)][LOT] LAST FULL ↑ \(txLotData)")
             }
-            devices[peripheral.identifier]?.txLotDatas.removeValue(forKey: characteristic.service.uuid.uuidString)
+            devices[peripheral.identifier]?.txLotDatas.removeValue(forKey: characteristicService.uuid.uuidString)
         } else {
             peripheral.readValue(for: characteristic)
         }
@@ -633,22 +647,30 @@ extension AmazonFreeRTOSManager {
                 self.debugPrint("[\(peripheral.identifier.uuidString)][ERROR] Mtu unknown")
                 return
             }
+
+            let testCharacteristicService: CBService? = characteristic.service
+            guard let guardCharacteristicService = testCharacteristicService else {
+                self.debugPrint("[\(peripheral.identifier.uuidString)][ERROR] writeValueToRXMessage: Invalid characteristic")
+                return
+            }
+            let characteristicService: CBService = guardCharacteristicService
+
             if data.count > mtu - 3 {
-                guard let characteristic = characteristic.service.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.RXLargeMqttMessage) ?? characteristic.service.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.RXLargeNetworkMessage) else {
+                guard let characteristic = characteristicService.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.RXLargeMqttMessage) ?? characteristicService.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.RXLargeNetworkMessage) else {
                     self.debugPrint("[\(peripheral.identifier.uuidString)][ERROR] RXLargeMqttMessage or RXLargeNetworkMessage characteristic doesn't exist")
                     return
                 }
-                if self.devices[peripheral.identifier]?.rxLotDataQueues[characteristic.service.uuid.uuidString] == nil {
-                    self.devices[peripheral.identifier]?.rxLotDataQueues[characteristic.service.uuid.uuidString] = [data]
+                if self.devices[peripheral.identifier]?.rxLotDataQueues[characteristicService.uuid.uuidString] == nil {
+                    self.devices[peripheral.identifier]?.rxLotDataQueues[characteristicService.uuid.uuidString] = [data]
                 } else {
-                    self.devices[peripheral.identifier]?.rxLotDataQueues[characteristic.service.uuid.uuidString]?.append(data)
+                    self.devices[peripheral.identifier]?.rxLotDataQueues[characteristicService.uuid.uuidString]?.append(data)
                 }
-                if self.devices[peripheral.identifier]?.rxLotDataQueues[characteristic.service.uuid.uuidString]?.count == 1 {
+                if self.devices[peripheral.identifier]?.rxLotDataQueues[characteristicService.uuid.uuidString]?.count == 1 {
                     self.writeValueToRXLargeMessage(peripheral: peripheral, characteristic: characteristic)
                 }
                 return
             }
-            guard let characteristic = characteristic.service.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.RXMqttMessage) ?? characteristic.service.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.RXNetworkMessage) else {
+            guard let characteristic = characteristicService.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.RXMqttMessage) ?? characteristicService.characteristicOf(uuid: AmazonFreeRTOSGattCharacteristic.RXNetworkMessage) else {
                 self.debugPrint("[\(peripheral.identifier.uuidString)][ERROR] RXMqttMessage or RXNetworkMessage characteristic doesn't exist")
                 return
             }
@@ -664,16 +686,24 @@ extension AmazonFreeRTOSManager {
                 self.debugPrint("[\(peripheral.identifier.uuidString)][LOT][ERROR] Mtu unknown")
                 return
             }
-            guard let rxLotData = self.devices[peripheral.identifier]?.rxLotDataQueues[characteristic.service.uuid.uuidString]?.first else {
+
+            let testCharacteristicService: CBService? = characteristic.service
+            guard let guardCharacteristicService = testCharacteristicService else {
+                self.debugPrint("[\(peripheral.identifier.uuidString)][ERROR] writeValueToRXLargeMessage: Invalid characteristic")
+                return
+            }
+            let characteristicService: CBService = guardCharacteristicService
+
+            guard let rxLotData = self.devices[peripheral.identifier]?.rxLotDataQueues[characteristicService.uuid.uuidString]?.first else {
                 return
             }
             let data = Data([UInt8](rxLotData).prefix(mtu - 3))
             if data.count < mtu - 3 {
-                self.devices[peripheral.identifier]?.rxLotDataQueues[characteristic.service.uuid.uuidString]?.removeFirst()
-                self.debugPrint("[\(peripheral.identifier.uuidString)][LOT] LAST PART ↓ \(data) - \(self.devices[peripheral.identifier]?.rxLotDataQueues[characteristic.service.uuid.uuidString]?.count ?? 0) in queue")
+                self.devices[peripheral.identifier]?.rxLotDataQueues[characteristicService.uuid.uuidString]?.removeFirst()
+                self.debugPrint("[\(peripheral.identifier.uuidString)][LOT] LAST PART ↓ \(data) - \(self.devices[peripheral.identifier]?.rxLotDataQueues[characteristicService.uuid.uuidString]?.count ?? 0) in queue")
             } else {
-                self.devices[peripheral.identifier]?.rxLotDataQueues[characteristic.service.uuid.uuidString]?[0] = Data([UInt8](rxLotData).dropFirst(mtu - 3))
-                self.debugPrint("[\(peripheral.identifier.uuidString)][LOT] ↓ \(rxLotData) - \(self.devices[peripheral.identifier]?.rxLotDataQueues[characteristic.service.uuid.uuidString]?.count ?? 0) in queue")
+                self.devices[peripheral.identifier]?.rxLotDataQueues[characteristicService.uuid.uuidString]?[0] = Data([UInt8](rxLotData).dropFirst(mtu - 3))
+                self.debugPrint("[\(peripheral.identifier.uuidString)][LOT] ↓ \(rxLotData) - \(self.devices[peripheral.identifier]?.rxLotDataQueues[characteristicService.uuid.uuidString]?.count ?? 0) in queue")
             }
             peripheral.writeValue(data, for: characteristic, type: .withResponse)
         }
