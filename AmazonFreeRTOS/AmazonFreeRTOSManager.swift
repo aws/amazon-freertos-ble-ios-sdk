@@ -25,7 +25,7 @@ public class AmazonFreeRTOSManager: NSObject {
     /// Initializes a new FreeRTOS manager.
     ///
     /// - Returns: A new FreeRTOS manager.
-    public override init() {
+    override public init() {
         super.init()
         central = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: true])
     }

@@ -2,3 +2,4 @@
 --decimalgrouping ignore
 --disable blankLinesAtStartOfScope
 --enable isEmpty
+--extensionacl on-declarations
