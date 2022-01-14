@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = "AmazonFreeRTOS"
-  s.version       = "1.2.0"
+  s.version       = "1.2.1"
   s.summary       = "FreeRTOS SDK for iOS."
   s.description   = "The AWS SDK for iOS provides a library, code samples, and documentation for developers to build connected mobile applications using AWS."
   s.homepage      = "https://aws.amazon.com/freertos/"
