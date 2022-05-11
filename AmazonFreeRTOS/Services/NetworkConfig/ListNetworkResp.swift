@@ -18,6 +18,8 @@ public struct ListNetworkResp: Decodable {
     public var hidden: Bool
     /// Wifi is connected or not.
     public var connected: Bool
+    /// Last Network in the list or not
+    public var last: Bool?
 
     private enum CodingKeys: String, CodingKey {
         case index = "g"
@@ -28,5 +30,6 @@ public struct ListNetworkResp: Decodable {
         case security = "q"
         case hidden = "f"
         case connected = "e"
+        case last = "l"
     }
 }
