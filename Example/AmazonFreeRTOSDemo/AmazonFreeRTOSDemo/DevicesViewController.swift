@@ -20,7 +20,7 @@ class DevicesViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(centralManagerDidDisconnectDevice), name: .afrCentralManagerDidDisconnectDevice, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrCentralManagerDidDiscoverDevice, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrCentralManagerDidConnectDevice, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataWithoutAnimation), name: .afrCentralManagerDidFailToConnectDevice, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(centralManagerDidFailToConnectToDevice), name: .afrCentralManagerDidFailToConnectDevice, object: nil)
 
         centralManagerDidUpdateState()
         #warning("remove showLogin() if you do not plan to use the MQTT demo")
@@ -65,6 +65,17 @@ extension DevicesViewController {
         if notification.userInfo?["identifier"] as? UUID == uuid {
             _ = navigationController?.popToRootViewController(animated: true)
         }
+    }
+
+    // Alert user on connect failure
+    @objc
+    func centralManagerDidFailToConnectToDevice(_ notification: Notification) {
+        if let error = notification.userInfo?["error"] as? Error {
+            Alertift.alert(title: NSLocalizedString("Error", comment: String()), message: NSLocalizedString("Failed to connect to peripheral with error: \(error.localizedDescription)", comment: String()))
+                .action(.default(NSLocalizedString("OK", comment: String())))
+                .show(on: self)
+        }
+        reloadDataWithoutAnimation()
     }
 
     @objc
