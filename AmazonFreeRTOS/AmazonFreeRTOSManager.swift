@@ -98,21 +98,24 @@ extension AmazonFreeRTOSManager: CBCentralManagerDelegate {
         if devices[peripheral.identifier]?.reconnect ?? false {
             central.connect(peripheral, options: nil)
         }
-        NotificationCenter.default.post(name: .afrCentralManagerDidDisconnectDevice, object: nil, userInfo: ["identifier": peripheral.identifier])
+
         if let error = error {
             debugPrint("[\(peripheral.identifier.uuidString)][ERROR] afrCentralManagerDidDisconnectPeripheral: \(error.localizedDescription)")
+            NotificationCenter.default.post(name: .afrCentralManagerDidDisconnectDevice, object: nil, userInfo: ["identifier": peripheral.identifier, "error": error])
             return
         }
+        NotificationCenter.default.post(name: .afrCentralManagerDidDisconnectDevice, object: nil, userInfo: ["identifier": peripheral.identifier])
         debugPrint("[\(peripheral.identifier.uuidString)] afrCentralManagerDidDisconnectPeripheral")
     }
 
     /// CBCentralManagerDelegate
     public func centralManager(_: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        NotificationCenter.default.post(name: .afrCentralManagerDidFailToConnectDevice, object: nil, userInfo: ["identifier": peripheral.identifier])
         if let error = error {
             debugPrint("[\(peripheral.identifier.uuidString)][ERROR] afrCentralManagerDidFailToConnectPeripheral: \(error.localizedDescription)")
+            NotificationCenter.default.post(name: .afrCentralManagerDidFailToConnectDevice, object: nil, userInfo: ["identifier": peripheral.identifier, "error": error])
             return
         }
+        NotificationCenter.default.post(name: .afrCentralManagerDidFailToConnectDevice, object: nil, userInfo: ["identifier": peripheral.identifier])
         debugPrint("[\(peripheral.identifier.uuidString)] afrCentralManagerDidFailToConnectPeripheral")
     }
 }
