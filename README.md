@@ -1,9 +1,9 @@
 # ![image](https://user-images.githubusercontent.com/56273942/202568467-0ee721bb-1424-4efd-88fc-31b4f2a59dc6.png) DEPRECATED
 
 ## Announcement:
-As of July 20th, 2023, this repository is deprecated. The contents of this repository will remain available but we will no longer provide updates or accept new contributions and pull requests. We recommend you start [here](https://docs.amplify.aws/start/q/integration/ios/) for creating interactions between an iOS device and AWS. For Bluetooth Low Energy APIs we recommend you start [here](https://developer.apple.com/bluetooth/).
+As of July 20th, 2023, this repository is deprecated. The contents of this repository will remain available but we will no longer provide updates nor accept new contributions and pull requests. We recommend instead that you start [here](https://docs.amplify.aws/start/q/integration/ios/) for creating interactions between an iOS device and AWS. For Bluetooth Low Energy APIs we recommend you start [here](https://developer.apple.com/bluetooth/).
 
-Since the initial release of this package, several new iOS version have release brining with them enhanced security and usability. AWS Amplify has also [release dozens of later versions](https://github.com/aws-amplify/aws-sdk-ios/releases) of the [AWS SDK](https://github.com/aws-amplify/aws-sdk-ios) with many new features and bug fixes.
+Since the initial release of this package, several new iOS versions have been released bringing with them enhanced security and usability. AWS Amplify has also [release dozens of later versions](https://github.com/aws-amplify/aws-sdk-ios/releases) of the [AWS SDK](https://github.com/aws-amplify/aws-sdk-ios) with many new features and bug fixes.
 
 The amazon-freertos-ble-ios-sdk is being deprecated to remove an example built on outdated code.
 
